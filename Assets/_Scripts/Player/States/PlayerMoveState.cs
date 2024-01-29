@@ -3,8 +3,14 @@ public class PlayerMoveState : PlayerNormalState {
     public PlayerMoveState(PState stateKey, PlayerStateMachine stateMachine, Player player) : base(stateKey, stateMachine, player) {
     }
 
+    public override void Enter() {
+        base.Enter();
+        player.animations.SetMoveAnim(true);
+    }
+
     public override void Exit() {
         base.Exit();
+        player.animations.SetMoveAnim(false);
         player.rb.velocity = Vector2.zero;
     }
 
@@ -18,7 +24,7 @@ public class PlayerMoveState : PlayerNormalState {
     public override void FixedUpdate() {
         base.FixedUpdate();
 
-        float moveSpeed = 5f;
+        float moveSpeed = 6f;
         player.rb.velocity = GameInput.instance.GetMoveInputNormalized() * moveSpeed;
     }
 }

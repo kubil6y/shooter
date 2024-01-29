@@ -2,24 +2,34 @@ using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-	public event EventHandler<PState> OnStateEnter;
-	public event EventHandler<PState> OnStateExit;
+	[Header("Weapon Stuff")]
+	[SerializeField] private Transform m_weaponSystem;
 
 	[Header("Dash Skill")]
-	[field: SerializeField] public float dashSpeed { get; private set; } = 5f;
-	[field: SerializeField] public float dashDuration { get; private set; } = 1f;
+	[SerializeField] public LayerMask dashLayerMask;
+	[SerializeField] public float dashDistance;
 
 	public Rigidbody2D rb { get; private set; }
+	public PlayerChannel channel { get; private set; }
+	public PlayerAnimations animations { get; private set; }
 
 	private PlayerStateMachine m_stateMachine;
 
 	private void Awake() {
+		m_stateMachine = new PlayerStateMachine(this);
+
 		rb = GetComponent<Rigidbody2D>();
+		channel = GetComponent<PlayerChannel>();
+		animations = GetComponentInChildren<PlayerAnimations>();
 	}
 
 	private void Start() {
-		m_stateMachine = new PlayerStateMachine(this);
+		m_stateMachine.ConnectToPlayerChannel();
 		m_stateMachine.SetState(PState.Idle);
+	}
+
+	private void OnDestroy() {
+		m_stateMachine.DisconnectFromPlayerChannel();
 	}
 
 	private void Update() {
@@ -36,13 +46,11 @@ public class Player : MonoBehaviour {
 		m_stateMachine.currentState?.FixedUpdate();
 	}
 
-	// TODO test these
-	public void InvokeOnStateEnter(PState stateKey) {
-		OnStateEnter?.Invoke(this, stateKey);
+	public void EnableWeaponSystem() {
+		m_weaponSystem.gameObject.SetActive(true);
 	}
 
-	// TODO test these
-	public void InvokeOnStateExit(PState stateKey) {
-		OnStateExit?.Invoke(this, stateKey);
+	public void DisableWeaponSystem() {
+		m_weaponSystem.gameObject.SetActive(false);
 	}
 }

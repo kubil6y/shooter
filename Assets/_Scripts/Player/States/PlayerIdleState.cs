@@ -7,6 +7,12 @@ public class PlayerIdleState : PlayerNormalState {
     public override void Enter() {
         base.Enter();
 		player.rb.velocity = Vector2.zero;
+        player.animations.SetIdleAnim(true);
+    }
+
+    public override void Exit() {
+        base.Exit();
+        player.animations.SetIdleAnim(false);
     }
 
     public override void Update() {

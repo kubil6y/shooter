@@ -14,6 +14,7 @@ public class PlayerStateMachine {
 
 	private Dictionary<PState, PlayerState> m_states;
 
+	private PlayerChannel m_playerChannel;
 	private bool m_isTransitioning;
 
 	public PlayerStateMachine(Player player) {
@@ -21,6 +22,18 @@ public class PlayerStateMachine {
 		this.player = player;
 
 		InitializeStates(player);
+	}
+
+	public void ConnectToPlayerChannel() {
+		foreach(var state in m_states) {
+			state.Value.ConnectToPlayerChannel();
+		}
+	}
+
+	public void DisconnectFromPlayerChannel() {
+		foreach (var state in m_states) {
+			state.Value.DisconnectFromPlayerChannel();
+		}
 	}
 
 	public PState GetCurrentStateKey() {
@@ -54,7 +67,7 @@ public class PlayerStateMachine {
 	private void InitializeStates(Player player) {
 		PlayerIdleState idleState = new PlayerIdleState(PState.Idle, this, player);
 		PlayerMoveState moveState = new PlayerMoveState(PState.Move, this, player);
-		PlayerDashState dashState = new PlayerDashState(PState.Dash, this, player, player.dashDuration, player.dashSpeed);
+		PlayerDashState dashState = new PlayerDashState(PState.Dash, this, player);
 
 		AddState(PState.Idle, idleState);
 		AddState(PState.Move, moveState);

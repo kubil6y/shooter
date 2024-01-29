@@ -10,15 +10,15 @@ public class GameInput : Singleton<GameInput> {
 		m_playerInputActions.Enable();
 	}
 
+	private void OnDestroy() {
+		m_playerInputActions.Dispose();
+	}
+
 	public Vector2 GetMoveInputNormalized() {
 		return m_playerInputActions.Player.Move.ReadValue<Vector2>();
 	}
 
 	public bool Dash_WasPerformedThisFrame() {
 		return m_playerInputActions.Player.Dash.WasPerformedThisFrame();
-	}
-
-	private void OnDestroy() {
-		m_playerInputActions.Dispose();
 	}
 }

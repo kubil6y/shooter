@@ -13,25 +13,21 @@ public abstract class PlayerState {
 		this.player = player;
 	}
 
+	public virtual void ConnectToPlayerChannel() {
+	}
+
+	public virtual void DisconnectFromPlayerChannel() {
+	}
+
 	public virtual void Enter() {
-		player.InvokeOnStateEnter(stateKey);
 		// Debug.Log(GetType().Name + ":Enter()");
 	}
 
 	public virtual void Exit() {
-		player.InvokeOnStateExit(stateKey);
 		// Debug.Log(GetType().Name + ":Exit()");
 	}
 
 	public virtual void Update() {
-		// TODO remove later
-		if (Input.GetKeyDown(KeyCode.U)) {
-			((PlayerDashState)stateMachine.GetState(PState.Dash)).Setup(10f);
-		}
-		if (Input.GetKeyDown(KeyCode.I)) {
-			((PlayerDashState)stateMachine.GetState(PState.Dash)).Setup(20f);
-		}
-
 		if (Input.GetKeyDown(KeyCode.Mouse0)) {
 			Debug.Log("Shoot! from " + stateKey);
 		}
@@ -45,6 +41,7 @@ public abstract class PlayerState {
 			stateMachine.SetState(PState.Move);
 		}
 
+		Debug.Log(stateMachine.currentState.stateKey);
 	}
 
 	public virtual void FixedUpdate() { }

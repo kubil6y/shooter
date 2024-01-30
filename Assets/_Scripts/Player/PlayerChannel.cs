@@ -5,7 +5,7 @@ public class PlayerChannel : MonoBehaviour {
 	public event EventHandler OnAnimDashStartFinished;
 	public event EventHandler OnAnimDashEndFinished;
 	public event EventHandler<OnPlayerFlippedEventArgs> OnPlayerFlipped;
-	public class OnPlayerFlippedEventArgs: EventArgs {
+	public class OnPlayerFlippedEventArgs : EventArgs {
 		public bool isFacingRight;
 	}
 
@@ -19,7 +19,7 @@ public class PlayerChannel : MonoBehaviour {
 		OnAnimDashStartFinished?.Invoke(sender, EventArgs.Empty);
 	}
 
-	public void Emit_OnAnimDashEndFinished (object sender) {
+	public void Emit_OnAnimDashEndFinished(object sender) {
 		OnAnimDashEndFinished?.Invoke(this, EventArgs.Empty);
 	}
 

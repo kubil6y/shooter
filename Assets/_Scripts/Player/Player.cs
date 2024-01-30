@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -45,7 +44,6 @@ public class Player : MonoBehaviour {
 			m_stateMachine.SetState(PState.Dash);
 		}
 		m_stateMachine.currentState?.Update();
-		// Debug.Log(m_stateMachine.currentState.stateKey); // TODO remove
 	}
 
 	private void FixedUpdate() {
@@ -72,6 +70,7 @@ public class Player : MonoBehaviour {
 		m_canShoot = value;
 	}
 
+	// TODO this should be visuals only not all the weapons!
 	public void EnableWeaponSystem() {
 		m_weaponSystem.gameObject.SetActive(true);
 	}

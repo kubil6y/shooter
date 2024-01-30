@@ -40,8 +40,6 @@ public abstract class PlayerState {
 		if (Input.GetKeyDown(KeyCode.M)) {
 			stateMachine.SetState(PState.Move);
 		}
-
-		Debug.Log(stateMachine.currentState.stateKey);
 	}
 
 	public virtual void FixedUpdate() { }

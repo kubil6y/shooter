@@ -14,7 +14,6 @@ public class PlayerStateMachine {
 
 	private Dictionary<PState, PlayerState> m_states;
 
-	private PlayerChannel m_playerChannel;
 	private bool m_isTransitioning;
 
 	public PlayerStateMachine(Player player) {

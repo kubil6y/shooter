@@ -22,22 +22,22 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 1823865253, guid: e806bff2a8415578fb6935fbc297fa17, type: 3}
-    - time: 0.027777778
+    - time: 0.020833334
       value: {fileID: 23933409, guid: e806bff2a8415578fb6935fbc297fa17, type: 3}
-    - time: 0.055555556
+    - time: 0.041666668
       value: {fileID: -1580079406, guid: e806bff2a8415578fb6935fbc297fa17, type: 3}
-    - time: 0.083333336
+    - time: 0.0625
       value: {fileID: 251870600, guid: e806bff2a8415578fb6935fbc297fa17, type: 3}
-    - time: 0.11111111
+    - time: 0.083333336
       value: {fileID: -869972650, guid: e806bff2a8415578fb6935fbc297fa17, type: 3}
-    - time: 0.1388889
+    - time: 0.104166664
       value: {fileID: -869972650, guid: e806bff2a8415578fb6935fbc297fa17, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 36
+  m_SampleRate: 48
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -65,7 +65,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.125
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -85,7 +85,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.1388889
+  - time: 0.104166664
     functionName: AnimDashEndFinishedTrigger
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+// NOTE: this should be a teleport skill not really a dash?
+
 public class PlayerDashState : PlayerState {
     private Vector3 m_dashDirection;
 
@@ -39,13 +41,14 @@ public class PlayerDashState : PlayerState {
     private void Dash() {
         // TODO make it easier to get player dash stuff
         Vector3 dashPoint = player.transform.position + m_dashDirection * player.dashDistance;
+
         RaycastHit2D hit = Physics2D.Raycast(player.transform.position, m_dashDirection, player.dashDistance, player.dashLayerMask);
 
         if (hit.collider != null) {
             dashPoint = hit.point;
         }
 
-        player.rb.MovePosition(dashPoint);
+        player.transform.position = dashPoint;
     }
 
     private void Player_OnAnimDashStartFinished(object sender, EventArgs e) {

@@ -1,13 +1,8 @@
-using System;
 using UnityEngine;
-
-// TODO player sprite flip controller should be seperated!
 
 public class PlayerAnimations : MonoBehaviour {
 	private Player m_player;
 	private Animator m_animator;
-
-	private bool m_facingRight = true;
 
 	private readonly int ANIMKEY_IDLE = Animator.StringToHash("Idle");
 	private readonly int ANIMKEY_MOVE = Animator.StringToHash("Move");
@@ -18,10 +13,6 @@ public class PlayerAnimations : MonoBehaviour {
 	private void Awake() {
 		m_animator = GetComponent<Animator>();
 		m_player = GetComponentInParent<Player>();
-	}
-
-	private void Update() {
-		HandleFlipping();
 	}
 
 	#region Animation Setters
@@ -47,28 +38,11 @@ public class PlayerAnimations : MonoBehaviour {
 	#endregion // Animation Setters
 
 	public void AnimDashStartFinishedTrigger() {
-		m_player.channel.Emit_OnAnimDashStartFinished();
+		m_player.channel.Emit_OnAnimDashStartFinished(this);
 	}
 
 	public void AnimDashEndFinishedTrigger() {
-		m_player.channel.Emit_OnAnimDashEndFinished();
+		m_player.channel.Emit_OnAnimDashEndFinished(this);
 	}
 
-	private void HandleFlipping() {
-		float mouseX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-
-		if (mouseX > 0f && !m_facingRight) {
-			FlipPlayerVisual();
-		}
-		else if (mouseX < 0f && m_facingRight) {
-			FlipPlayerVisual();
-		}
-	}
-
-	private void FlipPlayerVisual() {
-		var localScale = transform.localScale;
-		localScale.x *= -1;
-		transform.localScale = localScale;
-		m_facingRight = !m_facingRight;
-	}
 }

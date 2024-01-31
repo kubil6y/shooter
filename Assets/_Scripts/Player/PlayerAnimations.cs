@@ -15,6 +15,14 @@ public class PlayerAnimations : MonoBehaviour {
 		m_player = GetComponentInParent<Player>();
 	}
 
+	public void AnimDashStartFinishedTrigger() {
+		m_player.channel.Emit_OnAnimDashStartFinished(this);
+	}
+
+	public void AnimDashEndFinishedTrigger() {
+		m_player.channel.Emit_OnAnimDashEndFinished(this);
+	}
+
 	#region Animation Setters
 	public void SetIdleAnim(bool value) {
 		m_animator.SetBool(ANIMKEY_IDLE, value);
@@ -36,13 +44,4 @@ public class PlayerAnimations : MonoBehaviour {
 		m_animator.SetBool(ANIMKEY_DASH_END, value);
 	}
 	#endregion // Animation Setters
-
-	public void AnimDashStartFinishedTrigger() {
-		m_player.channel.Emit_OnAnimDashStartFinished(this);
-	}
-
-	public void AnimDashEndFinishedTrigger() {
-		m_player.channel.Emit_OnAnimDashEndFinished(this);
-	}
-
 }

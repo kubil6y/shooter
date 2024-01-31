@@ -28,9 +28,6 @@ public abstract class PlayerState {
 	}
 
 	public virtual void Update() {
-		if (Input.GetKeyDown(KeyCode.Mouse0)) {
-			Debug.Log("Shoot! from " + stateKey);
-		}
 		if (Input.GetKeyDown(KeyCode.T)) {
 			player.transform.position = Vector2.zero;
 		}

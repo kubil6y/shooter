@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : Singleton<Player>, ICanPickup {
 	[Header("Weapon Stuff")]
 	[SerializeField] private Transform m_weaponSystem;
 
@@ -12,14 +12,17 @@ public class Player : MonoBehaviour {
 	public PlayerChannel channel { get; private set; }
 	public PlayerAnimations animations { get; private set; }
 	public PlayerFlipController flipController { get; private set; }
+	public WeaponManager weaponManager {get; private set ;}
 
 	private PlayerStateMachine m_stateMachine;
 
 	private bool m_canFlip = true;
 	private bool m_canShoot = true;
 
-	private void Awake() {
+	protected override void Awake() {
+		base.Awake();
 		m_stateMachine = new PlayerStateMachine(this);
+		weaponManager = GetComponentInChildren<WeaponManager>();
 
 		rb = GetComponent<Rigidbody2D>();
 		channel = GetComponent<PlayerChannel>();
@@ -77,5 +80,17 @@ public class Player : MonoBehaviour {
 
 	public void DisableWeaponSystem() {
 		m_weaponSystem.gameObject.SetActive(false);
+	}
+
+	public void Collect(Pickup pickup) {
+		switch (pickup.pickupData) {
+		case WeaponPickupDataSO weaponPickupDataSO:
+			weaponManager.PickupWeapon(weaponPickupDataSO);
+			break;
+		case HealthPickupDataSO healthPickupDataSO:
+			break;
+		case ArmorPickupDataSO armorPickupDataSO:
+			break;
+		}
 	}
 }

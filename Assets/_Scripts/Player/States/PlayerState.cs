@@ -31,12 +31,6 @@ public abstract class PlayerState {
 		if (Input.GetKeyDown(KeyCode.T)) {
 			player.transform.position = Vector2.zero;
 		}
-		if (Input.GetKeyDown(KeyCode.I)) {
-			stateMachine.SetState(PState.Idle);
-		}
-		if (Input.GetKeyDown(KeyCode.M)) {
-			stateMachine.SetState(PState.Move);
-		}
 	}
 
 	public virtual void FixedUpdate() { }

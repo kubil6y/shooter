@@ -64,6 +64,10 @@ public abstract class Weapon : MonoBehaviour {
 		}
 	}
 
+	public bool IsOnCooldown() {
+		return m_state == State.OnCooldown;
+	}
+
 	private void SetState(State state) {
 		m_state = state;
 		OnStateChanged?.Invoke(this, m_state);

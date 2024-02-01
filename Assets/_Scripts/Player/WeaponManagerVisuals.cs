@@ -7,7 +7,8 @@ public class WeaponManagerVisuals : MonoBehaviour {
 	[SerializeField] private Transform m_rightHandTf;
 
 	// This needs to be set by manager OnWeaponChanged event.
-	[SerializeField] private SpriteRenderer m_currentWeaponSpriteRenderer;
+	 private SpriteRenderer m_currentWeaponSpriteRenderer;
+	 private WeaponManager m_weaponManager;
 
 	private enum Hand { Left, Right }
 
@@ -15,10 +16,15 @@ public class WeaponManagerVisuals : MonoBehaviour {
 	private Hand m_currentHand = Hand.Left;
 
 	private void Awake() {
+		m_weaponManager = GetComponent<WeaponManager>();
 		m_player = GetComponentInParent<Player>();
 	}
 
-	private void Update() {
+	private void Start() {
+		m_weaponManager.OnWeaponChanged += WeaponManager_OnWeaponChanged;
+	}
+
+    private void Update() {
 		HandleWeaponRotation();
 	}
 
@@ -55,7 +61,6 @@ public class WeaponManagerVisuals : MonoBehaviour {
 
 	private void HandleWeaponSortingOrder() {
 		if (!m_currentWeaponSpriteRenderer) {
-			// TODO
 			return;
 		}
 		bool isAbove = Camera.main.ScreenToWorldPoint(Input.mousePosition).y > m_player.transform.position.y;
@@ -88,4 +93,8 @@ public class WeaponManagerVisuals : MonoBehaviour {
 		}
 		m_weaponHolderTf.localScale = localScale;
 	}
+
+    private void WeaponManager_OnWeaponChanged(object sender, Weapon weapon) {
+		m_currentWeaponSpriteRenderer = weapon.GetComponent<SpriteRenderer>();
+    }
 }

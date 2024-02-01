@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour {
+	public event EventHandler<Weapon> OnWeaponChanged;
+
 	[SerializeField] private Transform m_objectPoolsTf;
 	[SerializeField] private Transform m_weaponHolderTf;
 
@@ -25,14 +27,19 @@ public class WeaponManager : MonoBehaviour {
 
 	private void Update() {
 		// TODO remove
-		if (Input.GetKeyDown(KeyCode.B)) {
-			m_currentWeaponIndex = 7;
-		}
 		if (Input.GetKeyDown(KeyCode.N)) {
-			Debug.Log(GetNextWeaponIndex());
+			if (m_weaponArray[m_currentWeaponIndex] != null) {
+				if (!m_weaponArray[m_currentWeaponIndex].IsOnCooldown()) {
+					SetCurrentWeapon(GetNextWeaponIndex());
+				}
+			}
 		}
 		if (Input.GetKeyDown(KeyCode.M)) {
-			Debug.Log(GetPreviousWeaponIndex());
+			if (m_weaponArray[m_currentWeaponIndex] != null) {
+				if (!m_weaponArray[m_currentWeaponIndex].IsOnCooldown()) {
+					SetCurrentWeapon(GetPreviousWeaponIndex());
+				}
+			}
 		}
 	}
 
@@ -65,8 +72,14 @@ public class WeaponManager : MonoBehaviour {
 		return true;
 	}
 
-	public Weapon GetWeapon(WeaponType weaponType) {
-		return m_weaponArray[(int)weaponType];
+	public void SetCurrentWeapon(int weaponIndex) {
+		if (weaponIndex == m_currentWeaponIndex || m_weaponArray[weaponIndex] == null) {
+			return;
+		}
+		m_weaponArray[m_currentWeaponIndex]?.Hide();
+		m_currentWeaponIndex = weaponIndex;
+		m_weaponArray[m_currentWeaponIndex].Show();
+		OnWeaponChanged?.Invoke(this, m_weaponArray[weaponIndex]);
 	}
 
 	public bool IsWeaponArrayEmpty() {
@@ -84,7 +97,12 @@ public class WeaponManager : MonoBehaviour {
 				return i;
 			}
 		}
-		return -1;
+		for (int i = 0; i < m_currentWeaponIndex; i++) {
+			if (m_weaponArray[i] != null) {
+				return i;
+			}
+		}
+		return m_currentWeaponIndex;
 	}
 
 	public int GetPreviousWeaponIndex() {
@@ -93,9 +111,13 @@ public class WeaponManager : MonoBehaviour {
 				return i;
 			}
 		}
-		return -1;
+		for (int i = m_weaponArray.Length - 1; i > m_currentWeaponIndex; i--) {
+			if (m_weaponArray[i] != null) {
+				return i;
+			}
+		}
+		return m_currentWeaponIndex;
 	}
-
 
 	public bool HasWeapon(WeaponType weapontype) {
 		return m_weaponArray[(int)weapontype] != null;
@@ -111,7 +133,7 @@ public class WeaponManager : MonoBehaviour {
 
 	public void PickupWeapon(WeaponPickupDataSO weaponPickupDataSO) {
 		if (HasWeapon(weaponPickupDataSO.weaponDataSO.weaponType)) {
-			Debug.Log("add as ammo!");
+			Debug.Log(weaponPickupDataSO.weaponDataSO.weaponType + " added as ammo!");
 		}
 		else {
 			TryAddingWeapon(weaponPickupDataSO.weaponDataSO);

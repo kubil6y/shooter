@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public interface IHasObjectPool {
-	public void Setup(Transform objectPoolsTf);
-}
-
 public class ProjectileWeapon : Weapon, IHasObjectPool {
 	[SerializeField] protected Transform m_muzzleTf;
 

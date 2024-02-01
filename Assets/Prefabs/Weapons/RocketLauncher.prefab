@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5314166668899855511}
   - component: {fileID: 1178442461139013930}
   - component: {fileID: 600469754531500550}
+  - component: {fileID: 2463431852045555470}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: RocketLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -1431127245
   m_SortingLayer: 1
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 34f8a85ecf8c16c21a75b28949da4f41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a08af2a771c92785bccf9a4a0ae3039, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,8 +101,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac97cbd4b8cff2116b75b775228b5ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: c9be0ba243cd6b019bdad3b33c3e4430, type: 2}
+  weaponData: {fileID: 11400000, guid: f486339e95c61cdd3ad8cc663c3be056, type: 2}
   m_muzzleTf: {fileID: 5103328320133425071}
+--- !u!114 &2463431852045555470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063073687653241774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5ba2937417e9640b90d704b6c5422a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rocketLauncher: {fileID: 600469754531500550}
 --- !u!1 &3814993943469598642
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +141,7 @@ Transform:
   m_GameObject: {fileID: 3814993943469598642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.939, y: 0.289, z: 0}
+  m_LocalPosition: {x: 1.115, y: 0.318, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

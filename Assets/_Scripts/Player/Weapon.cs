@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+// NOTE: WeaponType manages index positions and size in the WeaponManager.m_weaponArray
 public enum WeaponType {
 	Gauntlet,
 	Pistol,
@@ -10,6 +11,7 @@ public enum WeaponType {
 	NailGun,
 	Shotgun,
 	RocketLauncher,
+	__LENGTH,
 }
 
 public abstract class Weapon : MonoBehaviour {

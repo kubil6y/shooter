@@ -5,6 +5,7 @@ public class WeaponDataSO : ScriptableObject {
 	public string weaponName;
 	public WeaponType weaponType;
 
+	public Weapon weaponPrefab;
 	public Projectile projectilePrefab;
 	public int poolSize;
 

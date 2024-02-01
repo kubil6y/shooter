@@ -54,6 +54,10 @@ public class WeaponManagerVisuals : MonoBehaviour {
 	}
 
 	private void HandleWeaponSortingOrder() {
+		if (!m_currentWeaponSpriteRenderer) {
+			// TODO
+			return;
+		}
 		bool isAbove = Camera.main.ScreenToWorldPoint(Input.mousePosition).y > m_player.transform.position.y;
 		int currentSortingOrder = m_currentWeaponSpriteRenderer.sortingOrder;
 		int newSortingOrder = isAbove ? -1 : 1;

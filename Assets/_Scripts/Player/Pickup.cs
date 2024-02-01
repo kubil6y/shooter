@@ -1,7 +1,10 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Pickup : MonoBehaviour {
-	public PickupDataSO pickupData {get; private set; }
+	[field: SerializeField] public PickupDataSO pickupData { get; private set; }
 
 	private SpriteRenderer m_spriteRenderer;
 

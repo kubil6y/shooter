@@ -1,7 +1,11 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ProjectileWeapon : Weapon {
+public interface IHasObjectPool {
+	public void Setup(Transform objectPoolsTf);
+}
+
+public class ProjectileWeapon : Weapon, IHasObjectPool {
 	[SerializeField] protected Transform m_muzzleTf;
 
 	private ObjectPool<Projectile> m_projectilePool;
@@ -13,7 +17,6 @@ public class ProjectileWeapon : Weapon {
 
 	public void Setup(Transform objectPoolsTf) {
 		if (objectPoolsTf != null) {
-			Debug.Log("here here !");
 			GameObject newPoolParent = new GameObject(weaponData.weaponName + " Pool");
 			newPoolParent.transform.parent = objectPoolsTf;
 			m_projectileObjectPoolParentTf = newPoolParent.transform;

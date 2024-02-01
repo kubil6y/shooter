@@ -39,10 +39,6 @@ public class Player : Singleton<Player>, ICanPickup {
 	}
 
 	private void Update() {
-		if (Input.GetKeyDown(KeyCode.P)) {
-			SetCanFlip(!m_canFlip);
-		}
-
 		if (GameInput.instance.Dash_WasPerformedThisFrame()) {
 			m_stateMachine.SetState(PState.Dash);
 		}

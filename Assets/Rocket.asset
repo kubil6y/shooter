@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5a79c911cd3a28bb82be71b592fab32, type: 3}
-  m_Name: Pistol
+  m_Name: Rocket
   m_EditorClassIdentifier: 
   weaponName: Pistol
-  weaponType: 1
+  weaponType: 7
   weaponPrefab: {fileID: 600469754531500550, guid: 8f4079e627e9820beab2eb6d8f16af0f, type: 3}
   projectilePrefab: {fileID: -715438567439702324, guid: 8dc489f16b350082ab6d5a584be5c1a6, type: 3}
   poolSize: 10

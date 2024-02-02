@@ -19,7 +19,7 @@ public class PlayerDashState : PlayerState {
         base.Enter();
         player.animations.SetDashStartAnim(true);
         m_dashDirection = GetDashDirectionNormalized();
-        player.DisableWeaponSystem();
+        player.DisableWeaponVisuals();
     }
 
     public override void Exit() {
@@ -59,7 +59,7 @@ public class PlayerDashState : PlayerState {
 
     private void Player_OnAnimDashEndFinished(object sender, EventArgs e) {
         player.animations.SetDashEndAnim(false);
-        player.EnableWeaponSystem();
+        player.EnableWeaponVisuals();
         stateMachine.SetState(PState.Idle);
     }
 }

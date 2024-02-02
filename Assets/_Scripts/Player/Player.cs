@@ -73,11 +73,11 @@ public class Player : Singleton<Player>, ICanPickup {
 		m_canShoot = value;
 	}
 
-	public void EnableWeaponSystem() {
+	public void EnableWeaponVisuals() {
 		weaponManager.ShowVisuals();
 	}
 
-	public void DisableWeaponSystem() {
+	public void DisableWeaponVisuals() {
 		weaponManager.HideVisuals();
 	}
 

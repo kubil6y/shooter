@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63763f17cf89ed8968f847cd740eea82, type: 3}
+  m_Name: ChainsawPickup
+  m_EditorClassIdentifier: 
+  pickupName: Chainsaw Pickup
+  icon: {fileID: -5564322755348417848, guid: 392391dce8b8c5f80a4d7c4283b281e3, type: 3}
+  weaponDataSO: {fileID: 11400000, guid: 68136683e8673f125966550e12d7e88a, type: 2}

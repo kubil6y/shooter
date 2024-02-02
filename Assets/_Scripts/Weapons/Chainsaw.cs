@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class MeleeWeapon : Weapon {
+public class Chainsaw : Weapon {
 	[SerializeField] private Transform m_attackTf;
 	[SerializeField] private float m_attackRadius;
 
 	public override void Perform() {
-		// TODO raycast
+		Debug.Log("raycast()");
 	}
 }

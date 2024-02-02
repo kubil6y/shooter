@@ -124,6 +124,6 @@ public class WeaponManagerVisuals : MonoBehaviour {
 	}
 
 	private void WeaponManager_OnWeaponChanged(object sender, Weapon weapon) {
-		m_currentWeaponSpriteRenderer = weapon.GetComponent<SpriteRenderer>();
+		m_currentWeaponSpriteRenderer = weapon.GetComponentInChildren<SpriteRenderer>();
 	}
 }

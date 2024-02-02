@@ -13,6 +13,7 @@ public class WeaponDataSO : ScriptableObject {
 	public int rof; // Rate of Fire
 	public int range;
 
+	public bool usesAmmo = true;
 	public bool isSingleFire;
 	public int startingAmmo;
 	public int maxAmmo;

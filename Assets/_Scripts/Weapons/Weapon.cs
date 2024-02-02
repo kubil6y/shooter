@@ -3,7 +3,7 @@ using UnityEngine;
 
 // NOTE: WeaponType manages index positions and size in the WeaponManager.m_weaponArray
 public enum WeaponType {
-	Gauntlet,
+	Chainsaw,
 	Pistol,
 	MachineGun,
 	LightningGun,
@@ -37,23 +37,30 @@ public abstract class Weapon : MonoBehaviour {
 		m_isFiring = hasEnoughAmmo && shootingInput;
 
 		if (shootingInput && m_timer < 0f) {
-			if (hasEnoughAmmo) {
-				ammo = Mathf.Clamp(ammo - weaponData.ammoUsage, 0, weaponData.maxAmmo);
-				OnAmmoChanged?.Invoke(this, EventArgs.Empty);
+			if (weaponData.usesAmmo) {
+				if (hasEnoughAmmo) {
+					ammo = Mathf.Clamp(ammo - weaponData.ammoUsage, 0, weaponData.maxAmmo);
+					OnAmmoChanged?.Invoke(this, EventArgs.Empty);
 
-				m_timer = weaponData.rof / 1000f;
-				Perform();
-				OnFired?.Invoke(this, EventArgs.Empty);
-				if (weaponData.isSingleFire) {
+					m_timer = weaponData.rof / 1000f;
+
+					Perform();
+					OnFired?.Invoke(this, EventArgs.Empty);
+					if (weaponData.isSingleFire) {
+						shootingInput = false;
+					}
+				}
+				else {
+					m_timer = m_outOfAmmoWaitDuration;
 					shootingInput = false;
+					OnOutOfAmmo?.Invoke(this, EventArgs.Empty);
 				}
 			}
 			else {
-				m_timer = m_outOfAmmoWaitDuration;
-				shootingInput = false;
-				OnOutOfAmmo?.Invoke(this, EventArgs.Empty);
+				m_timer = weaponData.rof / 1000f;
+				Perform();
+				OnFired?.Invoke(this, EventArgs.Empty);
 			}
-
 		}
 	}
 
@@ -70,10 +77,9 @@ public abstract class Weapon : MonoBehaviour {
 		return m_isFiring;
 	}
 
-	public bool GetIsIdle() {
+	public bool IsIdle() {
 		return !shootingInput && m_timer < 0f;
 	}
-
 
 	public WeaponDataSO GetWeaponDataSO() {
 		return weaponData;

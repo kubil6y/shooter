@@ -15,9 +15,14 @@ public class GameInput : Singleton<GameInput> {
 		m_playerInputActions.Dispose();
 	}
 
-	public float GetSwapWeaponsScrollY() {
-        throw new NotImplementedException();
+	public bool IsScrollUp() {
+		return m_playerInputActions.Player.SwapWeapons.ReadValue<float>() > 0.1f;
 	}
+
+	public bool IsScrollDown() {
+		return m_playerInputActions.Player.SwapWeapons.ReadValue<float>() < -0.1f;
+	}
+
 
 	public Vector2 GetMoveInputNormalized() {
 		return m_playerInputActions.Player.Move.ReadValue<Vector2>();

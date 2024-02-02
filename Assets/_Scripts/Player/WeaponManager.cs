@@ -18,34 +18,40 @@ public class WeaponManager : MonoBehaviour {
 	private WeaponManagerVisuals m_weaponManagerVisuals;
 
 	private int m_currentWeaponIndex;
+    private float m_swapWeaponTimer;
+    private float m_swapBetweenDuration = .1f;
 
-	private void Awake() {
+    private void Awake() {
 		Init();
 		m_player = GetComponentInParent<Player>();
 		m_weaponManagerVisuals = GetComponent<WeaponManagerVisuals>();
 	}
 
 	private void Update() {
-		// TODO remove
-		Debug.Log(GameInput.instance.GetSwapWeaponsScrollY());
+        HandleWeaponSwap();
+    }
 
-		if (GameInput.instance.GetSwapWeaponsScrollY() > 0f) {
-			if (m_weaponArray[m_currentWeaponIndex] != null) {
-				if (!m_weaponArray[m_currentWeaponIndex].IsOnCooldown()) {
-					SetCurrentWeapon(GetNextWeaponIndex());
-				}
-			}
-		}
-		if (GameInput.instance.GetSwapWeaponsScrollY() < 0f) {
-			if (m_weaponArray[m_currentWeaponIndex] != null) {
-				if (!m_weaponArray[m_currentWeaponIndex].IsOnCooldown()) {
-					SetCurrentWeapon(GetPreviousWeaponIndex());
-				}
-			}
-		}
-	}
+    private void HandleWeaponSwap() {
+        m_swapWeaponTimer -= Time.deltaTime;
+        if (GameInput.instance.IsScrollUp() && m_swapWeaponTimer < 0f) {
+            m_swapWeaponTimer = m_swapBetweenDuration;
+            if (m_weaponArray[m_currentWeaponIndex] != null) {
+                if (!m_weaponArray[m_currentWeaponIndex].IsOnCooldown()) {
+                    SetCurrentWeapon(GetNextWeaponIndex());
+                }
+            }
+        }
+        if (GameInput.instance.IsScrollDown() && m_swapWeaponTimer < 0f) {
+            m_swapWeaponTimer = m_swapBetweenDuration;
+            if (m_weaponArray[m_currentWeaponIndex] != null) {
+                if (!m_weaponArray[m_currentWeaponIndex].IsOnCooldown()) {
+                    SetCurrentWeapon(GetPreviousWeaponIndex());
+                }
+            }
+        }
+    }
 
-	private void Init() {
+    private void Init() {
 		// Initialize weapon array
 		int weaponArrayLength = (int)WeaponType.__LENGTH;
 		m_weaponArray = new Weapon[weaponArrayLength];

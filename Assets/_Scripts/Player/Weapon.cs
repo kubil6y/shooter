@@ -15,81 +15,65 @@ public enum WeaponType {
 }
 
 public abstract class Weapon : MonoBehaviour {
-	public event EventHandler<State> OnStateChanged;
 	public event EventHandler OnAmmoChanged;
 	public event EventHandler OnOutOfAmmo;
+	public event EventHandler OnFired;
 
 	[SerializeField] protected WeaponDataSO weaponData;
 
-	protected int m_ammo;
+	protected int ammo;
+	protected bool shootingInput;
+	private float m_outOfAmmoWaitDuration = .3f;
+	private float m_timer;
 
-	public enum State {
-		Idle,
-		Fire,
-		OnCooldown,
-		OnOutOfAmmo,
-	}
-
-	protected bool isShooting;
-	private float m_outOfAmmoWaitDuration = .4f;
-	private float m_outOfAmmoWaitTimer;
-	private float m_cooldownTimer;
-	private State m_state = State.Idle;
+	private bool m_isFiring;
 
 	public abstract void Perform();
 
-	protected virtual void Update() {
-		switch (m_state) {
-		case State.Idle:
-			if (isShooting) {
-				SetState(State.Fire);
-			}
-			break;
+	private void Update() {
+		m_timer -= Time.deltaTime;
 
-		case State.Fire:
-			if (m_ammo - weaponData.ammoUsage >= 0) {
-				m_ammo -= weaponData.ammoUsage;
-				if (m_ammo < 0) {
-					m_ammo = 0;
-				}
+		bool hasEnoughAmmo = ammo - weaponData.ammoUsage >= 0;
+		m_isFiring = hasEnoughAmmo && shootingInput;
+
+		if (shootingInput && m_timer < 0f) {
+			if (hasEnoughAmmo) {
+				ammo = Mathf.Clamp(ammo - weaponData.ammoUsage, 0, weaponData.maxAmmo);
 				OnAmmoChanged?.Invoke(this, EventArgs.Empty);
 
-				m_cooldownTimer = weaponData.rof / 1000f;
+				m_timer = weaponData.rof / 1000f;
 				Perform();
-				SetState(State.OnCooldown);
+				OnFired?.Invoke(this, EventArgs.Empty);
+				if (weaponData.isSingleFire) {
+					shootingInput = false;
+				}
 			}
 			else {
-				m_outOfAmmoWaitTimer = m_outOfAmmoWaitDuration;
+				m_timer = m_outOfAmmoWaitDuration;
+				shootingInput = false;
 				OnOutOfAmmo?.Invoke(this, EventArgs.Empty);
-				SetState(State.OnOutOfAmmo);
 			}
-			break;
 
-		case State.OnCooldown:
-			m_cooldownTimer -= Time.deltaTime;
-			if (m_cooldownTimer < 0f) {
-				if (!isShooting) {
-					SetState(State.Idle);
-					return;
-				}
-				if (weaponData.isSingleFire) {
-					isShooting = false;
-					SetState(State.Idle);
-				}
-				else {
-					SetState(State.Fire);
-				}
-			}
-			break;
-
-		case State.OnOutOfAmmo:
-			m_outOfAmmoWaitTimer -= Time.deltaTime;
-			if (m_outOfAmmoWaitTimer < 0f) {
-				SetState(State.Idle);
-			}
-			break;
 		}
 	}
+
+	public void Fire() {
+		shootingInput = true;
+	}
+
+	public void StopFiring() {
+		shootingInput = false;
+	}
+
+	// IsFiring will be used for LG
+	public bool IsFiring() {
+		return m_isFiring;
+	}
+
+	public bool GetIsIdle() {
+		return !shootingInput && m_timer < 0f;
+	}
+
 
 	public WeaponDataSO GetWeaponDataSO() {
 		return weaponData;
@@ -100,31 +84,15 @@ public abstract class Weapon : MonoBehaviour {
 	}
 
 	public void AddAmmo(int amount) {
-		m_ammo = Mathf.Clamp(m_ammo + amount, 0, weaponData.maxAmmo);
+		ammo = Mathf.Clamp(ammo + amount, 0, weaponData.maxAmmo);
 	}
 
 	public void AddStartingAmmo() {
-		m_ammo = weaponData.startingAmmo;
+		ammo = weaponData.startingAmmo;
 	}
 
 	public bool IsOnCooldown() {
-		return m_state == State.OnCooldown;
-	}
-
-	private void SetState(State state) {
-		if (m_state == state) {
-			return;
-		}
-		m_state = state;
-		OnStateChanged?.Invoke(this, m_state);
-	}
-
-	public void Fire() {
-		isShooting = true;
-	}
-
-	public void StopFiring() {
-		isShooting = false;
+		return m_timer > 0f;
 	}
 
 	public void Show() {

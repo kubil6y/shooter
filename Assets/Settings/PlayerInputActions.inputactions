@@ -25,12 +25,12 @@
                 },
                 {
                     "name": "SwapWeapons",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e89ae6a1-725f-43a5-a9fd-9d46fe268406",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -167,37 +167,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "ScrollY",
-                    "id": "ad4e7afe-fcd1-480c-9ffd-5599731425a7",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "c16d5e70-2784-4d85-86d8-c33e64839859",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SwapWeapons",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "59d462d8-c51f-479e-8acb-34e09b2e54cf",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwapWeapons",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "913a8e6e-b213-408b-9675-f97242661850",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwapWeapons",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }

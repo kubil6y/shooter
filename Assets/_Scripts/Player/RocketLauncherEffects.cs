@@ -1,21 +1,14 @@
+using System;
 using UnityEngine;
 
 public class RocketLauncherEffects : MonoBehaviour {
-	[SerializeField] private ProjectileWeapon m_rocketLauncher;
+    [SerializeField] private ProjectileWeapon m_rocketLauncher;
 
-	private void Start() {
-		m_rocketLauncher.OnStateChanged += RocketLauncher_OnStateChanged;
-	}
+    private void Start() {
+        m_rocketLauncher.OnFired += RocketLauncher_OnFired;
+    }
 
-    private void RocketLauncher_OnStateChanged(object sender, Weapon.State weaponState) {
-        switch (weaponState) {
-        case Weapon.State.Idle:
-            break;
-        case Weapon.State.Fire:
-			Debug.Log("RocketLauncher fired!");
-            break;
-        case Weapon.State.OnCooldown:
-            break;
-        }
+    private void RocketLauncher_OnFired(object sender, EventArgs e) {
+        Debug.Log("RocketLauncher fired!");
     }
 }

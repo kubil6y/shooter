@@ -21,9 +21,9 @@ MonoBehaviour:
   rof: 500
   range: 0
   isSingleFire: 1
-  startingAmmo: 0
-  maxAmmo: 0
-  bulletAmount: 1
+  startingAmmo: 10
+  maxAmmo: 50
+  ammoUsage: 1
   spreadAngle: 0
   projectileSpeed: 0
   hasIdleSound: 0

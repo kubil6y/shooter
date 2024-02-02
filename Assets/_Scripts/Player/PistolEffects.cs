@@ -5,10 +5,22 @@ public class PistolEffects : MonoBehaviour {
 	[SerializeField] private ProjectileWeapon m_pistol;
 
 	private void Start() {
-		m_pistol.OnStateChanged += Pistol_OnStateChanged;
+		m_pistol.OnFired += Pistol_OnFired;
+		m_pistol.OnOutOfAmmo += Pistol_OnOutOfAmmo;
+		m_pistol.OnAmmoChanged += Pistol_OnAmmoChanged;
 	}
 
-    private void Pistol_OnStateChanged(object sender, Weapon.State weaponState) {
-        // TODO
+    private void Pistol_OnFired(object sender, EventArgs e) {
+        Debug.Log("Pistol_OnFired()");
     }
+
+    private void Pistol_OnOutOfAmmo(object sender, EventArgs e) {
+        Debug.Log("Pistol_OnOutOfAmmo()");
+    }
+
+
+    private void Pistol_OnAmmoChanged(object sender, EventArgs e) {
+        Debug.Log("Pistol_OnAmmoChanged()");
+    }
+
 }

@@ -11,16 +11,16 @@ public class PistolEffects : MonoBehaviour {
 	}
 
     private void Pistol_OnFired(object sender, EventArgs e) {
-        Debug.Log("Pistol_OnFired()");
+        // Debug.Log("Pistol_OnFired()");
     }
 
     private void Pistol_OnOutOfAmmo(object sender, EventArgs e) {
-        Debug.Log("Pistol_OnOutOfAmmo()");
+        // Debug.Log("Pistol_OnOutOfAmmo()");
     }
 
 
     private void Pistol_OnAmmoChanged(object sender, EventArgs e) {
-        Debug.Log("Pistol_OnAmmoChanged()");
+        // Debug.Log("Pistol_OnAmmoChanged()");
     }
 
 }

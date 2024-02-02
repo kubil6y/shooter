@@ -1,6 +1,9 @@
 - [] handle has quad
-- [] health system
-- [] weapon swaps
-- [] map, pickups
-
-input scroll y does not work
+- [] weapon sort order etc.
+- [] rewrite weapon system from scratch!
+- [] create all the weapons
+- [] create the map
+- [] game feel things should be added
+- [] learn ai stuff and add wave system
+- [] add enemies
+- [] ui/polish

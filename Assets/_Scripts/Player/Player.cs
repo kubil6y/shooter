@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : Singleton<Player>, ICanPickup {
+public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
 
@@ -12,7 +12,8 @@ public class Player : Singleton<Player>, ICanPickup {
 	public PlayerChannel channel { get; private set; }
 	public PlayerAnimations animations { get; private set; }
 	public PlayerFlipController flipController { get; private set; }
-	public WeaponManager weaponManager {get; private set ;}
+	public WeaponManager weaponManager { get; private set; }
+	public Health health { get; private set; }
 
 	private PlayerStateMachine m_stateMachine;
 
@@ -23,6 +24,7 @@ public class Player : Singleton<Player>, ICanPickup {
 		base.Awake();
 		m_stateMachine = new PlayerStateMachine(this);
 		weaponManager = GetComponentInChildren<WeaponManager>();
+		health = GetComponent<Health>();
 
 		rb = GetComponent<Rigidbody2D>();
 		channel = GetComponent<PlayerChannel>();
@@ -43,6 +45,17 @@ public class Player : Singleton<Player>, ICanPickup {
 			m_stateMachine.SetState(PState.Dash);
 		}
 		m_stateMachine.currentState?.Update();
+	}
+
+	public bool IsAlive() {
+		return health.IsAlive();
+	}
+
+	public void TakeDamage(int damageAmount) {
+		if (!IsAlive()) {
+			return;
+		}
+		health.TakeDamage(damageAmount);
 	}
 
 	private void FixedUpdate() {
@@ -82,6 +95,10 @@ public class Player : Singleton<Player>, ICanPickup {
 	}
 
 	public void Collect(Pickup pickup) {
+		if (!IsAlive()) {
+			return;
+		}
+
 		switch (pickup.pickupData) {
 		case WeaponPickupDataSO weaponPickupDataSO:
 			weaponManager.PickupWeapon(weaponPickupDataSO);
@@ -90,8 +107,10 @@ public class Player : Singleton<Player>, ICanPickup {
 			weaponManager.PickupAmmo(ammoPickupDataSO);
 			break;
 		case HealthPickupDataSO healthPickupDataSO:
+			health.TakeHealth(healthPickupDataSO.healthAmount);
 			break;
 		case ArmorPickupDataSO armorPickupDataSO:
+			health.TakeArmor(armorPickupDataSO.armorAmount);
 			break;
 		}
 	}

@@ -7,8 +7,10 @@ public class WeaponManagerVisuals : MonoBehaviour {
 	[SerializeField] private Transform m_rightHandTf;
 
 	// This needs to be set by manager OnWeaponChanged event.
-	 private SpriteRenderer m_currentWeaponSpriteRenderer;
-	 private WeaponManager m_weaponManager;
+	private SpriteRenderer m_currentWeaponSpriteRenderer;
+	private SpriteRenderer m_leftHandSpriteRenderer;
+	private SpriteRenderer m_rightHandSpriteRenderer;
+	private WeaponManager m_weaponManager;
 
 	private enum Hand { Left, Right }
 
@@ -17,6 +19,8 @@ public class WeaponManagerVisuals : MonoBehaviour {
 
 	private void Awake() {
 		m_weaponManager = GetComponent<WeaponManager>();
+		m_leftHandSpriteRenderer = m_leftHandTf.GetComponent<SpriteRenderer>();
+		m_rightHandSpriteRenderer = m_rightHandTf.GetComponent<SpriteRenderer>();
 		m_player = GetComponentInParent<Player>();
 	}
 
@@ -24,7 +28,7 @@ public class WeaponManagerVisuals : MonoBehaviour {
 		m_weaponManager.OnWeaponChanged += WeaponManager_OnWeaponChanged;
 	}
 
-    private void Update() {
+	private void Update() {
 		HandleWeaponRotation();
 	}
 
@@ -33,7 +37,28 @@ public class WeaponManagerVisuals : MonoBehaviour {
 		HandleWeaponRotationVisual();
 	}
 
+    public void ShowVisuals() {
+		m_leftHandSpriteRenderer.enabled = true;
+		m_rightHandSpriteRenderer.enabled = true;
+		if (!m_currentWeaponSpriteRenderer) {
+			return;
+		}
+		m_currentWeaponSpriteRenderer.enabled = true;
+    }
+
+	public void HideVisuals() {
+		m_leftHandSpriteRenderer.enabled = false;
+		m_rightHandSpriteRenderer.enabled = false;
+		if (!m_currentWeaponSpriteRenderer) {
+			return;
+		}
+		m_currentWeaponSpriteRenderer.enabled = false;
+	}
+
 	private void HandleWeaponRotation() {
+		if (!m_weaponManager.HasWeaponEquipped()) {
+			return;
+		}
 		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		mousePos.z = 0f;
 		Vector2 weaponToCursorDir = (mousePos - m_weaponHolderTf.position).normalized;
@@ -41,6 +66,10 @@ public class WeaponManagerVisuals : MonoBehaviour {
 	}
 
 	private void HandleWeaponRotationVisual() {
+		if (!m_weaponManager.HasWeaponEquipped()) {
+			return;
+		}
+
 		var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		mousePos.z = 0f;
 		Vector2 playerToCursorDir = (mousePos - m_player.transform.position).normalized;
@@ -94,7 +123,7 @@ public class WeaponManagerVisuals : MonoBehaviour {
 		m_weaponHolderTf.localScale = localScale;
 	}
 
-    private void WeaponManager_OnWeaponChanged(object sender, Weapon weapon) {
+	private void WeaponManager_OnWeaponChanged(object sender, Weapon weapon) {
 		m_currentWeaponSpriteRenderer = weapon.GetComponent<SpriteRenderer>();
-    }
+	}
 }

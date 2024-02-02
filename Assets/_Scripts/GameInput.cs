@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameInput : Singleton<GameInput> {
@@ -12,6 +13,10 @@ public class GameInput : Singleton<GameInput> {
 
 	private void OnDestroy() {
 		m_playerInputActions.Dispose();
+	}
+
+	public float GetSwapWeaponsScrollY() {
+        throw new NotImplementedException();
 	}
 
 	public Vector2 GetMoveInputNormalized() {

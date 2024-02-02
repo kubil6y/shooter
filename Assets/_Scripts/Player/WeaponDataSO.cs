@@ -16,7 +16,7 @@ public class WeaponDataSO : ScriptableObject {
 	public bool isSingleFire;
 	public int startingAmmo;
 	public int maxAmmo;
-	public int bulletAmount = 1;
+	public int ammoUsage = 1;
 	public int spreadAngle;
 	[Range(0, 1f)]
 	public float projectileSpeed;

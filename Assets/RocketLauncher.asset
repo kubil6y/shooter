@@ -18,7 +18,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: -715438567439702324, guid: 44af373aa760f3c38966322ebb77ec4e, type: 3}
   poolSize: 5
   dps: 0
-  rof: 2000
+  rof: 500
   range: 0
   isSingleFire: 1
   startingAmmo: 0

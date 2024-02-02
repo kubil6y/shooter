@@ -3,38 +3,40 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour {
 	public event EventHandler<Weapon> OnWeaponChanged;
+	public event EventHandler<OnAmmoPickupEventArgs> OnAmmoPickup;
+	public class OnAmmoPickupEventArgs : EventArgs {
+		public WeaponType weaponType;
+		public int ammo;
+	}
 
 	[SerializeField] private Transform m_objectPoolsTf;
 	[SerializeField] private Transform m_weaponHolderTf;
 
 	private Player m_player;
 	private Weapon[] m_weaponArray;
+	private int[] m_ammoPouch;
+	private WeaponManagerVisuals m_weaponManagerVisuals;
 
 	private int m_currentWeaponIndex;
 
 	private void Awake() {
-		InitializeWeaponArray();
+		Init();
 		m_player = GetComponentInParent<Player>();
-	}
-
-	private void Start() {
-		foreach (Transform child in m_weaponHolderTf) {
-			if (child.TryGetComponent<ProjectileWeapon>(out ProjectileWeapon projectileWeapon)) {
-				projectileWeapon.Setup(m_objectPoolsTf);
-			}
-		}
+		m_weaponManagerVisuals = GetComponent<WeaponManagerVisuals>();
 	}
 
 	private void Update() {
 		// TODO remove
-		if (Input.GetKeyDown(KeyCode.N)) {
+		Debug.Log(GameInput.instance.GetSwapWeaponsScrollY());
+
+		if (GameInput.instance.GetSwapWeaponsScrollY() > 0f) {
 			if (m_weaponArray[m_currentWeaponIndex] != null) {
 				if (!m_weaponArray[m_currentWeaponIndex].IsOnCooldown()) {
 					SetCurrentWeapon(GetNextWeaponIndex());
 				}
 			}
 		}
-		if (Input.GetKeyDown(KeyCode.M)) {
+		if (GameInput.instance.GetSwapWeaponsScrollY() < 0f) {
 			if (m_weaponArray[m_currentWeaponIndex] != null) {
 				if (!m_weaponArray[m_currentWeaponIndex].IsOnCooldown()) {
 					SetCurrentWeapon(GetPreviousWeaponIndex());
@@ -43,33 +45,66 @@ public class WeaponManager : MonoBehaviour {
 		}
 	}
 
-	private void InitializeWeaponArray() {
+	private void Init() {
+		// Initialize weapon array
 		int weaponArrayLength = (int)WeaponType.__LENGTH;
 		m_weaponArray = new Weapon[weaponArrayLength];
 		for (int i = 0; i < m_weaponArray.Length; i++) {
 			m_weaponArray[i] = null;
 		}
+		// Initialize ammo pickups
+		m_ammoPouch = new int[weaponArrayLength];
 	}
+
+	public void StartShooting() {
+		m_weaponArray[m_currentWeaponIndex]?.Fire();
+	}
+
+	public void StopShooting() {
+		m_weaponArray[m_currentWeaponIndex]?.StopFiring();
+	}
+
 
 	public bool TryAddingWeapon(WeaponDataSO weaponDataSO) {
 		if (HasWeapon(weaponDataSO.weaponType)) {
 			return false;
 		}
-		// TODO
+
+		// Initiate weapon
 		int weaponIndex = (int)weaponDataSO.weaponType;
 		Weapon weapon = Instantiate(weaponDataSO.weaponPrefab, m_weaponHolderTf);
 		if (weapon.TryGetComponent<IHasObjectPool>(out IHasObjectPool hasObjectPool)) {
 			hasObjectPool.Setup(m_objectPoolsTf);
 		}
 
+		// Add existing ammo to weapon silently
+		weapon.AddStartingAmmo();
+		weapon.AddAmmo(GetAmmoFromPouch(weaponDataSO.weaponType));
+		ClearAmmoPouchForWeapon(weaponDataSO.weaponType);
+
+		// If player has no weapon, pick it up
 		if (IsWeaponArrayEmpty()) {
 			m_currentWeaponIndex = weaponIndex;
+			OnWeaponChanged?.Invoke(this, weapon);
 		}
 		else {
 			weapon.Hide();
 		}
 		m_weaponArray[weaponIndex] = weapon;
+
 		return true;
+	}
+
+	public bool HasWeaponEquipped() {
+		return m_weaponArray[m_currentWeaponIndex] != null;
+	}
+
+	public void ShowVisuals() {
+		m_weaponManagerVisuals.ShowVisuals();
+	}
+
+	public void HideVisuals() {
+		m_weaponManagerVisuals.HideVisuals();
 	}
 
 	public void SetCurrentWeapon(int weaponIndex) {
@@ -119,24 +154,55 @@ public class WeaponManager : MonoBehaviour {
 		return m_currentWeaponIndex;
 	}
 
+	public Weapon GetWeapon(WeaponType weaponType) {
+		return m_weaponArray[(int)weaponType];
+	}
+
 	public bool HasWeapon(WeaponType weapontype) {
 		return m_weaponArray[(int)weapontype] != null;
 	}
 
-	public void StartShooting() {
-		m_weaponArray[m_currentWeaponIndex]?.Fire();
+	public void AddAmmoToPouch(WeaponType weaponType, int amount) {
+		m_ammoPouch[(int)weaponType] += amount;
 	}
 
-	public void StopShooting() {
-		m_weaponArray[m_currentWeaponIndex]?.StopFiring();
+	public int GetAmmoFromPouch(WeaponType weaponType) {
+		return m_ammoPouch[(int)weaponType];
+	}
+
+	public void ClearAmmoPouchForWeapon(WeaponType weaponType) {
+		m_ammoPouch[(int)weaponType] = 0;
 	}
 
 	public void PickupWeapon(WeaponPickupDataSO weaponPickupDataSO) {
-		if (HasWeapon(weaponPickupDataSO.weaponDataSO.weaponType)) {
-			Debug.Log(weaponPickupDataSO.weaponDataSO.weaponType + " added as ammo!");
+		WeaponType weaponType = weaponPickupDataSO.weaponDataSO.weaponType;
+
+		if (HasWeapon(weaponType)) {
+			Weapon weapon = GetWeapon(weaponType);
+			int ammoAmount = weapon.GetStartingAmmo();
+			weapon.AddAmmo(ammoAmount);
+
+			OnAmmoPickup?.Invoke(this, new OnAmmoPickupEventArgs {
+				weaponType = weaponType,
+				ammo = GetWeapon(weaponType).GetStartingAmmo(),
+			});
 		}
 		else {
 			TryAddingWeapon(weaponPickupDataSO.weaponDataSO);
 		}
+	}
+
+	public void PickupAmmo(AmmoPickupDataSO ammoPickupDataSO) {
+		if (HasWeapon(ammoPickupDataSO.weaponType)) {
+			GetWeapon(ammoPickupDataSO.weaponType).AddAmmo(ammoPickupDataSO.ammoAmount);
+		}
+		else {
+			AddAmmoToPouch(ammoPickupDataSO.weaponType, ammoPickupDataSO.ammoAmount);
+		}
+
+		OnAmmoPickup?.Invoke(this, new OnAmmoPickupEventArgs {
+			weaponType = ammoPickupDataSO.weaponType,
+			ammo = ammoPickupDataSO.ammoAmount,
+		});
 	}
 }

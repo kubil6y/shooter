@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class Player : Singleton<Player>, ICanPickup {
-	[Header("Weapon Stuff")]
-	[SerializeField] private Transform m_weaponSystem;
+	[Header("Movement Config")]
+	[SerializeField] private float m_moveSpeed = 8f;
 
 	[Header("Dash Skill")]
 	[SerializeField] public LayerMask dashLayerMask;
@@ -53,6 +53,10 @@ public class Player : Singleton<Player>, ICanPickup {
 		return flipController.IsFacingRight();
 	}
 
+	public float GetMoveSpeed() {
+		return m_moveSpeed;
+	}
+
 	public bool CanFlip() {
 		return m_canFlip;
 	}
@@ -69,19 +73,21 @@ public class Player : Singleton<Player>, ICanPickup {
 		m_canShoot = value;
 	}
 
-	// TODO this should be visuals only not all the weapons!
 	public void EnableWeaponSystem() {
-		m_weaponSystem.gameObject.SetActive(true);
+		weaponManager.ShowVisuals();
 	}
 
 	public void DisableWeaponSystem() {
-		m_weaponSystem.gameObject.SetActive(false);
+		weaponManager.HideVisuals();
 	}
 
 	public void Collect(Pickup pickup) {
 		switch (pickup.pickupData) {
 		case WeaponPickupDataSO weaponPickupDataSO:
 			weaponManager.PickupWeapon(weaponPickupDataSO);
+			break;
+		case AmmoPickupDataSO ammoPickupDataSO:
+			weaponManager.PickupAmmo(ammoPickupDataSO);
 			break;
 		case HealthPickupDataSO healthPickupDataSO:
 			break;

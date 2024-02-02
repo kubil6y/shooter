@@ -9,14 +9,6 @@ public class PistolEffects : MonoBehaviour {
 	}
 
     private void Pistol_OnStateChanged(object sender, Weapon.State weaponState) {
-        switch (weaponState) {
-        case Weapon.State.Idle:
-            break;
-        case Weapon.State.Fire:
-			Debug.Log("Pistol fired!");
-            break;
-        case Weapon.State.OnCooldown:
-            break;
-        }
+        // TODO
     }
 }

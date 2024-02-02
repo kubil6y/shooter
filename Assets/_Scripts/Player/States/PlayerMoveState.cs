@@ -23,8 +23,6 @@ public class PlayerMoveState : PlayerNormalState {
 
     public override void FixedUpdate() {
         base.FixedUpdate();
-
-        float moveSpeed = 7f;
-        player.rb.velocity = GameInput.instance.GetMoveInputNormalized() * moveSpeed;
+        player.rb.velocity = GameInput.instance.GetMoveInputNormalized() * player.GetMoveSpeed();
     }
 }

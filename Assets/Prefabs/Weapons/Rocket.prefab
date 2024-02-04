@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3944348177743095533}
   - component: {fileID: -8231289250161697344}
   - component: {fileID: -6904403803584587218}
-  - component: {fileID: -715438567439702324}
+  - component: {fileID: 2636417774462866784}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -152,7 +152,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &-715438567439702324
+--- !u!114 &2636417774462866784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,4 +164,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d162e1cadcaccf9792445f09fb89964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 10

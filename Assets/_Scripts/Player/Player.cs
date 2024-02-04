@@ -12,7 +12,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	public PlayerChannel channel { get; private set; }
 	public PlayerAnimations animations { get; private set; }
 	public PlayerFlipController flipController { get; private set; }
-	public KB_WeaponManager weaponManager { get; private set; }
+	public WeaponManager weaponManager { get; private set; }
 	public Health health { get; private set; }
 
 	private PlayerStateMachine m_stateMachine;
@@ -23,7 +23,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	protected override void Awake() {
 		base.Awake();
 		m_stateMachine = new PlayerStateMachine(this);
-		weaponManager = GetComponentInChildren<KB_WeaponManager>();
+		weaponManager = GetComponentInChildren<WeaponManager>();
 		health = GetComponent<Health>();
 		rb = GetComponent<Rigidbody2D>();
 		channel = GetComponent<PlayerChannel>();

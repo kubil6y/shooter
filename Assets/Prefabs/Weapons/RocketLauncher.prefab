@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5314166668899855511}
   - component: {fileID: 1178442461139013930}
-  - component: {fileID: 600469754531500550}
-  - component: {fileID: 2463431852045555470}
+  - component: {fileID: 2022149448009228892}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -89,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &600469754531500550
+--- !u!114 &2022149448009228892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,21 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac97cbd4b8cff2116b75b775228b5ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: f486339e95c61cdd3ad8cc663c3be056, type: 2}
+  m_weaponDataSO: {fileID: 11400000, guid: 5ada7e1ecee606a618ca393b75b9ab54, type: 2}
   m_muzzleTf: {fileID: 5103328320133425071}
---- !u!114 &2463431852045555470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063073687653241774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c5ba2937417e9640b90d704b6c5422a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rocketLauncher: {fileID: 600469754531500550}
 --- !u!1 &3814993943469598642
 GameObject:
   m_ObjectHideFlags: 0

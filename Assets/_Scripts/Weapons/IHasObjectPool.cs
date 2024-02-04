@@ -1,5 +1,5 @@
 using UnityEngine;
 
 public interface IHasObjectPool {
-	public void Setup(Transform objectPoolsTf);
+	public void SetupObjectPoolParent(Transform objectPoolsTf);
 }

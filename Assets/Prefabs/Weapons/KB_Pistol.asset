@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1fb7cc8c15fde858a72660c56f05a4d, type: 3}
+  m_Name: KB_Pistol
+  m_EditorClassIdentifier: 
+  weaponName: KB_Pistol
+  weaponType: 1
+  weaponPrefab: {fileID: 1900444682799310710, guid: 8004a993d08500b5c855b2b8728ded0a, type: 3}
+  projectilePrefab: {fileID: 5552287929448220156, guid: 17aa93ed16e2500afb92b86864d82ff6, type: 3}
+  projectileSpeed: 10
+  poolSize: 10
+  dps: 0
+  singleFire: 0
+  rof: 0
+  ammoUsage: 1
+  startingAmmo: 10
+  maxAmmo: 50

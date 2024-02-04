@@ -70,7 +70,6 @@ public class WeaponManager : MonoBehaviour {
 		m_weaponArray[m_currentWeaponIndex]?.StopFiring();
 	}
 
-
 	public bool TryAddingWeapon(WeaponDataSO weaponDataSO) {
 		if (HasWeapon(weaponDataSO.weaponType)) {
 			return false;
@@ -78,9 +77,11 @@ public class WeaponManager : MonoBehaviour {
 
 		// Initiate weapon
 		int weaponIndex = (int)weaponDataSO.weaponType;
-		Weapon weapon = Instantiate(weaponDataSO.weaponPrefab, m_weaponHolderTf);
+		// TODO this changed!
+		// Weapon weapon = Instantiate(weaponDataSO.weaponPrefab, m_weaponHolderTf);
+		Weapon weapon = null;
 		if (weapon.TryGetComponent<IHasObjectPool>(out IHasObjectPool hasObjectPool)) {
-			hasObjectPool.Setup(m_objectPoolsTf);
+			hasObjectPool.SetupObjectPoolParent(m_objectPoolsTf);
 		}
 
 		// Add existing ammo to weapon silently
@@ -194,7 +195,7 @@ public class WeaponManager : MonoBehaviour {
 			});
 		}
 		else {
-			TryAddingWeapon(weaponPickupDataSO.weaponDataSO);
+			// TryAddingWeapon(weaponPickupDataSO.weaponDataSO);
 		}
 	}
 

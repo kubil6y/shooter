@@ -15,6 +15,8 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	public WeaponManager weaponManager { get; private set; }
 	public Health health { get; private set; }
 
+	public KB_WeaponManager kb_weaponManager { get; private set; }
+
 	private PlayerStateMachine m_stateMachine;
 
 	private bool m_canFlip = true;
@@ -24,6 +26,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 		base.Awake();
 		m_stateMachine = new PlayerStateMachine(this);
 		weaponManager = GetComponentInChildren<WeaponManager>();
+		kb_weaponManager = GetComponentInChildren<KB_WeaponManager>();
 		health = GetComponent<Health>();
 
 		rb = GetComponent<Rigidbody2D>();
@@ -87,11 +90,11 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	}
 
 	public void EnableWeaponVisuals() {
-		weaponManager.ShowVisuals();
+		kb_weaponManager.ShowVisuals();
 	}
 
 	public void DisableWeaponVisuals() {
-		weaponManager.HideVisuals();
+		kb_weaponManager.HideVisuals();
 	}
 
 	public void Collect(Pickup pickup) {
@@ -101,10 +104,12 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 
 		switch (pickup.pickupData) {
 		case WeaponPickupDataSO weaponPickupDataSO:
-			weaponManager.PickupWeapon(weaponPickupDataSO);
+			// weaponManager.PickupWeapon(weaponPickupDataSO);
+			kb_weaponManager.PickUpWeapon(weaponPickupDataSO);
 			break;
 		case AmmoPickupDataSO ammoPickupDataSO:
-			weaponManager.PickupAmmo(ammoPickupDataSO);
+			// weaponManager.PickupAmmo(ammoPickupDataSO);
+			kb_weaponManager.PickUpAmmo(ammoPickupDataSO);
 			break;
 		case HealthPickupDataSO healthPickupDataSO:
 			health.TakeHealth(healthPickupDataSO.healthAmount);

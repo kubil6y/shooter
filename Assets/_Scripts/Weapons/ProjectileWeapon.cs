@@ -11,7 +11,7 @@ public class ProjectileWeapon : Weapon, IHasObjectPool {
 		CreateBulletPool();
 	}
 
-	public void Setup(Transform objectPoolsTf) {
+	public void SetupObjectPoolParent(Transform objectPoolsTf) {
 		if (objectPoolsTf != null) {
 			GameObject newPoolParent = new GameObject(weaponData.weaponName + " Pool");
 			newPoolParent.transform.parent = objectPoolsTf;

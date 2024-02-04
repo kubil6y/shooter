@@ -50,13 +50,6 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 		return health.IsAlive();
 	}
 
-	public void TakeDamage(int damageAmount) {
-		if (!IsAlive()) {
-			return;
-		}
-		health.TakeDamage(damageAmount);
-	}
-
 	private void FixedUpdate() {
 		m_stateMachine.currentState?.FixedUpdate();
 	}
@@ -116,4 +109,14 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 			break;
 		}
 	}
+
+    public void TakeDamage(int damageAmount, float knockbackThrust) {
+		if (!IsAlive()) {
+			return;
+		}
+		health.TakeDamage(damageAmount);
+    }
+
+    public void TakeHit() {
+    }
 }

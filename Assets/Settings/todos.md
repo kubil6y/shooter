@@ -8,5 +8,8 @@
 - [] add enemies
 - [] ui/polish
 
+- player needs a movement class for knockback otherwise i have to do isKnocked checks everywhere!
+- projectile needs knockback settings
+
 
 chainsaw 280 pixels per unit

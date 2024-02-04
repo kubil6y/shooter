@@ -23,6 +23,8 @@ public class Health : MonoBehaviour {
 		return m_currentHealth > 0;
 	}
 
+	// NOTE: Quake3 applies 2/3 of total damage to armor,
+	// then the rest is taken off from health
 	public void TakeDamage(int damageAmount) {
 		if (!IsAlive()) {
 			return;

@@ -109,7 +109,6 @@ public class WeaponManagerVisuals : MonoBehaviour {
 	}
 
 	private void WeaponManager_OnWeaponChanged(object sender, Weapon weapon) {
-		Debug.Log(weapon.gameObject.name);
 		m_currentWeaponSpriteRenderer = weapon.GetComponentInChildren<SpriteRenderer>();
 	}
 }

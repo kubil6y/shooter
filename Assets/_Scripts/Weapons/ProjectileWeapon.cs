@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
+	public event EventHandler OnShoot;
+	public event EventHandler OnAmmoChanged;
+
 	[SerializeField] private ProjectileWeaponDataSO m_weaponDataSO;
 	[SerializeField] private Transform m_muzzleTf;
 
@@ -15,26 +19,61 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 		CreateProjectilePool();
 	}
 
-	private void Update() {
+	protected virtual void Update() {
+		HandleShooting();
+	}
+
+	private void HandleShooting() {
 		m_timer -= Time.deltaTime;
 
-		if (shootingInput && m_timer < 0f) {
-			m_timer = .1f;
-			Fire();
+		if (shootingInput && HasEnoughAmmo() && m_timer < 0f) {
+			m_timer = m_weaponDataSO.rof / 1000f;
+			m_currentAmmo -= m_weaponDataSO.ammoUsage;
+
+			Shoot();
+
+			if (m_weaponDataSO.singleFire) {
+				shootingInput = false;
+			}
 		}
 	}
 
-	private void Fire() {
-		Projectile newProjectile = m_projectilePool.Get();
+	private void Shoot() {
+		for (int i = 0; i < m_weaponDataSO.ammoUsage; i++) {
+			Projectile newProjectile = m_projectilePool.Get();
 
-		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		mousePos.z = 0f;
-		Vector2 fireDirection = (mousePos - m_muzzleTf.position).normalized;
+			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			mousePos.z = 0f;
+			Vector2 fireDirection = (mousePos - m_muzzleTf.position).normalized;
 
-		newProjectile.Setup(this, m_muzzleTf.position, fireDirection, m_weaponDataSO.projectileSpeed);
+			if (m_weaponDataSO.spreadAngle != 0) {
+				float spreadAngle = UnityEngine.Random.Range(-m_weaponDataSO.spreadAngle, m_weaponDataSO.spreadAngle);
+				// Rotate fireDirection by spreadAngle
+				Quaternion rotation = Quaternion.Euler(0, 0, spreadAngle);
+				fireDirection = rotation * fireDirection;
+			}
+
+			// TODO: requires knockback settings...
+			var projectileSetupArgs = new Projectile.ProjectileSetupArgs {
+				projectileWeapon = this,
+				spawnTf = m_muzzleTf,
+				fireDirection = fireDirection,
+				moveSpeed = m_weaponDataSO.projectileSpeed,
+				damage = m_weaponDataSO.projectileDamage,
+				lifetime = 3f,
+			};
+
+			newProjectile.Setup(projectileSetupArgs);
+		}
+
+		OnShoot?.Invoke(this, EventArgs.Empty);
+		OnAmmoChanged?.Invoke(this, EventArgs.Empty);
 	}
 
 	private bool HasEnoughAmmo() {
+		if (m_weaponDataSO.unlimitedAmmo) {
+			return true;
+		}
 		return m_currentAmmo - m_weaponDataSO.ammoUsage >= 0;
 	}
 
@@ -58,8 +97,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	}
 
 	public override bool IsOnCooldown() {
-		// TODO
-		return false;
+		return m_timer > 0f;
 	}
 
 	public void SetupObjectPoolParent(Transform objectPoolsParentTf) {

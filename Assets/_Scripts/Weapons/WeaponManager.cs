@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-// NOTE: WeaponType manages index positions and size in the WeaponManager.m_weaponArray
+// NOTE: WeaponType manages index positions and size in the WeaponManager
 public enum WeaponType {
 	Chainsaw,
 	Pistol,
@@ -22,6 +22,7 @@ public class WeaponManager : MonoBehaviour {
 		public WeaponType weaponType;
 		public int ammoAmount;
 	}
+	public event EventHandler OnWeaponSwapped;
 
 	[SerializeField] private Transform m_objectPoolsTf;
 	[SerializeField] private Transform m_weaponHolderTf;
@@ -80,6 +81,7 @@ public class WeaponManager : MonoBehaviour {
 		int nextWeaponIndex = GetNextWeaponIndex();
 		if (TrySettingCurrentWeapon(nextWeaponIndex)) {
 			m_weaponSwapTimer = m_weaponSwapDuration;
+			OnWeaponSwapped?.Invoke(this, EventArgs.Empty);
 			return true;
 		}
 		return false;
@@ -92,6 +94,7 @@ public class WeaponManager : MonoBehaviour {
 		int previousWeaponIndex = GetPreviousWeaponIndex();
 		if (TrySettingCurrentWeapon(previousWeaponIndex)) {
 			m_weaponSwapTimer = m_weaponSwapDuration;
+			OnWeaponSwapped?.Invoke(this, EventArgs.Empty);
 			return true;
 		}
 		return false;
@@ -236,7 +239,7 @@ public class WeaponManager : MonoBehaviour {
 		// Initiate weapon
 		Weapon weapon = Instantiate(weaponDataSO.weaponPrefab, m_weaponHolderTf);
 
-		// Setup up object pool if exists
+		// Setup up object pool parent if exists
 		if (weapon.TryGetComponent<IHasObjectPool>(out IHasObjectPool hasObjectPool)) {
 			hasObjectPool.SetupObjectPoolParent(m_objectPoolsTf);
 		}

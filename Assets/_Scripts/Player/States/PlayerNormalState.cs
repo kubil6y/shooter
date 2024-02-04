@@ -18,11 +18,10 @@ public class PlayerNormalState : PlayerState {
 				player.weaponManager.StopShooting();
 			}
 
-			// TODO TEST
-			if (Input.GetKeyDown(KeyCode.N)) {
+			if (GameInput.instance.IsScrollDown()) {
 				player.weaponManager.TrySwappingToNextWeapon();
 			}
-			if (Input.GetKeyDown(KeyCode.M)) {
+			if (GameInput.instance.IsScrollUp()) {
 				player.weaponManager.TrySwappingToNextWeapon();
 			}
 		}

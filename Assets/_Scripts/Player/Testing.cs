@@ -14,13 +14,13 @@ public class Testing : MonoBehaviour {
 
 	 private void Update() {
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			player.TakeDamage(damage1);
+			player.TakeDamage(damage1, 0f);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			player.TakeDamage(damage2);
+			player.TakeDamage(damage2, 0f);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			player.TakeDamage(damage3);
+			player.TakeDamage(damage3, 0f);
 		}
 	 }
 }

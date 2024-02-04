@@ -12,10 +12,18 @@ public class PlayerNormalState : PlayerState {
 	private void HandleShooting() {
 		if (player.CanShoot()) {
 			if (Input.GetKeyDown(KeyCode.Mouse0)) {
-				player.kb_weaponManager.StartShooting();
+				player.weaponManager.StartShooting();
 			}
 			if (Input.GetKeyUp(KeyCode.Mouse0)) {
-				player.kb_weaponManager.StopShooting();
+				player.weaponManager.StopShooting();
+			}
+
+			// TODO TEST
+			if (Input.GetKeyDown(KeyCode.N)) {
+				player.weaponManager.TrySwappingToNextWeapon();
+			}
+			if (Input.GetKeyDown(KeyCode.M)) {
+				player.weaponManager.TrySwappingToNextWeapon();
 			}
 		}
 	}

@@ -1,6 +1,19 @@
 using System;
 using UnityEngine;
 
+// NOTE: WeaponType manages index positions and size in the WeaponManager.m_weaponArray
+public enum WeaponType {
+	Chainsaw,
+	Pistol,
+	MachineGun,
+	LightningGun,
+	RailGun,
+	NailGun,
+	Shotgun,
+	RocketLauncher,
+	__LENGTH,
+}
+
 [RequireComponent(typeof(KB_AmmoPouch))]
 public class KB_WeaponManager : MonoBehaviour {
 	public event EventHandler<KB_Weapon> OnWeaponChanged;
@@ -30,11 +43,6 @@ public class KB_WeaponManager : MonoBehaviour {
 	private void Update() {
 		HandleWeaponHolderRotation();
 		HandleWeaponSwapTimer();
-
-		// TODO TEST
-		if (Input.GetKeyDown(KeyCode.L)) {
-			Debug.Log(HasAnyWeapon());
-		}
 	}
 
 	private void Init() {
@@ -90,7 +98,7 @@ public class KB_WeaponManager : MonoBehaviour {
 	}
 
 	private int GetNextWeaponIndex() {
-		for (int i = m_currentWeaponIndex; i < m_weaponArray.Length; i++) {
+		for (int i = m_currentWeaponIndex + 1; i < m_weaponArray.Length; i++) {
 			if (GetWeapon(i)) {
 				return i;
 			}

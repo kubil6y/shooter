@@ -6,7 +6,7 @@ public class WeaponDataSO : ScriptableObject {
 	public WeaponType weaponType;
 
 	public KB_Weapon weaponPrefab;
-	public Projectile projectilePrefab;
+	public KB_Projectile projectilePrefab;
 	public int poolSize;
 
 	public int dps; // Damage Per Second

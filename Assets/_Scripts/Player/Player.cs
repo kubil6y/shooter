@@ -12,10 +12,8 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	public PlayerChannel channel { get; private set; }
 	public PlayerAnimations animations { get; private set; }
 	public PlayerFlipController flipController { get; private set; }
-	public WeaponManager weaponManager { get; private set; }
+	public KB_WeaponManager weaponManager { get; private set; }
 	public Health health { get; private set; }
-
-	public KB_WeaponManager kb_weaponManager { get; private set; }
 
 	private PlayerStateMachine m_stateMachine;
 
@@ -25,10 +23,8 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	protected override void Awake() {
 		base.Awake();
 		m_stateMachine = new PlayerStateMachine(this);
-		weaponManager = GetComponentInChildren<WeaponManager>();
-		kb_weaponManager = GetComponentInChildren<KB_WeaponManager>();
+		weaponManager = GetComponentInChildren<KB_WeaponManager>();
 		health = GetComponent<Health>();
-
 		rb = GetComponent<Rigidbody2D>();
 		channel = GetComponent<PlayerChannel>();
 		animations = GetComponentInChildren<PlayerAnimations>();
@@ -90,11 +86,11 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	}
 
 	public void EnableWeaponVisuals() {
-		kb_weaponManager.ShowVisuals();
+		weaponManager.ShowVisuals();
 	}
 
 	public void DisableWeaponVisuals() {
-		kb_weaponManager.HideVisuals();
+		weaponManager.HideVisuals();
 	}
 
 	public void Collect(Pickup pickup) {
@@ -104,16 +100,17 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 
 		switch (pickup.pickupData) {
 		case WeaponPickupDataSO weaponPickupDataSO:
-			// weaponManager.PickupWeapon(weaponPickupDataSO);
-			kb_weaponManager.PickUpWeapon(weaponPickupDataSO);
+			weaponManager.PickUpWeapon(weaponPickupDataSO);
 			break;
+
 		case AmmoPickupDataSO ammoPickupDataSO:
-			// weaponManager.PickupAmmo(ammoPickupDataSO);
-			kb_weaponManager.PickUpAmmo(ammoPickupDataSO);
+			weaponManager.PickUpAmmo(ammoPickupDataSO);
 			break;
+
 		case HealthPickupDataSO healthPickupDataSO:
 			health.TakeHealth(healthPickupDataSO.healthAmount);
 			break;
+
 		case ArmorPickupDataSO armorPickupDataSO:
 			health.TakeArmor(armorPickupDataSO.armorAmount);
 			break;

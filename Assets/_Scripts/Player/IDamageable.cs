@@ -1,4 +1,4 @@
 public interface IDamageable : IHittable {
-	public void TakeDamage(int damageAmount, float knockbackThrust);
+	public void TakeDamage(int damageAmount);
 
 }

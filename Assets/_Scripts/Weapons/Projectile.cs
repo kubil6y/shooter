@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour {
 		hittable?.TakeHit();
 
 		IDamageable damageable = other.GetComponent<IDamageable>();
-		damageable?.TakeDamage(m_damage, 0f);
+		damageable?.TakeDamage(m_damage);
 
 		m_projectileWeapon.ReleaseProjectileFromPool(this);
 	}

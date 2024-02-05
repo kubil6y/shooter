@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : Singleton<Player>, ICanPickup, IDamageable {
+public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
 
@@ -14,6 +14,8 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 	public PlayerFlipController flipController { get; private set; }
 	public WeaponManager weaponManager { get; private set; }
 	public Health health { get; private set; }
+	public Movement movement { get; private set; }
+	public Knockback knockback { get; private set; }
 
 	private PlayerStateMachine m_stateMachine;
 
@@ -24,8 +26,10 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 		base.Awake();
 		m_stateMachine = new PlayerStateMachine(this);
 		weaponManager = GetComponentInChildren<WeaponManager>();
-		health = GetComponent<Health>();
 		rb = GetComponent<Rigidbody2D>();
+		health = GetComponent<Health>();
+		movement = GetComponent<Movement>();
+		knockback = GetComponent<Knockback>();
 		channel = GetComponent<PlayerChannel>();
 		animations = GetComponentInChildren<PlayerAnimations>();
 	}
@@ -60,6 +64,18 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 
 	public float GetMoveSpeed() {
 		return m_moveSpeed;
+	}
+
+	public bool CanGetKnocked() {
+		return knockback.CanGetKnocked();
+	}
+
+	public void SetCanGetKnocked(bool canGetKnocked) {
+		knockback.SetCanGetKnocked(canGetKnocked);
+	}
+
+	public bool CanMove() {
+		return movement.CanMove();
 	}
 
 	public bool CanFlip() {
@@ -110,13 +126,21 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable {
 		}
 	}
 
-    public void TakeDamage(int damageAmount, float knockbackThrust) {
+	public void TakeDamage(int damageAmount) {
 		if (!IsAlive()) {
 			return;
 		}
 		health.TakeDamage(damageAmount);
-    }
+	}
 
-    public void TakeHit() {
-    }
+	public void TakeHit() {
+		// TODO
+	}
+
+	public void GetKnocked(Vector3 hitDirection, float knockbackThrust, float knockbackDuration) {
+		if (!CanGetKnocked()) {
+			return;
+		}
+		knockback.GetKnocked(hitDirection, knockbackThrust, knockbackDuration);
+	}
 }

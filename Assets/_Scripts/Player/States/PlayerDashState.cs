@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 
-// NOTE: this should be a teleport skill not really a dash?
-
 public class PlayerDashState : PlayerState {
     private Vector3 m_dashDirection;
 
@@ -24,7 +22,7 @@ public class PlayerDashState : PlayerState {
 
     public override void Exit() {
         base.Exit();
-        player.rb.velocity = Vector2.zero;
+        player.movement.SetZeroVelocity();
     }
 
     private Vector2 GetDashDirectionNormalized() {

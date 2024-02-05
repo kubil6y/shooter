@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class PlayerMoveState : PlayerNormalState {
     public PlayerMoveState(PState stateKey, PlayerStateMachine stateMachine, Player player) : base(stateKey, stateMachine, player) {
     }
@@ -11,7 +12,7 @@ public class PlayerMoveState : PlayerNormalState {
     public override void Exit() {
         base.Exit();
         player.animations.SetMoveAnim(false);
-        player.rb.velocity = Vector2.zero;
+        player.movement.SetZeroVelocity();
     }
 
     public override void Update() {
@@ -23,6 +24,6 @@ public class PlayerMoveState : PlayerNormalState {
 
     public override void FixedUpdate() {
         base.FixedUpdate();
-        player.rb.velocity = GameInput.instance.GetMoveInputNormalized() * player.GetMoveSpeed();
+        player.movement.SetVelocity(GameInput.instance.GetMoveInputNormalized() * player.GetMoveSpeed());
     }
 }

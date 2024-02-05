@@ -11,10 +11,11 @@ public class PlayerNormalState : PlayerState {
 
 	private void HandleShooting() {
 		if (player.CanShoot()) {
-			if (Input.GetKeyDown(KeyCode.Mouse0)) {
+			// TODO mouse down!
+			if (GameInput.instance.IsFireDown()) {
 				player.weaponManager.StartShooting();
 			}
-			if (Input.GetKeyUp(KeyCode.Mouse0)) {
+			if (GameInput.instance.IsFireUp()) {
 				player.weaponManager.StopShooting();
 			}
 

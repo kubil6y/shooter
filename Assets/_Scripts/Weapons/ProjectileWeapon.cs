@@ -5,6 +5,8 @@ using UnityEngine.Pool;
 public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	public event EventHandler OnShoot;
 	public event EventHandler OnAmmoChanged;
+	public event EventHandler OnIdleStarted;
+	public event EventHandler OnIdleEnded;
 
 	[SerializeField] private ProjectileWeaponDataSO m_weaponDataSO;
 	[SerializeField] private Transform m_muzzleTf;
@@ -13,13 +15,22 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	private ObjectPool<Projectile> m_projectilePool;
 
 	private int m_currentAmmo;
+	private bool m_isIdle;
 	private float m_timer;
 
 	private void Start() {
 		CreateProjectilePool();
+
+		// TODO remove these later.
+		OnIdleStarted += ProjectileWeapon_OnIdleStarted;
+		OnIdleEnded += ProjectileWeapon_OnIdleEnded;
 	}
 
 	protected virtual void Update() {
+		if (!m_isIdle && gameObject.activeSelf && !shootingInput && m_timer < 0f) {
+			m_isIdle = true;
+			OnIdleStarted?.Invoke(this, EventArgs.Empty);
+		}
 		HandleShooting();
 	}
 
@@ -32,10 +43,16 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 
 			Shoot();
 
+			if (m_isIdle && gameObject.activeSelf) {
+				m_isIdle = false;
+				OnIdleEnded?.Invoke(this, EventArgs.Empty);
+			}
+
 			if (m_weaponDataSO.singleFire) {
 				shootingInput = false;
 			}
 		}
+
 	}
 
 	private void Shoot() {
@@ -140,5 +157,13 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 			false,
 			m_weaponDataSO.poolSize,
 			m_weaponDataSO.poolSize * 2);
+	}
+
+	private void ProjectileWeapon_OnIdleStarted(object sender, EventArgs e) {
+		Debug.Log("OnIdleStarted()");
+	}
+
+	private void ProjectileWeapon_OnIdleEnded(object sender, EventArgs e) {
+		Debug.Log("OnIdleEnded()");
 	}
 }

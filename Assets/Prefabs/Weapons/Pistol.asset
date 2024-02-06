@@ -22,7 +22,7 @@ MonoBehaviour:
   knockbackDuration: 0
   poolSize: 10
   rof: 200
-  singleFire: 0
+  singleFire: 1
   unlimitedAmmo: 0
   spreadAngle: 0
   ammoUsage: 1

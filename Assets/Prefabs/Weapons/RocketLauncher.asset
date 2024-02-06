@@ -21,7 +21,7 @@ MonoBehaviour:
   knockbackThrust: 0
   knockbackDuration: 0
   poolSize: 10
-  rof: 500
+  rof: 1000
   singleFire: 0
   unlimitedAmmo: 0
   spreadAngle: 0

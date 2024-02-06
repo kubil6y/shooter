@@ -9,8 +9,14 @@ public class PlayerDashState : PlayerState {
 
     public override void ConnectToPlayerChannel() {
         base.ConnectToPlayerChannel();
-        player.channel.OnAnimDashStartFinished += Player_OnAnimDashStartFinished;
-        player.channel.OnAnimDashEndFinished += Player_OnAnimDashEndFinished;
+        player.animations.OnAnimDashStartFinished += Player_OnAnimDashStartFinished;
+        player.animations.OnAnimDashEndFinished += Player_OnAnimDashEndFinished;
+    }
+
+    public override void DisconnectFromPlayerChannel() {
+        base.DisconnectFromPlayerChannel();
+        player.animations.OnAnimDashStartFinished -= Player_OnAnimDashStartFinished;
+        player.animations.OnAnimDashEndFinished -= Player_OnAnimDashEndFinished;
     }
 
     public override void Enter() {
@@ -56,6 +62,9 @@ public class PlayerDashState : PlayerState {
     }
 
     private void Player_OnAnimDashEndFinished(object sender, EventArgs e) {
+        if (!IsInThisState()) {
+            return;
+        }
         player.animations.SetDashEndAnim(false);
         player.EnableWeaponVisuals();
         stateMachine.SetState(PState.Idle);

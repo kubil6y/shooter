@@ -1,6 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour {
+	public event EventHandler OnAnimDashStartFinished;
+	public event EventHandler OnAnimDashEndFinished;
+
 	private Player m_player;
 	private Animator m_animator;
 
@@ -16,11 +20,11 @@ public class PlayerAnimations : MonoBehaviour {
 	}
 
 	public void AnimDashStartFinishedTrigger() {
-		m_player.channel.Emit_OnAnimDashStartFinished(this);
+		OnAnimDashStartFinished?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void AnimDashEndFinishedTrigger() {
-		m_player.channel.Emit_OnAnimDashEndFinished(this);
+		OnAnimDashEndFinished?.Invoke(this, EventArgs.Empty);
 	}
 
 	#region Animation Setters

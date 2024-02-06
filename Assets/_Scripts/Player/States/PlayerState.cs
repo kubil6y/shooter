@@ -19,6 +19,8 @@ public abstract class PlayerState {
 	}
 
     public virtual void DisconnectFromPlayerChannel() {
+		player.health.OnDeath -= Player_OnDeath;
+		player.health.OnRevived -= Player_OnRevived;
 	}
 
 	public virtual void Enter() {
@@ -36,6 +38,10 @@ public abstract class PlayerState {
 	}
 
 	public virtual void FixedUpdate() { }
+
+	public bool IsInThisState() {
+		return stateMachine.GetCurrentStateKey() == stateKey;
+	}
 
     private void Player_OnDeath(object sender, EventArgs e) {
 		stateMachine.SetState(PState.Death);

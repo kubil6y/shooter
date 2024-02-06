@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerFlipController : MonoBehaviour {
@@ -36,7 +37,5 @@ public class PlayerFlipController : MonoBehaviour {
 		localScale.x *= -1;
 		transform.localScale = localScale;
 		m_isFacingRight = !m_isFacingRight;
-
-		m_player.channel.Emit_OnPlayerFlipped(this, m_isFacingRight);
 	}
 }

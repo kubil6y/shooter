@@ -10,7 +10,6 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	[SerializeField] public float dashDistance;
 
 	public Rigidbody2D rb { get; private set; }
-	public PlayerChannel channel { get; private set; }
 	public PlayerAnimations animations { get; private set; }
 	public PlayerFlipController flipController { get; private set; }
 	public WeaponManager weaponManager { get; private set; }
@@ -33,7 +32,6 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		health = GetComponent<Health>();
 		movement = GetComponent<Movement>();
 		knockback = GetComponent<Knockback>();
-		channel = GetComponent<PlayerChannel>();
 		animations = GetComponentInChildren<PlayerAnimations>();
 	}
 

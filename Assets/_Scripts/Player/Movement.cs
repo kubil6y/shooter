@@ -20,8 +20,6 @@ public class Movement : MonoBehaviour {
 	}
 
     private void FixedUpdate() {
-		// TODO remove
-		Debug.Log("canMove: " + m_canMove);
 		Move();
 	}
 
@@ -37,7 +35,8 @@ public class Movement : MonoBehaviour {
 	}
 
 	public void SetZeroVelocity() {
-		SetVelocity(Vector2.zero);
+		m_rb.velocity = Vector2.zero;
+		m_velocity = Vector2.zero;
 	}
 
 	public bool CanMove() {

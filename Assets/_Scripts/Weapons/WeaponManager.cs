@@ -24,21 +24,27 @@ public class WeaponManager : MonoBehaviour {
 	}
 	public event EventHandler OnWeaponSwapped;
 
-	[SerializeField] private Transform m_objectPoolsTf;
 	[SerializeField] private Transform m_weaponHolderTf;
+	private Transform m_objectPoolContainerTf;
 
 	private Weapon[] m_weaponArray;
 	private AmmoPouch m_ammoPouch;
 	private WeaponManagerVisuals m_weaponManagerVisuals;
 
+	private Player m_player;
 	private float m_weaponSwapDuration = .1f;
 	private float m_weaponSwapTimer;
 	private int m_currentWeaponIndex;
 
 	private void Awake() {
 		Init();
+		m_player = GetComponentInParent<Player>();
 		m_ammoPouch = GetComponent<AmmoPouch>();
 		m_weaponManagerVisuals = GetComponent<WeaponManagerVisuals>();
+	}
+
+	private void Start() {
+		m_objectPoolContainerTf = GameManager.instance.GetObjectPoolContainerTransform();
 	}
 
 	private void Update() {
@@ -129,6 +135,9 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	private bool CanSwapWeapon() {
+		if (!m_player.IsAlive()) {
+			return false;
+		}
 		if (m_weaponSwapTimer > 0f) {
 			return false;
 		}
@@ -209,6 +218,10 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	public void PickUpWeapon(WeaponPickupDataSO weaponPickupDataSO) {
+		if (!m_player.CanPickup()) {
+			return;
+		}
+
 		WeaponType weaponType = weaponPickupDataSO.weaponDataSO.weaponType;
 
 		if (HasWeapon(weaponType)) {
@@ -241,7 +254,7 @@ public class WeaponManager : MonoBehaviour {
 
 		// Setup up object pool parent if exists
 		if (weapon.TryGetComponent<IHasObjectPool>(out IHasObjectPool hasObjectPool)) {
-			hasObjectPool.SetupObjectPoolParent(m_objectPoolsTf);
+			hasObjectPool.SetupObjectPoolParent(m_objectPoolContainerTf);
 		}
 
 		// Add ammo from pouch if exists
@@ -268,6 +281,10 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	public void PickUpAmmo(AmmoPickupDataSO ammoPickupDataSO) {
+		if (!m_player.CanPickup()) {
+			return;
+		}
+
 		WeaponType weaponType = ammoPickupDataSO.weaponType;
 		int ammoAmount = ammoPickupDataSO.ammoAmount;
 

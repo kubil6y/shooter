@@ -49,6 +49,10 @@ public class Projectile : MonoBehaviour {
 		IDamageable damageable = other.GetComponent<IDamageable>();
 		damageable?.TakeDamage(m_damage);
 
+		// TODO projectile settings should include this
+		IKnockable knockable = other.GetComponent<IKnockable>();
+		knockable?.GetKnocked(transform.position, 0f, 0f);
+
 		m_projectileWeapon.ReleaseProjectileFromPool(this);
 	}
 }

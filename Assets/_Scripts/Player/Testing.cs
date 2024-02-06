@@ -14,7 +14,7 @@ public class Testing : MonoBehaviour {
 
 	 private void Update() {
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			Player.instance.GetKnocked(new Vector3(5, 5), 100, .05f);
+			// Player.instance.GetKnocked(new Vector3(5, 5), 100, .05f);
 			// player.TakeDamage(damage1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
@@ -24,6 +24,13 @@ public class Testing : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
 			Player.instance.GetKnocked(new Vector3(1, 0), 2f, .05f);
 			// player.TakeDamage(damage3);
+		}
+
+		if (Input.GetKeyDown(KeyCode.Y)) {
+			player.TakeDamage(damage2);
+		}
+		if (Input.GetKeyDown(KeyCode.R)) {
+			Player.instance.Revive();
 		}
 
 	 }

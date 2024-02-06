@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
@@ -21,6 +22,8 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 
 	private bool m_canFlip = true;
 	private bool m_canShoot = true;
+	private bool m_canPickup = true;
+	private bool m_canGetHit = true;
 
 	protected override void Awake() {
 		base.Awake();
@@ -35,11 +38,12 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	}
 
 	private void Start() {
+		health.OnRevived += Health_OnRevived;
 		m_stateMachine.ConnectToPlayerChannel();
 		m_stateMachine.SetState(PState.Idle);
 	}
 
-	private void OnDestroy() {
+    private void OnDestroy() {
 		m_stateMachine.DisconnectFromPlayerChannel();
 	}
 
@@ -48,6 +52,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 			m_stateMachine.SetState(PState.Dash);
 		}
 		m_stateMachine.currentState?.Update();
+		Debug.Log(m_stateMachine.GetCurrentStateKey()); // TODO remove
 	}
 
 	public bool IsAlive() {
@@ -66,6 +71,23 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		return m_moveSpeed;
 	}
 
+	public bool CanGetHit() {
+		return m_canGetHit;
+	}
+
+	public void SetCanGetHit(bool canGethit) {
+		m_canGetHit = canGethit;
+	}
+
+
+	public bool CanPickup() {
+		return m_canPickup;
+	}
+
+    public void SetCanPickup(bool canPickup) {
+		m_canPickup = canPickup;
+    }
+
 	public bool CanGetKnocked() {
 		return knockback.CanGetKnocked();
 	}
@@ -76,6 +98,10 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 
 	public bool CanMove() {
 		return movement.CanMove();
+	}
+
+	public void SetCanMove(bool canMove) {
+		movement.SetCanMove(canMove);
 	}
 
 	public bool CanFlip() {
@@ -143,4 +169,12 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		}
 		knockback.GetKnocked(hitDirection, knockbackThrust, knockbackDuration);
 	}
+
+    public void Revive() {
+		health.Emit_OnRevived();
+    }
+
+    private void Health_OnRevived(object sender, EventArgs e) {
+		health.SetStartingHealthAndArmor();
+    }
 }

@@ -26,7 +26,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 		OnIdleEnded += ProjectileWeapon_OnIdleEnded;
 	}
 
-	protected virtual void Update() {
+    protected virtual void Update() {
 		if (!m_isIdle && gameObject.activeSelf && !shootingInput && m_timer < 0f) {
 			m_isIdle = true;
 			OnIdleStarted?.Invoke(this, EventArgs.Empty);

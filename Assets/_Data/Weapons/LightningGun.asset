@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f1db80f2f1d7c83bbddc264c08c600, type: 3}
+  m_Name: LightningGun
+  m_EditorClassIdentifier: 
+  weaponName: Lightning Gun
+  weaponType: 3
+  weaponPrefab: {fileID: 8573629697558680042, guid: ac78b25614ddd24f29bc139137df5ea6, type: 3}
+  damagePerTick: 10
+  knockbackThrust: 2
+  knockbackDuration: 0.1
+  rof: 100
+  unlimitedAmmo: 1
+  startingAmmo: 150
+  maxAmmo: 250

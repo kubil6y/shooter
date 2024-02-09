@@ -8,20 +8,50 @@ public class LightningGun : Weapon, IHasAmmo {
 	public event EventHandler OnIdleEnded;
 
 	[SerializeField] private LightningGunWeaponDataSO m_weaponDataSO;
+	[SerializeField] private LineRenderer m_lineRenderer;
+	[SerializeField] private Transform m_attackRefTf;
 
 	private int m_currentAmmo;
-	private bool m_isIdle;
 	private float m_timer;
+	private bool m_isIdle;
 
 	private void Awake() {
 		OnIdleStarted += LightningGun_OnIdleStarted;
 		OnIdleEnded += LightningGun_OnIdleEnded;
 	}
 
+    private void Start() {
+		DisableLaser();
+	}
+
+    private void DisableLaser() {
+		// Debug.Log("DisableLaser()");
+		m_lineRenderer.enabled = false;
+    }
+
+    private void EnableLaser() {
+		// Debug.Log("EnableLaser()");
+		m_lineRenderer.enabled = true;
+    }
+
+	private void UpdateLaser() {
+		// m_lineRenderer.SetPosition(0, m_attackRefTf.position);
+		// // TODO: i need to do a raycast in shoot and cache the hit position and then late update line renderer!
+		// // https://www.youtube.com/watch?v=S6eRVwAtfOM at 10m
+		// m_lineRenderer.SetPosition(1, m_attackRefTf.position);
+	}
+
+	private void FixedUpdate() {
+		RaycastHit2D hit = Physics2D.Raycast(m_attackRefTf.position, transform.right, 4f);
+	}
+
 	protected virtual void Update() {
 		if (!m_isIdle && m_timer > 0f && !shootingInput) {
 			m_isIdle = true;
 			OnIdleStarted?.Invoke(this, EventArgs.Empty);
+		}
+		if (shootingInput) {
+			UpdateLaser();
 		}
 		HandleShooting();
 	}
@@ -32,18 +62,17 @@ public class LightningGun : Weapon, IHasAmmo {
 		if (shootingInput && HasEnoughAmmo() && m_timer < 0f) {
 			m_timer = m_weaponDataSO.rof / 1000f;
 
-			Shoot();
-
 			if (m_isIdle) {
 				m_isIdle = false;
 				OnIdleEnded?.Invoke(this, EventArgs.Empty);
 			}
+
+			Shoot();
 		}
 
 	}
 
 	private void Shoot() {
-		Debug.Log("Shoot()"); // TODO remove
 		OnShoot?.Invoke(this, EventArgs.Empty);
 	}
 
@@ -85,9 +114,11 @@ public class LightningGun : Weapon, IHasAmmo {
 
 	private void LightningGun_OnIdleStarted(object sender, EventArgs e) {
 		Debug.Log("LightningGun:OnIdleStarted()");
+		DisableLaser();
 	}
 
 	private void LightningGun_OnIdleEnded(object sender, EventArgs e) {
 		Debug.Log("LightningGun:OnIdleEnded()");
+		EnableLaser();
 	}
 }

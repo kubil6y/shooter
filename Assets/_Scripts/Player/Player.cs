@@ -56,6 +56,10 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		return health.IsAlive();
 	}
 
+	public void StopShooting() {
+		weaponManager.StopShooting();
+	}
+
 	private void FixedUpdate() {
 		m_stateMachine.currentState?.FixedUpdate();
 	}

@@ -23,6 +23,7 @@ public class PlayerDashState : PlayerState {
         base.Enter();
         player.animations.SetDashStartAnim(true);
         m_dashDirection = GetDashDirectionNormalized();
+        player.StopShooting();
         player.DisableWeaponVisuals();
     }
 

@@ -9,7 +9,7 @@ public class PlayerFlipController : MonoBehaviour {
 		m_player = GetComponentInParent<Player>();
 	}
 
-	private void LateUpdate() {
+	private void Update() {
 		HandleFlipping();
 	}
 

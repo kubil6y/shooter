@@ -5,6 +5,7 @@ public class Health : MonoBehaviour {
 	public event EventHandler OnHealthChanged;
 	public event EventHandler OnArmorChanged;
 	public event EventHandler OnDeath;
+	// TODO: this should be other way around on player.
 	public event EventHandler OnRevived;
 
 	[SerializeField] private int m_maxHealth;

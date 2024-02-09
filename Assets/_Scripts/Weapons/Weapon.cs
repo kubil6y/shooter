@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour {
@@ -5,6 +6,10 @@ public abstract class Weapon : MonoBehaviour {
 
 	public abstract bool IsOnCooldown();
 	public abstract WeaponType GetWeaponType();
+
+	public virtual void SetAsCurrent() {
+		Debug.Log(gameObject.name + " is current!");
+	}
 
 	public virtual void StartShooting() {
 		shootingInput = true;

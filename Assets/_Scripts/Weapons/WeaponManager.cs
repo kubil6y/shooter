@@ -34,7 +34,7 @@ public class WeaponManager : MonoBehaviour {
 	private Player m_player;
 	private float m_weaponSwapDuration = .1f;
 	private float m_weaponSwapTimer;
-	private int m_currentWeaponIndex;
+	private int m_currentWeaponIndex = -1;
 
 	private void Awake() {
 		Init();
@@ -191,12 +191,16 @@ public class WeaponManager : MonoBehaviour {
 		GetCurrentWeapon()?.Hide();
 		m_currentWeaponIndex = weaponIndex;
 		GetCurrentWeapon().Show();
+		GetCurrentWeapon().SetAsCurrent();
 
 		OnWeaponChanged?.Invoke(this, GetCurrentWeapon());
 		return true;
 	}
 
 	private Weapon GetWeapon(int weaponIndex) {
+		if (weaponIndex < 0 || weaponIndex >= m_weaponArray.Length) {
+			return null;
+		}
 		return m_weaponArray[weaponIndex];
 	}
 
@@ -209,12 +213,7 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	public bool HasAnyWeapon() {
-		foreach (Weapon weapon in m_weaponArray) {
-			if (weapon != null) {
-				return true;
-			}
-		}
-		return false;
+		return m_currentWeaponIndex != -1;
 	}
 
 	public void PickUpWeapon(WeaponPickupDataSO weaponPickupDataSO) {
@@ -251,6 +250,7 @@ public class WeaponManager : MonoBehaviour {
 
 		// Initiate weapon
 		Weapon weapon = Instantiate(weaponDataSO.weaponPrefab, m_weaponHolderTf);
+		m_weaponArray[weaponIndex] = weapon;
 
 		// Setup up object pool parent if exists
 		if (weapon.TryGetComponent<IHasObjectPool>(out IHasObjectPool hasObjectPool)) {
@@ -264,10 +264,12 @@ public class WeaponManager : MonoBehaviour {
 			hasAmmo.AddAmmo(ammoInPouch);
 		}
 
+
 		// If player has no weapon pick it up and use it
 		if (!HasAnyWeapon()) {
 			m_currentWeaponIndex = weaponIndex;
 			OnWeaponChanged?.Invoke(this, weapon);
+			GetCurrentWeapon().SetAsCurrent();
 		}
 		else {
 			weapon.Hide();
@@ -275,7 +277,7 @@ public class WeaponManager : MonoBehaviour {
 
 		// Order of setting weapon to weapon array is important
 		// to make it show or hide
-		m_weaponArray[weaponIndex] = weapon;
+		// m_weaponArray[weaponIndex] = weapon;
 
 		return true;
 	}

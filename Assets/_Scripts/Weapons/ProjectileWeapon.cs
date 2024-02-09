@@ -18,7 +18,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	private bool m_isIdle;
 	private float m_timer;
 
-	private void Start() {
+	private void Awake() {
 		CreateProjectilePool();
 
 		// TODO remove these later.
@@ -26,24 +26,30 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 		OnIdleEnded += ProjectileWeapon_OnIdleEnded;
 	}
 
-    protected virtual void Update() {
-		if (!m_isIdle && gameObject.activeSelf && !shootingInput && m_timer < 0f) {
+	protected virtual void Update() {
+		if (!m_isIdle && m_timer > 0f && !shootingInput) {
 			m_isIdle = true;
 			OnIdleStarted?.Invoke(this, EventArgs.Empty);
 		}
 		HandleShooting();
 	}
 
+	public override void SetAsCurrent() {
+		base.SetAsCurrent();
+		m_isIdle = true;
+		OnIdleStarted?.Invoke(this, EventArgs.Empty);
+	}
+
+
 	private void HandleShooting() {
 		m_timer -= Time.deltaTime;
 
 		if (shootingInput && HasEnoughAmmo() && m_timer < 0f) {
 			m_timer = m_weaponDataSO.rof / 1000f;
-			m_currentAmmo -= m_weaponDataSO.ammoUsage;
 
 			Shoot();
 
-			if (m_isIdle && gameObject.activeSelf) {
+			if (m_isIdle) {
 				m_isIdle = false;
 				OnIdleEnded?.Invoke(this, EventArgs.Empty);
 			}
@@ -83,6 +89,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 			newProjectile.Setup(projectileSetupArgs);
 		}
 
+		m_currentAmmo -= m_weaponDataSO.ammoUsage;
 		OnShoot?.Invoke(this, EventArgs.Empty);
 		OnAmmoChanged?.Invoke(this, EventArgs.Empty);
 	}
@@ -160,10 +167,10 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	}
 
 	private void ProjectileWeapon_OnIdleStarted(object sender, EventArgs e) {
-		Debug.Log("OnIdleStarted()");
+		Debug.Log(gameObject.name + ":OnIdleStarted()");
 	}
 
 	private void ProjectileWeapon_OnIdleEnded(object sender, EventArgs e) {
-		Debug.Log("OnIdleEnded()");
+		Debug.Log(gameObject.name + ":OnIdleEnded()");
 	}
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Chainsaw : Weapon {
 	public event EventHandler OnShoot;
-	public event EventHandler OnAmmoChanged;
 	public event EventHandler OnIdleStarted;
 	public event EventHandler OnIdleEnded;
 
@@ -50,6 +49,7 @@ public class Chainsaw : Weapon {
 
 	private void Attack() {
 		Debug.Log("Chainsaw:Raycast()");
+		OnShoot?.Invoke(this, EventArgs.Empty);
 	}
 
 	public override WeaponType GetWeaponType() {

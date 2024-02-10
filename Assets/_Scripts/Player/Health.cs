@@ -5,8 +5,6 @@ public class Health : MonoBehaviour {
 	public event EventHandler OnHealthChanged;
 	public event EventHandler OnArmorChanged;
 	public event EventHandler OnDeath;
-	// TODO: this should be other way around on player.
-	public event EventHandler OnRevived;
 
 	[SerializeField] private int m_maxHealth;
 	[SerializeField] private int m_maxArmor;
@@ -100,17 +98,8 @@ public class Health : MonoBehaviour {
 		OnArmorChanged?.Invoke(this, EventArgs.Empty);
 	}
 
-	public void Emit_OnRevived() {
-		Debug.Log(gameObject.name + ":Emit_OnRevived()");
-		OnRevived?.Invoke(this, EventArgs.Empty);
-	}
-
 	public void Die() {
 		Debug.Log(gameObject.name + ":Die()");
 		OnDeath?.Invoke(this, EventArgs.Empty);
-	}
-
-	private void Handle_OnRevived(object sender, EventArgs e) {
-		SetStartingHealthAndArmor();
 	}
 }

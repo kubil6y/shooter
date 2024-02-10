@@ -1,7 +1,18 @@
+using System;
 using UnityEngine;
 
 public class PlayerDeathState : PlayerState {
     public PlayerDeathState(PState stateKey, PlayerStateMachine stateMachine, Player player) : base(stateKey, stateMachine, player) {
+    }
+
+    public override void ConnectToPlayerChannel() {
+        base.ConnectToPlayerChannel();
+        player.OnRevived += Player_OnRevived;
+    }
+
+    public override void DisconnectFromPlayerChannel() {
+        base.DisconnectFromPlayerChannel();
+        player.OnRevived -= Player_OnRevived;
     }
 
     public override void Enter() {
@@ -27,5 +38,9 @@ public class PlayerDeathState : PlayerState {
         player.SetCanShoot(true);
         player.SetCanPickup(true);
         player.EnableWeaponVisuals();
+    }
+
+    private void Player_OnRevived(object sender, EventArgs e) {
+        stateMachine.SetState(PState.Revived);
     }
 }

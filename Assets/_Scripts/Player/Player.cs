@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 
 public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
+	public event EventHandler OnRevived;
+
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
 
@@ -36,7 +38,6 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	}
 
 	private void Start() {
-		health.OnRevived += Health_OnRevived;
 		m_stateMachine.ConnectToPlayerChannel();
 		m_stateMachine.SetState(PState.Idle);
 	}
@@ -52,14 +53,6 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		m_stateMachine.currentState?.Update();
 	}
 
-	public bool IsAlive() {
-		return health.IsAlive();
-	}
-
-	public void StopShooting() {
-		weaponManager.StopShooting();
-	}
-
 	private void FixedUpdate() {
 		m_stateMachine.currentState?.FixedUpdate();
 	}
@@ -67,6 +60,11 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
     public Transform GetWeaponHolderTransform() {
 		return weaponManager.GetWeaponHolderTransform();
     }
+
+	#region getters/setters
+	public bool IsAlive() {
+		return health.IsAlive();
+	}
 
 	public bool IsFacingRight() {
 		return flipController.IsFacingRight();
@@ -123,6 +121,11 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	public void SetCanShoot(bool value) {
 		m_canShoot = value;
 	}
+	#endregion // getters/setters
+
+	public void StopShooting() {
+		weaponManager.StopShooting();
+	}
 
 	public void EnableWeaponVisuals() {
 		weaponManager.ShowVisuals();
@@ -130,6 +133,10 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 
 	public void DisableWeaponVisuals() {
 		weaponManager.HideVisuals();
+	}
+
+	public void Revive() {
+		OnRevived?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void Collect(Pickup pickup) {
@@ -160,6 +167,9 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		if (!IsAlive()) {
 			return;
 		}
+		if (!m_canGetHit) {
+			return;
+		}
 		health.TakeDamage(damageAmount);
 	}
 
@@ -173,12 +183,4 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		}
 		knockback.GetKnocked(hitDirection, knockbackThrust, knockbackDuration);
 	}
-
-    public void Revive() {
-		health.Emit_OnRevived();
-    }
-
-    private void Health_OnRevived(object sender, EventArgs e) {
-		health.SetStartingHealthAndArmor();
-    }
 }

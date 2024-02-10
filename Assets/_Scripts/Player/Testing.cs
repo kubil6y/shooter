@@ -14,15 +14,15 @@ public class Testing : MonoBehaviour {
 
 	 private void Update() {
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
-			// Player.instance.GetKnocked(new Vector3(5, 5), 100, .05f);
-			// player.TakeDamage(damage1);
+			Player.instance.GetKnocked(new Vector3(5, 5), 100, .05f);
+			player.TakeDamage(damage1);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2)) {
-			Player.instance.GetKnocked(new Vector3(5, 5), 20f, .2f);
-			// player.TakeDamage(damage2);
+			// Player.instance.GetKnocked(new Vector3(5, 5), 20f, .2f);
+			player.TakeDamage(damage2);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			Player.instance.GetKnocked(new Vector3(1, 0), 2f, .05f);
+			// Player.instance.GetKnocked(new Vector3(1, 0), 2f, .05f);
 			// player.TakeDamage(damage3);
 		}
 

@@ -9,7 +9,7 @@ public class PlayerFlipController : MonoBehaviour {
 		m_player = GetComponentInParent<Player>();
 	}
 
-	private void Update() {
+	private void LateUpdate() {
 		HandleFlipping();
 	}
 
@@ -23,11 +23,12 @@ public class PlayerFlipController : MonoBehaviour {
 		}
 
 		float mouseX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+		bool cursorOnRight = mouseX > m_player.transform.position.x;
 
-		if (mouseX > 0f && !m_isFacingRight) {
+		if (cursorOnRight && !m_isFacingRight) {
 			FlipPlayerVisual();
 		}
-		else if (mouseX < 0f && m_isFacingRight) {
+		else if (!cursorOnRight && m_isFacingRight) {
 			FlipPlayerVisual();
 		}
 	}

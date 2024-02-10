@@ -27,7 +27,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	}
 
 	protected virtual void Update() {
-		if (!m_isIdle && m_timer > 0f && !shootingInput) {
+		if (!m_isIdle && m_timer > 0f && !shootInput) {
 			m_isIdle = true;
 			OnIdleStarted?.Invoke(this, EventArgs.Empty);
 		}
@@ -44,7 +44,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	private void HandleShooting() {
 		m_timer -= Time.deltaTime;
 
-		if (shootingInput && HasEnoughAmmo() && m_timer < 0f) {
+		if (shootInput && HasEnoughAmmo() && m_timer < 0f) {
 			m_timer = m_weaponDataSO.rof / 1000f;
 
 			Shoot();
@@ -55,7 +55,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 			}
 
 			if (m_weaponDataSO.singleFire) {
-				shootingInput = false;
+				shootInput = false;
 			}
 		}
 

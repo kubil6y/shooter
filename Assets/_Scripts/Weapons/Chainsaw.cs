@@ -19,7 +19,7 @@ public class Chainsaw : Weapon {
 	}
 
 	protected virtual void Update() {
-		if (!m_isIdle && m_timer > 0f && !shootingInput) {
+		if (!m_isIdle && m_timer > 0f && !shootInput) {
 			m_isIdle = true;
 			OnIdleStarted?.Invoke(this, EventArgs.Empty);
 		}
@@ -35,7 +35,7 @@ public class Chainsaw : Weapon {
 	private void HandleAttack() {
 		m_timer -= Time.deltaTime;
 
-		if (shootingInput && m_timer < 0f) {
+		if (shootInput && m_timer < 0f) {
 			m_timer = m_rof / 1000f;
 
 			if (m_isIdle) {

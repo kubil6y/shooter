@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour {
-	protected bool shootingInput;
+	protected bool shootInput;
 
 	public abstract bool IsOnCooldown();
 	public abstract WeaponType GetWeaponType();
@@ -11,11 +11,11 @@ public abstract class Weapon : MonoBehaviour {
 	}
 
 	public virtual void StartShooting() {
-		shootingInput = true;
+		shootInput = true;
 	}
 
 	public virtual void StopShooting() {
-		shootingInput = false;
+		shootInput = false;
 	}
 
 	public virtual void Show() {

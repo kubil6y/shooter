@@ -7,6 +7,9 @@ public class LightningGun : Weapon, IHasAmmo {
 	public event EventHandler OnIdleStarted;
 	public event EventHandler OnIdleEnded;
 
+	public event EventHandler OnShootStarted;
+	public event EventHandler OnShootEnded;
+
 	[SerializeField] private LightningGunWeaponDataSO m_weaponDataSO;
 	[SerializeField] private LineRenderer m_lineRenderer;
 	[SerializeField] private Transform m_attackRefTf;
@@ -20,6 +23,7 @@ public class LightningGun : Weapon, IHasAmmo {
 	private int m_currentAmmo;
 	private float m_timer;
 	private bool m_isIdle;
+	private bool m_isShooting;
 
 	private void Awake() {
 		OnIdleStarted += LightningGun_OnIdleStarted;
@@ -32,15 +36,7 @@ public class LightningGun : Weapon, IHasAmmo {
 		DisableLaser();
 	}
 
-	private void DisableLaser() {
-		m_lineRenderer.enabled = false;
-	}
-
-	private void EnableLaser() {
-		m_lineRenderer.enabled = true;
-	}
-
-	private void UpdateLaser() {
+	private void LaserUpdate() {
 		var hit = Physics2D.Raycast(m_attackRefTf.position, m_weaponHolderTf.right, m_weaponDataSO.range, m_laserLayerMask);
 
 		if (hit.collider != null) {
@@ -56,26 +52,24 @@ public class LightningGun : Weapon, IHasAmmo {
 	protected virtual void Update() {
 		m_timer -= Time.deltaTime;
 
-		if (shootingInput && HasEnoughAmmo() && m_timer < 0f) {
+		if (shootInput && HasEnoughAmmo() && m_timer < 0f) {
 			m_timer = m_weaponDataSO.rof / 1000f;
 			Shoot();
 		}
 
-		if (!m_isIdle && !shootingInput && m_timer > 0f) {
+		if (!m_isIdle && !shootInput && m_timer > 0f) {
 			m_isIdle = true;
-			DisableLaser();
 			OnIdleStarted?.Invoke(this, EventArgs.Empty);
 		}
-		else if (m_isIdle && shootingInput && HasEnoughAmmo()) {
+		else if (m_isIdle && shootInput && HasEnoughAmmo()) {
 			m_isIdle = false;
-			EnableLaser();
 			OnIdleEnded?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
 	private void FixedUpdate() {
-		if (shootingInput && HasEnoughAmmo()) {
-			UpdateLaser();
+		if (shootInput && HasEnoughAmmo()) {
+			LaserUpdate();
 		}
 	}
 
@@ -85,6 +79,14 @@ public class LightningGun : Weapon, IHasAmmo {
 		OnShoot?.Invoke(this, EventArgs.Empty);
 	}
 
+	private void DisableLaser() {
+		m_lineRenderer.enabled = false;
+	}
+
+	private void EnableLaser() {
+		m_lineRenderer.enabled = true;
+	}
+
 	public override void SetAsCurrent() {
 		base.SetAsCurrent();
 		m_isIdle = true;
@@ -92,7 +94,7 @@ public class LightningGun : Weapon, IHasAmmo {
 	}
 
 	private bool HasEnoughAmmo() {
-		if (m_weaponDataSO.unlimitedAmmo) {
+		if (m_weaponDataSO.infiniteAmmo) {
 			return true;
 		}
 		return m_currentAmmo - 1 >= 0;

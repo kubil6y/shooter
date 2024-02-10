@@ -64,6 +64,10 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		m_stateMachine.currentState?.FixedUpdate();
 	}
 
+    public Transform GetWeaponHolderTransform() {
+		return weaponManager.GetWeaponHolderTransform();
+    }
+
 	public bool IsFacingRight() {
 		return flipController.IsFacingRight();
 	}
@@ -79,7 +83,6 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	public void SetCanGetHit(bool canGethit) {
 		m_canGetHit = canGethit;
 	}
-
 
 	public bool CanPickup() {
 		return m_canPickup;

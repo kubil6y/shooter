@@ -313,4 +313,8 @@ public class WeaponManager : MonoBehaviour {
 		Vector2 weaponToCursorDir = (mousePos - m_weaponHolderTf.position).normalized;
 		m_weaponHolderTf.right = weaponToCursorDir;
 	}
+
+    public Transform GetWeaponHolderTransform() {
+		return m_weaponHolderTf;
+    }
 }

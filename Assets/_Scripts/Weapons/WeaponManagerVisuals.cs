@@ -32,22 +32,14 @@ public class WeaponManagerVisuals : MonoBehaviour {
 		HandleWeaponRotationVisual();
 	}
 
-    public void ShowVisuals() {
+    public void ShowHands() {
 		m_leftHandSpriteRenderer.enabled = true;
 		m_rightHandSpriteRenderer.enabled = true;
-		if (!m_currentWeaponSpriteRenderer) {
-			return;
-		}
-		m_currentWeaponSpriteRenderer.enabled = true;
     }
 
-	public void HideVisuals() {
+	public void HideHands() {
 		m_leftHandSpriteRenderer.enabled = false;
 		m_rightHandSpriteRenderer.enabled = false;
-		if (!m_currentWeaponSpriteRenderer) {
-			return;
-		}
-		m_currentWeaponSpriteRenderer.enabled = false;
 	}
 
 	private void HandleWeaponRotationVisual() {

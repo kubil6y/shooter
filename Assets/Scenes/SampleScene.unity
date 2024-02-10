@@ -404,6 +404,7 @@ GameObject:
   - component: {fileID: 248003645}
   - component: {fileID: 248003646}
   - component: {fileID: 248003647}
+  - component: {fileID: 248003648}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -524,6 +525,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f089787e7341a1b2b93bbf4fbc0defdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &248003648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248003642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd188d2a6edb9bc269fb1778be606c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &294777321

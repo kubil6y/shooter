@@ -69,11 +69,13 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	public void ShowVisuals() {
-		m_weaponManagerVisuals.ShowVisuals();
+		GetCurrentWeapon()?.Show();
+		m_weaponManagerVisuals.ShowHands();
 	}
 
 	public void HideVisuals() {
-		m_weaponManagerVisuals.HideVisuals();
+		GetCurrentWeapon()?.Hide();
+		m_weaponManagerVisuals.HideHands();
 	}
 
 	private void HandleWeaponSwapTimer() {

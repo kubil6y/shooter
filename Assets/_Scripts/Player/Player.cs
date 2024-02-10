@@ -18,6 +18,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	public Health health { get; private set; }
 	public Movement movement { get; private set; }
 	public Knockback knockback { get; private set; }
+	public BlinkController blink { get; private set; }
 
 	private PlayerStateMachine m_stateMachine;
 
@@ -35,6 +36,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		movement = GetComponent<Movement>();
 		knockback = GetComponent<Knockback>();
 		animations = GetComponentInChildren<PlayerAnimations>();
+		blink = GetComponentInChildren<BlinkController>();
 	}
 
 	private void Start() {
@@ -57,18 +59,22 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		m_stateMachine.currentState?.FixedUpdate();
 	}
 
-    public Transform GetWeaponHolderTransform() {
-		return weaponManager.GetWeaponHolderTransform();
-    }
-
 	#region getters/setters
 	public bool IsAlive() {
 		return health.IsAlive();
 	}
 
+	public bool IsBlinking() {
+		return blink.IsBlinking();
+	}
+
 	public bool IsFacingRight() {
 		return flipController.IsFacingRight();
 	}
+
+    public Transform GetWeaponHolderTransform() {
+		return weaponManager.GetWeaponHolderTransform();
+    }
 
 	public float GetMoveSpeed() {
 		return m_moveSpeed;

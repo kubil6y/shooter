@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour {
@@ -8,12 +7,6 @@ public class PlayerAnimations : MonoBehaviour {
 
 	private Player m_player;
 	private Animator m_animator;
-
-	private SpriteRenderer m_spriteRenderer;
-	private bool m_isBlinking;
-	private int blinkCount = 9;
-	private float m_blinkInterval = .1f;
-	private Coroutine m_blinkCoroutine;
 
 	private readonly int ANIMKEY_IDLE = Animator.StringToHash("Idle");
 	private readonly int ANIMKEY_MOVE = Animator.StringToHash("Move");
@@ -24,31 +17,8 @@ public class PlayerAnimations : MonoBehaviour {
 	private void Awake() {
 		m_animator = GetComponent<Animator>();
 		m_player = GetComponentInParent<Player>();
-		m_spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
-	public void StartBlinkingRoutine() {
-		m_blinkCoroutine = StartCoroutine(BlinkRoutine());
-	}
-
-	public void StopBlinkingRoutine() {
-		if (m_blinkCoroutine != null) {
-			StopCoroutine(m_blinkCoroutine);
-		}
-	}
-
-	private IEnumerator BlinkRoutine() {
-		m_isBlinking = true;
-
-		for (int i = 0; i < blinkCount; i++) {
-			m_spriteRenderer.enabled = !m_spriteRenderer.enabled;
-			yield return new WaitForSeconds(m_blinkInterval);
-		}
-
-		// Ensure the sprite is visible when blinking ends
-		m_spriteRenderer.enabled = true;
-		m_isBlinking = false;
-	}
 
 	public void AnimDashStartFinishedTrigger() {
 		OnAnimDashStartFinished?.Invoke(this, EventArgs.Empty);

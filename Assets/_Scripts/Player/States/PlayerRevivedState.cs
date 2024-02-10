@@ -14,7 +14,7 @@ public class PlayerRevivedState : PlayerState {
         float revivedDuration = 1f;
         m_timer = revivedDuration;
 
-        player.animations.StartBlinkingRoutine();
+        player.blink.StartBlinkingRoutine();
         player.SetCanGetKnocked(false);
         player.SetCanGetHit(false);
         player.SetCanShoot(false);
@@ -26,7 +26,7 @@ public class PlayerRevivedState : PlayerState {
     public override void Exit() {
         base.Exit();
 
-        player.animations.StopBlinkingRoutine();
+        player.blink.StopBlinkingRoutine();
         player.SetCanGetKnocked(true);
         player.SetCanGetHit(true);
         player.SetCanShoot(true);

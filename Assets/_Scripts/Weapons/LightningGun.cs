@@ -33,15 +33,11 @@ public class LightningGun : Weapon, IHasAmmo {
 	}
 
 	private void DisableLaser() {
-		if (m_lineRenderer.enabled) {
-			m_lineRenderer.enabled = false;
-		}
+		m_lineRenderer.enabled = false;
 	}
 
 	private void EnableLaser() {
-		if (!m_lineRenderer.enabled) {
-			m_lineRenderer.enabled = true;
-		}
+		m_lineRenderer.enabled = true;
 	}
 
 	private void UpdateLaser() {
@@ -60,20 +56,20 @@ public class LightningGun : Weapon, IHasAmmo {
 	protected virtual void Update() {
 		m_timer -= Time.deltaTime;
 
-		if (!m_isIdle && m_timer > 0f && !shootingInput) {
-			m_isIdle = true;
-			OnIdleStarted?.Invoke(this, EventArgs.Empty);
-		}
-
 		if (shootingInput && HasEnoughAmmo() && m_timer < 0f) {
 			m_timer = m_weaponDataSO.rof / 1000f;
-
-			if (m_isIdle) {
-				m_isIdle = false;
-				OnIdleEnded?.Invoke(this, EventArgs.Empty);
-			}
-
 			Shoot();
+		}
+
+		if (!m_isIdle && !shootingInput && m_timer > 0f) {
+			m_isIdle = true;
+			DisableLaser();
+			OnIdleStarted?.Invoke(this, EventArgs.Empty);
+		}
+		else if (m_isIdle && shootingInput && HasEnoughAmmo()) {
+			m_isIdle = false;
+			EnableLaser();
+			OnIdleEnded?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
@@ -85,12 +81,7 @@ public class LightningGun : Weapon, IHasAmmo {
 
 
 	private void Shoot() {
-		// var hit = Physics2D.Raycast(m_attackRefTf.position, m_weaponHolderTf.right, m_weaponDataSO.range, m_laserLayerMask);
-
-		// if (hit.collider != null) {
-		// 	m_laserEndDistance = Vector2.Distance(hit.point, m_attackRefTf.position);
-		// }
-
+		Debug.Log("Shoot!");
 		OnShoot?.Invoke(this, EventArgs.Empty);
 	}
 
@@ -132,12 +123,12 @@ public class LightningGun : Weapon, IHasAmmo {
 
 	private void LightningGun_OnIdleStarted(object sender, EventArgs e) {
 		Debug.Log("LG:OnIdleStarted");
-		DisableLaser();
+		// DisableLaser();
 	}
 
 	private void LightningGun_OnIdleEnded(object sender, EventArgs e) {
 		Debug.Log("LG:OnIdleEnded");
-		EnableLaser();
+		// EnableLaser();
 	}
 
 	private void OnDrawGizmos() {

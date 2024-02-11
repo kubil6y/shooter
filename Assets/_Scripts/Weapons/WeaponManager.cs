@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 // NOTE: WeaponType manages index positions and size in the WeaponManager
+
 public enum WeaponType {
 	Chainsaw,
 	Pistol,
@@ -169,7 +170,7 @@ public class WeaponManager : MonoBehaviour {
 		return GetWeapon(m_currentWeaponIndex);
 	}
 
-	private bool TrySettingCurrentWeapon(WeaponType weaponType) {
+	public bool TrySettingCurrentWeapon(WeaponType weaponType) {
 		return TrySettingCurrentWeapon((int)weaponType);
 	}
 
@@ -186,6 +187,10 @@ public class WeaponManager : MonoBehaviour {
 
 		if (!GetWeapon(weaponIndex)) {
 			Debug.LogWarning($"Weapon does not exist! weaponIndex: '{weaponIndex}'");
+			return false;
+		}
+
+		if (GetCurrentWeapon()?.IsOnCooldown() == true) {
 			return false;
 		}
 

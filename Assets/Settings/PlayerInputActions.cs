@@ -62,6 +62,69 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Chainsaw"",
+                    ""type"": ""Button"",
+                    ""id"": ""052eadd0-209a-4aec-8bc2-32fa55f17f76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pistol"",
+                    ""type"": ""Button"",
+                    ""id"": ""3448f120-6389-49cb-a9fe-b6116244e515"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MachineGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""0bde1d21-9937-4265-bc19-b9958c195282"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightningGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""521962ed-279f-4839-9fb5-ecd325454900"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RailGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""7822aadf-94dd-4b3f-aa9a-f486ec67962a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shotgun"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e32c8f7-7e2c-4559-bf27-6b004bba42cb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RocketLauncher"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b45e693-8b96-49da-88e2-fd572bdace87"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -218,6 +281,83 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c543585b-462f-42f8-88ea-c66995ed6cf1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Chainsaw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b4f78cd-5560-47a0-b19e-98fde8b5ffb0"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pistol"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23b62ae7-a65a-4d25-aba5-145ee2bbb0f4"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MachineGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6643e5ea-bd44-487e-9cd3-298018dcfb04"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightningGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57c9018a-cdc0-43c7-a67f-857721aa91ba"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RailGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7861aa0-31c9-4629-a2a2-15ae1f93955a"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shotgun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77f7aee0-038c-4770-9b66-772d995b81ef"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RocketLauncher"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +370,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_SwapWeapons = m_Player.FindAction("SwapWeapons", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Chainsaw = m_Player.FindAction("Chainsaw", throwIfNotFound: true);
+        m_Player_Pistol = m_Player.FindAction("Pistol", throwIfNotFound: true);
+        m_Player_MachineGun = m_Player.FindAction("MachineGun", throwIfNotFound: true);
+        m_Player_LightningGun = m_Player.FindAction("LightningGun", throwIfNotFound: true);
+        m_Player_RailGun = m_Player.FindAction("RailGun", throwIfNotFound: true);
+        m_Player_Shotgun = m_Player.FindAction("Shotgun", throwIfNotFound: true);
+        m_Player_RocketLauncher = m_Player.FindAction("RocketLauncher", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,6 +442,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_SwapWeapons;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_Chainsaw;
+    private readonly InputAction m_Player_Pistol;
+    private readonly InputAction m_Player_MachineGun;
+    private readonly InputAction m_Player_LightningGun;
+    private readonly InputAction m_Player_RailGun;
+    private readonly InputAction m_Player_Shotgun;
+    private readonly InputAction m_Player_RocketLauncher;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -303,6 +457,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @SwapWeapons => m_Wrapper.m_Player_SwapWeapons;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @Chainsaw => m_Wrapper.m_Player_Chainsaw;
+        public InputAction @Pistol => m_Wrapper.m_Player_Pistol;
+        public InputAction @MachineGun => m_Wrapper.m_Player_MachineGun;
+        public InputAction @LightningGun => m_Wrapper.m_Player_LightningGun;
+        public InputAction @RailGun => m_Wrapper.m_Player_RailGun;
+        public InputAction @Shotgun => m_Wrapper.m_Player_Shotgun;
+        public InputAction @RocketLauncher => m_Wrapper.m_Player_RocketLauncher;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -324,6 +485,27 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
+            @Chainsaw.started += instance.OnChainsaw;
+            @Chainsaw.performed += instance.OnChainsaw;
+            @Chainsaw.canceled += instance.OnChainsaw;
+            @Pistol.started += instance.OnPistol;
+            @Pistol.performed += instance.OnPistol;
+            @Pistol.canceled += instance.OnPistol;
+            @MachineGun.started += instance.OnMachineGun;
+            @MachineGun.performed += instance.OnMachineGun;
+            @MachineGun.canceled += instance.OnMachineGun;
+            @LightningGun.started += instance.OnLightningGun;
+            @LightningGun.performed += instance.OnLightningGun;
+            @LightningGun.canceled += instance.OnLightningGun;
+            @RailGun.started += instance.OnRailGun;
+            @RailGun.performed += instance.OnRailGun;
+            @RailGun.canceled += instance.OnRailGun;
+            @Shotgun.started += instance.OnShotgun;
+            @Shotgun.performed += instance.OnShotgun;
+            @Shotgun.canceled += instance.OnShotgun;
+            @RocketLauncher.started += instance.OnRocketLauncher;
+            @RocketLauncher.performed += instance.OnRocketLauncher;
+            @RocketLauncher.canceled += instance.OnRocketLauncher;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -340,6 +522,27 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
+            @Chainsaw.started -= instance.OnChainsaw;
+            @Chainsaw.performed -= instance.OnChainsaw;
+            @Chainsaw.canceled -= instance.OnChainsaw;
+            @Pistol.started -= instance.OnPistol;
+            @Pistol.performed -= instance.OnPistol;
+            @Pistol.canceled -= instance.OnPistol;
+            @MachineGun.started -= instance.OnMachineGun;
+            @MachineGun.performed -= instance.OnMachineGun;
+            @MachineGun.canceled -= instance.OnMachineGun;
+            @LightningGun.started -= instance.OnLightningGun;
+            @LightningGun.performed -= instance.OnLightningGun;
+            @LightningGun.canceled -= instance.OnLightningGun;
+            @RailGun.started -= instance.OnRailGun;
+            @RailGun.performed -= instance.OnRailGun;
+            @RailGun.canceled -= instance.OnRailGun;
+            @Shotgun.started -= instance.OnShotgun;
+            @Shotgun.performed -= instance.OnShotgun;
+            @Shotgun.canceled -= instance.OnShotgun;
+            @RocketLauncher.started -= instance.OnRocketLauncher;
+            @RocketLauncher.performed -= instance.OnRocketLauncher;
+            @RocketLauncher.canceled -= instance.OnRocketLauncher;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -363,5 +566,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnSwapWeapons(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnChainsaw(InputAction.CallbackContext context);
+        void OnPistol(InputAction.CallbackContext context);
+        void OnMachineGun(InputAction.CallbackContext context);
+        void OnLightningGun(InputAction.CallbackContext context);
+        void OnRailGun(InputAction.CallbackContext context);
+        void OnShotgun(InputAction.CallbackContext context);
+        void OnRocketLauncher(InputAction.CallbackContext context);
     }
 }

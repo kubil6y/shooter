@@ -31,6 +31,36 @@ public class GameInput : Singleton<GameInput> {
 		return m_playerInputActions.Player.Fire.WasReleasedThisFrame();
 	}
 
+	#region weapons
+	public bool ChainsawPressed() {
+		return m_playerInputActions.Player.Chainsaw.WasPressedThisFrame();
+	}
+
+	public bool PistolPressed() {
+		return m_playerInputActions.Player.Pistol.WasPressedThisFrame();
+	}
+
+	public bool MachineGunPressed() {
+		return m_playerInputActions.Player.MachineGun.WasPressedThisFrame();
+	}
+
+	public bool LightningGunPressed() {
+		return m_playerInputActions.Player.LightningGun.WasPressedThisFrame();
+	}
+
+	public bool RailGunPressed() {
+		return m_playerInputActions.Player.RailGun.WasPressedThisFrame();
+	}
+
+	public bool ShotgunPressed() {
+		return m_playerInputActions.Player.Shotgun.WasPressedThisFrame();
+	}
+
+	public bool RocketLauncherPressed() {
+		return m_playerInputActions.Player.RocketLauncher.WasPressedThisFrame();
+	}
+	#endregion // weapons
+
 	public Vector2 GetMoveInputNormalized() {
 		return m_playerInputActions.Player.Move.ReadValue<Vector2>();
 	}

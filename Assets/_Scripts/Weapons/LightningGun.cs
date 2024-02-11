@@ -124,7 +124,6 @@ public class LightningGun : Weapon, IHasAmmo {
 	}
 
 	private void Shoot() {
-		// TODO: implement this for all of humanity
 		Debug.Log("Shoot()");
 	}
 

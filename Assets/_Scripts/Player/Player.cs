@@ -53,7 +53,6 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 			m_stateMachine.SetState(PState.Dash);
 		}
 		m_stateMachine.currentState?.Update();
-		// Debug.Log(m_stateMachine.GetCurrentStateKey()); TODO remove
 	}
 
 	private void FixedUpdate() {
@@ -181,7 +180,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	}
 
 	public void TakeHit() {
-		// TODO
+		// TODO take hit
 	}
 
 	public void GetKnocked(Vector3 hitDirection, float knockbackThrust, float knockbackDuration) {

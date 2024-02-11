@@ -8,7 +8,6 @@ public enum WeaponType {
 	MachineGun,
 	LightningGun,
 	RailGun,
-	NailGun,
 	Shotgun,
 	RocketLauncher,
 	__LENGTH,

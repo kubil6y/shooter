@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63763f17cf89ed8968f847cd740eea82, type: 3}
-  m_Name: RocketLaunchePickup
+  m_Name: MachineGunPickup
   m_EditorClassIdentifier: 
-  pickupName: Rocket Launcher Pickup
-  icon: {fileID: 21300000, guid: 1a08af2a771c92785bccf9a4a0ae3039, type: 3}
-  weaponDataSO: {fileID: 11400000, guid: 5ada7e1ecee606a618ca393b75b9ab54, type: 2}
+  pickupName: Machine Gun Pickup
+  icon: {fileID: 21300000, guid: ed8c5b5acb2d1b784bf01e5411298c4f, type: 3}
+  weaponDataSO: {fileID: 11400000, guid: fceb0b4cd49c3b6418c0a1332b3768b8, type: 2}

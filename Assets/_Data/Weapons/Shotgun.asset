@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7b3eb6192accc1e3817abcc7405f76a, type: 3}
-  m_Name: Pistol
+  m_Name: Shotgun
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  weaponType: 1
-  weaponPrefab: {fileID: 752956093444323179, guid: 8004a993d08500b5c855b2b8728ded0a, type: 3}
+  weaponName: Shotgun
+  weaponType: 6
+  weaponPrefab: {fileID: 752956093444323179, guid: 398e40c2fad039dd49d9a8de48872f1d, type: 3}
   projectilePrefab: {fileID: 2411224934712565643, guid: 17aa93ed16e2500afb92b86864d82ff6, type: 3}
   projectileSpeed: 10
   projectileDamage: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   rof: 200
   singleFire: 1
   unlimitedAmmo: 0
-  spreadAngle: 0
-  ammoUsage: 1
-  startingAmmo: 5
+  spreadAngle: 7.3
+  ammoUsage: 3
+  startingAmmo: 20
   maxAmmo: 500

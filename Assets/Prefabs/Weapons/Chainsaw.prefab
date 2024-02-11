@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5314166668899855511}
-  - component: {fileID: 7325040785596444604}
+  - component: {fileID: 6507848695055346887}
   m_Layer: 0
   m_Name: Chainsaw
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 5103328320133425071}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7325040785596444604
+--- !u!114 &6507848695055346887
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rof: 200
-  m_attackRefTf: {fileID: 5103328320133425071}
-  m_attackRadius: 0.75
 --- !u!1 &3670073937819303208
 GameObject:
   m_ObjectHideFlags: 0

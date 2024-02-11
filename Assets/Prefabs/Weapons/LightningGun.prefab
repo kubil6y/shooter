@@ -4841,7 +4841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5314166668899855511}
-  - component: {fileID: 713372874320992287}
+  - component: {fileID: 4323232883095786947}
   m_Layer: 0
   m_Name: LightningGun
   m_TagString: Untagged
@@ -4870,7 +4870,7 @@ Transform:
   - {fileID: 3317041252096808853}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &713372874320992287
+--- !u!114 &4323232883095786947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4879,13 +4879,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063073687653241774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aded0a805b2cde2e8ede7fa8a956f60, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ef7fbbc1635304e2b57a0be51466b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_weaponDataSO: {fileID: 11400000, guid: 19a09435270d94bf9bed2ab75056c9a5, type: 2}
   m_attackRefTf: {fileID: 5103328320133425071}
   m_lineRenderer: {fileID: 6339893118172529657}
-  m_startFX: {fileID: 3911229358781390632}
   m_endFX: {fileID: 3810958235564454616}
   m_laserLayerMask:
     serializedVersion: 2

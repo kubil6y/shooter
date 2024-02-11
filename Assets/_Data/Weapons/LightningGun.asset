@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Lightning Gun
   weaponType: 3
-  weaponPrefab: {fileID: 713372874320992287, guid: ac78b25614ddd24f29bc139137df5ea6, type: 3}
+  weaponPrefab: {fileID: 4323232883095786947, guid: ac78b25614ddd24f29bc139137df5ea6, type: 3}
   damagePerTick: 10
   rof: 100
   range: 4

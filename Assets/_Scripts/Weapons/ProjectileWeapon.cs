@@ -5,8 +5,7 @@ using UnityEngine.Pool;
 public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	public event EventHandler OnShoot;
 	public event EventHandler OnAmmoChanged;
-	public event EventHandler OnIdleStarted;
-	public event EventHandler OnIdleEnded;
+	public event EventHandler OnOutOfAmmo;
 
 	[SerializeField] private ProjectileWeaponDataSO m_weaponDataSO;
 	[SerializeField] private Transform m_muzzleTf;
@@ -15,31 +14,15 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	private ObjectPool<Projectile> m_projectilePool;
 
 	private int m_currentAmmo;
-	private bool m_isIdle;
 	private float m_timer;
 
 	private void Awake() {
 		CreateProjectilePool();
-
-		// TODO remove these later.
-		OnIdleStarted += ProjectileWeapon_OnIdleStarted;
-		OnIdleEnded += ProjectileWeapon_OnIdleEnded;
 	}
 
 	protected virtual void Update() {
-		if (!m_isIdle && m_timer > 0f && !shootInput) {
-			m_isIdle = true;
-			OnIdleStarted?.Invoke(this, EventArgs.Empty);
-		}
 		HandleShooting();
 	}
-
-	public override void SetAsCurrent() {
-		base.SetAsCurrent();
-		m_isIdle = true;
-		OnIdleStarted?.Invoke(this, EventArgs.Empty);
-	}
-
 
 	private void HandleShooting() {
 		m_timer -= Time.deltaTime;
@@ -49,14 +32,13 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 
 			Shoot();
 
-			if (m_isIdle) {
-				m_isIdle = false;
-				OnIdleEnded?.Invoke(this, EventArgs.Empty);
-			}
-
 			if (m_weaponDataSO.singleFire) {
 				shootInput = false;
 			}
+		} else if (shootInput && !HasEnoughAmmo() && m_timer < 0f) {
+			m_timer = .5f;
+			shootInput = false;
+			OnOutOfAmmo?.Invoke(this, EventArgs.Empty);
 		}
 
 	}
@@ -164,13 +146,5 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 			false,
 			m_weaponDataSO.poolSize,
 			m_weaponDataSO.poolSize * 2);
-	}
-
-	private void ProjectileWeapon_OnIdleStarted(object sender, EventArgs e) {
-		Debug.Log(gameObject.name + ":OnIdleStarted()");
-	}
-
-	private void ProjectileWeapon_OnIdleEnded(object sender, EventArgs e) {
-		Debug.Log(gameObject.name + ":OnIdleEnded()");
 	}
 }

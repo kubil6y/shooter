@@ -114,9 +114,9 @@ public class WeaponManager : MonoBehaviour {
 				return i;
 			}
 		}
-		for (int j = 0; j < m_currentWeaponIndex; j++) {
-			if (GetWeapon(j)) {
-				return j;
+		for (int i = 0; i < m_currentWeaponIndex; i++) {
+			if (GetWeapon(i)) {
+				return i;
 			}
 		}
 		return m_currentWeaponIndex;
@@ -128,9 +128,9 @@ public class WeaponManager : MonoBehaviour {
 				return i;
 			}
 		}
-		for (int j = m_weaponArray.Length - 1; j > m_currentWeaponIndex; j--) {
-			if (GetWeapon(j)) {
-				return j;
+		for (int i = m_weaponArray.Length - 1; i > m_currentWeaponIndex; i--) {
+			if (GetWeapon(i)) {
+				return i;
 			}
 		}
 		return m_currentWeaponIndex;
@@ -316,7 +316,7 @@ public class WeaponManager : MonoBehaviour {
 		m_weaponHolderTf.right = weaponToCursorDir;
 	}
 
-    public Transform GetWeaponHolderTransform() {
+	public Transform GetWeaponHolderTransform() {
 		return m_weaponHolderTf;
-    }
+	}
 }

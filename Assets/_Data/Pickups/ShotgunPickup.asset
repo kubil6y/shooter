@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a79c911cd3a28bb82be71b592fab32, type: 3}
-  m_Name: Chainsaw
+  m_Script: {fileID: 11500000, guid: 63763f17cf89ed8968f847cd740eea82, type: 3}
+  m_Name: ShotgunPickup
   m_EditorClassIdentifier: 
-  weaponName: Chainsaw
-  weaponType: 0
-  weaponPrefab: {fileID: 6507848695055346887, guid: 81df103edf2bf9fd3a8ae208ad571d83, type: 3}
+  pickupName: Shotgun Pickup
+  icon: {fileID: 21300000, guid: 8e677c35b2462d3bda1f60ca91ff684f, type: 3}
+  weaponDataSO: {fileID: 11400000, guid: ca315fbe3dd519855b4733b4f486fab2, type: 2}

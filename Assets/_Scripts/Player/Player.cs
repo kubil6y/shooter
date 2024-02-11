@@ -53,6 +53,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 			m_stateMachine.SetState(PState.Dash);
 		}
 		m_stateMachine.currentState?.Update();
+		// Debug.Log(m_stateMachine.GetCurrentStateKey()); TODO remove
 	}
 
 	private void FixedUpdate() {

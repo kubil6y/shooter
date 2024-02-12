@@ -1,4 +1,5 @@
-- [] add numbers input for weapon system
+- [] cinemachine confiner
+- add screen shake
 
 ---
 

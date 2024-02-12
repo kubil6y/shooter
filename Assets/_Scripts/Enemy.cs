@@ -17,13 +17,12 @@ public class Enemy : MonoBehaviour, IDamageable {
 	}
 
     private void Update() {
-		// FollowPlayer();
-		Debug.Log(m_health.GetCurrentHealth() + " " + m_health.GetCurrentArmor());
+		FollowPlayer();
 	}
 
-	// private void FixedUpdate() {
-	// 	m_movement.SetVelocity(m_moveSpeed * m_moveDirection);
-	// }
+	private void FixedUpdate() {
+		m_movement.SetVelocity(m_moveSpeed * m_moveDirection);
+	}
 
 	private void FollowPlayer() {
 		m_moveDirection = (Player.instance.transform.position - transform.position).normalized;

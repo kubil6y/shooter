@@ -87,4 +87,8 @@ public class Chainsaw : Weapon {
 	private void Chainsaw_OnIdleEnded(object sender, EventArgs e) {
 		Debug.Log("Chainsaw_OnIdleEnded()");
 	}
+
+    public override bool CanBeUsed() {
+		return true;
+    }
 }

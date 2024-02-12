@@ -5,6 +5,7 @@ public abstract class Weapon : MonoBehaviour {
 
 	public abstract bool IsOnCooldown();
 	public abstract WeaponType GetWeaponType();
+	public abstract bool CanBeUsed();
 
 	public virtual void SetAsCurrent() {
 	}

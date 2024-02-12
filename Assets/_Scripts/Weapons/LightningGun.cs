@@ -160,22 +160,26 @@ public class LightningGun : Weapon, IHasAmmo {
 	}
 
 	private void LGScript_OnShootStarted(object sender, EventArgs e) {
-		Debug.Log("LGScript_OnShootStarted()");
+		// Debug.Log("LGScript_OnShootStarted()");
 	}
 
 	private void LGScript_OnShootEnded(object sender, EventArgs e) {
-		Debug.Log("LGScript_OnShootEnded()");
+		// Debug.Log("LGScript_OnShootEnded()");
 	}
 
 	private void LGScript_OnIdleStarted(object sender, EventArgs e) {
-		Debug.Log("LGScript_OnIdleStarted()");
+		// Debug.Log("LGScript_OnIdleStarted()");
 	}
 
 	private void LGScript_OnIdleEnded(object sender, EventArgs e) {
-		Debug.Log("LGScript_OnIdleEnded()");
+		// Debug.Log("LGScript_OnIdleEnded()");
 	}
 
 	private void LGScript_OnOutOfAmmo(object sender, EventArgs e) {
-		Debug.Log("LGScript_OnOutOfAmmo()");
+		// Debug.Log("LGScript_OnOutOfAmmo()");
 	}
+
+    public override bool CanBeUsed() {
+		return HasEnoughAmmo();
+    }
 }

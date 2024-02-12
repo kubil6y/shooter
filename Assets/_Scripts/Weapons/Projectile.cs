@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
 	private Vector2 m_fireDirection;
 	private int m_damage;
 	private float m_lifetimer;
+	public float m_knockbackThrust;
+	public float m_knockbackDuration;
 	private LayerMask m_targetLayerMask;
 
 	// TODO: requires knockback settings...
@@ -18,6 +20,8 @@ public class Projectile : MonoBehaviour {
 		public int damage;
 		public float lifetime;
 		public LayerMask targetLayerMask;
+		public float knockbackThrust;
+		public float knockbackDuration;
 	}
 
 	private void Awake() {
@@ -32,6 +36,8 @@ public class Projectile : MonoBehaviour {
 		m_damage = args.damage;
 		m_lifetimer = args.lifetime;
 		m_targetLayerMask = args.targetLayerMask;
+		m_knockbackThrust = args.knockbackThrust;
+		m_knockbackDuration = args.knockbackDuration;
 	}
 
 	private void Update() {
@@ -58,7 +64,7 @@ public class Projectile : MonoBehaviour {
 
 		// TODO projectile settings should include this
 		IKnockable knockable = other.GetComponent<IKnockable>();
-		knockable?.GetKnocked(transform.position, 0f, 0f);
+		knockable?.GetKnocked(transform.position, m_knockbackThrust, m_knockbackDuration);
 
 		m_projectileWeapon.ReleaseProjectileFromPool(this);
 	}

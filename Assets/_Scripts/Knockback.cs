@@ -30,6 +30,9 @@ public class Knockback : MonoBehaviour {
 		if (!CanGetKnocked()) {
 			return;
 		}
+		if (knockbackThrust == 0) {
+			return;
+		}
 
 		m_hitDirection = hitDirection;
 		m_knockbackThrust = knockbackThrust;

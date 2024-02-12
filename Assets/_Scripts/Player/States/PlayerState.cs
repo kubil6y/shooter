@@ -17,7 +17,7 @@ public abstract class PlayerState {
 		player.health.OnDeath += Player_OnDeath;
 	}
 
-    public virtual void DisconnectFromPlayerChannel() {
+	public virtual void DisconnectFromPlayerChannel() {
 		player.health.OnDeath -= Player_OnDeath;
 	}
 
@@ -29,19 +29,14 @@ public abstract class PlayerState {
 		// Debug.Log(GetType().Name + ":Exit()");
 	}
 
-	public virtual void Update() {
-		if (Input.GetKeyDown(KeyCode.T)) {
-			player.transform.position = Vector2.zero;
-		}
-	}
-
+	public virtual void Update() { }
 	public virtual void FixedUpdate() { }
 
 	public bool IsInThisState() {
 		return stateMachine.GetCurrentStateKey() == stateKey;
 	}
 
-    private void Player_OnDeath(object sender, EventArgs e) {
+	private void Player_OnDeath(object sender, EventArgs e) {
 		stateMachine.SetState(PState.Death);
-    }
+	}
 }

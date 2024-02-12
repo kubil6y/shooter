@@ -18,8 +18,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2411224934712565643, guid: 17aa93ed16e2500afb92b86864d82ff6, type: 3}
   projectileSpeed: 20
   projectileDamage: 10
-  knockbackThrust: 2
-  knockbackDuration: 0.5
+  knockbackThrust: 10
+  knockbackDuration: 0.05
   poolSize: 20
   rof: 200
   singleFire: 0

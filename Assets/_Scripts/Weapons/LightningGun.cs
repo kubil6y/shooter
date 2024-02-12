@@ -109,7 +109,7 @@ public class LightningGun : Weapon, IHasAmmo {
 			}
 
 			if (hit.collider.TryGetComponent<IKnockable>(out IKnockable knockable)) {
-				knockable.GetKnocked(hit.point, m_weaponDataSO.knockbackThrust, m_weaponDataSO.knockbackDuration);
+				knockable.GetKnocked(Player.instance.transform.position, m_weaponDataSO.knockbackThrust, m_weaponDataSO.knockbackDuration);
 			}
 
 			m_laserEndDistance = Vector2.Distance(hit.point, m_attackRefTf.position);

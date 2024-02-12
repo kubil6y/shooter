@@ -1,15 +1,7 @@
-- [] cinemachine confiner
-- add screen shake
+- [] projectile needs knockback settings
 
 ---
 
-- [] handle has quad
-- [] weapon sort order etc.
-- [] create the map
-- [] game feel things should be added
-- [] learn ai stuff and add wave system
-- [] add enemies
-- [] ui/polish
-
-- player needs a movement class for knockback otherwise i have to do isKnocked checks everywhere!
-- projectile needs knockback settings
+- [] cinemachine confiner
+- [] accuracy system. weapon needs to pass player and it requires if it is hit or not.
+  push to an array and if its not hit 0, then calculate accuracy from total shots?

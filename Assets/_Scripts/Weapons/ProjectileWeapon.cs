@@ -69,6 +69,8 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 				moveSpeed = m_weaponDataSO.projectileSpeed,
 				damage = m_weaponDataSO.projectileDamage,
 				lifetime = 3f,
+				knockbackThrust = m_weaponDataSO.knockbackThrust,
+				knockbackDuration = m_weaponDataSO.knockbackDuration,
 				targetLayerMask = m_enemyLayerMask,
 			};
 

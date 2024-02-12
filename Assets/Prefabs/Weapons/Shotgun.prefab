@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5314166668899855511}
   - component: {fileID: 752956093444323179}
+  - component: {fileID: 8782654526754342761}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -48,6 +49,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_weaponDataSO: {fileID: 11400000, guid: ca315fbe3dd519855b4733b4f486fab2, type: 2}
   m_muzzleTf: {fileID: 5103328320133425071}
+--- !u!114 &8782654526754342761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063073687653241774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dce1368d387a3bdaa65a8cde3eaa417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3814993943469598642
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +189,7 @@ Animator:
   m_GameObject: {fileID: 8170443464922380995}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 493d10ecab205258ba71c107651e3f36, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -4888,7 +4888,7 @@ MonoBehaviour:
   m_endFX: {fileID: 3810958235564454616}
   m_laserLayerMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 1408
 --- !u!1 &2549452456352513640
 GameObject:
   m_ObjectHideFlags: 0

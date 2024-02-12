@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour {
 	private Vector2 m_fireDirection;
 	private int m_damage;
 	private float m_lifetimer;
+	private LayerMask m_targetLayerMask;
 
 	// TODO: requires knockback settings...
 	public class ProjectileSetupArgs {
@@ -16,6 +17,7 @@ public class Projectile : MonoBehaviour {
 		public float moveSpeed;
 		public int damage;
 		public float lifetime;
+		public LayerMask targetLayerMask;
 	}
 
 	private void Awake() {
@@ -29,6 +31,7 @@ public class Projectile : MonoBehaviour {
 		m_moveSpeed = args.moveSpeed;
 		m_damage = args.damage;
 		m_lifetimer = args.lifetime;
+		m_targetLayerMask = args.targetLayerMask;
 	}
 
 	private void Update() {
@@ -43,6 +46,10 @@ public class Projectile : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
+		// if (((1 << other.gameObject.layer) & m_targetLayerMask) == 0) {
+		// 	return;
+		// }
+
 		IHittable hittable = other.GetComponent<IHittable>();
 		hittable?.TakeHit();
 

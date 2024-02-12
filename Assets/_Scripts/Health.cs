@@ -29,6 +29,14 @@ public class Health : MonoBehaviour {
 		return m_currentHealth > 0;
 	}
 
+	public int GetCurrentHealth() {
+		return m_currentHealth;
+	}
+
+	public int GetCurrentArmor() {
+		return m_currentArmor;
+	}
+
 	// NOTE: Quake3 applies 2/3 of total damage to armor,
 	// then the rest is taken off from health
 	public void TakeDamage(int damageAmount) {
@@ -58,8 +66,6 @@ public class Health : MonoBehaviour {
 				Debug.LogError("This should not happen");
 			}
 			m_currentArmor = 0;
-
-			// remainingDamage -= currentArmorBearDamage;
 			remainingDamage = Mathf.Clamp(remainingDamage - currentArmorBearDamage, 0, remainingDamage);
 			m_currentHealth = Mathf.Clamp(m_currentHealth - remainingDamage, 0, m_maxHealth);
 		}

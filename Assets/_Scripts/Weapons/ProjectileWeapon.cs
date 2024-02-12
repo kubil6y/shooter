@@ -9,6 +9,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 
 	[SerializeField] private ProjectileWeaponDataSO m_weaponDataSO;
 	[SerializeField] private Transform m_muzzleTf;
+	private LayerMask m_enemyLayerMask;
 
 	private Transform m_projectileObjectPoolParentTf;
 	private ObjectPool<Projectile> m_projectilePool;
@@ -17,6 +18,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	private float m_timer;
 
 	private void Awake() {
+		m_enemyLayerMask = LayerMask.GetMask("Enemy");
 		CreateProjectilePool();
 	}
 
@@ -35,7 +37,8 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 			if (m_weaponDataSO.singleFire) {
 				shootInput = false;
 			}
-		} else if (shootInput && !HasEnoughAmmo() && m_timer < 0f) {
+		}
+		else if (shootInput && !HasEnoughAmmo() && m_timer < 0f) {
 			m_timer = .5f;
 			shootInput = false;
 			OnOutOfAmmo?.Invoke(this, EventArgs.Empty);
@@ -66,6 +69,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 				moveSpeed = m_weaponDataSO.projectileSpeed,
 				damage = m_weaponDataSO.projectileDamage,
 				lifetime = 3f,
+				targetLayerMask = m_enemyLayerMask,
 			};
 
 			newProjectile.Setup(projectileSetupArgs);

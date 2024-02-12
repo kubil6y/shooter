@@ -104,14 +104,6 @@ public class LightningGun : Weapon, IHasAmmo {
 
 		RaycastHit2D hit = Physics2D.Raycast(m_attackRefTf.position, m_weaponHolderTf.right, m_weaponDataSO.range, m_laserLayerMask);
 		if (hit.collider != null) {
-			if (hit.collider.TryGetComponent<IHittable>(out IHittable hittable)) {
-				hittable.TakeHit();
-			}
-
-			if (hit.collider.TryGetComponent<IKnockable>(out IKnockable knockable)) {
-				knockable.GetKnocked(Player.instance.transform.position, m_weaponDataSO.knockbackThrust, m_weaponDataSO.knockbackDuration);
-			}
-
 			m_laserEndDistance = Vector2.Distance(hit.point, m_attackRefTf.position);
 			m_endFX.SetActive(true);
 			m_endFX.transform.position = hit.point;
@@ -124,7 +116,13 @@ public class LightningGun : Weapon, IHasAmmo {
 	}
 
 	private void Shoot() {
-		Debug.Log("Shoot()");
+		RaycastHit2D hit = Physics2D.Raycast(m_attackRefTf.position, m_weaponHolderTf.right, m_weaponDataSO.range, m_laserLayerMask);
+		if (hit.collider != null) {
+			float hitDuration = .05f;
+			hit.collider.GetComponent<IHittable>()?.TakeHit(hitDuration);
+			hit.collider.GetComponent<IDamageable>()?.TakeDamage(m_weaponDataSO.damagePerTick);
+			hit.collider.GetComponent<IKnockable>()?.GetKnocked(Player.instance.transform.position, m_weaponDataSO.knockbackThrust, m_weaponDataSO.knockbackDuration);
+		}
 	}
 
 	private bool HasEnoughAmmo() {
@@ -179,7 +177,7 @@ public class LightningGun : Weapon, IHasAmmo {
 		// Debug.Log("LGScript_OnOutOfAmmo()");
 	}
 
-    public override bool CanBeUsed() {
+	public override bool CanBeUsed() {
 		return HasEnoughAmmo();
-    }
+	}
 }

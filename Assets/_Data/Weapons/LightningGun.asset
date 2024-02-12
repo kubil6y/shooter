@@ -17,9 +17,9 @@ MonoBehaviour:
   weaponPrefab: {fileID: 4323232883095786947, guid: ac78b25614ddd24f29bc139137df5ea6, type: 3}
   damagePerTick: 10
   rof: 100
-  range: 4
+  range: 6
   infiniteAmmo: 1
   startingAmmo: 25
   maxAmmo: 250
-  knockbackThrust: 0.1
-  knockbackDuration: 0.01
+  knockbackThrust: 1
+  knockbackDuration: 0.1

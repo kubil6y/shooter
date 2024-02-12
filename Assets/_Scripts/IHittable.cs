@@ -1,3 +1,3 @@
 public interface IHittable {
-	public void TakeHit();
+	public void TakeHit(float hitDuration);
 }

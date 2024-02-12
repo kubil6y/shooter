@@ -169,6 +169,10 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		}
 	}
 
+    public void TakeHit(float hitDuration) {
+		// TODO take hit
+    }
+
 	public void TakeDamage(int damageAmount) {
 		if (!IsAlive()) {
 			return;
@@ -177,10 +181,6 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 			return;
 		}
 		health.TakeDamage(damageAmount);
-	}
-
-	public void TakeHit() {
-		// TODO take hit
 	}
 
 	public void GetKnocked(Vector3 hitDirection, float knockbackThrust, float knockbackDuration) {

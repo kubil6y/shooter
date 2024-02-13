@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	public event EventHandler<float> OnHit;
+	public static event EventHandler OnAnyDeath;
 
 	[SerializeField] private float m_moveSpeed;
 

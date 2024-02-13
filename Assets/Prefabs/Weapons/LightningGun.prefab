@@ -4842,6 +4842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5314166668899855511}
   - component: {fileID: 4323232883095786947}
+  - component: {fileID: 5660547824105759372}
   m_Layer: 0
   m_Name: LightningGun
   m_TagString: Untagged
@@ -4889,6 +4890,22 @@ MonoBehaviour:
   m_laserLayerMask:
     serializedVersion: 2
     m_Bits: 1408
+--- !u!114 &5660547824105759372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063073687653241774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda40e5421f1275c09a748e0204b764f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lightningGun: {fileID: 4323232883095786947}
+  m_idleClip: {fileID: 8300000, guid: 9622e2549a04450a39e79fdf9cc0f164, type: 3}
+  m_shootStartedClip: {fileID: 8300000, guid: 0a464d95564a1a367b4be08846a0a2b3, type: 3}
+  m_shootingClip: {fileID: 8300000, guid: 76f440b5b7c5ca85eb8a106eaa862d02, type: 3}
 --- !u!1 &2549452456352513640
 GameObject:
   m_ObjectHideFlags: 0

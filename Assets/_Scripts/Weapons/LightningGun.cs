@@ -166,7 +166,7 @@ public class LightningGun : Weapon, IHasAmmo {
 	}
 
 	private void LGScript_OnIdleStarted(object sender, EventArgs e) {
-		// Debug.Log("LGScript_OnIdleStarted()");
+		Debug.Log("LGScript_OnIdleStarted()");
 	}
 
 	private void LGScript_OnIdleEnded(object sender, EventArgs e) {

@@ -1,4 +1,6 @@
-- [] projectile needs knockback settings
+- [] arrange weapon visuals
+- [] audio manager
+- [] weapon projectiles
 
 ---
 

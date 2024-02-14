@@ -1,6 +1,9 @@
-- [] postprocessing settings
 - [] weapon projectiles
+  - railgun projectile should go through
+  - rocket launcher jetpack effect + radius explosion damage (+effect)
+
 - [] audio manager
+- [] add map
 
 ---
 

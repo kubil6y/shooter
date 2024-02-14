@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
@@ -7,9 +9,13 @@ public class Projectile : MonoBehaviour {
 	private Vector2 m_fireDirection;
 	private int m_damage;
 	private float m_lifetimer;
-	public float m_knockbackThrust;
-	public float m_knockbackDuration;
+	private float m_knockbackThrust;
+	private float m_knockbackDuration;
+	private bool m_canGoThrough;
+	private int m_projectileGoThroughCount;
 	private LayerMask m_targetLayerMask;
+
+	private List<int> m_wentThroughEnemies; // needs to be reset on object pool
 
 	// TODO: requires knockback settings...
 	public class ProjectileSetupArgs {
@@ -22,13 +28,17 @@ public class Projectile : MonoBehaviour {
 		public LayerMask targetLayerMask;
 		public float knockbackThrust;
 		public float knockbackDuration;
+		public bool projectileCanGoThrough;
+		public int projectileGoThroughCount;
 	}
 
 	private void Awake() {
 		m_rb = GetComponent<Rigidbody2D>();
+		m_wentThroughEnemies = new List<int>();
 	}
 
 	public void Setup(ProjectileSetupArgs args) {
+		m_wentThroughEnemies.Clear();
 		m_projectileWeapon = args.projectileWeapon;
 		transform.position = args.spawnTf.position;
 		m_fireDirection = args.fireDirection;
@@ -38,6 +48,8 @@ public class Projectile : MonoBehaviour {
 		m_targetLayerMask = args.targetLayerMask;
 		m_knockbackThrust = args.knockbackThrust;
 		m_knockbackDuration = args.knockbackDuration;
+		m_canGoThrough = args.projectileCanGoThrough;
+		m_projectileGoThroughCount = args.projectileGoThroughCount;
 	}
 
 	private void Update() {
@@ -63,11 +75,27 @@ public class Projectile : MonoBehaviour {
 		IDamageable damageable = other.GetComponent<IDamageable>();
 		damageable?.TakeDamage(m_damage);
 
-		// TODO projectile settings should include this
 		IKnockable knockable = other.GetComponent<IKnockable>();
 		knockable?.GetKnocked(transform.position, m_knockbackThrust, m_knockbackDuration);
 
 		ObjectPoolManager.instance.SpawnBulletHitVFX(transform.position);
-		m_projectileWeapon.ReleaseProjectileFromPool(this);
+
+		if (m_canGoThrough) {
+			if (other.gameObject.TryGetComponent<Enemy>(out Enemy enemy)) {
+				if (!m_wentThroughEnemies.Contains(enemy.id)) {
+					m_wentThroughEnemies.Add(enemy.id);
+				}
+
+				if (m_wentThroughEnemies.Count >= m_projectileGoThroughCount) {
+					Debug.Log(m_wentThroughEnemies.Count);
+					m_projectileWeapon.ReleaseProjectileFromPool(this);
+					return;
+				}
+			}
+		}
+		else {
+			m_projectileWeapon.ReleaseProjectileFromPool(this);
+		}
+
 	}
 }

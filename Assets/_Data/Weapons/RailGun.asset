@@ -16,14 +16,16 @@ MonoBehaviour:
   weaponType: 4
   weaponPrefab: {fileID: 752956093444323179, guid: dab8cc74f7fe934f6a4a43a13a67256e, type: 3}
   projectilePrefab: {fileID: 2411224934712565643, guid: 17aa93ed16e2500afb92b86864d82ff6, type: 3}
-  projectileSpeed: 25
+  projectileSpeed: 40
   projectileDamage: 0
-  knockbackThrust: 50
+  knockbackThrust: 20
   knockbackDuration: 0.15
   poolSize: 10
   rof: 200
   singleFire: 1
   unlimitedAmmo: 1
+  projectileCanGoThrough: 1
+  projectileGoThroughCount: 3
   spreadAngle: 0
   ammoUsage: 1
   startingAmmo: 5

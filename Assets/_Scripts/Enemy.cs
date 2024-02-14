@@ -4,6 +4,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	public event EventHandler<float> OnHit;
 	public static event EventHandler OnAnyDeath;
+	public int id { get; private set; }
+	private static int s_id;
 
 	[SerializeField] private float m_moveSpeed;
 
@@ -22,6 +24,7 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	}
 
 	private void Start() {
+		id = s_id++;
 		health.OnDeath += Health_OnDeath;
 		OnHit += Enemy_OnHit;
 	}

@@ -71,6 +71,8 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 				lifetime = 3f,
 				knockbackThrust = m_weaponDataSO.knockbackThrust,
 				knockbackDuration = m_weaponDataSO.knockbackDuration,
+				projectileCanGoThrough = m_weaponDataSO.projectileCanGoThrough,
+				projectileGoThroughCount = m_weaponDataSO.projectileGoThroughCount,
 				targetLayerMask = m_enemyLayerMask,
 			};
 
@@ -154,7 +156,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 			m_weaponDataSO.poolSize * 2);
 	}
 
-    public override bool CanBeUsed() {
+	public override bool CanBeUsed() {
 		return HasEnoughAmmo();
-    }
+	}
 }

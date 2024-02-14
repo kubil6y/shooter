@@ -11,6 +11,8 @@ public class ProjectileWeaponDataSO : WeaponDataSO {
 	public int rof;
 	public bool singleFire;
 	public bool unlimitedAmmo = false;
+	public bool projectileCanGoThrough = false;
+	public int projectileGoThroughCount = 1;
 	[Range(0f, 30f)]
 	public float spreadAngle;
 	public int ammoUsage = 1;

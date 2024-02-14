@@ -157,6 +157,10 @@ public class LightningGun : Weapon, IHasAmmo {
 		return WeaponType.LightningGun;
 	}
 
+	public override bool CanBeUsed() {
+		return HasEnoughAmmo();
+	}
+
 	private void LGScript_OnShootStarted(object sender, EventArgs e) {
 		// Debug.Log("LGScript_OnShootStarted()");
 	}
@@ -166,7 +170,7 @@ public class LightningGun : Weapon, IHasAmmo {
 	}
 
 	private void LGScript_OnIdleStarted(object sender, EventArgs e) {
-		Debug.Log("LGScript_OnIdleStarted()");
+		// Debug.Log("LGScript_OnIdleStarted()");
 	}
 
 	private void LGScript_OnIdleEnded(object sender, EventArgs e) {
@@ -175,9 +179,5 @@ public class LightningGun : Weapon, IHasAmmo {
 
 	private void LGScript_OnOutOfAmmo(object sender, EventArgs e) {
 		// Debug.Log("LGScript_OnOutOfAmmo()");
-	}
-
-	public override bool CanBeUsed() {
-		return HasEnoughAmmo();
 	}
 }

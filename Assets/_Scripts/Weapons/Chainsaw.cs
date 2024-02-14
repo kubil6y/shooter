@@ -6,8 +6,13 @@ public class Chainsaw : Weapon {
 	public event EventHandler OnShootEnded;
 	public event EventHandler OnIdleStarted;
 	public event EventHandler OnIdleEnded;
+	public event EventHandler<Vector2> OnCut;
 
+	[SerializeField] private int m_damagePerTick = 25;
 	[SerializeField] private float m_rof = 200f;
+	[SerializeField] private float m_attackRadius = .5f;
+	[SerializeField] private Transform m_attackRefTf;
+	[SerializeField] private LayerMask m_targetLayerMask;
 
 	private bool m_isIdle;
 	private bool m_isShooting;
@@ -16,12 +21,12 @@ public class Chainsaw : Weapon {
 	private float m_shootTimer;
 	private float m_idleTimer;
 
-
 	private void Awake() {
 		OnShootStarted += Chainsaw_OnShootStarted;
 		OnShootEnded += Chainsaw_OnShootEnded;
 		OnIdleStarted += Chainsaw_OnIdleStarted;
 		OnIdleEnded += Chainsaw_OnIdleEnded;
+		OnCut += Chainsaw_OnCut;
 	}
 
 	private void Update() {
@@ -54,7 +59,16 @@ public class Chainsaw : Weapon {
 	}
 
 	private void Shoot() {
-		Debug.Log("Shoot!");
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_attackRefTf.position, m_attackRadius, m_targetLayerMask);
+
+		foreach (Collider2D collider in colliders) {
+			if (collider.gameObject.TryGetComponent<Enemy>(out Enemy enemy)) {
+				float hitDuration = .05f;
+				collider.GetComponent<IHittable>()?.TakeHit(hitDuration);
+				collider.GetComponent<IDamageable>()?.TakeDamage(m_damagePerTick);
+				OnCut?.Invoke(this, m_attackRefTf.transform.position);
+			}
+		}
 	}
 
 	public override void SetAsCurrent() {
@@ -70,6 +84,10 @@ public class Chainsaw : Weapon {
 
 	public override bool IsOnCooldown() {
 		return false;
+	}
+
+	public override bool CanBeUsed() {
+		return true;
 	}
 
 	private void Chainsaw_OnShootStarted(object sender, EventArgs e) {
@@ -88,7 +106,12 @@ public class Chainsaw : Weapon {
 		Debug.Log("Chainsaw_OnIdleEnded()");
 	}
 
-    public override bool CanBeUsed() {
-		return true;
-    }
+	private void Chainsaw_OnCut(object sender, Vector2 position) {
+		ObjectPoolManager.instance.SpawnBloodVFX(position);
+	}
+
+	private void OnDrawGizmos() {
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(m_attackRefTf.position, m_attackRadius);
+	}
 }

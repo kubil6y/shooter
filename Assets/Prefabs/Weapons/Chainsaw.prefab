@@ -46,7 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8db89f7b430732199eb472ee0b24def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_damagePerTick: 20
   m_rof: 200
+  m_attackRadius: 0.8
+  m_attackRefTf: {fileID: 5103328320133425071}
+  m_targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &3670073937819303208
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 3814993943469598642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.652, y: -0.025, z: 0}
+  m_LocalPosition: {x: 1.49, y: -0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

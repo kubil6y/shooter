@@ -1,6 +1,6 @@
-- [] arrange weapon visuals
-- [] audio manager
+- [] postprocessing settings
 - [] weapon projectiles
+- [] audio manager
 
 ---
 

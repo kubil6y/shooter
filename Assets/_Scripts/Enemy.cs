@@ -7,21 +7,22 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 
 	[SerializeField] private float m_moveSpeed;
 
+	public Health health {get; private set; }
+
 	private Movement m_movement;
 	private Vector2 m_moveDirection;
-	private Health m_health;
 	private Knockback m_knockback;
 	private Flash m_flash;
 
 	private void Awake() {
 		m_movement = GetComponent<Movement>();
 		m_knockback = GetComponent<Knockback>();
-		m_health = GetComponent<Health>();
+		health = GetComponent<Health>();
 		m_flash = GetComponent<Flash>();
 	}
 
 	private void Start() {
-		m_health.OnDeath += Health_OnDeath;
+		health.OnDeath += Health_OnDeath;
 		OnHit += Enemy_OnHit;
 	}
 
@@ -38,7 +39,7 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	}
 
 	public void TakeDamage(int damageAmount) {
-		m_health.TakeDamage(damageAmount);
+		health.TakeDamage(damageAmount);
 	}
 
     public void TakeHit(float hitDuration) {

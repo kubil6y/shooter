@@ -25,7 +25,6 @@ public class WeaponManager : MonoBehaviour {
 	public event EventHandler OnWeaponSwapped;
 
 	[SerializeField] private Transform m_weaponHolderTf;
-	private Transform m_objectPoolContainerTf;
 
 	private Weapon[] m_weaponArray;
 	private AmmoPouch m_ammoPouch;
@@ -41,10 +40,6 @@ public class WeaponManager : MonoBehaviour {
 		m_player = GetComponentInParent<Player>();
 		m_ammoPouch = GetComponent<AmmoPouch>();
 		m_weaponManagerVisuals = GetComponent<WeaponManagerVisuals>();
-	}
-
-	private void Start() {
-		m_objectPoolContainerTf = GameManager.instance.GetObjectPoolContainerTransform();
 	}
 
 	private void Update() {
@@ -260,7 +255,8 @@ public class WeaponManager : MonoBehaviour {
 
 		// Setup up object pool parent if exists
 		if (weapon.TryGetComponent<IHasObjectPool>(out IHasObjectPool hasObjectPool)) {
-			hasObjectPool.SetupObjectPoolParent(m_objectPoolContainerTf);
+			Transform playerProjectileParentTf = ObjectPoolManager.instance.GetPlayerProjectileParentTransform();
+			hasObjectPool.SetupObjectPoolParent(playerProjectileParentTf);
 		}
 
 		// Add ammo from pouch if exists

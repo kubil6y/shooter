@@ -23,8 +23,8 @@ MonoBehaviour:
   poolSize: 10
   rof: 200
   singleFire: 1
-  unlimitedAmmo: 0
-  spreadAngle: 7.3
-  ammoUsage: 3
-  startingAmmo: 20
+  unlimitedAmmo: 1
+  spreadAngle: 23.8
+  ammoUsage: 5
+  startingAmmo: 25
   maxAmmo: 500

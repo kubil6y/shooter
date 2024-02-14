@@ -67,6 +67,7 @@ public class Projectile : MonoBehaviour {
 		IKnockable knockable = other.GetComponent<IKnockable>();
 		knockable?.GetKnocked(transform.position, m_knockbackThrust, m_knockbackDuration);
 
+		ObjectPoolManager.instance.SpawnBulletHitVFX(transform.position);
 		m_projectileWeapon.ReleaseProjectileFromPool(this);
 	}
 }

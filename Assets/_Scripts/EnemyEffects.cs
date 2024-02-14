@@ -13,6 +13,6 @@ public class EnemyEffects : MonoBehaviour {
 	}
 
     private void Enemy_OnDeath(object sender, EventArgs e) {
-		VFXManager.instance.SpawnEnemyDeathVFX(transform.position);
+		ObjectPoolManager.instance.SpawnEnemyDeathVFX(transform.position);
     }
 }

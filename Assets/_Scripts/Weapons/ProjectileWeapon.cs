@@ -61,7 +61,6 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 				fireDirection = rotation * fireDirection;
 			}
 
-			// TODO: requires knockback settings...
 			var projectileSetupArgs = new Projectile.ProjectileSetupArgs {
 				projectileWeapon = this,
 				spawnTf = m_muzzleTf,

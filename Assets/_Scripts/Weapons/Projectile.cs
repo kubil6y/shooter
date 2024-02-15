@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour {
 
 	private List<int> m_wentThroughEnemies; // needs to be reset on object pool
 
-	// TODO: requires knockback settings...
 	public class ProjectileSetupArgs {
 		public ProjectileWeapon projectileWeapon;
 		public Transform spawnTf;
@@ -50,6 +49,8 @@ public class Projectile : MonoBehaviour {
 		m_knockbackDuration = args.knockbackDuration;
 		m_canGoThrough = args.projectileCanGoThrough;
 		m_projectileGoThroughCount = args.projectileGoThroughCount;
+
+		transform.right = m_fireDirection; // TODO deneme
 	}
 
 	private void Update() {

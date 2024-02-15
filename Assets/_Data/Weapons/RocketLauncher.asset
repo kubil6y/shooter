@@ -16,14 +16,16 @@ MonoBehaviour:
   weaponType: 6
   weaponPrefab: {fileID: 2022149448009228892, guid: cb6c9f5e4e466a64d86609629e2b8f93, type: 3}
   projectilePrefab: {fileID: 2636417774462866784, guid: 3498eb61b393f4c4b88eb9a9e4996288, type: 3}
-  projectileSpeed: 10
-  projectileDamage: 0
-  knockbackThrust: 0
-  knockbackDuration: 0
+  projectileSpeed: 12
+  projectileDamage: 50
+  knockbackThrust: 2
+  knockbackDuration: 0.1
   poolSize: 10
-  rof: 1000
+  rof: 700
   singleFire: 0
-  unlimitedAmmo: 0
+  unlimitedAmmo: 1
+  projectileCanGoThrough: 0
+  projectileGoThroughCount: 1
   spreadAngle: 0
   ammoUsage: 1
   startingAmmo: 10

@@ -5468,7 +5468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &294777322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5481,6 +5481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c052615a014eb6a958a14984ef5a9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePopup: {fileID: 3145002968600139206, guid: 018e8307c2d5df14db826ce38504c3f3, type: 3}
   playerObject: {fileID: 1381968429}
   enemyObject: {fileID: 0}
   damage1: 10
@@ -6284,7 +6285,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 0000000033bbb2aa5b15d0f9
+  m_ApplyToSortingLayers: 0000000033bbb2aa5b15d0f9f7c6e2b5
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -6652,6 +6653,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5303778419764362116, guid: 8abc9f8ecb67688988a219a901b905cd, type: 3}
   m_PrefabInstance: {fileID: 2109157217}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &813713750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813713751}
+  m_Layer: 0
+  m_Name: DamagePopups
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &813713751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813713750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1748440995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &847641859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5303778419764362116, guid: e5347b14487fbf0dcbeebf80a12cf0d4, type: 3}
@@ -7807,6 +7839,7 @@ Transform:
   m_Children:
   - {fileID: 1847466840}
   - {fileID: 500359559}
+  - {fileID: 813713751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1748440996
@@ -7824,10 +7857,12 @@ MonoBehaviour:
   m_enemyDeathVFX: {fileID: 7036050880362106308, guid: 638a0895e77adcfd7b6a9d7805343c6f, type: 3}
   m_bulletHitVFX: {fileID: 724656180965079367, guid: 4ccc8c2de98f0ee08b2811e952642a30, type: 3}
   m_bloodVFX: {fileID: 724656180965079367, guid: 0c002d4970603429d99b3dbd29d5b488, type: 3}
+  m_damagePopupPrefab: {fileID: 3145002968600139206, guid: 018e8307c2d5df14db826ce38504c3f3, type: 3}
   m_playerProjectileParentTf: {fileID: 1847466840}
   m_enemyDeathVFXParentTf: {fileID: 655949134}
   m_bulletHitVFXParentTf: {fileID: 502006656}
   m_bloodVFXParentTf: {fileID: 259352718}
+  m_damagePopupParentTf: {fileID: 813713751}
 --- !u!1 &1787828104
 GameObject:
   m_ObjectHideFlags: 0

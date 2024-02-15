@@ -1,5 +1,7 @@
-- [] weapon projectiles
-  - rocket launcher jetpack effect + radius explosion damage (+effect)
+- damage text popups (+object pooling)
+- quad damage
+- damage analytics (this might be later)
+- player skill manager?
 
 - [] audio manager
 - [] add map

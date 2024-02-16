@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	public event EventHandler<float> OnHit;
+	public event EventHandler<int> OnTakenDamage;
 	public static event EventHandler OnAnyDeath;
 	public int id { get; private set; }
 	private static int s_id;
 
+    [SerializeField] private Transform m_damagePopupTf;
 	[SerializeField] private float m_moveSpeed;
 
 	public Health health {get; private set; }
@@ -16,7 +18,7 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	private Knockback m_knockback;
 	private Flash m_flash;
 
-	private void Awake() {
+    private void Awake() {
 		m_movement = GetComponent<Movement>();
 		m_knockback = GetComponent<Knockback>();
 		health = GetComponent<Health>();
@@ -41,8 +43,17 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 		m_moveDirection = (Player.instance.transform.position - transform.position).normalized;
 	}
 
+
+    public Vector3 GetDamagePopupPosition() {
+		return m_damagePopupTf.position;
+    }
+
 	public void TakeDamage(int damageAmount) {
+		if (!health.IsAlive()) {
+			return;
+		}
 		health.TakeDamage(damageAmount);
+		OnTakenDamage?.Invoke(this, damageAmount);
 	}
 
     public void TakeHit(float hitDuration) {

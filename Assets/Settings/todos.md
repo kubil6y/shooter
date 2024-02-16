@@ -1,4 +1,6 @@
-- damage text popups (+object pooling)
+shader 2d outline
+https://www.youtube.com/watch?v=MqpyXhBIRSw
+
 - quad damage
 - damage analytics (this might be later)
 - player skill manager?

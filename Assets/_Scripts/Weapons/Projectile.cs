@@ -13,10 +13,11 @@ public class Projectile : MonoBehaviour {
 	private float m_knockbackDuration;
 	private bool m_canGoThrough;
 	private int m_projectileGoThroughCount;
-	private LayerMask m_targetLayerMask;
+	private LayerMask m_targetLayerMask; // TODO handle target layer mask
 
 	private List<int> m_wentThroughEnemies; // needs to be reset on object pool
 
+	// TODO handle args for gc
 	public class ProjectileSetupArgs {
 		public ProjectileWeapon projectileWeapon;
 		public Transform spawnTf;

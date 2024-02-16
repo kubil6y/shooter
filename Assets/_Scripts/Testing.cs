@@ -22,12 +22,6 @@ public class Testing : MonoBehaviour {
 			enemyObject.transform.position = new Vector2(3f, -0.5f);
 		}
 
-		if (Input.GetKeyDown(KeyCode.Mouse0)) {
-			Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			mousePos.z = 0f;
-			ObjectPoolManager.instance.SpawnDamagePopup(mousePos, m_damageAmount++);
-		}
-
 		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			Player.instance.GetKnocked(new Vector3(5, 5), 100, .05f);
 			player.TakeDamage(damage1);

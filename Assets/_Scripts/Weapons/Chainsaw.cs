@@ -21,14 +21,6 @@ public class Chainsaw : Weapon {
 	private float m_shootTimer;
 	private float m_idleTimer;
 
-	private void Awake() {
-		OnShootStarted += Chainsaw_OnShootStarted;
-		OnShootEnded += Chainsaw_OnShootEnded;
-		OnIdleStarted += Chainsaw_OnIdleStarted;
-		OnIdleEnded += Chainsaw_OnIdleEnded;
-		OnCut += Chainsaw_OnCut;
-	}
-
 	private void Update() {
 		m_shootTimer -= Time.deltaTime;
 		m_idleTimer -= Time.deltaTime;
@@ -65,7 +57,10 @@ public class Chainsaw : Weapon {
 			if (collider.gameObject.TryGetComponent<Enemy>(out Enemy enemy)) {
 				float hitDuration = .05f;
 				collider.GetComponent<IHittable>()?.TakeHit(hitDuration);
-				collider.GetComponent<IDamageable>()?.TakeDamage(m_damagePerTick);
+
+				int damage  = m_damagePerTick * weaponUser.GetDamageMultiplier();
+				collider.GetComponent<IDamageable>()?.TakeDamage(damage);
+
 				OnCut?.Invoke(this, m_attackRefTf.transform.position);
 			}
 		}
@@ -88,26 +83,6 @@ public class Chainsaw : Weapon {
 
 	public override bool CanBeUsed() {
 		return true;
-	}
-
-	private void Chainsaw_OnShootStarted(object sender, EventArgs e) {
-		Debug.Log("Chainsaw_OnShootStarted()");
-	}
-
-	private void Chainsaw_OnShootEnded(object sender, EventArgs e) {
-		Debug.Log("Chainsaw_OnShootEnded()");
-	}
-
-	private void Chainsaw_OnIdleStarted(object sender, EventArgs e) {
-		Debug.Log("Chainsaw_OnIdleStarted()");
-	}
-
-	private void Chainsaw_OnIdleEnded(object sender, EventArgs e) {
-		Debug.Log("Chainsaw_OnIdleEnded()");
-	}
-
-	private void Chainsaw_OnCut(object sender, Vector2 position) {
-		ObjectPoolManager.instance.SpawnBloodVFX(position);
 	}
 
 	private void OnDrawGizmos() {

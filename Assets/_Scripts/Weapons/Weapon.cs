@@ -2,12 +2,17 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour {
 	protected bool shootInput;
+	protected ICanUseWeapon weaponUser;
 
 	public abstract bool IsOnCooldown();
 	public abstract WeaponType GetWeaponType();
 	public abstract bool CanBeUsed();
 
 	public virtual void SetAsCurrent() {
+	}
+
+	public void SetWeaponUser(ICanUseWeapon weaponUser) {
+		this.weaponUser = weaponUser;
 	}
 
 	public virtual void StartShooting() {

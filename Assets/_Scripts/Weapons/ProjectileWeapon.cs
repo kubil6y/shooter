@@ -73,6 +73,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 				projectileCanGoThrough = m_weaponDataSO.projectileCanGoThrough,
 				projectileGoThroughCount = m_weaponDataSO.projectileGoThroughCount,
 				targetLayerMask = m_enemyLayerMask,
+				weaponUser = weaponUser,
 			};
 
 			newProjectile.Setup(projectileSetupArgs);

@@ -8,16 +8,18 @@ public class PickupSpawner : MonoBehaviour {
 	[SerializeField] private Pickup m_pickupPrefab;
 	[SerializeField] private PickupSpawnerTimerUI m_pickupSpawnerTimerUI;
 
-	private float m_spawnInterval = 5f;
 
 	private float m_moveDistance = .25f;
 	private float m_moveDuration = .75f;
 	private Pickup m_pickup;
 	private Tween m_pickupTween;
 
+	private float m_spawnInterval = 10f;
 	private float m_spawnTimer;
 
 	private void Start() {
+		m_spawnInterval = m_pickupPrefab.GetPickupSpawnInterval();
+
 		SpawnPickup();
 		HideTimer();
 

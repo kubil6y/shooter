@@ -1,7 +1,3 @@
-shader 2d outline
-https://www.youtube.com/watch?v=MqpyXhBIRSw
-
-- quad damage
 - damage analytics (this might be later)
 - player skill manager?
 
@@ -14,5 +10,9 @@ https://www.youtube.com/watch?v=MqpyXhBIRSw
 - [] accuracy system. weapon needs to pass player and it requires if it is hit or not.
   push to an array and if its not hit 0, then calculate accuracy from total shots?
 
-
 - if an enemy is killed with chainsaw do not spawn death vfx
+
+
+### NOTES
+
+Quad should be spawned in game manager after 30s or so.

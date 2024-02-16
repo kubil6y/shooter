@@ -16,6 +16,10 @@ public class Pickup : MonoBehaviour {
 		m_spriteRenderer.sprite = pickupData.icon;
 	}
 
+	public float GetPickupSpawnInterval() {
+		return pickupData.spawnInterval;
+	}
+
 	public virtual void OnTriggerEnter2D(Collider2D other) {
 		if (other.TryGetComponent<ICanPickup>(out ICanPickup canPickup)) {
 			canPickup.Collect(this);

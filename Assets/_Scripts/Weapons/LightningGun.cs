@@ -120,7 +120,10 @@ public class LightningGun : Weapon, IHasAmmo {
 		if (hit.collider != null) {
 			float hitDuration = .05f;
 			hit.collider.GetComponent<IHittable>()?.TakeHit(hitDuration);
-			hit.collider.GetComponent<IDamageable>()?.TakeDamage(m_weaponDataSO.damagePerTick);
+
+			int damage = m_weaponDataSO.damagePerTick * weaponUser.GetDamageMultiplier();
+			hit.collider.GetComponent<IDamageable>()?.TakeDamage(damage);
+
 			hit.collider.GetComponent<IKnockable>()?.GetKnocked(Player.instance.transform.position, m_weaponDataSO.knockbackThrust, m_weaponDataSO.knockbackDuration);
 		}
 	}

@@ -251,6 +251,7 @@ public class WeaponManager : MonoBehaviour {
 
 		// Initiate weapon
 		Weapon weapon = Instantiate(weaponDataSO.weaponPrefab, m_weaponHolderTf);
+		weapon.SetWeaponUser(m_player);
 		m_weaponArray[weaponIndex] = weapon;
 
 		// Setup up object pool parent if exists

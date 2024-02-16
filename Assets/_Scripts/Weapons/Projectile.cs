@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour {
 	private float m_knockbackDuration;
 	private bool m_canGoThrough;
 	private int m_projectileGoThroughCount;
+	private ICanUseWeapon m_weaponUser;
 	private LayerMask m_targetLayerMask; // TODO handle target layer mask
 
 	private List<int> m_wentThroughEnemies; // needs to be reset on object pool
@@ -30,6 +31,7 @@ public class Projectile : MonoBehaviour {
 		public float knockbackDuration;
 		public bool projectileCanGoThrough;
 		public int projectileGoThroughCount;
+		public ICanUseWeapon weaponUser;
 	}
 
 	private void Awake() {
@@ -50,6 +52,7 @@ public class Projectile : MonoBehaviour {
 		m_knockbackDuration = args.knockbackDuration;
 		m_canGoThrough = args.projectileCanGoThrough;
 		m_projectileGoThroughCount = args.projectileGoThroughCount;
+		m_weaponUser = args.weaponUser;
 
 		transform.right = m_fireDirection; // TODO deneme
 	}
@@ -75,7 +78,7 @@ public class Projectile : MonoBehaviour {
 		hittable?.TakeHit(hitDuration);
 
 		IDamageable damageable = other.GetComponent<IDamageable>();
-		damageable?.TakeDamage(m_damage);
+		damageable?.TakeDamage(m_damage * m_weaponUser.GetDamageMultiplier());
 
 		IKnockable knockable = other.GetComponent<IKnockable>();
 		knockable?.GetKnocked(transform.position, m_knockbackThrust, m_knockbackDuration);

@@ -1,7 +1,17 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
+public interface ICanUseWeapon {
+	int GetDamageMultiplier();
+}
+
+public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, ICanUseWeapon {
+	public event EventHandler<OnQuadStartedEventArgs> OnQuadStarted;
+	public class OnQuadStartedEventArgs : EventArgs {
+		public float duration;
+	}
+	public event EventHandler OnQuadEnded;
 	public event EventHandler OnRevived;
 
 	[Header("Movement Config")]
@@ -21,11 +31,14 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	public BlinkController blink { get; private set; }
 
 	private PlayerStateMachine m_stateMachine;
+	private Coroutine m_quadRoutine;
 
 	private bool m_canFlip = true;
 	private bool m_canShoot = true;
 	private bool m_canPickup = true;
 	private bool m_canGetHit = true;
+
+	private bool m_hasQuad;
 
 	protected override void Awake() {
 		base.Awake();
@@ -44,7 +57,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		m_stateMachine.SetState(PState.Idle);
 	}
 
-    private void OnDestroy() {
+	private void OnDestroy() {
 		m_stateMachine.DisconnectFromPlayerChannel();
 	}
 
@@ -60,6 +73,14 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 	}
 
 	#region getters/setters
+    public int GetDamageMultiplier() {
+		return m_hasQuad ? 4 : 1;
+    }
+
+	public bool HasQuad() {
+		return m_hasQuad;
+	}
+
 	public bool IsAlive() {
 		return health.IsAlive();
 	}
@@ -72,12 +93,13 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		return flipController.IsFacingRight();
 	}
 
-    public Transform GetWeaponHolderTransform() {
+	public Transform GetWeaponHolderTransform() {
 		return weaponManager.GetWeaponHolderTransform();
-    }
+	}
 
 	public float GetMoveSpeed() {
-		return m_moveSpeed;
+		float quadMovementBoost = 1.2f;
+		return m_hasQuad ? quadMovementBoost* m_moveSpeed : m_moveSpeed;
 	}
 
 	public bool CanGetHit() {
@@ -92,9 +114,9 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		return m_canPickup;
 	}
 
-    public void SetCanPickup(bool canPickup) {
+	public void SetCanPickup(bool canPickup) {
 		m_canPickup = canPickup;
-    }
+	}
 
 	public bool CanGetKnocked() {
 		return knockback.CanGetKnocked();
@@ -166,12 +188,23 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 		case ArmorPickupDataSO armorPickupDataSO:
 			health.TakeArmor(armorPickupDataSO.armorAmount);
 			break;
+
+		case PowerUpPickupDataSO powerUpPickupDataSO:
+			switch (powerUpPickupDataSO.powerUpType) {
+			case PowerUpType.Quad:
+				PickupQuad(powerUpPickupDataSO.duration);
+				break;
+			default:
+				Debug.LogWarning("Unhandled PowerUp " + powerUpPickupDataSO.pickupName);
+				break;
+			}
+			break;
 		}
 	}
 
-    public void TakeHit(float hitDuration) {
+	public void TakeHit(float hitDuration) {
 		// TODO take hit
-    }
+	}
 
 	public void TakeDamage(int damageAmount) {
 		if (!IsAlive()) {
@@ -181,6 +214,25 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable {
 			return;
 		}
 		health.TakeDamage(damageAmount);
+	}
+
+	private void PickupQuad(float duration) {
+		if (m_quadRoutine != null) {
+			StopCoroutine(m_quadRoutine);
+		}
+		m_quadRoutine = StartCoroutine(QuadRoutine(duration));
+	}
+
+	private IEnumerator QuadRoutine(float duration) {
+		OnQuadStarted?.Invoke(this, new OnQuadStartedEventArgs {
+			duration = duration,
+		});
+		m_hasQuad = true;
+
+		yield return new WaitForSeconds(duration);
+
+		m_hasQuad = false;
+		OnQuadEnded?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void GetKnocked(Vector3 hitDirection, float knockbackThrust, float knockbackDuration) {

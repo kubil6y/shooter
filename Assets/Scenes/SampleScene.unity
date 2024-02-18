@@ -8123,8 +8123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d10ddaa3a82bd87969029220c5e5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sfxMixerGroup: {fileID: 0}
-  m_musicMixerGroup: {fileID: 0}
+  m_audioClipRefsSO: {fileID: 11400000, guid: 24e83f135dfae4256b245cb1d3089456, type: 2}
+  m_sfxMixerGroup: {fileID: 2465389694967476449, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  m_musicMixerGroup: {fileID: -5913883680485133902, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
+  m_soundCollection: {fileID: 11400000, guid: 59b0d1bdf246de0a3a852ff139e54d60, type: 2}
 --- !u!4 &1886703678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5303778419764362116, guid: 91ace52b317b49b20a39d0d5c942a42c, type: 3}

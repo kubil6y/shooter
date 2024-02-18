@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class LightningGunSounds : MonoBehaviour {
     [SerializeField] private LightningGun m_lightningGun;
-    [SerializeField] private AudioClip m_idleClip;
-    [SerializeField] private AudioClip m_shootStartedClip;
-    [SerializeField] private AudioClip m_shootingClip;
 
     private AudioSource m_idleAudioSource;
     private AudioSource m_shootingAudioSource;
@@ -26,7 +23,7 @@ public class LightningGunSounds : MonoBehaviour {
 
     private void LightningGun_OnIdleStarted(object sender, EventArgs e) {
         if (m_idleAudioSource == null) {
-            m_idleAudioSource = AudioManager.instance.CreateAudioSource(m_idleClip, transform, true, true, .05f);
+            m_idleAudioSource = AudioManager.instance.CreateLGIdleLoopAudioSource(transform);
         }
         m_idleAudioSource?.Play();
     }
@@ -37,13 +34,14 @@ public class LightningGunSounds : MonoBehaviour {
 
     private void PlayShootingClip() {
         if (!m_shootingAudioSource) {
-            m_shootingAudioSource = AudioManager.instance.CreateAudioSource(m_shootingClip, transform, true, false, .1f);
+            // m_shootingAudioSource = AudioManager.instance.CreateAudioSource(m_shootingClip, transform, true, false, .1f);
+            m_shootingAudioSource = AudioManager.instance.CreateLGFireLoopAudioSource(transform);
         }
         m_shootingAudioSource.Play();
     }
 
     private void LightningGun_OnShootStarted(object sender, EventArgs e) {
-        AudioManager.instance.Play(m_shootStartedClip, transform.position, .75f);
+        AudioManager.instance.PlayLGShootStarted(transform.position);
         PlayShootingClip();
     }
 

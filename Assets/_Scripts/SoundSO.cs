@@ -11,6 +11,7 @@ public class SoundSO : ScriptableObject {
 	public AudioType type;
 	public AudioClip clip;
 	public bool loop;
+    public bool playOnAwake;
 	public bool randomizedPitch;
 	[Range(0f, 1f)]
 	public float randomPitchRangeModifier = .1f;

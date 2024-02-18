@@ -3,54 +3,79 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 public class AudioManager : Singleton<AudioManager> {
+	[SerializeField] private AudioClipRefsSO m_audioClipRefsSO;
+
 	[SerializeField] private AudioMixerGroup m_sfxMixerGroup;
 	[SerializeField] private AudioMixerGroup m_musicMixerGroup;
 
-	private float m_volume = 1f;
+	[SerializeField] private SoundCollection m_soundCollection;
+
+	private float m_masterVolume = .3f;
 	private AudioSource m_currentMusic;
 
 	private const string PLAYER_PREFS_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
 
-	private void PlaySound(AudioClip clip, float pitch, float volume, bool loop, AudioMixerGroup audioMixerGroup) {
-		GameObject soundObject = new GameObject("Temp Audio Source");
+	public AudioSource CreateAudioSource(SoundSO soundSO, Transform parentTf = null) {
+		GameObject soundObject = new GameObject("TempAudioSource");
 		AudioSource audioSource = soundObject.AddComponent<AudioSource>();
-		audioSource.clip = clip;
+		if (parentTf) {
+			audioSource.transform.parent = parentTf;
+		}
+		audioSource.clip = soundSO.clip;
+		audioSource.loop = soundSO.loop;
+		audioSource.playOnAwake = soundSO.playOnAwake;
+		audioSource.volume = m_masterVolume * soundSO.volume;
+
+		float pitch = soundSO.pitch;
+		if (soundSO.randomizedPitch) {
+			float randomPitchModifier = UnityEngine.Random.Range(-soundSO.randomPitchRangeModifier, soundSO.randomPitchRangeModifier);
+			pitch = soundSO.pitch + randomPitchModifier;
+		}
 		audioSource.pitch = pitch;
-		audioSource.volume = volume;
-		audioSource.loop = loop;
+
+		AudioMixerGroup audioMixerGroup;
+		switch (soundSO.type) {
+		case SoundSO.AudioType.Music:
+			audioMixerGroup = m_musicMixerGroup;
+			break;
+		default:
+		case SoundSO.AudioType.SFX:
+			audioMixerGroup = m_sfxMixerGroup;
+			break;
+		};
 		audioSource.outputAudioMixerGroup = audioMixerGroup;
+
+		return audioSource;
+	}
+
+	public void PlaySound(SoundSO soundSO, Vector3 position, Transform parentTf = null) {
+		AudioSource audioSource = CreateAudioSource(soundSO, parentTf);
+		audioSource.transform.position = position;
 		audioSource.Play();
 
-		if (!loop) {
-			Destroy(soundObject, clip.length);
+		if (!soundSO.loop) {
+			Destroy(audioSource.gameObject, soundSO.clip.length);
 		}
 
 		// Allow only one music at a time
-		if (audioMixerGroup == m_musicMixerGroup) {
-			if (m_currentMusic != null) {
-				m_currentMusic.Stop();
-			}
+		if (soundSO.type == SoundSO.AudioType.Music) {
+			m_currentMusic?.Stop();
 			m_currentMusic = audioSource;
 		}
 	}
 
-	public AudioSource CreateAudioSource(AudioClip audioClip, Transform parentTf, bool loop, bool playOnAwake, float volume, float volumeMultiplier = 1f) {
-		GameObject soundObject = new GameObject("TempAudioSource");
-		AudioSource audioSource = soundObject.AddComponent<AudioSource>();
-		audioSource.clip = audioClip;
-		audioSource.transform.parent = parentTf;
-		audioSource.loop = loop;
-		audioSource.playOnAwake = playOnAwake;
-		audioSource.volume = volume;
+
+	public AudioSource CreateLGIdleLoopAudioSource(Transform parentTf) {
+		AudioSource audioSource = CreateAudioSource(m_soundCollection.lgHum, parentTf);
 		return audioSource;
 	}
 
-	public void Play(AudioClip audioClip, Vector3 position, float volumeMultiplier = 1f) {
-		AudioSource.PlayClipAtPoint(audioClip, position, volumeMultiplier * m_volume);
+	public AudioSource CreateLGFireLoopAudioSource(Transform parentTf) {
+		AudioSource audioSource = CreateAudioSource(m_soundCollection.lgFireLoop, parentTf);
+		return audioSource;
 	}
 
-	public void Play(AudioClip[] audioClips, Vector3 position, float volumeMultiplier = 1f) {
-		int randomIndex = UnityEngine.Random.Range(0, audioClips.Length);
-		AudioSource.PlayClipAtPoint(audioClips[randomIndex], position, volumeMultiplier * m_volume);
+	public void PlayLGShootStarted(Vector3 position) {
+		PlaySound(m_soundCollection.lgFireStart, position);
 	}
 }

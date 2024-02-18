@@ -198,7 +198,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 		}
 	}
 
-	public void TakeHit(float hitDuration) {
+	public void TakeHit(WeaponType weaponType, float hitDuration) {
 		// TODO take hit
 	}
 

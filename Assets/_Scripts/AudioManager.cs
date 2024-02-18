@@ -15,6 +15,8 @@ public class AudioManager : Singleton<AudioManager> {
 
 	private const string PLAYER_PREFS_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
 
+	#region main
+
 	public AudioSource CreateAudioSource(SoundSO soundSO, Transform parentTf = null) {
 		GameObject soundObject = new GameObject("TempAudioSource");
 		AudioSource audioSource = soundObject.AddComponent<AudioSource>();
@@ -64,6 +66,14 @@ public class AudioManager : Singleton<AudioManager> {
 		}
 	}
 
+	public void PlaySound(SoundSO[] soundSOArray, Vector3 position, Transform parentTf = null) {
+		if (soundSOArray == null || soundSOArray.Length == 0) {
+			return;
+		}
+		SoundSO randomSoundSO = soundSOArray[UnityEngine.Random.Range(0, soundSOArray.Length)];
+		PlaySound(randomSoundSO, position, parentTf);
+	}
+	#endregion // main
 
 	public AudioSource CreateLGIdleLoopAudioSource(Transform parentTf) {
 		AudioSource audioSource = CreateAudioSource(m_soundCollection.lgHum, parentTf);
@@ -78,4 +88,12 @@ public class AudioManager : Singleton<AudioManager> {
 	public void PlayLGShootStarted(Vector3 position) {
 		PlaySound(m_soundCollection.lgFireStart, position);
 	}
+
+	public void PlayLGHits(Vector3 position) {
+		PlaySound(m_soundCollection.lgHits, position);
+	}
+
+    public void PlayEnemyImplosion(Vector3 position) {
+		PlaySound(m_soundCollection.implosions, position);
+    }
 }

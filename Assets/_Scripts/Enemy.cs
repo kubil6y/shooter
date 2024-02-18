@@ -2,7 +2,11 @@ using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
-	public event EventHandler<float> OnHit;
+	public event EventHandler<OnHitEventArgs> OnHit;
+	public class OnHitEventArgs : EventArgs {
+		public float hitDuration;
+		public WeaponType weaponType;
+	}
 	public event EventHandler<int> OnTakenDamage;
 	public static event EventHandler OnAnyDeath;
 	public int id { get; private set; }
@@ -28,7 +32,6 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	private void Start() {
 		id = s_id++;
 		health.OnDeath += Health_OnDeath;
-		OnHit += Enemy_OnHit;
 	}
 
     private void Update() {
@@ -56,8 +59,11 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 		OnTakenDamage?.Invoke(this, damageAmount);
 	}
 
-    public void TakeHit(float hitDuration) {
-		OnHit?.Invoke(this, hitDuration);
+    public void TakeHit(WeaponType weaponType, float hitDuration) {
+		OnHit?.Invoke(this, new OnHitEventArgs {
+			hitDuration = hitDuration,
+			weaponType = weaponType,
+		});
     }
 
 	public void GetKnocked(Vector3 hitDirection, float knockbackThrust, float knockbackDuration) {
@@ -67,8 +73,4 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	private void Health_OnDeath(object sender, EventArgs e) {
 		Destroy(gameObject);
 	}
-
-    private void Enemy_OnHit(object sender, float duration) {
-		m_flash.StartFlash(duration);
-    }
 }

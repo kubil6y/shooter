@@ -56,7 +56,7 @@ public class Chainsaw : Weapon {
 		foreach (Collider2D collider in colliders) {
 			if (collider.gameObject.TryGetComponent<Enemy>(out Enemy enemy)) {
 				float hitDuration = .05f;
-				collider.GetComponent<IHittable>()?.TakeHit(hitDuration);
+				collider.GetComponent<IHittable>()?.TakeHit(WeaponType.Chainsaw, hitDuration);
 
 				int damage  = m_damagePerTick * weaponUser.GetDamageMultiplier();
 				collider.GetComponent<IDamageable>()?.TakeDamage(damage);

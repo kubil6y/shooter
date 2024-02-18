@@ -75,7 +75,7 @@ public class Projectile : MonoBehaviour {
 
 		IHittable hittable = other.GetComponent<IHittable>();
 		float hitDuration = .1f;
-		hittable?.TakeHit(hitDuration);
+		hittable?.TakeHit(m_projectileWeapon.GetWeaponType(), hitDuration);
 
 		IDamageable damageable = other.GetComponent<IDamageable>();
 		damageable?.TakeDamage(m_damage * m_weaponUser.GetDamageMultiplier());

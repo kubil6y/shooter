@@ -15,3 +15,8 @@ MonoBehaviour:
   lgFireStart: {fileID: 11400000, guid: 874e1462807e2974698a710fed829d4b, type: 2}
   lgFireLoop: {fileID: 11400000, guid: 3e1adf2f48facbbc4ac76258c605a4ef, type: 2}
   lgHum: {fileID: 11400000, guid: 2fdd23688d1902bcf9af2728900a4f79, type: 2}
+  lgHits:
+  - {fileID: 11400000, guid: dc0503d81b5a9b91dad48a0b0fe215a9, type: 2}
+  - {fileID: 11400000, guid: 90d9949bc88e1f0798c9344809853e8f, type: 2}
+  - {fileID: 11400000, guid: 5f87fb85fdc27fc8a86fc88f6b4fc72e, type: 2}
+  implosions: []

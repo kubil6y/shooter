@@ -34,14 +34,14 @@ public class AudioManager : Singleton<AudioManager> {
 		}
 	}
 
-	public AudioSource CreateAudioSource(AudioClip audioClip, Transform parentTf, bool loop, float volume, float volumeMultiplier = 1f) {
+	public AudioSource CreateAudioSource(AudioClip audioClip, Transform parentTf, bool loop, bool playOnAwake, float volume, float volumeMultiplier = 1f) {
 		GameObject soundObject = new GameObject("TempAudioSource");
 		AudioSource audioSource = soundObject.AddComponent<AudioSource>();
 		audioSource.clip = audioClip;
 		audioSource.transform.parent = parentTf;
 		audioSource.loop = loop;
+		audioSource.playOnAwake = playOnAwake;
 		audioSource.volume = volume;
-		audioSource.playOnAwake = false;
 		return audioSource;
 	}
 

@@ -44,9 +44,7 @@ public class PlayerDashState : PlayerState {
     }
 
     private void Dash() {
-        // TODO make it easier to get player dash stuff
         Vector3 dashPoint = player.transform.position + m_dashDirection * player.dashDistance;
-
         RaycastHit2D hit = Physics2D.Raycast(player.transform.position, m_dashDirection, player.dashDistance, player.dashLayerMask);
 
         if (hit.collider != null) {

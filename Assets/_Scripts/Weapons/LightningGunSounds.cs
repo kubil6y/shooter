@@ -26,33 +26,28 @@ public class LightningGunSounds : MonoBehaviour {
 
     private void LightningGun_OnIdleStarted(object sender, EventArgs e) {
         if (m_idleAudioSource == null) {
-            m_idleAudioSource = AudioManager.instance.CreateAudioSource(m_idleClip, transform, true, .05f);
+            m_idleAudioSource = AudioManager.instance.CreateAudioSource(m_idleClip, transform, true, true, .05f);
         }
         m_idleAudioSource?.Play();
-        Debug.Log("LightningGun_OnIdleStarted");
     }
 
     private void LightningGun_OnIdleEnded(object sender, EventArgs e) {
-        Debug.Log("LightningGun_OnIdleEnded");
         m_idleAudioSource?.Stop();
     }
 
     private void PlayShootingClip() {
         if (!m_shootingAudioSource) {
-            m_shootingAudioSource = AudioManager.instance.CreateAudioSource(m_shootingClip, transform, true, .1f);
+            m_shootingAudioSource = AudioManager.instance.CreateAudioSource(m_shootingClip, transform, true, false, .1f);
         }
         m_shootingAudioSource.Play();
-        Debug.Log("PlayShootingClip");
     }
 
     private void LightningGun_OnShootStarted(object sender, EventArgs e) {
         AudioManager.instance.Play(m_shootStartedClip, transform.position, .75f);
         PlayShootingClip();
-        Debug.Log("LightningGun_OnShootStarted");
     }
 
     private void LightningGun_OnShootEnded(object sender, EventArgs e) {
         m_shootingAudioSource?.Stop();
-        Debug.Log("LightningGun_OnShootEnded");
     }
 }

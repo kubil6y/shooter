@@ -2,10 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public interface ICanUseWeapon {
-	int GetDamageMultiplier();
-}
-
 public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, ICanUseWeapon {
 	public event EventHandler<OnQuadStartedEventArgs> OnQuadStarted;
 	public class OnQuadStartedEventArgs : EventArgs {

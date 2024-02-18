@@ -81,7 +81,7 @@ public class WeaponManager : MonoBehaviour {
 		if (!CanSwapWeapon()) {
 			return false;
 		}
-		int nextWeaponIndex = GetNextWeaponIndex();
+		int nextWeaponIndex = GetNextAvailableWeaponIndex();
 		if (TrySettingCurrentWeapon(nextWeaponIndex)) {
 			m_weaponSwapTimer = m_weaponSwapDuration;
 			OnWeaponSwapped?.Invoke(this, EventArgs.Empty);
@@ -94,7 +94,7 @@ public class WeaponManager : MonoBehaviour {
 		if (!CanSwapWeapon()) {
 			return false;
 		}
-		int previousWeaponIndex = GetPreviousWeaponIndex();
+		int previousWeaponIndex = GetPreviousAvailableWeaponIndex();
 		if (TrySettingCurrentWeapon(previousWeaponIndex)) {
 			m_weaponSwapTimer = m_weaponSwapDuration;
 			OnWeaponSwapped?.Invoke(this, EventArgs.Empty);
@@ -103,28 +103,33 @@ public class WeaponManager : MonoBehaviour {
 		return false;
 	}
 
-	private int GetNextWeaponIndex() {
+	// TODO skip out of ammo weapons!
+	private int GetNextAvailableWeaponIndex() {
 		for (int i = m_currentWeaponIndex + 1; i < m_weaponArray.Length; i++) {
-			if (GetWeapon(i)) {
+			Weapon weapon = GetWeapon(i);
+			if (weapon != null && weapon.IsAvailable()) {
 				return i;
 			}
 		}
 		for (int i = 0; i < m_currentWeaponIndex; i++) {
-			if (GetWeapon(i)) {
+			Weapon weapon = GetWeapon(i);
+			if (weapon != null && weapon.IsAvailable()) {
 				return i;
 			}
 		}
 		return m_currentWeaponIndex;
 	}
 
-	public int GetPreviousWeaponIndex() {
+	public int GetPreviousAvailableWeaponIndex() {
 		for (int i = m_currentWeaponIndex - 1; i >= 0; i--) {
-			if (GetWeapon(i)) {
+			Weapon weapon = GetWeapon(i);
+			if (weapon != null && weapon.IsAvailable()) {
 				return i;
 			}
 		}
 		for (int i = m_weaponArray.Length - 1; i > m_currentWeaponIndex; i--) {
-			if (GetWeapon(i)) {
+			Weapon weapon = GetWeapon(i);
+			if (weapon != null && weapon.IsAvailable()) {
 				return i;
 			}
 		}

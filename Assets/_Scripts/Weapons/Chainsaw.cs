@@ -81,7 +81,7 @@ public class Chainsaw : Weapon {
 		return false;
 	}
 
-	public override bool CanBeUsed() {
+	public override bool IsAvailable() {
 		return true;
 	}
 

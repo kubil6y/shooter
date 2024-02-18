@@ -15,5 +15,4 @@ public class ChainsawEffects : MonoBehaviour {
 	private void Chainsaw_OnCut(object sender, Vector2 position) {
 		ObjectPoolManager.instance.SpawnBloodVFX(position);
 	}
-
 }

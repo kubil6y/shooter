@@ -22,11 +22,9 @@ public abstract class PlayerState {
 	}
 
 	public virtual void Enter() {
-		// Debug.Log(GetType().Name + ":Enter()");
 	}
 
 	public virtual void Exit() {
-		// Debug.Log(GetType().Name + ":Exit()");
 	}
 
 	public virtual void Update() { }

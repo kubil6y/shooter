@@ -6,7 +6,7 @@ public abstract class Weapon : MonoBehaviour {
 
 	public abstract bool IsOnCooldown();
 	public abstract WeaponType GetWeaponType();
-	public abstract bool CanBeUsed();
+	public abstract bool IsAvailable();
 
 	public virtual void SetAsCurrent() {
 	}
@@ -17,6 +17,10 @@ public abstract class Weapon : MonoBehaviour {
 
 	public virtual void StartShooting() {
 		shootInput = true;
+	}
+
+	public bool IsShooting() {
+		return shootInput;
 	}
 
 	public virtual void StopShooting() {

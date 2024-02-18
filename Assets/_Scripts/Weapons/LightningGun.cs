@@ -28,12 +28,6 @@ public class LightningGun : Weapon, IHasAmmo {
 
 	private void Awake() {
 		m_endFX.SetActive(false);
-		OnShootStarted += LGScript_OnShootStarted;
-		OnShootEnded += LGScript_OnShootEnded;
-
-		OnIdleStarted += LGScript_OnIdleStarted;
-		OnIdleEnded += LGScript_OnIdleEnded;
-		OnOutOfAmmo += LGScript_OnOutOfAmmo;
 	}
 
 	private void Start() {
@@ -160,27 +154,7 @@ public class LightningGun : Weapon, IHasAmmo {
 		return WeaponType.LightningGun;
 	}
 
-	public override bool CanBeUsed() {
+	public override bool IsAvailable() {
 		return HasEnoughAmmo();
-	}
-
-	private void LGScript_OnShootStarted(object sender, EventArgs e) {
-		// Debug.Log("LGScript_OnShootStarted()");
-	}
-
-	private void LGScript_OnShootEnded(object sender, EventArgs e) {
-		// Debug.Log("LGScript_OnShootEnded()");
-	}
-
-	private void LGScript_OnIdleStarted(object sender, EventArgs e) {
-		// Debug.Log("LGScript_OnIdleStarted()");
-	}
-
-	private void LGScript_OnIdleEnded(object sender, EventArgs e) {
-		// Debug.Log("LGScript_OnIdleEnded()");
-	}
-
-	private void LGScript_OnOutOfAmmo(object sender, EventArgs e) {
-		// Debug.Log("LGScript_OnOutOfAmmo()");
 	}
 }

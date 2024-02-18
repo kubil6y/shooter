@@ -1,5 +1,6 @@
-- damage analytics (this might be later)
-- player skill manager?
+- fix: railgun projectile layer masks
+- todo: weapon next should take into account if it has ammo or not! this is important
+- ??: player skill manager?
 
 - [] audio manager
 - [] add map

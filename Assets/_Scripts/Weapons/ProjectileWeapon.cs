@@ -156,7 +156,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 			m_weaponDataSO.poolSize * 2);
 	}
 
-	public override bool CanBeUsed() {
+	public override bool IsAvailable() {
 		return HasEnoughAmmo();
 	}
 }

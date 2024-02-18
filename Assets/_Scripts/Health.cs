@@ -105,7 +105,6 @@ public class Health : MonoBehaviour {
 	}
 
 	public void Die() {
-		Debug.Log(gameObject.name + ":Die()");
 		OnDeath?.Invoke(this, EventArgs.Empty);
 	}
 }

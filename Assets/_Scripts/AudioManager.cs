@@ -41,6 +41,7 @@ public class AudioManager : Singleton<AudioManager> {
 		audioSource.transform.parent = parentTf;
 		audioSource.loop = loop;
 		audioSource.volume = volume;
+		audioSource.playOnAwake = false;
 		return audioSource;
 	}
 

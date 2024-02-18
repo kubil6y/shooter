@@ -92,7 +92,6 @@ public class Projectile : MonoBehaviour {
 				}
 
 				if (m_wentThroughEnemies.Count >= m_projectileGoThroughCount) {
-					Debug.Log(m_wentThroughEnemies.Count);
 					m_projectileWeapon.ReleaseProjectileFromPool(this);
 					return;
 				}

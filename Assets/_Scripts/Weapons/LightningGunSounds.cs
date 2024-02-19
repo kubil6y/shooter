@@ -20,6 +20,7 @@ public class LightningGunSounds : MonoBehaviour {
         m_lightningGun.OnIdleEnded -= LightningGun_OnIdleEnded;
         m_lightningGun.OnShootStarted -= LightningGun_OnShootStarted;
         m_lightningGun.OnShootEnded -= LightningGun_OnShootEnded;
+        m_lightningGun.OnOutOfAmmo -= LightningGun_OnOutOfAmmo;
     }
 
     private void LightningGun_OnIdleStarted(object sender, EventArgs e) {
@@ -50,7 +51,6 @@ public class LightningGunSounds : MonoBehaviour {
     }
 
     private void LightningGun_OnOutOfAmmo(object sender, EventArgs e) {
-        Debug.Log("hehe");// TODO remove
         AudioManager.instance.PlayOutOfAmmo(transform.position);
     }
 

@@ -45,7 +45,11 @@ public class LightningGun : Weapon, IHasAmmo {
 		m_shootTimer -= Time.deltaTime;
 		m_idleTimer -= Time.deltaTime;
 
-		if (!m_isShooting && shootInput && HasEnoughAmmo()) {
+		if (shootInput && !HasEnoughAmmo()) {
+			shootInput = false;
+			OnOutOfAmmo?.Invoke(this, EventArgs.Empty);
+		}
+		else if (!m_isShooting && shootInput && HasEnoughAmmo()) {
 			if (m_isIdle) {
 				m_isIdle = false;
 				OnIdleEnded?.Invoke(this, EventArgs.Empty);

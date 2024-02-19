@@ -41,8 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 1655954105
+    locked: 0
+  - name: Walls
+    uniqueID: 3829227609
+    locked: 0
+  - name: Enemy
+    uniqueID: 110277089
+    locked: 0
   - name: Player
     uniqueID: 2863840051
+    locked: 0
+  - name: Pickup
+    uniqueID: 629441019
+    locked: 0
+  - name: Projectile
+    uniqueID: 2240374159
     locked: 0
   - name: VFX
     uniqueID: 4191163739

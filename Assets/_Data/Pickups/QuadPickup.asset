@@ -15,5 +15,6 @@ MonoBehaviour:
   pickupName: Quad Pickup
   icon: {fileID: 21300000, guid: d73d9ed9d1dcd03a5947ffe804e364df, type: 3}
   spawnInterval: 30
+  initialSpawnDelay: 10
   powerUpType: 0
-  duration: 10
+  duration: 20

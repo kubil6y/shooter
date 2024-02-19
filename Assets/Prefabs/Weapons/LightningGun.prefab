@@ -4798,7 +4798,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1431127245
-  m_SortingLayer: 1
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4903,9 +4903,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_lightningGun: {fileID: 4323232883095786947}
-  m_idleClip: {fileID: 8300000, guid: 9622e2549a04450a39e79fdf9cc0f164, type: 3}
-  m_shootStartedClip: {fileID: 8300000, guid: 0a464d95564a1a367b4be08846a0a2b3, type: 3}
-  m_shootingClip: {fileID: 8300000, guid: 76f440b5b7c5ca85eb8a106eaa862d02, type: 3}
 --- !u!1 &2549452456352513640
 GameObject:
   m_ObjectHideFlags: 0
@@ -9811,9 +9808,9 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1431127245
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
@@ -9885,6 +9882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3317041252096808853}
+  - component: {fileID: 2691604955171603458}
   m_Layer: 0
   m_Name: EndFX
   m_TagString: Untagged
@@ -9909,6 +9907,18 @@ Transform:
   - {fileID: 630527940613620808}
   m_Father: {fileID: 5314166668899855511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &2691604955171603458
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3810958235564454616}
+  m_Enabled: 1
+  m_SortingLayerID: -1431127245
+  m_SortingLayer: 4
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &3814993943469598642
 GameObject:
   m_ObjectHideFlags: 0
@@ -9949,6 +9959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 215985350857308061}
+  - component: {fileID: 2206259474435835244}
   m_Layer: 0
   m_Name: StartFX
   m_TagString: Untagged
@@ -9973,6 +9984,18 @@ Transform:
   - {fileID: 2242747024196436879}
   m_Father: {fileID: 5314166668899855511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &2206259474435835244
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911229358781390632}
+  m_Enabled: 1
+  m_SortingLayerID: -1431127245
+  m_SortingLayer: 4
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &6229235764383545931
 GameObject:
   m_ObjectHideFlags: 0
@@ -14771,7 +14794,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1431127245
-  m_SortingLayer: 1
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19742,8 +19765,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1431127245
-  m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingLayer: 4
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 9858b26bcf09f1471a92641f3fa90e14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

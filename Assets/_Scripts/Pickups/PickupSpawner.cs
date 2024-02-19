@@ -8,27 +8,42 @@ public class PickupSpawner : MonoBehaviour {
 	[SerializeField] private Pickup m_pickupPrefab;
 	[SerializeField] private PickupSpawnerTimerUI m_pickupSpawnerTimerUI;
 
-
-	private float m_moveDistance = .25f;
-	private float m_moveDuration = .75f;
+	private float m_moveDistance = .5f;
+	private float m_moveDuration = .5f;
 	private Pickup m_pickup;
 	private Tween m_pickupTween;
 
-	private float m_spawnInterval = 10f;
 	private float m_spawnTimer;
+	private float m_spawnInterval;
+	private float m_initialSpawnTimer;
+	private bool m_canSpawn;
 
 	private void Start() {
+		m_initialSpawnTimer = m_pickupPrefab.GetInitialSpawnDelay();
 		m_spawnInterval = m_pickupPrefab.GetPickupSpawnInterval();
-
-		SpawnPickup();
 		HideTimer();
-
-		OnPickupSpawned += PickupSpawner_OnPickupSpawned;
 	}
 
 	private void Update() {
-		if (!m_pickup) {
-			m_spawnTimer -= Time.deltaTime;
+		HandleInitialSpawn();
+		HandleSpawning();
+	}
+
+	private void HandleInitialSpawn() {
+		m_initialSpawnTimer -= Time.deltaTime;
+		if (m_initialSpawnTimer < 0f && !m_canSpawn) {
+			m_canSpawn = true;
+		}
+	}
+
+	private void HandleSpawning() {
+		if (!m_canSpawn) {
+			return;
+		}
+		m_spawnTimer -= Time.deltaTime;
+		if (m_spawnTimer < 0f) {
+			m_spawnTimer = m_spawnInterval;
+			SpawnPickup();
 		}
 	}
 

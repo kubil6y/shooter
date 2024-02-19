@@ -16,6 +16,10 @@ public class Pickup : MonoBehaviour {
 		m_spriteRenderer.sprite = pickupData.icon;
 	}
 
+	public float GetInitialSpawnDelay() {
+		return pickupData.initialSpawnDelay;
+	}
+
 	public float GetPickupSpawnInterval() {
 		return pickupData.spawnInterval;
 	}

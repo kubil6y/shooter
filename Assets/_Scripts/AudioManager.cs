@@ -75,6 +75,16 @@ public class AudioManager : Singleton<AudioManager> {
 	}
 	#endregion // main
 
+	public AudioSource CreateChainsawIdleLoopAudioSource(Transform parentTf) {
+		AudioSource audioSource = CreateAudioSource(m_soundCollection.chainsawIdle, parentTf);
+		return audioSource;
+	}
+
+	public AudioSource CreateChainsawFireLoopAudioSource(Transform parentTf) {
+		AudioSource audioSource = CreateAudioSource(m_soundCollection.chainsawFire, parentTf);
+		return audioSource;
+	}
+
 	public AudioSource CreateLGIdleLoopAudioSource(Transform parentTf) {
 		AudioSource audioSource = CreateAudioSource(m_soundCollection.lgHum, parentTf);
 		return audioSource;
@@ -93,7 +103,35 @@ public class AudioManager : Singleton<AudioManager> {
 		PlaySound(m_soundCollection.lgHits, position);
 	}
 
-    public void PlayEnemyImplosion(Vector3 position) {
+	public void PlayEnemyImplosion(Vector3 position) {
 		PlaySound(m_soundCollection.implosions, position);
+	}
+
+	public void PlayHitmarker(Vector3 position) {
+		PlaySound(m_soundCollection.hitmarker, position);
+	}
+
+    public void PlayChainsawHit(Vector3 position) {
+		PlaySound(m_soundCollection.chainsawHit, position);
+    }
+
+	public void PlayMGFire(Vector3 position) {
+		PlaySound(m_soundCollection.machineGunFire, position);
+	}
+
+	public void PlayPistolFire(Vector3 position) {
+		PlaySound(m_soundCollection.pistolFire, position);
+	}
+
+	public void PlayRailGunFire(Vector3 position) {
+		PlaySound(m_soundCollection.railFire, position);
+	}
+
+	public void PlayShotgunGunFire(Vector3 position) {
+		PlaySound(m_soundCollection.shotgunFire, position);
+	}
+
+    public void PlayRocketLauncherFire(Vector3 position) {
+		PlaySound(m_soundCollection.rocketFire, position);
     }
 }

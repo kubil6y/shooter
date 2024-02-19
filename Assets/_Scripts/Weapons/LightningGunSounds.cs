@@ -34,7 +34,6 @@ public class LightningGunSounds : MonoBehaviour {
 
     private void PlayShootingClip() {
         if (!m_shootingAudioSource) {
-            // m_shootingAudioSource = AudioManager.instance.CreateAudioSource(m_shootingClip, transform, true, false, .1f);
             m_shootingAudioSource = AudioManager.instance.CreateLGFireLoopAudioSource(transform);
         }
         m_shootingAudioSource.Play();

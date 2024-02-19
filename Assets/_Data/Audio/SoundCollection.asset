@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc89fe09430c16d52b2ddc9344095210, type: 3}
+  m_Name: SoundCollection
+  m_EditorClassIdentifier: 
+  hitmarker: {fileID: 11400000, guid: 05201237921682978a2a24c4d301971a, type: 2}
+  chainsawHit: {fileID: 11400000, guid: 494d5df89467b255f88cab407847fef2, type: 2}
+  rocketFire: {fileID: 11400000, guid: 48d51ef1654b2dc63a8b14d947c767e9, type: 2}
+  railFire: {fileID: 11400000, guid: 0335f0dac6b43d61094d9df61618bd01, type: 2}
+  pistolFire: {fileID: 11400000, guid: 954fc285c4626e0bca25c6df2988b1ca, type: 2}
+  shotgunFire: {fileID: 11400000, guid: 95915f1e428e397d089635b0903e83d1, type: 2}
+  chainsawIdle: {fileID: 11400000, guid: d985dc7a50275c1f4b10844b894d6029, type: 2}
+  chainsawFire: {fileID: 11400000, guid: a168cfe1013a3530caa27588bb6ee179, type: 2}
+  lgFireStart: {fileID: 11400000, guid: 874e1462807e2974698a710fed829d4b, type: 2}
+  lgFireLoop: {fileID: 11400000, guid: 3e1adf2f48facbbc4ac76258c605a4ef, type: 2}
+  lgHum: {fileID: 11400000, guid: 2fdd23688d1902bcf9af2728900a4f79, type: 2}
+  lgHits:
+  - {fileID: 11400000, guid: dc0503d81b5a9b91dad48a0b0fe215a9, type: 2}
+  - {fileID: 11400000, guid: 90d9949bc88e1f0798c9344809853e8f, type: 2}
+  - {fileID: 11400000, guid: 5f87fb85fdc27fc8a86fc88f6b4fc72e, type: 2}
+  machineGunFire:
+  - {fileID: 11400000, guid: 09b75453f0645e969856f2d324ee0b9d, type: 2}
+  - {fileID: 11400000, guid: 64d6f049c75e1805d9510b2c03efa5b5, type: 2}
+  - {fileID: 11400000, guid: b211c3a784ae02c21aed10580f4208b8, type: 2}
+  - {fileID: 11400000, guid: 59287745319a96f1e99142dd38e09f00, type: 2}
+  implosions:
+  - {fileID: 11400000, guid: 7177507913fcf75b2b757a53b705e537, type: 2}
+  - {fileID: 11400000, guid: 07820eb20e9a48aae8beaf555728d2b4, type: 2}
+  - {fileID: 11400000, guid: 1c742df4260e65b9a943724cf179dea9, type: 2}

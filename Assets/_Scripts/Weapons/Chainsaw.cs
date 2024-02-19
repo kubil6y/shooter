@@ -17,7 +17,7 @@ public class Chainsaw : Weapon {
 	private bool m_isIdle;
 	private bool m_isShooting;
 
-	private float m_idleWaitDuration = .5f;
+	private float m_idleWaitDuration = .25f;
 	private float m_shootTimer;
 	private float m_idleTimer;
 

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84e8ccdbc94fe0dfdb1291e966378363, type: 3}
-  m_Name: LG_FireLoop
+  m_Name: lg_hit
   m_EditorClassIdentifier: 
   type: 0
-  clip: {fileID: 8300000, guid: 76f440b5b7c5ca85eb8a106eaa862d02, type: 3}
-  loop: 1
+  clip: {fileID: 8300000, guid: f12cf826ce8613d33a8e94fca46b568c, type: 3}
+  loop: 0
   playOnAwake: 0
   randomizedPitch: 0
   randomPitchRangeModifier: 0.1
-  volume: 0.5
+  volume: 1
   pitch: 1

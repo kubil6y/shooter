@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84e8ccdbc94fe0dfdb1291e966378363, type: 3}
-  m_Name: LGHit
+  m_Name: mg_fire3
   m_EditorClassIdentifier: 
   type: 0
-  clip: {fileID: 8300000, guid: f12cf826ce8613d33a8e94fca46b568c, type: 3}
+  clip: {fileID: 8300000, guid: fd5d82bc75dd18ad1ae4cf036e457834, type: 3}
   loop: 0
   playOnAwake: 0
   randomizedPitch: 0

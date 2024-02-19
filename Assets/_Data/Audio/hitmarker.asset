@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84e8ccdbc94fe0dfdb1291e966378363, type: 3}
-  m_Name: gibsplt1
+  m_Name: hitmarker
   m_EditorClassIdentifier: 
   type: 0
-  clip: {fileID: 8300000, guid: 419d5e2f9ee4c07d2b42fab587fb2a26, type: 3}
+  clip: {fileID: 8300000, guid: 763726fa5b56af92b89e35557fce2011, type: 3}
   loop: 0
   playOnAwake: 0
-  randomizedPitch: 0
-  randomPitchRangeModifier: 0.1
-  volume: 1
-  pitch: 1
+  randomizedPitch: 1
+  randomPitchRangeModifier: 0.287
+  volume: 0.1
+  pitch: 1.3

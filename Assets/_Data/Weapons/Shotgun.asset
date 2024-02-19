@@ -15,8 +15,8 @@ MonoBehaviour:
   weaponName: Shotgun
   weaponType: 5
   weaponPrefab: {fileID: 752956093444323179, guid: 398e40c2fad039dd49d9a8de48872f1d, type: 3}
-  projectilePrefab: {fileID: 2411224934712565643, guid: 17aa93ed16e2500afb92b86864d82ff6, type: 3}
-  projectileSpeed: 10
+  projectilePrefab: {fileID: 2411224934712565643, guid: ba0e1356e36010d6a8959afadef101dc, type: 3}
+  projectileSpeed: 15
   projectileDamage: 8
   knockbackThrust: 0
   knockbackDuration: 0

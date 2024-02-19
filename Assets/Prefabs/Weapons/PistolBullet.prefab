@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6904403803584587218}
   - component: {fileID: 2411224934712565643}
   m_Layer: 9
-  m_Name: RailGunBullet
+  m_Name: PistolBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 20c5a19546032b41280e4e654aefe0f0, type: 2}
+  - {fileID: 2100000, guid: f47c22f6e81340443bac1238f1d26277, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

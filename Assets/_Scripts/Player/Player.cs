@@ -9,13 +9,16 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 	}
 	public event EventHandler OnQuadEnded;
 	public event EventHandler OnRevived;
+	public event EventHandler OnDashStarted;
 
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
 
 	[Header("Dash Skill")]
-	[SerializeField] public LayerMask dashLayerMask;
+	[SerializeField] private float m_dashCooldown;
 	[SerializeField] public float dashDistance;
+	[SerializeField] public LayerMask dashLayerMask;
+	private float m_dashTimer;
 
 	public Rigidbody2D rb { get; private set; }
 	public PlayerAnimations animations { get; private set; }
@@ -58,7 +61,9 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 	}
 
 	private void Update() {
-		if (GameInput.instance.Dash_WasPerformedThisFrame()) {
+		m_dashTimer -= Time.deltaTime;
+		if (GameInput.instance.Dash_WasPerformedThisFrame() && m_dashTimer < 0f) {
+			m_dashTimer = m_dashCooldown;
 			m_stateMachine.SetState(PState.Dash);
 		}
 		m_stateMachine.currentState?.Update();
@@ -69,9 +74,9 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 	}
 
 	#region getters/setters
-    public int GetDamageMultiplier() {
+	public int GetDamageMultiplier() {
 		return m_hasQuad ? 4 : 1;
-    }
+	}
 
 	public bool HasQuad() {
 		return m_hasQuad;
@@ -80,6 +85,10 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 	public bool IsAlive() {
 		return health.IsAlive();
 	}
+
+    public bool IsMoving() {
+		return m_stateMachine.GetCurrentStateKey() == PState.Move;
+    }
 
 	public bool IsBlinking() {
 		return blink.IsBlinking();
@@ -95,7 +104,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 
 	public float GetMoveSpeed() {
 		float quadMovementBoost = 1.2f;
-		return m_hasQuad ? quadMovementBoost* m_moveSpeed : m_moveSpeed;
+		return m_hasQuad ? quadMovementBoost * m_moveSpeed : m_moveSpeed;
 	}
 
 	public bool CanGetHit() {
@@ -236,5 +245,14 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 			return;
 		}
 		knockback.GetKnocked(hitDirection, knockbackThrust, knockbackDuration);
+	}
+
+	public void Invoke_OnDashStarted() {
+		OnDashStarted?.Invoke(this, EventArgs.Empty);
+	}
+
+	// TODO remove later
+	public void Die() {
+		m_stateMachine.SetState(PState.Death);
 	}
 }

@@ -20,8 +20,8 @@ MonoBehaviour:
   projectileDamage: 8
   knockbackThrust: 0
   knockbackDuration: 0
-  poolSize: 10
-  rof: 200
+  poolSize: 40
+  rof: 600
   singleFire: 1
   unlimitedAmmo: 1
   projectileCanGoThrough: 0

@@ -23,10 +23,10 @@ MonoBehaviour:
   poolSize: 10
   rof: 200
   singleFire: 1
-  unlimitedAmmo: 1
+  unlimitedAmmo: 0
   projectileCanGoThrough: 0
   projectileGoThroughCount: 1
   spreadAngle: 0
   ammoUsage: 1
   startingAmmo: 5
-  maxAmmo: 500
+  maxAmmo: 25

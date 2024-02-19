@@ -1,24 +1,18 @@
 using UnityEngine;
 
 public class Testing : MonoBehaviour {
-	public GameObject damagePopup;
-	public GameObject playerObject;
+	public Player player;
 	public GameObject enemyObject;
-	public IDamageable player;
-
-	public int damage1 = 10;
-	public int damage2 = 30;
-	public int damage3 = 60;
 
 	private int m_damageAmount = 10;
 
-	private void Awake() {
-		player = playerObject.GetComponent<IDamageable>();
-	}
-
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.T)) {
-			playerObject.transform.position = Vector2.zero;
+			player.transform.position = Vector2.zero;
+		}
+
+		if (Input.GetKeyDown(KeyCode.L)) {
+			player.Die();
 		}
 
 		if (Input.GetKeyDown(KeyCode.R)) {

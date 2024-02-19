@@ -22,7 +22,6 @@ public class WeaponManager : MonoBehaviour {
 		public WeaponType weaponType;
 		public int ammoAmount;
 	}
-	public event EventHandler OnWeaponSwapped;
 
 	[SerializeField] private Transform m_weaponHolderTf;
 
@@ -84,7 +83,7 @@ public class WeaponManager : MonoBehaviour {
 		int nextWeaponIndex = GetNextAvailableWeaponIndex();
 		if (TrySettingCurrentWeapon(nextWeaponIndex)) {
 			m_weaponSwapTimer = m_weaponSwapDuration;
-			OnWeaponSwapped?.Invoke(this, EventArgs.Empty);
+			OnWeaponChanged?.Invoke(this, GetCurrentWeapon());
 			return true;
 		}
 		return false;
@@ -97,7 +96,7 @@ public class WeaponManager : MonoBehaviour {
 		int previousWeaponIndex = GetPreviousAvailableWeaponIndex();
 		if (TrySettingCurrentWeapon(previousWeaponIndex)) {
 			m_weaponSwapTimer = m_weaponSwapDuration;
-			OnWeaponSwapped?.Invoke(this, EventArgs.Empty);
+			OnWeaponChanged?.Invoke(this, GetCurrentWeapon());
 			return true;
 		}
 		return false;

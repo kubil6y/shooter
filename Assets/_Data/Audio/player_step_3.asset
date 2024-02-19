@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84e8ccdbc94fe0dfdb1291e966378363, type: 3}
-  m_Name: chainsaw_hit
+  m_Name: player_step_3
   m_EditorClassIdentifier: 
   type: 0
-  clip: {fileID: 8300000, guid: 7e7db04176c7eecab81e10a447749769, type: 3}
+  clip: {fileID: 8300000, guid: 74696bf84d30cd317851740afcdad335, type: 3}
   loop: 0
   playOnAwake: 0
-  randomizedPitch: 1
-  randomPitchRangeModifier: 0.287
-  volume: 0.4
-  pitch: 1.3
+  randomizedPitch: 0
+  randomPitchRangeModifier: 0.1
+  volume: 1
+  pitch: 1

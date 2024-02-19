@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5314166668899855511}
   - component: {fileID: 752956093444323179}
-  - component: {fileID: 4467407644162886266}
   - component: {fileID: 2503109033949208078}
   - component: {fileID: 8624201228783040184}
   - component: {fileID: 2775607347168106160}
+  - component: {fileID: 2138873235501071488}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -53,19 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_weaponDataSO: {fileID: 11400000, guid: 25c6851e12aeaa256955b2c47e223a1f, type: 2}
   m_muzzleTf: {fileID: 5103328320133425071}
---- !u!114 &4467407644162886266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063073687653241774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ffa8261124e2110aa3be883e2845a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_pistol: {fileID: 752956093444323179}
 --- !u!114 &2503109033949208078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +132,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pistol: {fileID: 752956093444323179}
+--- !u!114 &2138873235501071488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063073687653241774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f75d928035a8ab39a85dd3f5610a656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_projectileWeapon: {fileID: 752956093444323179}
 --- !u!1 &3814993943469598642
 GameObject:
   m_ObjectHideFlags: 0

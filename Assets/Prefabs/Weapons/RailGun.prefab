@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 9093273430109501040}
   - component: {fileID: 1954936036286031407}
   - component: {fileID: 1362452360113453816}
+  - component: {fileID: 8349051588418844894}
   m_Layer: 0
   m_Name: RailGun
   m_TagString: Untagged
@@ -215,6 +216,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_railGun: {fileID: 752956093444323179}
+--- !u!114 &8349051588418844894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063073687653241774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f75d928035a8ab39a85dd3f5610a656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_projectileWeapon: {fileID: 752956093444323179}
 --- !u!1 &3814993943469598642
 GameObject:
   m_ObjectHideFlags: 0

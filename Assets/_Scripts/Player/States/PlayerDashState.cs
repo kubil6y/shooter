@@ -21,6 +21,7 @@ public class PlayerDashState : PlayerState {
 
     public override void Enter() {
         base.Enter();
+        player.Invoke_OnDashStarted();
         player.animations.SetDashStartAnim(true);
         m_dashDirection = GetDashDirectionNormalized();
         player.StopShooting();

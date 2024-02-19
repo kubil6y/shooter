@@ -111,9 +111,9 @@ public class AudioManager : Singleton<AudioManager> {
 		PlaySound(m_soundCollection.hitmarker, position);
 	}
 
-    public void PlayChainsawHit(Vector3 position) {
+	public void PlayChainsawHit(Vector3 position) {
 		PlaySound(m_soundCollection.chainsawHit, position);
-    }
+	}
 
 	public void PlayMGFire(Vector3 position) {
 		PlaySound(m_soundCollection.machineGunFire, position);
@@ -131,7 +131,23 @@ public class AudioManager : Singleton<AudioManager> {
 		PlaySound(m_soundCollection.shotgunFire, position);
 	}
 
-    public void PlayRocketLauncherFire(Vector3 position) {
+	public void PlayRocketLauncherFire(Vector3 position) {
 		PlaySound(m_soundCollection.rocketFire, position);
+	}
+
+	public void PlayPlayerDash(Vector3 position) {
+		PlaySound(m_soundCollection.playerDash, position);
+	}
+
+	public void PlayOutOfAmmo(Vector3 position) {
+		PlaySound(m_soundCollection.outOfAmmo, position);
+	}
+
+    public void PlayWeaponSwapped(Vector3 position) {
+		PlaySound(m_soundCollection.weaponSwap, position);
+    }
+
+    public void PlayPlayerStepSound(Vector3 position) {
+		PlaySound(m_soundCollection.playerSteps, position);
     }
 }

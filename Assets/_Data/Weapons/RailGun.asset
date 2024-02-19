@@ -21,12 +21,12 @@ MonoBehaviour:
   knockbackThrust: 20
   knockbackDuration: 0.15
   poolSize: 10
-  rof: 500
+  rof: 1000
   singleFire: 1
-  unlimitedAmmo: 1
+  unlimitedAmmo: 0
   projectileCanGoThrough: 1
   projectileGoThroughCount: 3
   spreadAngle: 0
   ammoUsage: 1
-  startingAmmo: 5
-  maxAmmo: 500
+  startingAmmo: 10
+  maxAmmo: 50

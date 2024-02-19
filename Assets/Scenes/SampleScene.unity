@@ -5481,12 +5481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c052615a014eb6a958a14984ef5a9783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePopup: {fileID: 3145002968600139206, guid: 018e8307c2d5df14db826ce38504c3f3, type: 3}
-  playerObject: {fileID: 1381968429}
+  player: {fileID: 1381968431}
   enemyObject: {fileID: 0}
-  damage1: 10
-  damage2: 30
-  damage3: 60
 --- !u!4 &294777323
 Transform:
   m_ObjectHideFlags: 0
@@ -7451,11 +7447,11 @@ GameObject:
   - component: {fileID: 1381968432}
   - component: {fileID: 1381968433}
   - component: {fileID: 1381968431}
-  - component: {fileID: 1381968435}
   - component: {fileID: 1381968436}
   - component: {fileID: 1381968438}
   - component: {fileID: 1381968437}
   - component: {fileID: 1381968439}
+  - component: {fileID: 1381968440}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7494,10 +7490,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveSpeed: 8
+  m_dashCooldown: 1.2
+  dashDistance: 5
   dashLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  dashDistance: 5
 --- !u!70 &1381968432
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7562,18 +7559,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1381968435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381968429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15796e21d3ffa425dae058b5799663a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1381968436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7628,6 +7613,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_defaultSpriteMaterial: {fileID: 2100000, guid: de25138d37a324640a255324202b86b4, type: 2}
   m_quadSpriteMaterial: {fileID: 2100000, guid: 66a7a202573e6c08d955d1b88213fbe8, type: 2}
+--- !u!114 &1381968440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381968429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d766881ae0358b8dab07bd0c7a18a50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_stepInterval: 0.3
 --- !u!1 &1413692953
 GameObject:
   m_ObjectHideFlags: 0
@@ -7984,6 +7982,7 @@ GameObject:
   - component: {fileID: 1837920975}
   - component: {fileID: 1837920974}
   - component: {fileID: 1837920973}
+  - component: {fileID: 1837920976}
   m_Layer: 0
   m_Name: WeaponManager
   m_TagString: Untagged
@@ -8048,6 +8047,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a6bdf1ca5aae3c481f90dd50efef0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1837920976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837920971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e31ea8654927b4d9a20ed9b42a279a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_weaponManager: {fileID: 1837920974}
 --- !u!1 &1847466839
 GameObject:
   m_ObjectHideFlags: 0

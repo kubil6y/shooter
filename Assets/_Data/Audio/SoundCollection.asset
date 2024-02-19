@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc89fe09430c16d52b2ddc9344095210, type: 3}
   m_Name: SoundCollection
   m_EditorClassIdentifier: 
+  playerDash: {fileID: 11400000, guid: a5bfffbd3b036cc4ab4ae391044260c2, type: 2}
+  playerSteps:
+  - {fileID: 11400000, guid: 29ae4ebad1f6cd9408f7901ab35c2f5a, type: 2}
+  - {fileID: 11400000, guid: 0f884cf0528be12548abbd3e4a47721b, type: 2}
+  - {fileID: 11400000, guid: fb769e5ec8b2c18f9b8f05d7ddd94ff6, type: 2}
+  - {fileID: 11400000, guid: b67049219e6038e968012554c9269f45, type: 2}
   hitmarker: {fileID: 11400000, guid: 05201237921682978a2a24c4d301971a, type: 2}
   chainsawHit: {fileID: 11400000, guid: 494d5df89467b255f88cab407847fef2, type: 2}
   rocketFire: {fileID: 11400000, guid: 48d51ef1654b2dc63a8b14d947c767e9, type: 2}
@@ -36,3 +42,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7177507913fcf75b2b757a53b705e537, type: 2}
   - {fileID: 11400000, guid: 07820eb20e9a48aae8beaf555728d2b4, type: 2}
   - {fileID: 11400000, guid: 1c742df4260e65b9a943724cf179dea9, type: 2}
+  outOfAmmo: {fileID: 11400000, guid: f215b7cbb81d3b33aa4be8555480a059, type: 2}
+  weaponSwap: {fileID: 11400000, guid: 796057872d6008568918a5270d757ced, type: 2}

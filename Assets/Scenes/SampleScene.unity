@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 250533593}
   - component: {fileID: 250533592}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,7 +795,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.49803922, g: 0.11764706, b: 0.17254902, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6534,6 +6534,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d171861966ce332548c5119f0235ed79, type: 3}
+--- !u!1 &1039025651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1039025652}
+  m_Layer: 0
+  m_Name: UltimateSpawnTf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1039025652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039025651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.34, y: 1.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1381968430}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1108154947
 GameObject:
   m_ObjectHideFlags: 0
@@ -7199,6 +7230,7 @@ Transform:
   - {fileID: 248003643}
   - {fileID: 1837920972}
   - {fileID: 1149502925}
+  - {fileID: 1039025652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1381968431
@@ -7214,6 +7246,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveSpeed: 8
+  m_ultimatePrefab: {fileID: -3895012849606366371, guid: f700a29a3d53d08bb9cedc5bc44d5169, type: 3}
+  m_ultimateLaserDamage: 50
+  m_ultimateCooldown: 2
+  m_ultimateRange: 25
+  m_ultimateSpawnTf: {fileID: 1039025652}
+  m_ultimateMaterial: {fileID: 2100000, guid: 66a7a202573e6c08d955d1b88213fbe8, type: 2}
+  m_defaultSpriteMaterial: {fileID: 2100000, guid: de25138d37a324640a255324202b86b4, type: 2}
   m_dashCooldown: 1.2
   dashDistance: 5
   dashLayerMask:
@@ -12641,7 +12680,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a497ef700f1b83af7b2e4cceb9b21fc3, type: 2}
+  - {fileID: 2100000, guid: 448fe3816abfdd2b3aa2c293081273be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -48709,7 +48748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2019975843
 Transform:
   m_ObjectHideFlags: 0

@@ -24,12 +24,14 @@ public class PlayerDashState : PlayerState {
         player.Invoke_OnDashStarted();
         player.animations.SetDashStartAnim(true);
         m_dashDirection = GetDashDirectionNormalized();
+        player.SetCanUseSkill(false);
         player.StopShooting();
         player.DisableWeaponVisuals();
     }
 
     public override void Exit() {
         base.Exit();
+        player.SetCanUseSkill(true);
         player.movement.SetZeroVelocity();
     }
 

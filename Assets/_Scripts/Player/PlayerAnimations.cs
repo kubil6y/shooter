@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour {
 	public event EventHandler OnAnimDashStartFinished;
 	public event EventHandler OnAnimDashEndFinished;
+	public event EventHandler OnAnimUltimateFire;
+	public event EventHandler OnAnimUltimateEnded;
 
 	private Player m_player;
 	private Animator m_animator;
@@ -13,12 +15,20 @@ public class PlayerAnimations : MonoBehaviour {
 	private readonly int ANIMKEY_DEATH = Animator.StringToHash("Death");
 	private readonly int ANIMKEY_DASH_START = Animator.StringToHash("DashStart");
 	private readonly int ANIMKEY_DASH_END = Animator.StringToHash("DashEnd");
+	private readonly int ANIMKEY_ULTIMATE = Animator.StringToHash("Ultimate");
 
 	private void Awake() {
 		m_animator = GetComponent<Animator>();
 		m_player = GetComponentInParent<Player>();
 	}
 
+	public void AnimUltimateFireTrigger() {
+		OnAnimUltimateFire?.Invoke(this, EventArgs.Empty);
+	}
+
+	public void AnimUltimateEndedTrigger() {
+		OnAnimUltimateEnded?.Invoke(this, EventArgs.Empty);
+	}
 
 	public void AnimDashStartFinishedTrigger() {
 		OnAnimDashStartFinished?.Invoke(this, EventArgs.Empty);
@@ -47,6 +57,10 @@ public class PlayerAnimations : MonoBehaviour {
 
 	public void SetDashEndAnim(bool value) {
 		m_animator.SetBool(ANIMKEY_DASH_END, value);
+	}
+
+	public void SetUltimateAnim(bool value) {
+		m_animator.SetBool(ANIMKEY_ULTIMATE, value);
 	}
 	#endregion // Animation Setters
 }

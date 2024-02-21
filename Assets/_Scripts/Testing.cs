@@ -15,7 +15,7 @@ public class Testing : MonoBehaviour {
 			player.Die();
 		}
 
-		if (Input.GetKeyDown(KeyCode.R)) {
+		if (Input.GetKeyDown(KeyCode.O)) {
 			Player.instance.Revive();
 			Debug.Log("Blink duration: " + Player.instance.blink.GetBlinkDuration());
 		}

@@ -139,6 +139,10 @@ public class AudioManager : Singleton<AudioManager> {
 		PlaySound(m_soundCollection.playerDash, position);
 	}
 
+	public void PlayPlayerUltimate(Vector3 position) {
+		PlaySound(m_soundCollection.playerUltimate, position);
+	}
+
 	public void PlayOutOfAmmo(Vector3 position) {
 		PlaySound(m_soundCollection.outOfAmmo, position);
 	}

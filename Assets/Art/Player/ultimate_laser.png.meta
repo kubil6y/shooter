@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 43ff191550eba2b669df99cfb7ff9f31
+guid: f4e83775bb847da2093d86ee2a7cbaa9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3612073096765849000
-    second: white_marble3_0
-  - first:
-      213: 6876359437427243539
-    second: white_marble3_1
-  - first:
-      213: 3142414538343948271
-    second: white_marble3_2
-  - first:
-      213: 1681625541611632572
-    second: white_marble3_3
+      213: 7309254314831504577
+    second: Magic Laser_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,10 +49,10 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  alignment: 9
+  spritePivot: {x: 0, y: 0.54}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 4, y: 7, z: 4, w: 6}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -77,7 +68,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -97,20 +88,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,85 +100,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: white_marble3_0
+      name: Magic Laser_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 4
         width: 16
-        height: 16
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 852c684f7a65fddc0800000000000000
-      internalID: -3612073096765849000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: white_marble3_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 31a71cfc97cbd6f50800000000000000
-      internalID: 6876359437427243539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: white_marble3_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fef93079f591c9b20800000000000000
-      internalID: 3142414538343948271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: white_marble3_3
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb73cfc3585565710800000000000000
-      internalID: 1681625541611632572
+      spriteID: 1c4e580c210bf6560800000000000000
+      internalID: 7309254314831504577
       vertices: []
       indices: 
       edges: []
@@ -209,17 +124,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      white_marble3_0: -3612073096765849000
-      white_marble3_1: 6876359437427243539
-      white_marble3_2: 3142414538343948271
-      white_marble3_3: 1681625541611632572
+      Magic Laser_0: 7309254314831504577
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

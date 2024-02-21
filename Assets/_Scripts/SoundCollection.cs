@@ -4,6 +4,7 @@ using UnityEngine;
 public class SoundCollection : ScriptableObject {
 	[Header("Player")]
 	public SoundSO playerDash;
+	public SoundSO playerUltimate;
 	public SoundSO[] playerSteps;
 
 	[Header("SFX")]

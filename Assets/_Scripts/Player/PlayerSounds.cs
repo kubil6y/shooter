@@ -21,9 +21,14 @@ public class PlayerSounds : MonoBehaviour {
 
 	private void Start() {
 		m_player.OnDashStarted += Player_OnDashStarted;
+		m_player.OnUltimated += Player_OnUltimated;
 	}
 
     private void Player_OnDashStarted(object sender, EventArgs e) {
 		AudioManager.instance.PlayPlayerDash(m_player.transform.position);
+    }
+
+    private void Player_OnUltimated(object sender, EventArgs e) {
+		AudioManager.instance.PlayPlayerUltimate(m_player.transform.position);
     }
 }

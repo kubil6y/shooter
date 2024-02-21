@@ -13,11 +13,11 @@ public class EnemySounds : MonoBehaviour {
 		m_enemy.OnHit += Enemy_OnHit;
 	}
 
-    private void Enemy_OnDeath(object sender, EventArgs e) {
+	private void Enemy_OnDeath(object sender, EventArgs e) {
 		AudioManager.instance.PlayEnemyImplosion(transform.position);
-    }
+	}
 
-    private void Enemy_OnHit(object sender, Enemy.OnHitEventArgs e) {
+	private void Enemy_OnHit(object sender, Enemy.OnHitEventArgs e) {
 		switch (e.weaponType) {
 		case WeaponType.Chainsaw:
 			AudioManager.instance.PlayChainsawHit(transform.position);
@@ -29,5 +29,5 @@ public class EnemySounds : MonoBehaviour {
 			AudioManager.instance.PlayHitmarker(transform.position);
 			break;
 		}
-    }
+	}
 }

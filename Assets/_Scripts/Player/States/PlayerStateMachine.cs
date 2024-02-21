@@ -6,6 +6,7 @@ public enum PState {
 	Idle,
 	Move,
 	Dash,
+	Ultimate,
 	Death,
 	Revived,
 }
@@ -71,11 +72,13 @@ public class PlayerStateMachine {
 		PlayerDashState dashState = new PlayerDashState(PState.Dash, this, player);
 		PlayerDeathState deathState = new PlayerDeathState(PState.Death, this, player);
 		PlayerRevivedState revivedState = new PlayerRevivedState(PState.Revived, this, player);
+		PlayerUltimateState ultimateState = new PlayerUltimateState(PState.Ultimate, this, player);
 
 		AddState(PState.Idle, idleState);
 		AddState(PState.Move, moveState);
 		AddState(PState.Dash, dashState);
 		AddState(PState.Death, deathState);
 		AddState(PState.Revived, revivedState);
+		AddState(PState.Ultimate, ultimateState);
 	}
 }

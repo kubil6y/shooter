@@ -10,9 +10,20 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 	public event EventHandler OnQuadEnded;
 	public event EventHandler OnRevived;
 	public event EventHandler OnDashStarted;
+	public event EventHandler OnUltimated;
 
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
+
+	[Header("Ultimate Skill")]
+	[SerializeField] private UltimateLaser m_ultimatePrefab;
+	[SerializeField] private int m_ultimateLaserDamage;
+	[SerializeField] private float m_ultimateCooldown;
+	[SerializeField] private float m_ultimateRange = 25f;
+	[SerializeField] private Transform m_ultimateSpawnTf;
+	[SerializeField] private Material m_ultimateMaterial;
+	[SerializeField] private Material m_defaultSpriteMaterial;
+	private float m_ultimateTimer;
 
 	[Header("Dash Skill")]
 	[SerializeField] private float m_dashCooldown;
@@ -29,18 +40,21 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 	public Knockback knockback { get; private set; }
 	public BlinkController blink { get; private set; }
 
+	private SpriteRenderer m_spriteRenderer;
 	private PlayerStateMachine m_stateMachine;
 	private Coroutine m_quadRoutine;
+	private float m_originalMass;
 
+	private bool m_canUseSkill = true;
 	private bool m_canFlip = true;
 	private bool m_canShoot = true;
 	private bool m_canPickup = true;
 	private bool m_canGetHit = true;
-
 	private bool m_hasQuad;
 
-	protected override void Awake() {
+    protected override void Awake() {
 		base.Awake();
+		m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		m_stateMachine = new PlayerStateMachine(this);
 		weaponManager = GetComponentInChildren<WeaponManager>();
 		rb = GetComponent<Rigidbody2D>();
@@ -48,6 +62,7 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 		movement = GetComponent<Movement>();
 		knockback = GetComponent<Knockback>();
 		animations = GetComponentInChildren<PlayerAnimations>();
+		flipController = GetComponentInChildren<PlayerFlipController>();
 		blink = GetComponentInChildren<BlinkController>();
 	}
 
@@ -62,9 +77,19 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 
 	private void Update() {
 		m_dashTimer -= Time.deltaTime;
-		if (GameInput.instance.Dash_WasPerformedThisFrame() && m_dashTimer < 0f) {
-			m_dashTimer = m_dashCooldown;
-			m_stateMachine.SetState(PState.Dash);
+		m_ultimateTimer -= Time.deltaTime;
+
+		if (CanUseSkill()) {
+			if (GameInput.instance.Dash_WasPerformedThisFrame() && m_dashTimer < 0f) {
+				m_dashTimer = m_dashCooldown;
+				m_stateMachine.SetState(PState.Dash);
+			}
+
+			// TODO fix later input
+			if (Input.GetKeyDown(KeyCode.R) && m_ultimateTimer < 0f) {
+				m_ultimateTimer = m_ultimateCooldown;
+				m_stateMachine.SetState(PState.Ultimate);
+			}
 		}
 		m_stateMachine.currentState?.Update();
 	}
@@ -78,6 +103,46 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 		return m_hasQuad ? 4 : 1;
 	}
 
+	public void SetDefaultMaterial() {
+		m_spriteRenderer.material = m_defaultSpriteMaterial;
+	}
+
+	public void SetIsPushable(bool value) {
+		if (value) {
+			rb.mass = m_originalMass;
+			rb.bodyType = RigidbodyType2D.Dynamic;
+		} else {
+			rb.mass = float.MaxValue;
+			rb.bodyType = RigidbodyType2D.Kinematic;
+		}
+	}
+
+	public void SetUltimateMaterial() {
+		m_spriteRenderer.material = m_ultimateMaterial;
+	}
+
+	public float GetUltimateRange() {
+		return m_ultimateRange;
+	}
+
+	public Vector2 GetUltimateSpawnPosition() {
+		if (flipController.IsFacingRight()) {
+			return m_ultimateSpawnTf.position;
+		} else {
+			float x = m_ultimateSpawnTf.position.x - 2 * m_ultimateSpawnTf.localPosition.x;
+			float y =  m_ultimateSpawnTf.position.y;
+			return new Vector2(x, y);
+		}
+	}
+
+	public int GetUltimateLaserDamage() {
+		return m_ultimateLaserDamage;
+	}
+
+	public UltimateLaser GetUltimateLaserPrefab() {
+		return m_ultimatePrefab;
+	}
+
 	public bool HasQuad() {
 		return m_hasQuad;
 	}
@@ -86,9 +151,9 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 		return health.IsAlive();
 	}
 
-    public bool IsMoving() {
+	public bool IsMoving() {
 		return m_stateMachine.GetCurrentStateKey() == PState.Move;
-    }
+	}
 
 	public bool IsBlinking() {
 		return blink.IsBlinking();
@@ -105,6 +170,14 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 	public float GetMoveSpeed() {
 		float quadMovementBoost = 1.2f;
 		return m_hasQuad ? quadMovementBoost * m_moveSpeed : m_moveSpeed;
+	}
+
+	public bool CanUseSkill() {
+		return m_canUseSkill;
+	}
+
+	public void SetCanUseSkill(bool canUseSkill) {
+		m_canUseSkill = canUseSkill;
 	}
 
 	public bool CanGetHit() {
@@ -245,6 +318,10 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 			return;
 		}
 		knockback.GetKnocked(hitDirection, knockbackThrust, knockbackDuration);
+	}
+
+	public void Invoke_OnUltimated() {
+		OnUltimated?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void Invoke_OnDashStarted() {

@@ -19,6 +19,7 @@ public class PlayerDeathState : PlayerState {
         base.Enter();
         player.movement.SetZeroVelocity();
         player.animations.SetDeathAnim(true);
+        player.SetCanUseSkill(false);
         player.SetCanFlip(false);
         player.SetCanMove(false);
         player.SetCanGetKnocked(false); player.SetCanGetHit(false);
@@ -31,6 +32,7 @@ public class PlayerDeathState : PlayerState {
     public override void Exit() {
         base.Exit();
         player.animations.SetDeathAnim(false);
+        player.SetCanUseSkill(true);
         player.SetCanFlip(true);
         player.SetCanMove(true);
         player.SetCanGetKnocked(true);

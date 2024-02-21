@@ -9,8 +9,6 @@ public class Flash : MonoBehaviour {
 	private SpriteRenderer[] m_spriteRenderers;
 	private Coroutine m_flashCoroutine;
 
-	private float m_flashDuration = .05f;
-
 	private void Awake() {
 		m_spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 	}

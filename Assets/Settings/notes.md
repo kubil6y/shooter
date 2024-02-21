@@ -1,9 +1,12 @@
-- fix: railgun projectile layer masks
-- todo: weapon next should take into account if it has ammo or not! this is important
-- ??: player skill manager?
+- fix keybindings (e:lg, r:ultimate)
+- teleports
+- powerup spawners
+- add missing audios
+- enemies drop souls
+- analytics? (this would be a nice addition)
+- create complete game loop
 
-- [] audio manager
-- [] add map
+- what happens when player dies during ultimate? xd
 
 ---
 

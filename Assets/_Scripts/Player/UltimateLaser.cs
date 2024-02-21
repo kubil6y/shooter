@@ -9,7 +9,7 @@ public class UltimateLaser : MonoBehaviour {
 	private int m_damage;
 	private float m_laserRange;
 	private float m_laserStrechDuration = .25f;
-	private float m_laserDisappearDuration = .010f;
+	private float m_laserDisappearDuration = .020f;
 	private bool m_canDamage = true;
 
 	private void Awake() {
@@ -23,8 +23,6 @@ public class UltimateLaser : MonoBehaviour {
 
 		m_damage = damage;
 		m_laserRange = laserRange;
-
-		Debug.Log("laserRange: " + m_laserRange);
 
 		StartCoroutine(StrechLaserRoutine());
 	}

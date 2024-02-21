@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1773469871546584021}
   - component: {fileID: 7646105674162929618}
   - component: {fileID: 5535111629629650771}
+  - component: {fileID: -3963089616042437808}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -131,6 +132,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shotgun: {fileID: 752956093444323179}
+--- !u!114 &-3963089616042437808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063073687653241774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f75d928035a8ab39a85dd3f5610a656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_projectileWeapon: {fileID: 752956093444323179}
 --- !u!1 &3814993943469598642
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +250,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1431127245
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 8e677c35b2462d3bda1f60ca91ff684f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -80,13 +80,13 @@ public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, IC
 		m_ultimateTimer -= Time.deltaTime;
 
 		if (CanUseSkill()) {
-			if (GameInput.instance.Dash_WasPerformedThisFrame() && m_dashTimer < 0f) {
+			if (GameInput.instance.DashPressed() && m_dashTimer < 0f) {
 				m_dashTimer = m_dashCooldown;
 				m_stateMachine.SetState(PState.Dash);
 			}
 
 			// TODO fix later input
-			if (Input.GetKeyDown(KeyCode.R) && m_ultimateTimer < 0f) {
+			if (GameInput.instance.UltimatePressed() && m_ultimateTimer < 0f) {
 				m_ultimateTimer = m_ultimateCooldown;
 				m_stateMachine.SetState(PState.Ultimate);
 			}

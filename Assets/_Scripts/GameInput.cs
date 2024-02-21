@@ -23,6 +23,14 @@ public class GameInput : Singleton<GameInput> {
 		return m_playerInputActions.Player.SwapWeapons.ReadValue<float>() < -0.1f;
 	}
 
+	public bool DashPressed() {
+		return m_playerInputActions.Player.Dash.WasPerformedThisFrame();
+	}
+
+	public bool UltimatePressed() {
+		return m_playerInputActions.Player.Ultimate.WasPressedThisFrame();
+	}
+
 	public bool IsFireDown() {
 		return m_playerInputActions.Player.Fire.WasPressedThisFrame();
 	}
@@ -63,9 +71,5 @@ public class GameInput : Singleton<GameInput> {
 
 	public Vector2 GetMoveInputNormalized() {
 		return m_playerInputActions.Player.Move.ReadValue<Vector2>();
-	}
-
-	public bool Dash_WasPerformedThisFrame() {
-		return m_playerInputActions.Player.Dash.WasPerformedThisFrame();
 	}
 }

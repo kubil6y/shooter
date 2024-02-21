@@ -125,6 +125,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ultimate"",
+                    ""type"": ""Button"",
+                    ""id"": ""29d92e5a-8ce3-478e-9cd3-96fae8ef0048"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -285,7 +294,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c543585b-462f-42f8-88ea-c66995ed6cf1"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -296,7 +305,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3b4f78cd-5560-47a0-b19e-98fde8b5ffb0"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -307,7 +316,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""23b62ae7-a65a-4d25-aba5-145ee2bbb0f4"",
-                    ""path"": ""<Keyboard>/3"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -318,7 +327,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6643e5ea-bd44-487e-9cd3-298018dcfb04"",
-                    ""path"": ""<Keyboard>/4"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -329,7 +338,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""57c9018a-cdc0-43c7-a67f-857721aa91ba"",
-                    ""path"": ""<Keyboard>/5"",
+                    ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -340,7 +349,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e7861aa0-31c9-4629-a2a2-15ae1f93955a"",
-                    ""path"": ""<Keyboard>/6"",
+                    ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -351,11 +360,22 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""77f7aee0-038c-4770-9b66-772d995b81ef"",
-                    ""path"": ""<Keyboard>/7"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RocketLauncher"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67d870c7-b5fe-434a-9e09-5c4376def558"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -377,6 +397,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_RailGun = m_Player.FindAction("RailGun", throwIfNotFound: true);
         m_Player_Shotgun = m_Player.FindAction("Shotgun", throwIfNotFound: true);
         m_Player_RocketLauncher = m_Player.FindAction("RocketLauncher", throwIfNotFound: true);
+        m_Player_Ultimate = m_Player.FindAction("Ultimate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -449,6 +470,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RailGun;
     private readonly InputAction m_Player_Shotgun;
     private readonly InputAction m_Player_RocketLauncher;
+    private readonly InputAction m_Player_Ultimate;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -464,6 +486,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @RailGun => m_Wrapper.m_Player_RailGun;
         public InputAction @Shotgun => m_Wrapper.m_Player_Shotgun;
         public InputAction @RocketLauncher => m_Wrapper.m_Player_RocketLauncher;
+        public InputAction @Ultimate => m_Wrapper.m_Player_Ultimate;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -506,6 +529,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RocketLauncher.started += instance.OnRocketLauncher;
             @RocketLauncher.performed += instance.OnRocketLauncher;
             @RocketLauncher.canceled += instance.OnRocketLauncher;
+            @Ultimate.started += instance.OnUltimate;
+            @Ultimate.performed += instance.OnUltimate;
+            @Ultimate.canceled += instance.OnUltimate;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -543,6 +569,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RocketLauncher.started -= instance.OnRocketLauncher;
             @RocketLauncher.performed -= instance.OnRocketLauncher;
             @RocketLauncher.canceled -= instance.OnRocketLauncher;
+            @Ultimate.started -= instance.OnUltimate;
+            @Ultimate.performed -= instance.OnUltimate;
+            @Ultimate.canceled -= instance.OnUltimate;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -573,5 +602,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnRailGun(InputAction.CallbackContext context);
         void OnShotgun(InputAction.CallbackContext context);
         void OnRocketLauncher(InputAction.CallbackContext context);
+        void OnUltimate(InputAction.CallbackContext context);
     }
 }

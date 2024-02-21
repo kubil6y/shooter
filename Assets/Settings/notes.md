@@ -1,4 +1,3 @@
-- fix keybindings (e:lg, r:ultimate)
 - teleports
 - powerup spawners
 - add missing audios

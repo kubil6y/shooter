@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: shooter
-  defaultCursor: {fileID: 2800000, guid: a3ebdf2a1a7fedb71b03dfc75f7d9e6a, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 0bd366f50036243599d73c5d708fe784, type: 3}
   cursorHotspot: {x: 32, y: 30}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

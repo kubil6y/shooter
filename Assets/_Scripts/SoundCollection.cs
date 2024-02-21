@@ -28,4 +28,5 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO[] implosions;
 	public SoundSO outOfAmmo;
 	public SoundSO weaponSwap;
+	public SoundSO teleportIn;
 }

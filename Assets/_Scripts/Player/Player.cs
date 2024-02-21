@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Player : Singleton<Player>, ICanPickup, IDamageable, IKnockable, ICanUseWeapon {
+public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, IKnockable, ICanUseWeapon {
 	public event EventHandler<OnQuadStartedEventArgs> OnQuadStarted;
 	public class OnQuadStartedEventArgs : EventArgs {
 		public float duration;

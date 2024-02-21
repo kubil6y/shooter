@@ -45,3 +45,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c742df4260e65b9a943724cf179dea9, type: 2}
   outOfAmmo: {fileID: 11400000, guid: f215b7cbb81d3b33aa4be8555480a059, type: 2}
   weaponSwap: {fileID: 11400000, guid: 796057872d6008568918a5270d757ced, type: 2}
+  teleportIn: {fileID: 11400000, guid: a0fe7e436ac0612729cb676fa027db5d, type: 2}
+  teleportOut: {fileID: 11400000, guid: 009d44b3388c84daf8f2014c8602df30, type: 2}

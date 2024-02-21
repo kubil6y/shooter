@@ -154,4 +154,8 @@ public class AudioManager : Singleton<AudioManager> {
     public void PlayPlayerStepSound(Vector3 position) {
 		PlaySound(m_soundCollection.playerSteps, position);
     }
+
+    public void PlayTeleIn(Vector3 position) {
+		PlaySound(m_soundCollection.teleportIn, position);
+    }
 }

@@ -1,13 +1,7 @@
-- teleports
-  - save teleport positions
-
-- player starter weapons
-
-- clean up player.cs especially skills
+- enemies drop souls
 
 - powerup spawners
 - add missing audios
-- enemies drop souls
 - analytics? (this would be a nice addition)
 - create complete game loop
 
@@ -20,8 +14,3 @@
   push to an array and if its not hit 0, then calculate accuracy from total shots?
 
 - if an enemy is killed with chainsaw do not spawn death vfx
-
-
-### NOTES
-
-Quad should be spawned in game manager after 30s or so.

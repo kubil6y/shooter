@@ -6041,7 +6041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073358361035324117, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5073358361035324117, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -6582,7 +6582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073358361035324117, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6604854227714574470, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_LocalScale.x
@@ -7515,6 +7515,7 @@ GameObject:
   - component: {fileID: 1381968437}
   - component: {fileID: 1381968439}
   - component: {fileID: 1381968440}
+  - component: {fileID: 1381968441}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7554,18 +7555,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveSpeed: 8
-  m_ultimatePrefab: {fileID: -3895012849606366371, guid: f700a29a3d53d08bb9cedc5bc44d5169, type: 3}
-  m_ultimateLaserDamage: 50
-  m_ultimateCooldown: 2
-  m_ultimateRange: 25
-  m_ultimateSpawnTf: {fileID: 1039025652}
-  m_ultimateMaterial: {fileID: 2100000, guid: 66a7a202573e6c08d955d1b88213fbe8, type: 2}
-  m_defaultSpriteMaterial: {fileID: 2100000, guid: de25138d37a324640a255324202b86b4, type: 2}
-  m_dashCooldown: 1.2
-  dashDistance: 5
-  dashLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!70 &1381968432
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7697,6 +7686,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_stepInterval: 0.3
+--- !u!114 &1381968441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381968429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ee31722ee13f543b4ab68f4f803bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ultimatePrefab: {fileID: -3895012849606366371, guid: f700a29a3d53d08bb9cedc5bc44d5169, type: 3}
+  m_ultimateLaserDamage: 100
+  m_ultimateCooldown: 2
+  m_ultimateRange: 20
+  m_ultimateSpawnTf: {fileID: 1039025652}
+  m_ultimateMaterial: {fileID: 2100000, guid: 35042f31fc55e5e66ae7095bc4cb2ac2, type: 2}
+  m_defaultSpriteMaterial: {fileID: 2100000, guid: de25138d37a324640a255324202b86b4, type: 2}
+  m_dashCooldown: 1.2
+  m_dashDistance: 4
+  m_dashLayerMask:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!1001 &1413543999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7711,7 +7724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073358361035324117, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6604854227714574470, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -49357,7 +49370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073358361035324117, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6604854227714574470, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_LocalScale.x

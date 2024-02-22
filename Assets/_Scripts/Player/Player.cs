@@ -15,22 +15,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
 
-	[Header("Ultimate Skill")]
-	[SerializeField] private UltimateLaser m_ultimatePrefab;
-	[SerializeField] private int m_ultimateLaserDamage;
-	[SerializeField] private float m_ultimateCooldown;
-	[SerializeField] private float m_ultimateRange = 25f;
-	[SerializeField] private Transform m_ultimateSpawnTf;
-	[SerializeField] private Material m_ultimateMaterial;
-	[SerializeField] private Material m_defaultSpriteMaterial;
-	private float m_ultimateTimer;
-
-	[Header("Dash Skill")]
-	[SerializeField] private float m_dashCooldown;
-	[SerializeField] public float dashDistance;
-	[SerializeField] public LayerMask dashLayerMask;
-	private float m_dashTimer;
-
+	public SpriteRenderer spriteRenderer { get; private set; }
 	public Rigidbody2D rb { get; private set; }
 	public PlayerAnimations animations { get; private set; }
 	public PlayerFlipController flipController { get; private set; }
@@ -39,8 +24,8 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	public Movement movement { get; private set; }
 	public Knockback knockback { get; private set; }
 	public BlinkController blink { get; private set; }
+	public PlayerSkills skills { get; private set; }
 
-	private SpriteRenderer m_spriteRenderer;
 	private PlayerStateMachine m_stateMachine;
 	private Coroutine m_quadRoutine;
 	private float m_originalMass;
@@ -54,13 +39,14 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 
     protected override void Awake() {
 		base.Awake();
-		m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		m_stateMachine = new PlayerStateMachine(this);
 		weaponManager = GetComponentInChildren<WeaponManager>();
 		rb = GetComponent<Rigidbody2D>();
 		health = GetComponent<Health>();
 		movement = GetComponent<Movement>();
 		knockback = GetComponent<Knockback>();
+		skills = GetComponent<PlayerSkills>();
 		animations = GetComponentInChildren<PlayerAnimations>();
 		flipController = GetComponentInChildren<PlayerFlipController>();
 		blink = GetComponentInChildren<BlinkController>();
@@ -76,21 +62,6 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	}
 
 	private void Update() {
-		m_dashTimer -= Time.deltaTime;
-		m_ultimateTimer -= Time.deltaTime;
-
-		if (CanUseSkill()) {
-			if (GameInput.instance.DashPressed() && m_dashTimer < 0f) {
-				m_dashTimer = m_dashCooldown;
-				m_stateMachine.SetState(PState.Dash);
-			}
-
-			// TODO fix later input
-			if (GameInput.instance.UltimatePressed() && m_ultimateTimer < 0f) {
-				m_ultimateTimer = m_ultimateCooldown;
-				m_stateMachine.SetState(PState.Ultimate);
-			}
-		}
 		m_stateMachine.currentState?.Update();
 	}
 
@@ -103,8 +74,8 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		return m_hasQuad ? 4 : 1;
 	}
 
-	public void SetDefaultMaterial() {
-		m_spriteRenderer.material = m_defaultSpriteMaterial;
+	public void SetMaterial(Material material) {
+		spriteRenderer.material = material;
 	}
 
 	public void SetIsPushable(bool value) {
@@ -117,30 +88,8 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		}
 	}
 
-	public void SetUltimateMaterial() {
-		m_spriteRenderer.material = m_ultimateMaterial;
-	}
-
-	public float GetUltimateRange() {
-		return m_ultimateRange;
-	}
-
-	public Vector2 GetUltimateSpawnPosition() {
-		if (flipController.IsFacingRight()) {
-			return m_ultimateSpawnTf.position;
-		} else {
-			float x = m_ultimateSpawnTf.position.x - 2 * m_ultimateSpawnTf.localPosition.x;
-			float y =  m_ultimateSpawnTf.position.y;
-			return new Vector2(x, y);
-		}
-	}
-
-	public int GetUltimateLaserDamage() {
-		return m_ultimateLaserDamage;
-	}
-
-	public UltimateLaser GetUltimateLaserPrefab() {
-		return m_ultimatePrefab;
+	public void SetState(PState state) {
+		m_stateMachine.SetState(state);
 	}
 
 	public bool HasQuad() {

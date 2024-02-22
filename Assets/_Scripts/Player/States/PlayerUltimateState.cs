@@ -11,14 +11,14 @@ public class PlayerUltimateState : PlayerState {
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
-        m_dirToCursor = ((Vector2)mousePos - player.GetUltimateSpawnPosition()).normalized;
+        m_dirToCursor = ((Vector2)mousePos - player.skills.GetUltimateSpawnPosition()).normalized;
 
         player.Invoke_OnUltimated();
         player.animations.SetUltimateAnim(true);
 
 		player.SetIsPushable(false);
         player.SetCanFlip(false);
-        player.SetUltimateMaterial();
+        player.skills.SetUltimateMaterial();
         player.SetCanUseSkill(false);
         player.weaponManager.StopShooting();
         player.DisableWeaponVisuals();
@@ -47,9 +47,9 @@ public class PlayerUltimateState : PlayerState {
     }
 
     private void SpawnLaser() {
-        UltimateLaser ultimateLaser = GameObject.Instantiate(player.GetUltimateLaserPrefab());
+        UltimateLaser ultimateLaser = GameObject.Instantiate(player.skills.GetUltimateLaserPrefab());
 
-        ultimateLaser.Setup(player.GetUltimateSpawnPosition(), m_dirToCursor, player.GetUltimateLaserDamage() * player.GetDamageMultiplier(), player.GetUltimateRange());
+        ultimateLaser.Setup(player.skills.GetUltimateSpawnPosition(), m_dirToCursor, player.skills.GetUltimateLaserDamage() * player.GetDamageMultiplier(), player.skills.GetUltimateRange());
     }
 
     private void Player_OnAnimUltimateFire(object sender, EventArgs e) {
@@ -60,7 +60,7 @@ public class PlayerUltimateState : PlayerState {
         SpawnLaser();
 
         if (!player.HasQuad()) {
-            player.SetDefaultMaterial();
+            player.skills.SetDefaultMaterial();
         }
     }
 

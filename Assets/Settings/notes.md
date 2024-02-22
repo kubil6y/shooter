@@ -1,4 +1,10 @@
 - teleports
+  - save teleport positions
+
+- player starter weapons
+
+- clean up player.cs especially skills
+
 - powerup spawners
 - add missing audios
 - enemies drop souls

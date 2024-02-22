@@ -24,6 +24,7 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	[SerializeField] private Transform m_weaponHolderTf;
+	[SerializeField] private WeaponDataSO[] m_startingWeaponSoArray;
 
 	private Weapon[] m_weaponArray;
 	private AmmoPouch m_ammoPouch;
@@ -39,6 +40,10 @@ public class WeaponManager : MonoBehaviour {
 		m_player = GetComponentInParent<Player>();
 		m_ammoPouch = GetComponent<AmmoPouch>();
 		m_weaponManagerVisuals = GetComponent<WeaponManagerVisuals>();
+	}
+
+	private void Start() {
+		SetStartingWeapons();
 	}
 
 	private void Update() {
@@ -74,6 +79,12 @@ public class WeaponManager : MonoBehaviour {
 
 	private void HandleWeaponSwapTimer() {
 		m_weaponSwapTimer -= Time.deltaTime;
+	}
+
+	public void SetStartingWeapons() {
+		foreach (WeaponDataSO weaponDataSO in m_startingWeaponSoArray) {
+			TryAddingWeapon(weaponDataSO);
+		}
 	}
 
 	public bool TrySwappingToNextWeapon() {

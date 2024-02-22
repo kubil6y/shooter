@@ -301,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111330945}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -310,7 +310,7 @@ Transform:
   - {fileID: 1058549613}
   - {fileID: 1512827936}
   - {fileID: 82959046}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2019975843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &156343766 stripped
 Transform:
@@ -6033,7 +6033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4230655178055760933, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 4230655178055760933, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6041,6 +6041,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073358361035324117, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073358361035324117, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6604854227714574470, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
@@ -6570,7 +6574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4230655178055760933, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.53
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4230655178055760933, guid: 1a1a6d1ab7c9150d2a4b3be11d7ceac4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12756,6 +12760,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_weaponHolderTf: {fileID: 745320546}
+  m_startingWeaponSoArray:
+  - {fileID: 11400000, guid: 25c6851e12aeaa256955b2c47e223a1f, type: 2}
+  - {fileID: 11400000, guid: 8971735c4cadd9b7ca208ede1d458fd7, type: 2}
 --- !u!114 &1837920975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49153,6 +49160,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1730378798}
+  - {fileID: 111330946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2053366918
@@ -49232,7 +49240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2059357379
 Transform:
   m_ObjectHideFlags: 0
@@ -49495,4 +49503,3 @@ SceneRoots:
   - {fileID: 1954509330}
   - {fileID: 1150257853}
   - {fileID: 250533593}
-  - {fileID: 111330946}

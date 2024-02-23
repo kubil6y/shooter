@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 248003646}
   - component: {fileID: 248003647}
   - component: {fileID: 248003648}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 288745668}
   - component: {fileID: 288745670}
   - component: {fileID: 288745669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MoveDustVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5501,7 +5501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 338686012}
   - component: {fileID: 338686013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EmptyLeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6370,7 +6370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 745320546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6846,7 +6846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1039025652}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UltimateSpawnTf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7012,7 +7012,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1149502925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7516,7 +7516,7 @@ GameObject:
   - component: {fileID: 1381968439}
   - component: {fileID: 1381968440}
   - component: {fileID: 1381968441}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7673,6 +7673,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_defaultSpriteMaterial: {fileID: 2100000, guid: de25138d37a324640a255324202b86b4, type: 2}
   m_quadSpriteMaterial: {fileID: 2100000, guid: 66a7a202573e6c08d955d1b88213fbe8, type: 2}
+  m_crystalSpriteMaterial: {fileID: 2100000, guid: 8bc862186dc66f5f1883075b54b7ec53, type: 2}
+  m_crystalEffectDuration: 0.1
 --- !u!114 &1381968440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7686,6 +7688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_stepInterval: 0.3
+  m_laughChance: 0.25
 --- !u!114 &1381968441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12400,7 +12403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1446442657}
   - component: {fileID: 1446442658}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EmptyRightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12684,7 +12687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1787828105}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EmptyHands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12721,7 +12724,7 @@ GameObject:
   - component: {fileID: 1837920974}
   - component: {fileID: 1837920973}
   - component: {fileID: 1837920976}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13090,7 +13093,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 448fe3816abfdd2b3aa2c293081273be, type: 2}
+  - {fileID: 2100000, guid: 791cdab62e14637d99563ed51fd2518d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

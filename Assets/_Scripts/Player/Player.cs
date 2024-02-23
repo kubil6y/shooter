@@ -11,6 +11,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	public event EventHandler OnRevived;
 	public event EventHandler OnDashStarted;
 	public event EventHandler OnUltimated;
+	public event EventHandler OnCrystalCollected;
 
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
@@ -36,6 +37,8 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	private bool m_canPickup = true;
 	private bool m_canGetHit = true;
 	private bool m_hasQuad;
+
+	private int m_crystalAmount;
 
     protected override void Awake() {
 		base.Awake();
@@ -67,6 +70,20 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 
 	private void FixedUpdate() {
 		m_stateMachine.currentState?.FixedUpdate();
+	}
+
+	public bool TryCollectCrystal() {
+		if (!CanPickup()) {
+			return false;
+		}
+		m_crystalAmount++;
+		OnCrystalCollected?.Invoke(this, EventArgs.Empty);
+		return true;
+	}
+
+	// TODO Consider this death/revive state
+	public void ResetCrystalAmount() {
+		m_crystalAmount = 0;
 	}
 
 	#region getters/setters

@@ -52,6 +52,9 @@ public class AudioManager : Singleton<AudioManager> {
 
 	public void PlaySound(SoundSO soundSO, Vector3 position, Transform parentTf = null) {
 		AudioSource audioSource = CreateAudioSource(soundSO, parentTf);
+		if (!audioSource) {
+			return;
+		}
 		audioSource.transform.position = position;
 		audioSource.Play();
 
@@ -147,15 +150,23 @@ public class AudioManager : Singleton<AudioManager> {
 		PlaySound(m_soundCollection.outOfAmmo, position);
 	}
 
-    public void PlayWeaponSwapped(Vector3 position) {
+	public void PlayWeaponSwapped(Vector3 position) {
 		PlaySound(m_soundCollection.weaponSwap, position);
-    }
+	}
 
-    public void PlayPlayerStepSound(Vector3 position) {
+	public void PlayPlayerStepSound(Vector3 position) {
 		PlaySound(m_soundCollection.playerSteps, position);
-    }
+	}
 
-    public void PlayTeleIn(Vector3 position) {
+	public void PlayTeleIn(Vector3 position) {
 		PlaySound(m_soundCollection.teleportIn, position);
+	}
+
+	public void PlayQuadDamage(Vector3 position) {
+		PlaySound(m_soundCollection.quadDamage, position);
+	}
+
+    public void PlayCollectCrystal(Vector3 position) {
+		PlaySound(m_soundCollection.collectCrystal, position);
     }
 }

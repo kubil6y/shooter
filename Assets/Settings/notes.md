@@ -1,4 +1,7 @@
-- enemies drop souls
+- enemies drop crystal
+- mega/heavy should be in seperate rooms
+- handle pickups
+- change map layout? at least some tiles
 
 - powerup spawners
 - add missing audios

@@ -5,6 +5,7 @@ public class SoundCollection : ScriptableObject {
 	[Header("Player")]
 	public SoundSO playerDash;
 	public SoundSO playerUltimate;
+	public SoundSO collectCrystal;
 	public SoundSO[] playerSteps;
 
 	[Header("SFX")]
@@ -29,4 +30,5 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO outOfAmmo;
 	public SoundSO weaponSwap;
 	public SoundSO teleportIn;
+	public SoundSO quadDamage;
 }

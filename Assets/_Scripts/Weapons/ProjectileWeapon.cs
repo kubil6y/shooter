@@ -67,7 +67,7 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 				fireDirection = fireDirection,
 				moveSpeed = m_weaponDataSO.projectileSpeed,
 				damage = m_weaponDataSO.projectileDamage,
-				lifetime = 3f,
+				lifetime = 5f,
 				knockbackThrust = m_weaponDataSO.knockbackThrust,
 				knockbackDuration = m_weaponDataSO.knockbackDuration,
 				projectileCanGoThrough = m_weaponDataSO.projectileCanGoThrough,

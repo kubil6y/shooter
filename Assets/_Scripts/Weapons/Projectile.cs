@@ -69,10 +69,6 @@ public class Projectile : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
-		// if (((1 << other.gameObject.layer) & m_targetLayerMask) == 0) {
-		// 	return;
-		// }
-
 		IHittable hittable = other.GetComponent<IHittable>();
 		float hitDuration = .05f;
 		hittable?.TakeHit(m_projectileWeapon.GetWeaponType(), hitDuration);

@@ -20,17 +20,17 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager> {
 	private ObjectPool<GameObject> m_damagePopupPool;
 
 	private void Start() {
-        CreatePools();
-    }
+		CreatePools();
+	}
 
-    private void CreatePools() {
-        m_enemyDeathVFXPool = CreateObjectPool(m_enemyDeathVFX, m_enemyDeathVFXParentTf, 5, 25);
-        m_bulletHitVFXPool = CreateObjectPool(m_bulletHitVFX, m_bulletHitVFXParentTf, 20, 50);
-        m_bloodVFXPool = CreateObjectPool(m_bloodVFX, m_bloodVFXParentTf, 5, 25);
+	private void CreatePools() {
+		m_enemyDeathVFXPool = CreateObjectPool(m_enemyDeathVFX, m_enemyDeathVFXParentTf, 5, 25);
+		m_bulletHitVFXPool = CreateObjectPool(m_bulletHitVFX, m_bulletHitVFXParentTf, 20, 50);
+		m_bloodVFXPool = CreateObjectPool(m_bloodVFX, m_bloodVFXParentTf, 5, 25);
 		m_damagePopupPool = CreateObjectPool(m_damagePopupPrefab, m_damagePopupParentTf, 20, 50);
-    }
+	}
 
-    public GameObject SpawnEnemyDeathVFX(Vector3 position) {
+	public GameObject SpawnEnemyDeathVFX(Vector3 position) {
 		GameObject enemyDeathVFX = m_enemyDeathVFXPool.Get();
 		enemyDeathVFX.transform.position = position;
 		return enemyDeathVFX;
@@ -60,7 +60,7 @@ public class ObjectPoolManager : Singleton<ObjectPoolManager> {
 		m_bloodVFXPool.Release(bloodVFX);
 	}
 
-    public GameObject SpawnDamagePopup(Vector3 position, int damageAmount) {
+	public GameObject SpawnDamagePopup(Vector3 position, int damageAmount) {
 		GameObject damagePopupObj = m_damagePopupPool.Get();
 		damagePopupObj.transform.position = position;
 		damagePopupObj.GetComponent<DamagePopup>()?.Setup(position, damageAmount);

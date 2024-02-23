@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerSounds : MonoBehaviour {
 	[SerializeField] private float m_stepInterval = .35f;
+	[Range(0f, 1f)]
+	[SerializeField] private float m_laughChance = .25f;
 	private Player m_player;
 	private float m_stepTimer;
 
@@ -25,6 +27,7 @@ public class PlayerSounds : MonoBehaviour {
 	private void Start() {
 		m_player.OnDashStarted += Player_OnDashStarted;
 		m_player.OnUltimated += Player_OnUltimated;
+		m_player.OnCrystalCollected += Player_OnCrystalCollected;
 	}
 
 	private void Player_OnDashStarted(object sender, EventArgs e) {
@@ -34,4 +37,9 @@ public class PlayerSounds : MonoBehaviour {
 	private void Player_OnUltimated(object sender, EventArgs e) {
 		AudioManager.instance.PlayPlayerUltimate(m_player.transform.position);
 	}
+
+	private void Player_OnCrystalCollected(object sender, EventArgs e) {
+		AudioManager.instance.PlayCollectCrystal(transform.position);
+	}
+
 }

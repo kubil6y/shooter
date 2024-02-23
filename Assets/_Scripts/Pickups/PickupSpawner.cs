@@ -91,9 +91,4 @@ public class PickupSpawner : MonoBehaviour {
 
 		Invoke("SpawnPickup", m_spawnInterval);
 	}
-
-	private void PickupSpawner_OnPickupSpawned(object sender, EventArgs e) {
-		// TODO remove
-		Debug.Log(m_pickupPrefab.gameObject.name + " is spawned!");
-	}
 }

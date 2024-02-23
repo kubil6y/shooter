@@ -5935,7 +5935,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0400004, y: -1.7800002, z: -10}
+  m_LocalPosition: {x: 0.00000047683716, y: -0.00000023841858, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6331,7 +6331,7 @@ Transform:
   m_GameObject: {fileID: 695128293}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0400004, y: -1.7800002, z: -10}
+  m_LocalPosition: {x: 0.00000047683716, y: -0.00000023841858, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7516,6 +7516,7 @@ GameObject:
   - component: {fileID: 1381968439}
   - component: {fileID: 1381968440}
   - component: {fileID: 1381968441}
+  - component: {fileID: 1381968442}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -7532,7 +7533,7 @@ Transform:
   m_GameObject: {fileID: 1381968429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.04, y: -1.78, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7671,6 +7672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01205af5d5c7feba79b8889a009639f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_virtualCamera: {fileID: 695128294}
+  m_cameraZoomAmount: 2
   m_defaultSpriteMaterial: {fileID: 2100000, guid: de25138d37a324640a255324202b86b4, type: 2}
   m_quadSpriteMaterial: {fileID: 2100000, guid: 66a7a202573e6c08d955d1b88213fbe8, type: 2}
   m_crystalSpriteMaterial: {fileID: 2100000, guid: 8bc862186dc66f5f1883075b54b7ec53, type: 2}
@@ -7688,7 +7691,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_stepInterval: 0.3
-  m_laughChance: 0.25
 --- !u!114 &1381968441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7706,13 +7708,66 @@ MonoBehaviour:
   m_ultimateCooldown: 2
   m_ultimateRange: 20
   m_ultimateSpawnTf: {fileID: 1039025652}
-  m_ultimateMaterial: {fileID: 2100000, guid: 35042f31fc55e5e66ae7095bc4cb2ac2, type: 2}
+  m_ultimateMaterial: {fileID: 2100000, guid: 1a7740983da91eb65b9fa45f47fd3fb3, type: 2}
   m_defaultSpriteMaterial: {fileID: 2100000, guid: de25138d37a324640a255324202b86b4, type: 2}
   m_dashCooldown: 1.2
   m_dashDistance: 4
   m_dashLayerMask:
     serializedVersion: 2
     m_Bits: 384
+--- !u!114 &1381968442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381968429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 3
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.3
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 1, y: 1, z: 0}
 --- !u!1001 &1413543999
 PrefabInstance:
   m_ObjectHideFlags: 0

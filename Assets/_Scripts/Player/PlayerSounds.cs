@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class PlayerSounds : MonoBehaviour {
 	[SerializeField] private float m_stepInterval = .35f;
-	[Range(0f, 1f)]
-	[SerializeField] private float m_laughChance = .25f;
 	private Player m_player;
 	private float m_stepTimer;
 

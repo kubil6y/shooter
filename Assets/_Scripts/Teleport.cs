@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour {
 	public event EventHandler OnTeleIn;
-	public event EventHandler OnTeleOut;
 
 	[SerializeField] private Teleport m_pairTeleport;
 	[SerializeField] private Transform m_transferPointTf;
@@ -30,4 +29,3 @@ public class Teleport : MonoBehaviour {
 .3 14.5 -90
 .3 -13.5 -90
 */
-

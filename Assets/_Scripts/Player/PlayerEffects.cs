@@ -9,13 +9,13 @@ public class PlayerEffects : MonoBehaviour {
 
 	[SerializeField] private Material m_defaultSpriteMaterial;
 	[SerializeField] private Material m_quadSpriteMaterial;
-	[SerializeField] private Material m_crystalSpriteMaterial;
-	[SerializeField] private float m_crystalEffectDuration = .2f;
+	[SerializeField] private Material m_soulSpriteMaterial;
+	[SerializeField] private float m_soulEffectDuration = .2f;
 	private CinemachineImpulseSource m_impulseSource;
 
 	private Player m_player;
 	private SpriteRenderer m_spriteRenderer;
-	private Coroutine m_crystalCoroutine;
+	private Coroutine m_soulCoroutine;
 	private float m_prevOrthoLensSize;
 
 	private void Awake() {
@@ -31,7 +31,7 @@ public class PlayerEffects : MonoBehaviour {
 	private void OnEnable() {
 		m_player.OnQuadStarted += Player_OnQuadStarted;
 		m_player.OnQuadEnded += Player_OnQuadEnded;
-		m_player.OnCrystalCollected += Player_OnCrystalCollected;
+		m_player.OnSoulTaken += Player_OnSoulTaken;
 		m_player.OnUltimated += Player_OnUltimated;
 		m_player.animations.OnAnimUltimateFire += Player_OnAnimUltimateFire;
 	}
@@ -39,12 +39,12 @@ public class PlayerEffects : MonoBehaviour {
     private void OnDisable() {
 		m_player.OnQuadStarted -= Player_OnQuadStarted;
 		m_player.OnQuadEnded -= Player_OnQuadEnded;
-		m_player.OnCrystalCollected -= Player_OnCrystalCollected;
+		m_player.OnSoulTaken -= Player_OnSoulTaken;
 	}
 
-	private IEnumerator CrystalEffectRoutine() {
-		m_spriteRenderer.material = m_crystalSpriteMaterial;
-		yield return new WaitForSeconds(m_crystalEffectDuration);
+	private IEnumerator SoulEffectRoutine() {
+		m_spriteRenderer.material = m_soulSpriteMaterial;
+		yield return new WaitForSeconds(m_soulEffectDuration);
 		Material nextMaterial = m_player.HasQuad() ? m_quadSpriteMaterial : m_defaultSpriteMaterial;
 		m_spriteRenderer.material = nextMaterial;
 	}
@@ -95,12 +95,12 @@ public class PlayerEffects : MonoBehaviour {
 		SetSpriteRendererMaterial(m_defaultSpriteMaterial);
 	}
 
-	private void Player_OnCrystalCollected(object sender, EventArgs e) {
-		if (m_crystalCoroutine != null) {
-			StopCoroutine(m_crystalCoroutine);
+    private void Player_OnSoulTaken(object sender, EventArgs e) {
+		if (m_soulCoroutine != null) {
+			StopCoroutine(m_soulCoroutine);
 		}
-		m_crystalCoroutine = StartCoroutine(CrystalEffectRoutine());
-	}
+		m_soulCoroutine = StartCoroutine(SoulEffectRoutine());
+    }
 
     private void Player_OnUltimated(object sender, EventArgs e) {
 		StartCoroutine(CameraZoomEffectRoutine());

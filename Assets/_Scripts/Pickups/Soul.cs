@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 
-public class Crystal : MonoBehaviour {
-	public event EventHandler OnCrystalLifetimeEnded;
+// 4,10,4
+public class Soul : MonoBehaviour {
+	public event EventHandler OnSoulLifetimeEnded;
 
 	[SerializeField] private float m_followDistance = 6f;
 	[SerializeField] private float m_moveSpeed = 3f;
@@ -27,7 +28,7 @@ public class Crystal : MonoBehaviour {
 		m_lifetimer -= Time.deltaTime;
 		if (m_isAlive && m_lifetimer < 0f) {
 			m_isAlive = false;
-			OnCrystalLifetimeEnded?.Invoke(this, EventArgs.Empty);
+			OnSoulLifetimeEnded?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
@@ -44,7 +45,7 @@ public class Crystal : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		if (other.TryGetComponent<Player>(out Player player)) {
-			player.TryCollectCrystal();
+			player.TryTakeSoul();
 			Destroy(gameObject);
 		}
 	}

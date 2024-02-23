@@ -166,7 +166,7 @@ public class AudioManager : Singleton<AudioManager> {
 		PlaySound(m_soundCollection.quadDamage, position);
 	}
 
-    public void PlayCollectCrystal(Vector3 position) {
-		PlaySound(m_soundCollection.collectCrystal, position);
+    public void PlayTakeSoul(Vector3 position) {
+		PlaySound(m_soundCollection.soulTakes, position);
     }
 }

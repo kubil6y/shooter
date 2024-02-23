@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84e8ccdbc94fe0dfdb1291e966378363, type: 3}
-  m_Name: collect_crystal
+  m_Name: item_soul_take3
   m_EditorClassIdentifier: 
   type: 0
-  clip: {fileID: 8300000, guid: eed08e1d6600fb8a0825c56b28e2d129, type: 3}
+  clip: {fileID: 8300000, guid: a473f0f8f3930e9ca8fa94b02bf491f9, type: 3}
   loop: 0
   playOnAwake: 0
   randomizedPitch: 0
   randomPitchRangeModifier: 0
-  volume: 0.5
+  volume: 1
   pitch: 1

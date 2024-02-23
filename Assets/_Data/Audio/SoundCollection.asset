@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDash: {fileID: 11400000, guid: a5bfffbd3b036cc4ab4ae391044260c2, type: 2}
   playerUltimate: {fileID: 11400000, guid: 9b707c1e5c8b751dbbac2ce679ee15ff, type: 2}
+  soulTakes:
+  - {fileID: 11400000, guid: b673e1a9dc6e18e229037fbb7ecaadef, type: 2}
+  - {fileID: 11400000, guid: 0c6c5d0f641b2302a8f05e1054c54945, type: 2}
+  - {fileID: 11400000, guid: 2114c68d46d457017b117b0cc68635fc, type: 2}
+  - {fileID: 11400000, guid: b2f8b38ec4c828efcac1bb6eb1976f2c, type: 2}
+  - {fileID: 11400000, guid: 0168f13a236247f128f2f976e4abcb33, type: 2}
   playerSteps:
   - {fileID: 11400000, guid: 29ae4ebad1f6cd9408f7901ab35c2f5a, type: 2}
   - {fileID: 11400000, guid: 0f884cf0528be12548abbd3e4a47721b, type: 2}
   - {fileID: 11400000, guid: fb769e5ec8b2c18f9b8f05d7ddd94ff6, type: 2}
   - {fileID: 11400000, guid: b67049219e6038e968012554c9269f45, type: 2}
-  collectCrystal: {fileID: 11400000, guid: 576071067e12701efa4396fb733302da, type: 2}
   hitmarker: {fileID: 11400000, guid: 05201237921682978a2a24c4d301971a, type: 2}
   chainsawHit: {fileID: 11400000, guid: 494d5df89467b255f88cab407847fef2, type: 2}
   rocketFire: {fileID: 11400000, guid: 48d51ef1654b2dc63a8b14d947c767e9, type: 2}

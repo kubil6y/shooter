@@ -25,7 +25,7 @@ public class PlayerSounds : MonoBehaviour {
 	private void Start() {
 		m_player.OnDashStarted += Player_OnDashStarted;
 		m_player.OnUltimated += Player_OnUltimated;
-		m_player.OnCrystalCollected += Player_OnCrystalCollected;
+		m_player.OnSoulTaken += Player_OnSoulTaken;
 	}
 
 	private void Player_OnDashStarted(object sender, EventArgs e) {
@@ -36,8 +36,7 @@ public class PlayerSounds : MonoBehaviour {
 		AudioManager.instance.PlayPlayerUltimate(m_player.transform.position);
 	}
 
-	private void Player_OnCrystalCollected(object sender, EventArgs e) {
-		AudioManager.instance.PlayCollectCrystal(transform.position);
+	private void Player_OnSoulTaken(object sender, EventArgs e) {
+		AudioManager.instance.PlayTakeSoul(transform.position);
 	}
-
 }

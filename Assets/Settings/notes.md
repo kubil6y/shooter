@@ -1,7 +1,6 @@
-- enemies drop crystal
-- mega/heavy should be in seperate rooms
+- mega/heavy nw/se & 4 weapons right next to teleports
 - handle pickups
-- change map layout? at least some tiles
+- polish of the map.
 
 - powerup spawners
 - add missing audios

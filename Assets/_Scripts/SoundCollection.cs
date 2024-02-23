@@ -5,7 +5,7 @@ public class SoundCollection : ScriptableObject {
 	[Header("Player")]
 	public SoundSO playerDash;
 	public SoundSO playerUltimate;
-	public SoundSO collectCrystal;
+	public SoundSO[] soulTakes;
 	public SoundSO[] playerSteps;
 
 	[Header("SFX")]

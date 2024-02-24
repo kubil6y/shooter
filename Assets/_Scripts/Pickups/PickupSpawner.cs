@@ -7,6 +7,7 @@ public class PickupSpawner : MonoBehaviour {
 
 	[SerializeField] private Pickup m_pickupPrefab;
 	[SerializeField] private PickupSpawnerTimerUI m_pickupSpawnerTimerUI;
+	[SerializeField] private bool m_showTimerUI = true;
 	[SerializeField] private bool m_fireOnInitialSpawn;
 
 	private float m_moveDistance = .5f;
@@ -89,6 +90,9 @@ public class PickupSpawner : MonoBehaviour {
 	}
 
 	private void ShowTimer() {
+		if (!m_showTimerUI) {
+			return;
+		}
 		m_pickupSpawnerTimerUI.Show();
 	}
 

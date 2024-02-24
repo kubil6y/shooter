@@ -48,6 +48,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1597492521770875534, guid: 7ce79519bcff75693843e0c902863734, type: 3}
+      propertyPath: m_Radius
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597492521770875534, guid: 7ce79519bcff75693843e0c902863734, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.23749998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597492521770875534, guid: 7ce79519bcff75693843e0c902863734, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.21111113
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597492521770875534, guid: 7ce79519bcff75693843e0c902863734, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5319624404815903223, guid: 7ce79519bcff75693843e0c902863734, type: 3}
       propertyPath: m_Name
       value: RocketLauncherPickup

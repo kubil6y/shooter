@@ -182,6 +182,10 @@ public class AudioManager : Singleton<AudioManager> {
 		PlaySound(m_soundCollection.healthPickup, position);
     }
 
+    public void PlayArmorPickup(Vector3 position) {
+		PlaySound(m_soundCollection.armorPickup, position);
+    }
+
     public void PlayPickupSpawned(Vector3 position) {
 		PlaySound(m_soundCollection.pickupSpawned, position);
     }

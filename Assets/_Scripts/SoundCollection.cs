@@ -32,5 +32,6 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO ammoPickup;
 	public SoundSO weaponPickup;
 	public SoundSO healthPickup;
+	public SoundSO armorPickup;
 	public SoundSO pickupSpawned;
 }

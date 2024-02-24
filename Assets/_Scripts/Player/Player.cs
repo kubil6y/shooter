@@ -91,10 +91,6 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		return m_hasQuad ? 4 : 1;
 	}
 
-	public void SetMaterial(Material material) {
-		spriteRenderer.material = material;
-	}
-
 	public void SetIsPushable(bool value) {
 		if (value) {
 			rb.mass = m_originalMass;

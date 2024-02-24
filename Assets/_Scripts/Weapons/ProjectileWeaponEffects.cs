@@ -25,7 +25,6 @@ public class ProjectileWeaponEffects : MonoBehaviour {
 
 	private void Start() {
 		m_projectileWeapon.OnShoot += ProjectileWeapon_OnShoot;
-		m_projectileWeapon.OnAmmoChanged += ProjectileWeapon_OnAmmoChanged;
 	}
 
     private void MuzzleFlash() {
@@ -46,9 +45,4 @@ public class ProjectileWeaponEffects : MonoBehaviour {
 		m_animator.Play(ANIMKEY_FIRE, 0, 0f);
 		m_impulseSource.GenerateImpulse();
 	}
-
-    private void ProjectileWeapon_OnAmmoChanged(object sender, EventArgs e) {
-		Debug.Log(gameObject.name + "'s ammo changed: " + m_projectileWeapon.GetCurrentAmmo());
-    }
-
 }

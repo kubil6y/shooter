@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour {
@@ -7,8 +8,6 @@ public class PlayerSkills : MonoBehaviour {
 	[SerializeField] private float m_ultimateCooldown;
 	[SerializeField] private float m_ultimateRange = 25f;
 	[SerializeField] private Transform m_ultimateSpawnTf;
-	[SerializeField] private Material m_ultimateMaterial;
-	[SerializeField] private Material m_defaultSpriteMaterial;
 
 	private float m_ultimateTimer;
 
@@ -47,14 +46,6 @@ public class PlayerSkills : MonoBehaviour {
 
 	public LayerMask GetDashLayerMask() {
 		return m_dashLayerMask;
-	}
-
-	public void SetDefaultMaterial() {
-		m_player.spriteRenderer.material = m_defaultSpriteMaterial;
-	}
-
-	public void SetUltimateMaterial() {
-		m_player.spriteRenderer.material = m_ultimateMaterial;
 	}
 
 	public float GetUltimateRange() {

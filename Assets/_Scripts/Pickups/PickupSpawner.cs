@@ -8,6 +8,7 @@ public class PickupSpawner : MonoBehaviour {
 	[SerializeField] private Pickup m_pickupPrefab;
 	[SerializeField] private PickupSpawnerTimerUI m_pickupSpawnerTimerUI;
 	[SerializeField] private bool m_showTimerUI = true;
+	[SerializeField] private bool m_hasAnimation = true;
 	[SerializeField] private bool m_fireOnInitialSpawn;
 
 	private float m_moveDistance = .5f;
@@ -82,6 +83,9 @@ public class PickupSpawner : MonoBehaviour {
 
 	private void AttachAnimations() {
 		if (!m_pickup) {
+			return;
+		}
+		if (!m_hasAnimation) {
 			return;
 		}
 		m_pickupTween = m_pickup.transform.DOMoveY(m_pickup.transform.position.y + m_moveDistance, m_moveDuration)

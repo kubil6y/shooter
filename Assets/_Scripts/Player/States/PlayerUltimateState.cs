@@ -18,7 +18,6 @@ public class PlayerUltimateState : PlayerState {
 
 		player.SetIsPushable(false);
         player.SetCanFlip(false);
-        player.skills.SetUltimateMaterial();
         player.SetCanUseSkill(false);
         player.weaponManager.StopShooting();
         player.DisableWeaponVisuals();
@@ -58,10 +57,6 @@ public class PlayerUltimateState : PlayerState {
         }
 
         SpawnLaser();
-
-        if (!player.HasQuad()) {
-            player.skills.SetDefaultMaterial();
-        }
     }
 
     private void Player_OnAnimUltimateEnded(object sender, EventArgs e) {

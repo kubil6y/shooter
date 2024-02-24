@@ -16,4 +16,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 501c25513ffac656bbc1f62bf8ef0d1b, type: 3}
   spawnInterval: 10
   initialSpawnDelay: 0
-  healthAmount: 0
+  healthAmount: 10

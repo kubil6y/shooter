@@ -56,4 +56,5 @@ MonoBehaviour:
   ammoPickup: {fileID: 11400000, guid: 73a3dee1bac509abfb1f3f1a5b30e460, type: 2}
   weaponPickup: {fileID: 11400000, guid: dba4417862a085b9c9804d15306a28fe, type: 2}
   healthPickup: {fileID: 11400000, guid: c47d36b4aa6681a9f8d5c25bd51a3f3e, type: 2}
+  armorPickup: {fileID: 11400000, guid: d678d5f7fb10701dd8051e55a585d802, type: 2}
   pickupSpawned: {fileID: 11400000, guid: a56127a45b4dee2be86bebe46b37dbd5, type: 2}

@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c45b6f4504d8330f58713af4824f5248, type: 3}
-  m_Name: QuadPickup
+  m_Script: {fileID: 11500000, guid: 9d7ec252c3707ca0e94c6cb38570fa33, type: 3}
+  m_Name: ArmorPickup
   m_EditorClassIdentifier: 
-  pickupName: Quad Pickup
-  icon: {fileID: 21300000, guid: 0f9858db073957ec98d1835996139859, type: 3}
-  spawnInterval: 5
-  initialSpawnDelay: 2
-  powerUpType: 0
-  duration: 10
+  pickupName: Armor Pickup
+  icon: {fileID: 1301047821, guid: 90ef1638774e4003687864a78bd3b580, type: 3}
+  spawnInterval: 10
+  initialSpawnDelay: 0
+  armorAmount: 5

@@ -10,6 +10,7 @@ public class PlayerEffects : MonoBehaviour {
 	[SerializeField] private Material m_defaultSpriteMaterial;
 	[SerializeField] private Material m_quadSpriteMaterial;
 	[SerializeField] private Material m_soulSpriteMaterial;
+	[SerializeField] private Material m_ultimateMaterial;
 	[SerializeField] private float m_soulEffectDuration = .2f;
 	private CinemachineImpulseSource m_impulseSource;
 
@@ -34,6 +35,7 @@ public class PlayerEffects : MonoBehaviour {
 		m_player.OnSoulTaken += Player_OnSoulTaken;
 		m_player.OnUltimated += Player_OnUltimated;
 		m_player.animations.OnAnimUltimateFire += Player_OnAnimUltimateFire;
+		// m_player.animations.OnAnimUltimateEnded += Player_OnAnimUltimateEnded;
 	}
 
     private void OnDisable() {
@@ -95,18 +97,22 @@ public class PlayerEffects : MonoBehaviour {
 		SetSpriteRendererMaterial(m_defaultSpriteMaterial);
 	}
 
-    private void Player_OnSoulTaken(object sender, EventArgs e) {
+	private void Player_OnSoulTaken(object sender, EventArgs e) {
 		if (m_soulCoroutine != null) {
 			StopCoroutine(m_soulCoroutine);
 		}
 		m_soulCoroutine = StartCoroutine(SoulEffectRoutine());
-    }
+	}
 
-    private void Player_OnUltimated(object sender, EventArgs e) {
+	private void Player_OnUltimated(object sender, EventArgs e) {
 		StartCoroutine(CameraZoomEffectRoutine());
-    }
+		SetSpriteRendererMaterial(m_ultimateMaterial);
+	}
 
-    private void Player_OnAnimUltimateFire(object sender, EventArgs e) {
+	private void Player_OnAnimUltimateFire(object sender, EventArgs e) {
 		m_impulseSource.GenerateImpulse();
-    }
+		Material material = m_player.HasQuad() ? m_quadSpriteMaterial : m_defaultSpriteMaterial;
+		SetSpriteRendererMaterial(material);
+	}
+
 }

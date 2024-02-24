@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour {
-	public event EventHandler OnHealed;
+	public event EventHandler OnPickupHealth;
+	public event EventHandler OnPickupArmor;
 	public event EventHandler OnHealthChanged;
 	public event EventHandler OnArmorChanged;
 	public event EventHandler OnDeath;
@@ -90,7 +91,7 @@ public class Health : MonoBehaviour {
 		}
 		m_currentHealth = Mathf.Clamp(m_currentHealth + healthAmount, 0, m_maxHealth);
 		OnHealthChanged?.Invoke(this, EventArgs.Empty);
-		OnHealed?.Invoke(this, EventArgs.Empty);
+		OnPickupHealth?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void TakeArmor(int armorAmount) {
@@ -104,6 +105,7 @@ public class Health : MonoBehaviour {
 		}
 		m_currentArmor = Mathf.Clamp(m_currentArmor + armorAmount, 0, m_maxArmor);
 		OnArmorChanged?.Invoke(this, EventArgs.Empty);
+		OnPickupArmor?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void Die() {

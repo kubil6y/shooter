@@ -91,11 +91,16 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 		return m_currentAmmo - m_weaponDataSO.ammoUsage >= 0;
 	}
 
+	public int GetCurrentAmmo() {
+		return m_currentAmmo;
+	}
+
 	public void AddAmmo(int ammoAmount) {
 		if (ammoAmount <= 0) {
 			return;
 		}
 		m_currentAmmo = Mathf.Clamp(m_currentAmmo + ammoAmount, 0, m_weaponDataSO.maxAmmo);
+		OnAmmoChanged?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void AddStartingAmmo() {

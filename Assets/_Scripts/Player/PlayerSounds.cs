@@ -26,9 +26,10 @@ public class PlayerSounds : MonoBehaviour {
 		m_player.OnDashStarted += Player_OnDashStarted;
 		m_player.OnUltimated += Player_OnUltimated;
 		m_player.OnSoulTaken += Player_OnSoulTaken;
+		m_player.health.OnHealed += Player_OnHealed;
 	}
 
-	private void Player_OnDashStarted(object sender, EventArgs e) {
+    private void Player_OnDashStarted(object sender, EventArgs e) {
 		AudioManager.instance.PlayPlayerDash(m_player.transform.position);
 	}
 
@@ -39,4 +40,8 @@ public class PlayerSounds : MonoBehaviour {
 	private void Player_OnSoulTaken(object sender, EventArgs e) {
 		AudioManager.instance.PlayTakeSoul(transform.position);
 	}
+
+    private void Player_OnHealed(object sender, EventArgs e) {
+		AudioManager.instance.PlayHealthPickup(transform.position);
+    }
 }

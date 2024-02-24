@@ -23,7 +23,7 @@ MonoBehaviour:
   poolSize: 10
   rof: 1000
   singleFire: 1
-  unlimitedAmmo: 0
+  unlimitedAmmo: 1
   projectileCanGoThrough: 1
   projectileGoThroughCount: 3
   spreadAngle: 0

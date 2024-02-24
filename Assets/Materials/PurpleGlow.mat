@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TealGlow
+  m_Name: PurpleGlow
   m_Shader: {fileID: -6465566751694194690, guid: 05999b71d8cf816f4900d7cc7269f8b0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -55,6 +55,6 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 0.56689674, g: 5.5908804, b: 4.592975, a: 1}
+    - _Color: {r: 5.735537, g: 3.2848954, b: 13.3045635, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -1,3 +1,3 @@
 public interface ICanPickup {
-	public void Collect(Pickup pickup);
+	public void PickUp(Pickup pickup);
 }

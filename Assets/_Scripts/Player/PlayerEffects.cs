@@ -16,7 +16,7 @@ public class PlayerEffects : MonoBehaviour {
 	private Player m_player;
 	private SpriteRenderer m_spriteRenderer;
 	private Coroutine m_soulCoroutine;
-	private float m_prevOrthoLensSize;
+	private float m_initialOrthoLensSize;
 
 	private void Awake() {
 		m_player = GetComponent<Player>();
@@ -25,7 +25,7 @@ public class PlayerEffects : MonoBehaviour {
 	}
 
 	private void Start() {
-		m_prevOrthoLensSize = m_virtualCamera.m_Lens.OrthographicSize;
+		m_initialOrthoLensSize = m_virtualCamera.m_Lens.OrthographicSize;
 	}
 
 	private void OnEnable() {
@@ -62,11 +62,11 @@ public class PlayerEffects : MonoBehaviour {
 
 		while (elapsedTime < zoomDuration) {
 			float t = elapsedTime / zoomDuration;
-			m_virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(8, 10, t);
+			m_virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(m_initialOrthoLensSize, m_initialOrthoLensSize + m_cameraZoomAmount, t);
 			elapsedTime += Time.deltaTime;
 			yield return null;
 		}
-		m_virtualCamera.m_Lens.OrthographicSize = 10;
+		m_virtualCamera.m_Lens.OrthographicSize = m_initialOrthoLensSize + m_cameraZoomAmount;
 	}
 
 	private IEnumerator CameraZoomInRoutine() {
@@ -75,11 +75,11 @@ public class PlayerEffects : MonoBehaviour {
 
 		while (elapsedTime < zoomDuration) {
 			float t = elapsedTime / zoomDuration;
-			m_virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(10, 8, t);
+			m_virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(m_initialOrthoLensSize + m_cameraZoomAmount, m_initialOrthoLensSize, t);
 			elapsedTime += Time.deltaTime;
 			yield return null;
 		}
-		m_virtualCamera.m_Lens.OrthographicSize = 8;
+		m_virtualCamera.m_Lens.OrthographicSize = m_initialOrthoLensSize;
 	}
 
 	private void SetSpriteRendererMaterial(Material material) {

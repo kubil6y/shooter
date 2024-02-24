@@ -17,11 +17,8 @@ public enum WeaponType {
 [RequireComponent(typeof(AmmoPouch))]
 public class WeaponManager : MonoBehaviour {
 	public event EventHandler<Weapon> OnWeaponChanged;
-	public event EventHandler<OnAmmoPickupEventArgs> OnAmmoPickup;
-	public class OnAmmoPickupEventArgs : EventArgs {
-		public WeaponType weaponType;
-		public int ammoAmount;
-	}
+	public event EventHandler OnWeaponPickup; // TODO not handled yet
+	public event EventHandler OnAmmoPickup;
 
 	[SerializeField] private Transform m_weaponHolderTf;
 	[SerializeField] private WeaponDataSO[] m_startingWeaponSoArray;
@@ -244,16 +241,13 @@ public class WeaponManager : MonoBehaviour {
 			if (weapon.TryGetComponent<IHasAmmo>(out IHasAmmo hasAmmo)) {
 				int ammoAmount = hasAmmo.GetStartingAmmo();
 				hasAmmo.AddAmmo(ammoAmount);
-
-				OnAmmoPickup?.Invoke(this, new OnAmmoPickupEventArgs {
-					weaponType = weaponType,
-					ammoAmount = ammoAmount,
-				});
 			}
 		}
 		else {
 			TryAddingWeapon(weaponPickupDataSO.weaponDataSO);
 		}
+
+		OnWeaponPickup?.Invoke(this, EventArgs.Empty);
 	}
 
 	private bool TryAddingWeapon(WeaponDataSO weaponDataSO) {
@@ -293,10 +287,6 @@ public class WeaponManager : MonoBehaviour {
 			weapon.Hide();
 		}
 
-		// Order of setting weapon to weapon array is important
-		// to make it show or hide
-		// m_weaponArray[weaponIndex] = weapon;
-
 		return true;
 	}
 
@@ -316,10 +306,7 @@ public class WeaponManager : MonoBehaviour {
 			m_ammoPouch.AddAmmo(weaponType, ammoAmount);
 		}
 
-		OnAmmoPickup?.Invoke(this, new OnAmmoPickupEventArgs {
-			weaponType = weaponType,
-			ammoAmount = ammoAmount,
-		});
+		OnAmmoPickup?.Invoke(this, EventArgs.Empty);
 	}
 
 	private void HandleWeaponHolderRotation() {

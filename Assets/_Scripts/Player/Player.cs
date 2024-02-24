@@ -211,7 +211,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		OnRevived?.Invoke(this, EventArgs.Empty);
 	}
 
-	public void Collect(Pickup pickup) {
+	public void PickUp(Pickup pickup) {
 		if (!IsAlive()) {
 			return;
 		}

@@ -8,6 +8,12 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO[] soulTakes;
 	public SoundSO[] playerSteps;
 
+	[Header("Lightning Gun")]
+	public SoundSO lgFireStart;
+	public SoundSO lgFireLoop;
+	public SoundSO lgHum;
+	public SoundSO[] lgHits;
+
 	[Header("SFX")]
 	public SoundSO hitmarker;
 	public SoundSO chainsawHit;
@@ -17,18 +23,14 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO shotgunFire;
 	public SoundSO chainsawIdle;
 	public SoundSO chainsawFire;
-
-	[Header("Lightning Gun")]
-	public SoundSO lgFireStart;
-	public SoundSO lgFireLoop;
-	public SoundSO lgHum;
-	public SoundSO[] lgHits;
-
 	public SoundSO[] machineGunFire;
-
-	public SoundSO[] implosions;
 	public SoundSO outOfAmmo;
 	public SoundSO weaponSwap;
+	public SoundSO[] implosions;
 	public SoundSO teleportIn;
 	public SoundSO quadDamage;
+	public SoundSO ammoPickup;
+	public SoundSO weaponPickup;
+	public SoundSO healthPickup;
+	public SoundSO pickupSpawned;
 }

@@ -7,14 +7,19 @@ public class WeaponManagerSounds : MonoBehaviour {
 	private void Start() {
 		m_weaponManager.OnAmmoPickup += WeaponManager_OnAmmoPickup;
 		m_weaponManager.OnWeaponChanged += WeaponManager_OnWeaponChanged;
+		m_weaponManager.OnWeaponPickup += WeaponManager_OnWeaponPickup;
 	}
-
-    private void WeaponManager_OnAmmoPickup(object sender, WeaponManager.OnAmmoPickupEventArgs e) {
-		// TODO ammo pickup
-    }
 
     private void WeaponManager_OnWeaponChanged(object sender, Weapon e) {
 		AudioManager.instance.PlayWeaponSwapped(transform.position);
+    }
+
+    private void WeaponManager_OnAmmoPickup(object sender, EventArgs e) {
+		AudioManager.instance.PlayAmmoPickup(transform.position);
+    }
+
+    private void WeaponManager_OnWeaponPickup(object sender, EventArgs e) {
+		AudioManager.instance.PlayWeaponPickup(transform.position);
     }
 
 }

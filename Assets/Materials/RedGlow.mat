@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LightBlueGlow
+  m_Name: RedGlow
   m_Shader: {fileID: -6465566751694194690, guid: 05999b71d8cf816f4900d7cc7269f8b0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -55,6 +55,6 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 3.591836, g: 3.676553, b: 5.992158, a: 1}
+    - _Color: {r: 16.188803, g: 2.8412511, b: 6.2893667, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

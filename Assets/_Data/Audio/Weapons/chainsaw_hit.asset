@@ -18,5 +18,5 @@ MonoBehaviour:
   playOnAwake: 0
   randomizedPitch: 1
   randomPitchRangeModifier: 0.287
-  volume: 0.5
+  volume: 1
   pitch: 1.3

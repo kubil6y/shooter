@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour {
+	public event EventHandler OnHealed;
 	public event EventHandler OnHealthChanged;
 	public event EventHandler OnArmorChanged;
 	public event EventHandler OnDeath;
@@ -89,6 +90,7 @@ public class Health : MonoBehaviour {
 		}
 		m_currentHealth = Mathf.Clamp(m_currentHealth + healthAmount, 0, m_maxHealth);
 		OnHealthChanged?.Invoke(this, EventArgs.Empty);
+		OnHealed?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void TakeArmor(int armorAmount) {

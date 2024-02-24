@@ -166,7 +166,23 @@ public class AudioManager : Singleton<AudioManager> {
 		PlaySound(m_soundCollection.quadDamage, position);
 	}
 
-    public void PlayTakeSoul(Vector3 position) {
+	public void PlayTakeSoul(Vector3 position) {
 		PlaySound(m_soundCollection.soulTakes, position);
+	}
+
+	public void PlayAmmoPickup(Vector3 position) {
+		PlaySound(m_soundCollection.ammoPickup, position);
+	}
+
+    public void PlayWeaponPickup(Vector3 position) {
+		PlaySound(m_soundCollection.weaponPickup, position);
+    }
+
+    public void PlayHealthPickup(Vector3 position) {
+		PlaySound(m_soundCollection.healthPickup, position);
+    }
+
+    public void PlayPickupSpawned(Vector3 position) {
+		PlaySound(m_soundCollection.pickupSpawned, position);
     }
 }

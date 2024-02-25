@@ -15,8 +15,14 @@ public class PlayerDeathState : PlayerState {
         player.OnRevived -= Player_OnRevived;
     }
 
+    public override void Update() {
+        base.Update();
+        player.movement.SetZeroVelocity();
+    }
+
     public override void Enter() {
         base.Enter();
+
         player.movement.SetZeroVelocity();
         player.animations.SetDeathAnim(true);
         player.SetCanUseSkill(false);

@@ -35,7 +35,7 @@ public class PlayerEffects : MonoBehaviour {
 		m_player.OnSoulTaken += Player_OnSoulTaken;
 		m_player.OnUltimated += Player_OnUltimated;
 		m_player.animations.OnAnimUltimateFire += Player_OnAnimUltimateFire;
-		// m_player.animations.OnAnimUltimateEnded += Player_OnAnimUltimateEnded;
+		m_player.health.OnDeath += Player_OnDeath;
 	}
 
     private void OnDisable() {
@@ -115,4 +115,7 @@ public class PlayerEffects : MonoBehaviour {
 		SetSpriteRendererMaterial(material);
 	}
 
+    private void Player_OnDeath(object sender, EventArgs e) {
+		SetSpriteRendererMaterial(m_defaultSpriteMaterial);
+    }
 }

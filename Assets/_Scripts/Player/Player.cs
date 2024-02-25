@@ -60,7 +60,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		m_stateMachine.SetState(PState.Idle);
 	}
 
-	private void OnDestroy() {
+    private void OnDestroy() {
 		m_stateMachine.DisconnectFromPlayerChannel();
 	}
 
@@ -288,10 +288,5 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 
 	public void Invoke_OnDashStarted() {
 		OnDashStarted?.Invoke(this, EventArgs.Empty);
-	}
-
-	// TODO remove later
-	public void Die() {
-		m_stateMachine.SetState(PState.Death);
 	}
 }

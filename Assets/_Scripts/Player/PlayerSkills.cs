@@ -8,6 +8,7 @@ public class PlayerSkills : MonoBehaviour {
 	[SerializeField] private float m_ultimateCooldown;
 	[SerializeField] private float m_ultimateRange = 25f;
 	[SerializeField] private Transform m_ultimateSpawnTf;
+	[SerializeField] private LayerMask m_ultimateTargetLayerMask;
 
 	private float m_ultimateTimer;
 
@@ -38,6 +39,10 @@ public class PlayerSkills : MonoBehaviour {
 				m_player.SetState(PState.Ultimate);
 			}
 		}
+	}
+
+	public LayerMask GetUltimateTargetLayerMask() {
+		return m_ultimateTargetLayerMask;
 	}
 
 	public float GetDashDistance() {

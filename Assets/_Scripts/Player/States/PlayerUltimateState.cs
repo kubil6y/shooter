@@ -48,7 +48,20 @@ public class PlayerUltimateState : PlayerState {
     private void SpawnLaser() {
         UltimateLaser ultimateLaser = GameObject.Instantiate(player.skills.GetUltimateLaserPrefab());
 
-        ultimateLaser.Setup(player.skills.GetUltimateSpawnPosition(), m_dirToCursor, player.skills.GetUltimateLaserDamage() * player.GetDamageMultiplier(), player.skills.GetUltimateRange());
+        Vector2 ultimateSpawnPos = player.skills.GetUltimateSpawnPosition();
+        float ultimateRange = player.skills.GetUltimateRange();
+        LayerMask ultimateTargetLayerMask = player.skills.GetUltimateTargetLayerMask();
+
+        float laserRange = ultimateRange;
+
+        // TODO do raycast here!
+		RaycastHit2D hit = Physics2D.Raycast(ultimateSpawnPos, m_dirToCursor, ultimateRange, ultimateTargetLayerMask);
+		if (hit.collider != null) {
+			laserRange = Vector2.Distance(hit.point, ultimateSpawnPos);
+		}
+
+        // ultimateLaser.Setup(player.skills.GetUltimateSpawnPosition(), m_dirToCursor, player.skills.GetUltimateLaserDamage() * player.GetDamageMultiplier(), player.skills.GetUltimateRange());
+        ultimateLaser.Setup(ultimateSpawnPos, m_dirToCursor, player.skills.GetUltimateLaserDamage() * player.GetDamageMultiplier(), laserRange);
     }
 
     private void Player_OnAnimUltimateFire(object sender, EventArgs e) {

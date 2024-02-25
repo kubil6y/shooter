@@ -183,17 +183,17 @@ public class WeaponManager : MonoBehaviour {
 
 	private bool TrySettingCurrentWeapon(int weaponIndex) {
 		if (weaponIndex < 0 || weaponIndex >= (int)WeaponType.__LENGTH) {
-			Debug.LogWarning($"Invalid index: '{weaponIndex}'");
+			// Debug.LogWarning($"Invalid index: '{weaponIndex}'");
 			return false;
 		}
 
 		if (m_currentWeaponIndex == weaponIndex) {
-			Debug.LogWarning($"m_currentWeaponIndex:'{m_currentWeaponIndex}' == weaponIndex:'{weaponIndex}'");
+			// Debug.LogWarning($"m_currentWeaponIndex:'{m_currentWeaponIndex}' == weaponIndex:'{weaponIndex}'");
 			return false;
 		}
 
 		if (!GetWeapon(weaponIndex)) {
-			Debug.LogWarning($"Weapon does not exist! weaponIndex: '{weaponIndex}'");
+			// Debug.LogWarning($"Weapon does not exist! weaponIndex: '{weaponIndex}'");
 			return false;
 		}
 

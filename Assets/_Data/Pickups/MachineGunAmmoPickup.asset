@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfeaf1d474a7b519383772b3cba696ac, type: 3}
-  m_Name: PistolAmmoPickup
+  m_Name: MachineGunAmmoPickup
   m_EditorClassIdentifier: 
-  pickupName: Pistol Ammo
+  pickupName: Machine Gun Ammo
   icon: {fileID: 21300000, guid: a2482871b46d396438236c07b6402283, type: 3}
-  weaponType: 1
-  ammoAmount: 10
+  spawnInterval: 10
+  initialSpawnDelay: 0
+  weaponType: 2
+  ammoAmount: 15

@@ -189,4 +189,8 @@ public class AudioManager : Singleton<AudioManager> {
     public void PlayPickupSpawned(Vector3 position) {
 		PlaySound(m_soundCollection.pickupSpawned, position);
     }
+
+    public void PlayUltimateOutOfCooldown(Vector3 position) {
+		PlaySound(m_soundCollection.ultimateOutOfCooldown, position);
+    }
 }

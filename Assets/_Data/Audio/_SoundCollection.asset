@@ -58,3 +58,4 @@ MonoBehaviour:
   healthPickup: {fileID: 11400000, guid: c47d36b4aa6681a9f8d5c25bd51a3f3e, type: 2}
   armorPickup: {fileID: 11400000, guid: d678d5f7fb10701dd8051e55a585d802, type: 2}
   pickupSpawned: {fileID: 11400000, guid: a56127a45b4dee2be86bebe46b37dbd5, type: 2}
+  ultimateOutOfCooldown: {fileID: 11400000, guid: 65946930f59c2fb208029eb44b2bec9b, type: 2}

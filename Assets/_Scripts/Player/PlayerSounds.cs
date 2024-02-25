@@ -28,6 +28,7 @@ public class PlayerSounds : MonoBehaviour {
 		m_player.OnSoulTaken += Player_OnSoulTaken;
 		m_player.health.OnPickupHealth += Player_OnPickupHealth;
 		m_player.health.OnPickupArmor += Player_OnPickupArmor;
+		m_player.skills.OnUltimateOutOfCooldown += Player_OnUltimateOutOfCooldown;
 	}
 
     private void Player_OnDashStarted(object sender, EventArgs e) {
@@ -49,4 +50,9 @@ public class PlayerSounds : MonoBehaviour {
     private void Player_OnPickupArmor(object sender, EventArgs e) {
 		AudioManager.instance.PlayArmorPickup(transform.position);
     }
+
+    private void Player_OnUltimateOutOfCooldown(object sender, EventArgs e) {
+		AudioManager.instance.PlayUltimateOutOfCooldown(transform.position);
+    }
+
 }

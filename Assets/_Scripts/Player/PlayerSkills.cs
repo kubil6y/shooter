@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour {
+	public event EventHandler OnUltimateOutOfCooldown;
+
 	[Header("Ultimate Skill")]
 	[SerializeField] private UltimateLaser m_ultimatePrefab;
 	[SerializeField] private int m_ultimateLaserDamage;
@@ -19,14 +21,24 @@ public class PlayerSkills : MonoBehaviour {
 	private float m_dashTimer;
 
 	private Player m_player;
+	private bool m_isUltimateOnCooldown;
 
 	private void Awake() {
 		m_player = GetComponent<Player>();
 	}
 
+	private void Start() {
+		m_player.animations.OnAnimUltimateEnded += Player_OnAnimUltimateEnded;
+	}
+
 	private void Update() {
 		m_dashTimer -= Time.deltaTime;
 		m_ultimateTimer -= Time.deltaTime;
+
+		if (m_ultimateTimer < 0f && m_isUltimateOnCooldown) {
+			m_isUltimateOnCooldown = false;
+			OnUltimateOutOfCooldown?.Invoke(this, EventArgs.Empty);
+		}
 
 		if (m_player.IsAlive() && m_player.CanUseSkill()) {
 			if (GameInput.instance.DashPressed() && m_dashTimer < 0f) {
@@ -34,11 +46,14 @@ public class PlayerSkills : MonoBehaviour {
 				m_player.SetState(PState.Dash);
 			}
 
-			if (GameInput.instance.UltimatePressed() && m_ultimateTimer < 0f) {
-				m_ultimateTimer = m_ultimateCooldown;
+			if (GameInput.instance.UltimatePressed() && !m_isUltimateOnCooldown) {
 				m_player.SetState(PState.Ultimate);
 			}
 		}
+	}
+
+	public float GetUltimateTimerNormalized() {
+		return 1 - m_ultimateTimer / m_ultimateCooldown;
 	}
 
 	public LayerMask GetUltimateTargetLayerMask() {
@@ -75,4 +90,10 @@ public class PlayerSkills : MonoBehaviour {
 	public UltimateLaser GetUltimateLaserPrefab() {
 		return m_ultimatePrefab;
 	}
+
+	private void Player_OnAnimUltimateEnded(object sender, EventArgs e) {
+		m_isUltimateOnCooldown = true;
+		m_ultimateTimer = m_ultimateCooldown;
+	}
+
 }

@@ -5,7 +5,7 @@ public class Testing : MonoBehaviour {
 
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.L)) {
-			Player.instance.health.TakeDamage(1000);
+			Player.instance.health.TakeDamage(10);
 		}
 
 		if (Input.GetKeyDown(KeyCode.T)) {

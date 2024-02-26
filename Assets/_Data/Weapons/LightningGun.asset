@@ -19,7 +19,7 @@ MonoBehaviour:
   damagePerTick: 6
   rof: 100
   range: 6
-  startingAmmo: 25
-  maxAmmo: 250
+  startingAmmo: 75
+  maxAmmo: 200
   knockbackThrust: 1.2
   knockbackDuration: 0.1

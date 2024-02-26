@@ -97,7 +97,7 @@ public class PlayerEffects : MonoBehaviour {
 		SetSpriteRendererMaterial(m_defaultSpriteMaterial);
 	}
 
-	private void Player_OnSoulTaken(object sender, EventArgs e) {
+	private void Player_OnSoulTaken(object sender, int e) {
 		if (m_soulCoroutine != null) {
 			StopCoroutine(m_soulCoroutine);
 		}

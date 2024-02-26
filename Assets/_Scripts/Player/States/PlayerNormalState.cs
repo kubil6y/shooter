@@ -16,10 +16,10 @@ public class PlayerNormalState : PlayerState {
 			if (GameInput.instance.IsFireUp()) {
 				player.weaponManager.StopShooting();
 			}
-			if (GameInput.instance.IsScrollDown()) {
+			if (GameInput.instance.IsScrollUp()) {
 				player.weaponManager.TrySwappingToPreviousWeapon();
 			}
-			if (GameInput.instance.IsScrollUp()) {
+			if (GameInput.instance.IsScrollDown()) {
 				player.weaponManager.TrySwappingToNextWeapon();
 			}
 			if (GameInput.instance.ChainsawPressed()) {

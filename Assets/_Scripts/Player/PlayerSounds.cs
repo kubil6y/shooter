@@ -39,7 +39,7 @@ public class PlayerSounds : MonoBehaviour {
 		AudioManager.instance.PlayPlayerUltimate(m_player.transform.position);
 	}
 
-	private void Player_OnSoulTaken(object sender, EventArgs e) {
+	private void Player_OnSoulTaken(object sender, int e) {
 		AudioManager.instance.PlayTakeSoul(transform.position);
 	}
 

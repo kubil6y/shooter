@@ -188,9 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41fdca65a6732aa129e78aaeee605713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_followDistance: 4
+  m_followDistance: 3
   m_moveSpeed: 10
-  m_lifetimeDuration: 4
+  m_lifetimeDuration: 3
 --- !u!114 &8479278550146595449
 MonoBehaviour:
   m_ObjectHideFlags: 0

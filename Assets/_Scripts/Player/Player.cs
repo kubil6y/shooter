@@ -11,7 +11,8 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	public event EventHandler OnRevived;
 	public event EventHandler OnDashStarted;
 	public event EventHandler OnUltimated;
-	public event EventHandler OnSoulTaken;
+	public event EventHandler<int> OnSoulTaken;
+	public event EventHandler<int> OnEnemyKillAmountChanged;
 
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
@@ -39,6 +40,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	private bool m_hasQuad;
 
 	private int m_soulAmount;
+	private int m_killAmount;
 
     protected override void Awake() {
 		base.Awake();
@@ -58,6 +60,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	private void Start() {
 		m_stateMachine.ConnectToPlayerChannel();
 		m_stateMachine.SetState(PState.Idle);
+		Enemy.OnAnyDeath += Enemy_OnAnyDeath;
 	}
 
     private void OnDestroy() {
@@ -77,7 +80,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 			return false;
 		}
 		m_soulAmount++;
-		OnSoulTaken?.Invoke(this, EventArgs.Empty);
+		OnSoulTaken?.Invoke(this, m_soulAmount);
 		return true;
 	}
 
@@ -289,4 +292,9 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	public void Invoke_OnDashStarted() {
 		OnDashStarted?.Invoke(this, EventArgs.Empty);
 	}
+
+    private void Enemy_OnAnyDeath(object sender, EventArgs e) {
+		m_killAmount++;
+		OnEnemyKillAmountChanged?.Invoke(this, m_killAmount);
+    }
 }

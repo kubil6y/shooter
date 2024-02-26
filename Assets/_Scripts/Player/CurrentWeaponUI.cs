@@ -56,7 +56,6 @@ public class CurrentWeaponUI : MonoBehaviour {
 	}
 
 	private void Weapon_OnAmmoChanged(object sender, EventArgs e) {
-		Debug.Log("Weapon_OnAmmoChanged()"); // TODO
 		UpdateAmmoText();
 	}
 

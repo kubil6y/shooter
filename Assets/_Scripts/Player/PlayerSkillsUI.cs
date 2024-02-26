@@ -12,21 +12,22 @@ public class PlayerSkillsUI : MonoBehaviour {
 	}
 
 	private void Update() {
-        UpdateUltimateCooldownVisual();
-    }
+		UpdateUltimateCooldownVisual();
+	}
 
-    private void UpdateUltimateCooldownVisual() {
-        if (m_isUltimateOnCooldown) {
-            m_ultimateImage.fillAmount = Player.instance.skills.GetUltimateTimerNormalized();
-        }
-    }
+	private void UpdateUltimateCooldownVisual() {
+		if (m_isUltimateOnCooldown) {
+			m_ultimateImage.fillAmount = Player.instance.skills.GetUltimateTimerNormalized();
+		}
+	}
 
-    private void Player_OnAnimUltimateFire(object sender, EventArgs e) {
+	private void Player_OnAnimUltimateFire(object sender, EventArgs e) {
 		m_isUltimateOnCooldown = true;
 	}
 
 	private void Player_OnUltimateOutOfCooldown(object sender, EventArgs e) {
 		m_isUltimateOnCooldown = false;
+		m_ultimateImage.fillAmount = 1f;
 	}
 
 }

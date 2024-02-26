@@ -71,6 +71,7 @@ public class Enemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	}
 
 	private void Health_OnDeath(object sender, EventArgs e) {
+		OnAnyDeath?.Invoke(this, EventArgs.Empty);
 		Destroy(gameObject);
 	}
 }

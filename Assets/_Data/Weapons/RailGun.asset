@@ -29,4 +29,4 @@ MonoBehaviour:
   spreadAngle: 0
   ammoUsage: 1
   startingAmmo: 10
-  maxAmmo: 50
+  maxAmmo: 25

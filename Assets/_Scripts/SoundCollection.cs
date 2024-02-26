@@ -35,4 +35,12 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO armorPickup;
 	public SoundSO pickupSpawned;
 	public SoundSO ultimateOutOfCooldown;
+
+	[Header("Announcer")]
+	public SoundSO pause;
+	public SoundSO announcerStartLevel;
+	public SoundSO announcerThree;
+	public SoundSO announcerTwo;
+	public SoundSO announcerOne;
+	public SoundSO announcerFight;
 }

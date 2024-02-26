@@ -50,11 +50,11 @@ TagManager:
   - name: Enemy
     uniqueID: 110277089
     locked: 0
-  - name: Player
-    uniqueID: 2863840051
-    locked: 0
   - name: Pickup
     uniqueID: 629441019
+    locked: 0
+  - name: Player
+    uniqueID: 2863840051
     locked: 0
   - name: Projectile
     uniqueID: 2240374159

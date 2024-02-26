@@ -22,7 +22,7 @@ MonoBehaviour:
   knockbackThrust: 2
   knockbackDuration: 0.1
   poolSize: 10
-  rof: 1000
+  rof: 800
   singleFire: 0
   projectileCanGoThrough: 0
   projectileGoThroughCount: 1

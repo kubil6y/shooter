@@ -26,10 +26,10 @@ public class Pickup : MonoBehaviour {
 
 	public virtual void OnTriggerEnter2D(Collider2D other) {
 		if (other.TryGetComponent<ICanPickup>(out ICanPickup canPickup)) {
-			canPickup.PickUp(this);
-			OnPickedUp?.Invoke(this, EventArgs.Empty);
-
-			Destroy(gameObject);
+			if (canPickup.TryPickUp(this)) {
+				OnPickedUp?.Invoke(this, EventArgs.Empty);
+				Destroy(gameObject);
+			}
 		};
 	}
 }

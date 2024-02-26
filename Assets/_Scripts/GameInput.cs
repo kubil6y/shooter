@@ -39,6 +39,10 @@ public class GameInput : Singleton<GameInput> {
 		return m_playerInputActions.Player.Fire.WasReleasedThisFrame();
 	}
 
+	public bool PausePressed() {
+		return m_playerInputActions.Player.Pause.WasPressedThisFrame();
+	}
+
 	#region weapons
 	public bool ChainsawPressed() {
 		return m_playerInputActions.Player.Chainsaw.WasPressedThisFrame();

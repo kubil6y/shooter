@@ -25,7 +25,7 @@ MonoBehaviour:
   rof: 1000
   singleFire: 1
   projectileCanGoThrough: 1
-  projectileGoThroughCount: 3
+  projectileGoThroughCount: 5
   spreadAngle: 0
   ammoUsage: 1
   startingAmmo: 10

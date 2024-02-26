@@ -1,3 +1,3 @@
 public interface ICanPickup {
-	public void PickUp(Pickup pickup);
+	public bool TryPickUp(Pickup pickup);
 }

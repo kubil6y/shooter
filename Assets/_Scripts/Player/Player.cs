@@ -32,17 +32,18 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	private Coroutine m_quadRoutine;
 	private float m_originalMass;
 
-	private bool m_canUseSkill = true;
 	private bool m_canFlip = true;
-	private bool m_canShoot = true;
-	private bool m_canPickup = true;
-	private bool m_canGetHit = true;
+
+	private bool m_canUseSkill;
+	private bool m_canShoot;
+	private bool m_canPickup;
+	private bool m_canGetHit;
 	private bool m_hasQuad;
 
 	private int m_soulAmount;
 	private int m_killAmount;
 
-    protected override void Awake() {
+	protected override void Awake() {
 		base.Awake();
 		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		m_stateMachine = new PlayerStateMachine(this);
@@ -60,10 +61,11 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	private void Start() {
 		m_stateMachine.ConnectToPlayerChannel();
 		m_stateMachine.SetState(PState.Idle);
+		GameManager.instance.OnPlayingStarted += GameManager_OnPlayingStarted;
 		Enemy.OnAnyDeath += Enemy_OnAnyDeath;
 	}
 
-    private void OnDestroy() {
+	private void OnDestroy() {
 		m_stateMachine.DisconnectFromPlayerChannel();
 	}
 
@@ -98,7 +100,8 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		if (value) {
 			rb.mass = m_originalMass;
 			rb.bodyType = RigidbodyType2D.Dynamic;
-		} else {
+		}
+		else {
 			rb.mass = float.MaxValue;
 			rb.bodyType = RigidbodyType2D.Kinematic;
 		}
@@ -210,9 +213,13 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		OnRevived?.Invoke(this, EventArgs.Empty);
 	}
 
-	public void PickUp(Pickup pickup) {
+	public bool TryPickUp(Pickup pickup) {
 		if (!IsAlive()) {
-			return;
+			return false;
+		}
+
+		if (!m_canPickup) {
+			return false;
 		}
 
 		switch (pickup.pickupData) {
@@ -243,6 +250,8 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 			}
 			break;
 		}
+
+		return true;
 	}
 
 	public void TakeHit(WeaponType weaponType, float hitDuration) {
@@ -293,8 +302,15 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		OnDashStarted?.Invoke(this, EventArgs.Empty);
 	}
 
-    private void Enemy_OnAnyDeath(object sender, EventArgs e) {
+	private void Enemy_OnAnyDeath(object sender, EventArgs e) {
 		m_killAmount++;
 		OnEnemyKillAmountChanged?.Invoke(this, m_killAmount);
-    }
+	}
+
+	private void GameManager_OnPlayingStarted(object sender, EventArgs e) {
+		m_canUseSkill = true;
+		m_canShoot = true;
+		m_canPickup = true;
+		m_canGetHit = true;
+	}
 }

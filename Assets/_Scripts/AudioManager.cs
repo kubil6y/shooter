@@ -193,4 +193,24 @@ public class AudioManager : Singleton<AudioManager> {
     public void PlayUltimateOutOfCooldown(Vector3 position) {
 		PlaySound(m_soundCollection.ultimateOutOfCooldown, position);
     }
+
+    public void PlayAnnouncerStartLevel(Vector3 position) {
+		PlaySound(m_soundCollection.announcerStartLevel, position);
+    }
+
+    public void PlayAnnouncerThree(Vector3 position) {
+		PlaySound(m_soundCollection.announcerThree, position);
+    }
+
+    public void PlayAnnouncerTwo(Vector3 position) {
+		PlaySound(m_soundCollection.announcerTwo, position);
+    }
+
+    public void PlayAnnouncerOne(Vector3 position) {
+		PlaySound(m_soundCollection.announcerOne, position);
+    }
+
+    public void PlayAnnouncerFight(Vector3 position) {
+		PlaySound(m_soundCollection.announcerFight, position);
+    }
 }

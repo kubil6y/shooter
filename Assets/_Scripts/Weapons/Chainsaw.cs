@@ -89,4 +89,28 @@ public class Chainsaw : Weapon {
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(m_attackRefTf.position, m_attackRadius);
 	}
+
+    public override void AddAmmo(int ammoAmount) {
+		return;
+    }
+
+    public override void AddStartingAmmo() {
+		return;
+    }
+
+    public override int GetStartingAmmo() {
+		return int.MaxValue;
+    }
+
+    public override int GetMaxAmmo() {
+		return int.MaxValue;
+    }
+
+    public override int GetCurrentAmmo() {
+		return int.MaxValue;
+    }
+
+    public override bool HasUnlimitedAmmo() {
+		return true;
+    }
 }

@@ -2,9 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
+public class ProjectileWeapon : Weapon, IHasObjectPool {
 	public event EventHandler OnShoot;
-	public event EventHandler OnAmmoChanged;
 	public event EventHandler OnOutOfAmmo;
 
 	[SerializeField] private ProjectileWeaponDataSO m_weaponDataSO;
@@ -81,7 +80,8 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 
 		m_currentAmmo -= m_weaponDataSO.ammoUsage;
 		OnShoot?.Invoke(this, EventArgs.Empty);
-		OnAmmoChanged?.Invoke(this, EventArgs.Empty);
+		// OnAmmoChanged?.Invoke(this, EventArgs.Empty);
+		Invoke_OnAmmoChanged();
 	}
 
 	private bool HasEnoughAmmo() {
@@ -91,25 +91,31 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 		return m_currentAmmo - m_weaponDataSO.ammoUsage >= 0;
 	}
 
-	public int GetCurrentAmmo() {
+	public override int GetCurrentAmmo() {
 		return m_currentAmmo;
 	}
 
-	public void AddAmmo(int ammoAmount) {
+	public override void AddAmmo(int ammoAmount) {
 		if (ammoAmount <= 0) {
 			return;
 		}
 		m_currentAmmo = Mathf.Clamp(m_currentAmmo + ammoAmount, 0, m_weaponDataSO.maxAmmo);
-		OnAmmoChanged?.Invoke(this, EventArgs.Empty);
+		// OnAmmoChanged?.Invoke(this, EventArgs.Empty);
+		Invoke_OnAmmoChanged();
 	}
 
-	public void AddStartingAmmo() {
+	public override void AddStartingAmmo() {
 		AddAmmo(m_weaponDataSO.startingAmmo);
 	}
 
-	public int GetStartingAmmo() {
+	public override int GetStartingAmmo() {
 		return m_weaponDataSO.startingAmmo;
 	}
+
+
+    public override int GetMaxAmmo() {
+		return m_weaponDataSO.maxAmmo;
+    }
 
 	public override WeaponType GetWeaponType() {
 		return m_weaponDataSO.weaponType;
@@ -164,4 +170,8 @@ public class ProjectileWeapon : Weapon, IHasAmmo, IHasObjectPool {
 	public override bool IsAvailable() {
 		return HasEnoughAmmo();
 	}
+
+    public override bool HasUnlimitedAmmo() {
+		return m_weaponDataSO.unlimitedAmmo;
+    }
 }

@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
 
-public class LightningGun : Weapon, IHasAmmo {
+public class LightningGun : Weapon {
 	public event EventHandler OnShootStarted;
 	public event EventHandler OnShootEnded;
 	public event EventHandler OnIdleStarted;
 	public event EventHandler OnIdleEnded;
-	public event EventHandler OnAmmoChanged;
 	public event EventHandler OnOutOfAmmo;
 
 	[SerializeField] private LightningGunWeaponDataSO m_weaponDataSO;
@@ -127,7 +126,7 @@ public class LightningGun : Weapon, IHasAmmo {
 	}
 
 	private bool HasEnoughAmmo() {
-		if (m_weaponDataSO.infiniteAmmo) {
+		if (m_weaponDataSO.unlimitedAmmo) {
 			return true;
 		}
 		return m_currentAmmo - 1 >= 0;
@@ -137,22 +136,27 @@ public class LightningGun : Weapon, IHasAmmo {
 		return m_shootTimer > 0f;
 	}
 
-	public void AddAmmo(int ammoAmount) {
+	public override void AddAmmo(int ammoAmount) {
 		if (ammoAmount <= 0) {
 			return;
 		}
 		m_currentAmmo = Mathf.Clamp(m_currentAmmo + ammoAmount, 0, m_weaponDataSO.maxAmmo);
 
-		OnAmmoChanged?.Invoke(this, EventArgs.Empty);
+		// OnAmmoChanged?.Invoke(this, EventArgs.Empty);
+		Invoke_OnAmmoChanged();
 	}
 
-	public void AddStartingAmmo() {
+	public override void AddStartingAmmo() {
 		AddAmmo(m_weaponDataSO.startingAmmo);
 	}
 
-	public int GetStartingAmmo() {
+	public override int GetStartingAmmo() {
 		return m_weaponDataSO.startingAmmo;
 	}
+
+    public override int GetMaxAmmo() {
+		return m_weaponDataSO.maxAmmo;
+    }
 
 	public override WeaponType GetWeaponType() {
 		return WeaponType.LightningGun;
@@ -161,4 +165,12 @@ public class LightningGun : Weapon, IHasAmmo {
 	public override bool IsAvailable() {
 		return HasEnoughAmmo();
 	}
+
+    public override int GetCurrentAmmo() {
+		return m_currentAmmo;
+    }
+
+    public override bool HasUnlimitedAmmo() {
+		return m_weaponDataSO.unlimitedAmmo;
+    }
 }

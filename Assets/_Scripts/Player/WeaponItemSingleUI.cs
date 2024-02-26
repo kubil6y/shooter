@@ -14,6 +14,10 @@ public class WeaponManagerSingleUI : MonoBehaviour {
 		m_weaponImage.color = selectedColor;
 	}
 
+	public Sprite GetWeaponImageSprite() {
+		return m_weaponImage.sprite;
+	}
+
 	public void SetAsUnSelected() {
 		m_weaponSelectedImage.gameObject.SetActive(false);
 

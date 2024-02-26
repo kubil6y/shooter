@@ -38,7 +38,7 @@ public class WeaponManagerUI : MonoBehaviour {
 		}
 	}
 
-	private WeaponManagerSingleUI GetWeaponSingle(WeaponType weaponType) {
+	public WeaponManagerSingleUI GetWeaponSingle(WeaponType weaponType) {
 		switch (weaponType) {
 		case WeaponType.Chainsaw:
 			return m_chainsaw;

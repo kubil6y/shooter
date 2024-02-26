@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponName: Rail Gun
   weaponType: 4
   weaponPrefab: {fileID: 752956093444323179, guid: dab8cc74f7fe934f6a4a43a13a67256e, type: 3}
+  unlimitedAmmo: 0
   projectilePrefab: {fileID: 2411224934712565643, guid: 8374a7b4662993901ae8ef948d8c7938, type: 3}
   projectileSpeed: 24
   projectileDamage: 40
@@ -23,7 +24,6 @@ MonoBehaviour:
   poolSize: 10
   rof: 1000
   singleFire: 1
-  unlimitedAmmo: 1
   projectileCanGoThrough: 1
   projectileGoThroughCount: 3
   spreadAngle: 0

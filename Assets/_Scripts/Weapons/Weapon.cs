@@ -1,6 +1,9 @@
+using System;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour {
+public abstract class Weapon : MonoBehaviour, IHasAmmo {
+	public event EventHandler OnAmmoChanged;
+
 	protected bool shootInput;
 	protected ICanUseWeapon weaponUser;
 
@@ -34,4 +37,15 @@ public abstract class Weapon : MonoBehaviour {
 	public virtual void Hide() {
 		gameObject.SetActive(false);
 	}
+
+	public void Invoke_OnAmmoChanged() {
+		OnAmmoChanged?.Invoke(this, EventArgs.Empty);
+	}
+
+	public abstract void AddAmmo(int ammoAmount);
+	public abstract void AddStartingAmmo();
+	public abstract int GetStartingAmmo();
+    public abstract int GetMaxAmmo();
+    public abstract int GetCurrentAmmo();
+    public abstract bool HasUnlimitedAmmo();
 }

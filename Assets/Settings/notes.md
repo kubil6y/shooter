@@ -1,3 +1,5 @@
+- getnext weapon index should be changed. keep an array of picked up items and for next/prev
+
 - mega/heavy nw/se & 4 weapons right next to teleports
 - handle pickups
 - polish of the map.

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ultimate_out_of_cd
   m_EditorClassIdentifier: 
   type: 0
-  clip: {fileID: 8300000, guid: 3c5d8773ed41f6a4fac5796db1505dd6, type: 3}
+  clip: {fileID: 8300000, guid: 5ddfc5cdd5f800512b5c6f21215c6305, type: 3}
   loop: 0
   playOnAwake: 0
   randomizedPitch: 0
   randomPitchRangeModifier: 0.1
-  volume: 1
+  volume: 1.5
   pitch: 1

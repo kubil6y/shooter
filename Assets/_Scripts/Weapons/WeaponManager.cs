@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 // NOTE: WeaponType manages index positions and size in the WeaponManager
@@ -16,14 +17,20 @@ public enum WeaponType {
 
 [RequireComponent(typeof(AmmoPouch))]
 public class WeaponManager : MonoBehaviour {
+	public event EventHandler<OnStartingWeaponsSetEventArgs> OnStartingWeaponsSet;
+	public class OnStartingWeaponsSetEventArgs : EventArgs {
+		public WeaponType selectedWeapon;
+		public List<WeaponType> weaponArsenal;
+	}
 	public event EventHandler<Weapon> OnWeaponChanged;
-	public event EventHandler OnWeaponPickup; // TODO not handled yet
+	public event EventHandler<Weapon> OnWeaponPickup; // TODO not handled yet
 	public event EventHandler OnAmmoPickup;
 
 	[SerializeField] private Transform m_weaponHolderTf;
 	[SerializeField] private WeaponDataSO[] m_startingWeaponSoArray;
 
 	private Weapon[] m_weaponArray;
+	private List<WeaponType> m_weaponArsenal;
 	private AmmoPouch m_ammoPouch;
 	private WeaponManagerVisuals m_weaponManagerVisuals;
 
@@ -49,6 +56,7 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	private void Init() {
+		m_weaponArsenal = new List<WeaponType>();
 		int weaponArrayLength = (int)WeaponType.__LENGTH;
 		m_weaponArray = new Weapon[weaponArrayLength];
 		for (int i = 0; i < weaponArrayLength; i++) {
@@ -79,9 +87,17 @@ public class WeaponManager : MonoBehaviour {
 	}
 
 	public void SetStartingWeapons() {
+		if (m_startingWeaponSoArray.Length == 0) {
+			return;
+		}
 		foreach (WeaponDataSO weaponDataSO in m_startingWeaponSoArray) {
 			TryAddingWeapon(weaponDataSO);
+			m_weaponArsenal.Add(weaponDataSO.weaponType);
 		}
+		OnStartingWeaponsSet?.Invoke(this, new OnStartingWeaponsSetEventArgs {
+			selectedWeapon = m_startingWeaponSoArray[0].weaponType,
+			weaponArsenal = m_weaponArsenal,
+		});
 	}
 
 	public bool TrySwappingToNextWeapon() {
@@ -247,7 +263,7 @@ public class WeaponManager : MonoBehaviour {
 			TryAddingWeapon(weaponPickupDataSO.weaponDataSO);
 		}
 
-		OnWeaponPickup?.Invoke(this, EventArgs.Empty);
+		OnWeaponPickup?.Invoke(this, GetWeapon(weaponType));
 	}
 
 	private bool TryAddingWeapon(WeaponDataSO weaponDataSO) {

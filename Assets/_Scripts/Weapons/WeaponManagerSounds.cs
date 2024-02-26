@@ -18,8 +18,7 @@ public class WeaponManagerSounds : MonoBehaviour {
 		AudioManager.instance.PlayAmmoPickup(transform.position);
     }
 
-    private void WeaponManager_OnWeaponPickup(object sender, EventArgs e) {
+    private void WeaponManager_OnWeaponPickup(object sender, Weapon e) {
 		AudioManager.instance.PlayWeaponPickup(transform.position);
     }
-
 }

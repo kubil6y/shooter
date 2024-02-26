@@ -72,6 +72,7 @@ public class LightningGun : Weapon {
 			m_idleTimer = m_idleWaitDuration;
 			m_currentAmmo--;
 			Shoot();
+			Invoke_OnAmmoChanged();
 		}
 
 		if (!m_isShooting && !m_isIdle && m_idleTimer < 0f) {
@@ -142,7 +143,6 @@ public class LightningGun : Weapon {
 		}
 		m_currentAmmo = Mathf.Clamp(m_currentAmmo + ammoAmount, 0, m_weaponDataSO.maxAmmo);
 
-		// OnAmmoChanged?.Invoke(this, EventArgs.Empty);
 		Invoke_OnAmmoChanged();
 	}
 
@@ -154,9 +154,9 @@ public class LightningGun : Weapon {
 		return m_weaponDataSO.startingAmmo;
 	}
 
-    public override int GetMaxAmmo() {
+	public override int GetMaxAmmo() {
 		return m_weaponDataSO.maxAmmo;
-    }
+	}
 
 	public override WeaponType GetWeaponType() {
 		return WeaponType.LightningGun;
@@ -166,11 +166,11 @@ public class LightningGun : Weapon {
 		return HasEnoughAmmo();
 	}
 
-    public override int GetCurrentAmmo() {
+	public override int GetCurrentAmmo() {
 		return m_currentAmmo;
-    }
+	}
 
-    public override bool HasUnlimitedAmmo() {
+	public override bool HasUnlimitedAmmo() {
 		return m_weaponDataSO.unlimitedAmmo;
-    }
+	}
 }

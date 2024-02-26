@@ -45,16 +45,18 @@ public class CurrentWeaponUI : MonoBehaviour {
 			return;
 		}
 		if (m_currentWeapon.HasUnlimitedAmmo()) {
-			m_ammoText.text = String.Empty;
+			m_ammoText.text = "∞";
+			m_ammoText.fontSize = 64;
 		}
 		else {
 			m_ammoText.text = $"{m_currentWeapon.GetCurrentAmmo().ToString()}/{m_currentWeapon.GetMaxAmmo().ToString()}";
+			m_ammoText.fontSize = 20;
 		}
 
 	}
 
 	private void Weapon_OnAmmoChanged(object sender, EventArgs e) {
-		Debug.Log("lkajsdf");
+		Debug.Log("Weapon_OnAmmoChanged()"); // TODO
 		UpdateAmmoText();
 	}
 

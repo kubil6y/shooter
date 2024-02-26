@@ -53,8 +53,7 @@ public class Projectile : MonoBehaviour {
 		m_canGoThrough = args.projectileCanGoThrough;
 		m_projectileGoThroughCount = args.projectileGoThroughCount;
 		m_weaponUser = args.weaponUser;
-
-		transform.right = m_fireDirection; // TODO deneme
+		transform.right = m_fireDirection;
 	}
 
 	private void Update() {

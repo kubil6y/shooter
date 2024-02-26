@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7536015526970611709}
   - component: {fileID: 7514847143445730462}
   - component: {fileID: 2042168745332426607}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: StandingTorch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 2869505520358320443}
   - component: {fileID: 7021142440223019770}
   - component: {fileID: 4127568532595115157}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}

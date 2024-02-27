@@ -51821,7 +51821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.85882354, g: 0.84313726, b: 0.8117647, a: 1}
+  m_Color: {r: 0.99607843, g: 0.54901963, b: 0.03529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -53878,7 +53878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ba82d84bd72a533a41cbac4055e155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_countdownDuration: 10
+  m_countdownDuration: 0
 --- !u!4 &1373678606
 Transform:
   m_ObjectHideFlags: 0
@@ -54114,7 +54114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ultimatePrefab: {fileID: -3895012849606366371, guid: f700a29a3d53d08bb9cedc5bc44d5169, type: 3}
   m_ultimateLaserDamage: 100
-  m_ultimateCooldown: 8
+  m_ultimateCooldown: 5
   m_ultimateRange: 20
   m_ultimateSpawnTf: {fileID: 1039025652}
   m_ultimateTargetLayerMask:
@@ -54228,7 +54228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5, g: 0.024691358, b: 0, a: 1}
+  m_Color: {r: 0.69803923, g: 0.07058824, b: 0.039215688, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -60262,7 +60262,7 @@ GameObject:
   - component: {fileID: 1484928874}
   - component: {fileID: 1484928873}
   m_Layer: 0
-  m_Name: SkillCooldownImage
+  m_Name: SkillOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61626,8 +61626,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_backgroundImage: {fileID: 1387806282}
-  m_ultimateImage: {fileID: 1484928873}
+  m_iconImage: {fileID: 1032298885}
   m_button: {fileID: 659524656}
+  m_iconColor: {r: 0.99607843, g: 0.54901963, b: 0.03529412, a: 1}
+  m_onCooldownIconColor: {r: 0.85490197, g: 0.8352941, b: 0.8039216, a: 1}
+  m_buttonColor: {r: 0.5301646, g: 0.030674532, b: 0.0057000257, a: 1}
+  m_onCooldownButtonColor: {r: 0.5294118, g: 0.03137255, b: 0.003921569, a: 0.69803923}
 --- !u!1 &1837920971
 GameObject:
   m_ObjectHideFlags: 0
@@ -62708,7 +62712,6 @@ PolygonCollider2D:
       - {x: -37, y: 24}
       - {x: -37, y: -20}
       - {x: 37, y: -20}
-      - {x: 37, y: 0}
   m_UseDelaunayMesh: 0
 --- !u!1001 &827821256933595382
 PrefabInstance:

@@ -139,7 +139,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	}
 
 	public float GetMoveSpeed() {
-		float quadMovementBoost = 1.3f;
+		float quadMovementBoost = 1.2f;
 		return m_hasQuad ? quadMovementBoost * m_moveSpeed : m_moveSpeed;
 	}
 

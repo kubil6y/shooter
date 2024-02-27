@@ -62,6 +62,9 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		m_stateMachine.ConnectToPlayerChannel();
 		m_stateMachine.SetState(PState.Idle);
 		GameManager.instance.OnPlayingStarted += GameManager_OnPlayingStarted;
+		// TODO handle these
+		GameManager.instance.OnGamePaused += GameManager_OnGamePaused;
+		GameManager.instance.OnGameUnpaused += GameManager_OnGameUnpaused;
 		Enemy.OnAnyDeath += Enemy_OnAnyDeath;
 	}
 
@@ -136,7 +139,7 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	}
 
 	public float GetMoveSpeed() {
-		float quadMovementBoost = 1.4f;
+		float quadMovementBoost = 1.3f;
 		return m_hasQuad ? quadMovementBoost * m_moveSpeed : m_moveSpeed;
 	}
 
@@ -302,15 +305,47 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		OnDashStarted?.Invoke(this, EventArgs.Empty);
 	}
 
+	public void EnablePlayer() {
+		SetIsPushable(true);
+		SetCanUseSkill(true);
+		SetCanFlip(true);
+		SetCanMove(true);
+		SetCanGetKnocked(true);
+		SetCanGetHit(true);
+		SetCanShoot(true);
+		SetCanPickup(true);
+		EnableWeaponVisuals();
+	}
+
+	public void DisablePlayer() {
+		SetIsPushable(false);
+		SetCanUseSkill(false);
+		SetCanFlip(false);
+		SetCanMove(false);
+		SetCanGetKnocked(false);
+		SetCanGetHit(false);
+		SetCanShoot(false);
+		SetCanPickup(false);
+		DisableWeaponVisuals();
+		weaponManager.StopShooting();
+		movement.SetZeroVelocity();
+	}
+
 	private void Enemy_OnAnyDeath(object sender, EventArgs e) {
 		m_killAmount++;
 		OnEnemyKillAmountChanged?.Invoke(this, m_killAmount);
 	}
 
 	private void GameManager_OnPlayingStarted(object sender, EventArgs e) {
-		m_canUseSkill = true;
-		m_canShoot = true;
-		m_canPickup = true;
-		m_canGetHit = true;
+		EnablePlayer();
 	}
+
+	private void GameManager_OnGamePaused(object sender, EventArgs e) {
+		DisablePlayer();
+	}
+
+	private void GameManager_OnGameUnpaused(object sender, EventArgs e) {
+		EnablePlayer();
+	}
+
 }

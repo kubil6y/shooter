@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager> {
 
 	[SerializeField] private float m_countdownDuration = 8f;
 
+	private bool m_canBePaused = true;
 	private State m_state;
 	private bool m_gamePaused;
 	private int m_countdownInFullSeconds;
@@ -46,9 +47,21 @@ public class GameManager : Singleton<GameManager> {
 
 		case State.Playing:
 			m_playTimer += Time.deltaTime;
+			if (GameInput.instance.PausePressed() && CanBePaused()) {
+				SetState(State.Paused);
+				TogglePause();
+				OnGamePaused?.Invoke(this, EventArgs.Empty);
+				break;
+			}
 			break;
 
 		case State.Paused:
+			if (GameInput.instance.PausePressed() && CanBePaused()) {
+				SetState(State.Playing);
+				TogglePause();
+				OnGameUnpaused?.Invoke(this, EventArgs.Empty);
+				break;
+			}
 			break;
 
 		case State.GameOver:
@@ -87,6 +100,14 @@ public class GameManager : Singleton<GameManager> {
 			m_countdownInFullSeconds = _countdownTimer;
 			OnCountdownChanged?.Invoke(this, m_countdownInFullSeconds);
 		}
+	}
+
+	public bool CanBePaused() {
+		return m_canBePaused;
+	}
+
+	public void SetCanBePaused(bool canBePaused) {
+		m_canBePaused = canBePaused;
 	}
 
 	private void TogglePause() {

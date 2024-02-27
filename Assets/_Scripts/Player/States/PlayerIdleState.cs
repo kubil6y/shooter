@@ -18,7 +18,7 @@ public class PlayerIdleState : PlayerNormalState {
     public override void Update() {
         base.Update();
 
-		if (GameInput.instance.GetMoveInputNormalized() != Vector2.zero) {
+		if (GameInput.instance.GetMoveInputNormalized() != Vector2.zero && player.CanMove()) {
 			stateMachine.SetState(PState.Move);
 		}
     }

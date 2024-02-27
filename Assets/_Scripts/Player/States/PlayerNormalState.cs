@@ -9,7 +9,7 @@ public class PlayerNormalState : PlayerState {
 
 	private void HandleShooting() {
 		// NOTE: Shooting and weapon swapping is tied.
-		if (player.CanShoot()) {
+		if (player.CanShoot() && GameManager.instance.IsPlaying()) {
 			if (GameInput.instance.IsFireDown()) {
 				player.weaponManager.StartShooting();
 			}

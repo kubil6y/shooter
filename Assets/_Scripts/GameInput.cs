@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameInput : Singleton<GameInput> {
 	private PlayerInputActions m_playerInputActions;

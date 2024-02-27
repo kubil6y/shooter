@@ -53,7 +53,8 @@ public class PlayerSkills : MonoBehaviour {
 	}
 
 	public float GetUltimateTimerNormalized() {
-		return 1 - m_ultimateTimer / m_ultimateCooldown;
+		float val = 1 - m_ultimateTimer / m_ultimateCooldown;
+		return val < 1f ? val : 0f;
 	}
 
 	public LayerMask GetUltimateTargetLayerMask() {

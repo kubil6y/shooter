@@ -11,6 +11,7 @@ public class PlayerSkills : MonoBehaviour {
 	[SerializeField] private float m_playerSurroundingRadius = 5f;
 	[SerializeField] private float m_ultimateRange = 25f;
 	[SerializeField] private Transform m_ultimateSpawnTf;
+	[SerializeField] private LayerMask m_ultimateLimitLayerMask;
 	[SerializeField] private LayerMask m_ultimateTargetLayerMask;
 
 	private float m_ultimateTimer;
@@ -53,29 +54,46 @@ public class PlayerSkills : MonoBehaviour {
 		}
 	}
 
+	public void Dash(Vector3 dashDirection) {
+        Vector3 dashPoint = m_player.transform.position + dashDirection * m_dashDistance;
+        RaycastHit2D hit = Physics2D.Raycast(m_player.transform.position, dashDirection, m_dashDistance, m_dashLayerMask);
+        if (hit.collider != null) {
+            dashPoint = hit.point;
+        }
+        m_player.transform.position = dashPoint;
+	}
+
+	public void UltimatePlayerSurroundingAttack() {
+		RaycastHit2D[] hits = Physics2D.CircleCastAll(m_player.transform.position, m_playerSurroundingRadius, Vector2.right, 0f, m_ultimateTargetLayerMask);
+		foreach (RaycastHit2D hit in hits) {
+			if (hit.collider != null) {
+				hit.collider.GetComponent<IDamageable>()?.TakeDamage(m_ultimateLaserDamage * m_player.GetDamageMultiplier());
+				float hitDuration = .1f;
+				hit.collider.GetComponent<IHittable>()?.TakeHit(WeaponType.LightningGun, hitDuration);
+			}
+		}
+
+	}
+
+	public void SpawnLaser(Vector2 direction) {
+		UltimateLaser ultimateLaser = Instantiate(m_ultimatePrefab);
+		Vector2 ultimateSpawnPos = GetUltimateSpawnPosition();
+		float ultimateRange = m_ultimateRange;
+		float laserRange = ultimateRange;
+
+		RaycastHit2D hit = Physics2D.Raycast(ultimateSpawnPos, direction, ultimateRange, m_ultimateLimitLayerMask);
+		if (hit.collider != null) {
+			laserRange = Vector2.Distance(hit.point, ultimateSpawnPos);
+		}
+
+		int damage = m_ultimateLaserDamage * m_player.GetDamageMultiplier();
+		ultimateLaser.Setup(ultimateSpawnPos, direction, damage, laserRange);
+	}
+
+
 	public float GetUltimateTimerNormalized() {
 		float val = 1 - m_ultimateTimer / m_ultimateCooldown;
 		return val < 1f ? val : 0f;
-	}
-
-	public LayerMask GetUltimateTargetLayerMask() {
-		return m_ultimateTargetLayerMask;
-	}
-
-	public float GetDashDistance() {
-		return m_dashDistance;
-	}
-
-	public LayerMask GetDashLayerMask() {
-		return m_dashLayerMask;
-	}
-
-	public float GetUltimateRange() {
-		return m_ultimateRange;
-	}
-
-	public float GetPlayerSurroundingRadius() {
-		return m_playerSurroundingRadius;
 	}
 
 	public Vector2 GetUltimateSpawnPosition() {
@@ -89,17 +107,8 @@ public class PlayerSkills : MonoBehaviour {
 		}
 	}
 
-	public int GetUltimateLaserDamage() {
-		return m_ultimateLaserDamage;
-	}
-
-	public UltimateLaser GetUltimateLaserPrefab() {
-		return m_ultimatePrefab;
-	}
-
 	private void Player_OnAnimUltimateEnded(object sender, EventArgs e) {
 		m_isUltimateOnCooldown = true;
 		m_ultimateTimer = m_ultimateCooldown;
 	}
-
 }

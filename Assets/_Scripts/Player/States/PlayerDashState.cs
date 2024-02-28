@@ -46,20 +46,9 @@ public class PlayerDashState : PlayerState {
         return playerToMouseDir;
     }
 
-    private void Dash() {
-        Vector3 dashPoint = player.transform.position + m_dashDirection * player.skills.GetDashDistance();
-        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, m_dashDirection, player.skills.GetDashDistance(), player.skills.GetDashLayerMask());
-
-        if (hit.collider != null) {
-            dashPoint = hit.point;
-        }
-
-        player.transform.position = dashPoint;
-    }
-
     private void Player_OnAnimDashStartFinished(object sender, EventArgs e) {
         player.animations.SetDashStartAnim(false);
-        Dash();
+        player.skills.Dash(m_dashDirection);
         player.animations.SetDashEndAnim(true);
     }
 

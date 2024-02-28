@@ -85,11 +85,6 @@ public class Chainsaw : Weapon {
 		return true;
 	}
 
-	private void OnDrawGizmos() {
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(m_attackRefTf.position, m_attackRadius);
-	}
-
     public override void AddAmmo(int ammoAmount) {
 		return;
     }

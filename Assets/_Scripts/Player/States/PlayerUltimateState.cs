@@ -45,38 +45,12 @@ public class PlayerUltimateState : PlayerState {
         player.movement.SetZeroVelocity();
     }
 
-    private void SpawnLaser() {
-        UltimateLaser ultimateLaser = GameObject.Instantiate(player.skills.GetUltimateLaserPrefab());
-
-        Vector2 ultimateSpawnPos = player.skills.GetUltimateSpawnPosition();
-        float ultimateRange = player.skills.GetUltimateRange();
-        LayerMask ultimateTargetLayerMask = player.skills.GetUltimateTargetLayerMask();
-
-        float laserRange = ultimateRange;
-
-        RaycastHit2D hit = Physics2D.Raycast(ultimateSpawnPos, m_dirToCursor, ultimateRange, ultimateTargetLayerMask);
-        if (hit.collider != null) {
-            laserRange = Vector2.Distance(hit.point, ultimateSpawnPos);
-        }
-
-        ultimateLaser.Setup(ultimateSpawnPos, m_dirToCursor, player.skills.GetUltimateLaserDamage() * player.GetDamageMultiplier(), laserRange);
-    }
-
     private void Player_OnAnimUltimateFire(object sender, EventArgs e) {
         if (!IsInThisState()) {
             return;
         }
-        PlayerRadiusAttack();
-        SpawnLaser();
-    }
-
-    private void PlayerRadiusAttack() {
-        RaycastHit2D hit = Physics2D.CircleCast(player.skills.GetUltimateSpawnPosition(), player.skills.GetPlayerSurroundingRadius(), Vector2.right);
-        if (hit.collider != null) {
-            hit.collider.GetComponent<IDamageable>()?.TakeDamage(player.skills.GetUltimateLaserDamage() * player.GetDamageMultiplier());
-            float hitDuration = .1f;
-            hit.collider.GetComponent<IHittable>()?.TakeHit(WeaponType.LightningGun, hitDuration);
-        }
+        player.skills.UltimatePlayerSurroundingAttack();
+        player.skills.SpawnLaser(m_dirToCursor);
     }
 
     private void Player_OnAnimUltimateEnded(object sender, EventArgs e) {

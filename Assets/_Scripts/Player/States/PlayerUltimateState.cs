@@ -16,7 +16,7 @@ public class PlayerUltimateState : PlayerState {
         player.Invoke_OnUltimated();
         player.animations.SetUltimateAnim(true);
 
-		player.SetIsPushable(false);
+        player.SetIsPushable(false);
         player.SetCanFlip(false);
         player.SetCanUseSkill(false);
         player.weaponManager.StopShooting();
@@ -27,7 +27,7 @@ public class PlayerUltimateState : PlayerState {
         base.Exit();
         player.animations.SetUltimateAnim(false);
 
-		player.SetIsPushable(true);
+        player.SetIsPushable(true);
         player.SetCanFlip(true);
         player.SetCanUseSkill(true);
         player.SetCanPickup(true);
@@ -54,10 +54,10 @@ public class PlayerUltimateState : PlayerState {
 
         float laserRange = ultimateRange;
 
-		RaycastHit2D hit = Physics2D.Raycast(ultimateSpawnPos, m_dirToCursor, ultimateRange, ultimateTargetLayerMask);
-		if (hit.collider != null) {
-			laserRange = Vector2.Distance(hit.point, ultimateSpawnPos);
-		}
+        RaycastHit2D hit = Physics2D.Raycast(ultimateSpawnPos, m_dirToCursor, ultimateRange, ultimateTargetLayerMask);
+        if (hit.collider != null) {
+            laserRange = Vector2.Distance(hit.point, ultimateSpawnPos);
+        }
 
         ultimateLaser.Setup(ultimateSpawnPos, m_dirToCursor, player.skills.GetUltimateLaserDamage() * player.GetDamageMultiplier(), laserRange);
     }
@@ -66,8 +66,17 @@ public class PlayerUltimateState : PlayerState {
         if (!IsInThisState()) {
             return;
         }
-
+        PlayerRadiusAttack();
         SpawnLaser();
+    }
+
+    private void PlayerRadiusAttack() {
+        RaycastHit2D hit = Physics2D.CircleCast(player.skills.GetUltimateSpawnPosition(), player.skills.GetPlayerSurroundingRadius(), Vector2.right);
+        if (hit.collider != null) {
+            hit.collider.GetComponent<IDamageable>()?.TakeDamage(player.skills.GetUltimateLaserDamage() * player.GetDamageMultiplier());
+            float hitDuration = .1f;
+            hit.collider.GetComponent<IHittable>()?.TakeHit(WeaponType.LightningGun, hitDuration);
+        }
     }
 
     private void Player_OnAnimUltimateEnded(object sender, EventArgs e) {

@@ -8,6 +8,7 @@ public class PlayerSkills : MonoBehaviour {
 	[SerializeField] private UltimateLaser m_ultimatePrefab;
 	[SerializeField] private int m_ultimateLaserDamage;
 	[SerializeField] private float m_ultimateCooldown;
+	[SerializeField] private float m_playerSurroundingRadius = 5f;
 	[SerializeField] private float m_ultimateRange = 25f;
 	[SerializeField] private Transform m_ultimateSpawnTf;
 	[SerializeField] private LayerMask m_ultimateTargetLayerMask;
@@ -71,6 +72,10 @@ public class PlayerSkills : MonoBehaviour {
 
 	public float GetUltimateRange() {
 		return m_ultimateRange;
+	}
+
+	public float GetPlayerSurroundingRadius() {
+		return m_playerSurroundingRadius;
 	}
 
 	public Vector2 GetUltimateSpawnPosition() {

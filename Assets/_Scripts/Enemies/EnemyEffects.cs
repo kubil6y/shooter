@@ -1,19 +1,21 @@
 using System;
 using UnityEngine;
 
-public class EnemyEffects : MonoBehaviour {
-	private Enemy m_enemy;
+public class BaseEnemyEffects : MonoBehaviour {
+	[SerializeField] private Transform m_damagePopupTf;
+
+	private BaseEnemy m_baseEnemy;
 	private Flash m_flash;
 
 	private void Awake() {
-		m_enemy = GetComponent<Enemy>();
+		m_baseEnemy = GetComponent<BaseEnemy>();
 		m_flash = GetComponent<Flash>();
 	}
 
 	private void Start() {
-		m_enemy.health.OnDeath += Enemy_OnDeath;
-		m_enemy.OnTakenDamage += Enemy_OnTakenDamage;
-		m_enemy.OnHit += Enemy_OnHit;
+		m_baseEnemy.health.OnDeath += Enemy_OnDeath;
+		m_baseEnemy.OnTakenDamage += Enemy_OnTakenDamage;
+		m_baseEnemy.OnHit += Enemy_OnHit;
 	}
 
 	private void Enemy_OnHit(object sender, Enemy.OnHitEventArgs e) {
@@ -25,6 +27,6 @@ public class EnemyEffects : MonoBehaviour {
 	}
 
 	private void Enemy_OnTakenDamage(object sender, int damageAmount) {
-		ObjectPoolManager.instance.SpawnDamagePopup(m_enemy.GetDamagePopupPosition(), damageAmount);
+		ObjectPoolManager.instance.SpawnDamagePopup(m_damagePopupTf.position, damageAmount);
 	}
 }

@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 
 public class EnemySounds : MonoBehaviour {
-	private Enemy m_enemy;
+	private BaseEnemy m_enemy;
 
 	private void Awake() {
-		m_enemy = GetComponent<Enemy>();
+		m_enemy = GetComponent<BaseEnemy>();
 	}
 
 	private void Start() {

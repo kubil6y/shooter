@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-public class Enemy : BaseEnemy {
-	[SerializeField] private float m_moveSpeed;
+public class Demon : BaseEnemy {
+	[SerializeField] private float m_moveSpeed = 4f;
 
 	private Vector2 m_moveDir;
 

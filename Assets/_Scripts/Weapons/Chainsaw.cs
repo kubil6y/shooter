@@ -54,7 +54,7 @@ public class Chainsaw : Weapon {
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_attackRefTf.position, m_attackRadius, m_targetLayerMask);
 
 		foreach (Collider2D collider in colliders) {
-			if (collider.gameObject.TryGetComponent<Enemy>(out Enemy enemy)) {
+			if (collider.gameObject.TryGetComponent<BaseEnemy>(out BaseEnemy baseEnemy)) {
 				float hitDuration = .05f;
 				collider.GetComponent<IHittable>()?.TakeHit(WeaponType.Chainsaw, hitDuration);
 

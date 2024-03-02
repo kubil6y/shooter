@@ -30,6 +30,10 @@ public class Movement : MonoBehaviour {
 		m_rb.velocity = m_velocity;
 	}
 
+	public Vector2 GetVelocity() {
+		return m_velocity;
+	}
+
 	public void SetVelocity(Vector2 velocity) {
 		m_velocity = velocity;
 	}

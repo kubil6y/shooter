@@ -13,6 +13,10 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	public event EventHandler OnUltimated;
 	public event EventHandler<int> OnSoulTaken;
 	public event EventHandler<int> OnEnemyKillAmountChanged;
+	public event EventHandler<OnHitEventArgs> OnHit;
+	public class OnHitEventArgs : EventArgs {
+		public float hitDuration;
+	}
 
 	[Header("Movement Config")]
 	[SerializeField] private float m_moveSpeed = 8f;
@@ -258,7 +262,9 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	}
 
 	public void TakeHit(WeaponType weaponType, float hitDuration) {
-		// TODO take hit
+		OnHit?.Invoke(this, new OnHitEventArgs {
+			hitDuration = hitDuration
+		});
 	}
 
 	public void TakeDamage(int damageAmount) {

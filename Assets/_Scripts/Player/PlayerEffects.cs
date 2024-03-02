@@ -15,12 +15,14 @@ public class PlayerEffects : MonoBehaviour {
 	private CinemachineImpulseSource m_impulseSource;
 
 	private Player m_player;
+	private PlayerFlash m_playerFlash;
 	private SpriteRenderer m_spriteRenderer;
 	private Coroutine m_soulCoroutine;
 	private float m_initialOrthoLensSize;
 
 	private void Awake() {
 		m_player = GetComponent<Player>();
+		m_playerFlash = GetComponent<PlayerFlash>();
 		m_impulseSource = GetComponent<CinemachineImpulseSource>();
 		m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 	}
@@ -36,6 +38,7 @@ public class PlayerEffects : MonoBehaviour {
 		m_player.OnUltimated += Player_OnUltimated;
 		m_player.animations.OnAnimUltimateFire += Player_OnAnimUltimateFire;
 		m_player.health.OnDeath += Player_OnDeath;
+		m_player.OnHit += Player_OnHit;
 	}
 
     private void OnDisable() {
@@ -117,5 +120,9 @@ public class PlayerEffects : MonoBehaviour {
 
     private void Player_OnDeath(object sender, EventArgs e) {
 		SetSpriteRendererMaterial(m_defaultSpriteMaterial);
+    }
+
+    private void Player_OnHit(object sender, Player.OnHitEventArgs e) {
+		m_playerFlash.StartFlash(e.hitDuration);
     }
 }

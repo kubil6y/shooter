@@ -25,6 +25,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f884cf0528be12548abbd3e4a47721b, type: 2}
   - {fileID: 11400000, guid: fb769e5ec8b2c18f9b8f05d7ddd94ff6, type: 2}
   - {fileID: 11400000, guid: b67049219e6038e968012554c9269f45, type: 2}
+  pain25: {fileID: 11400000, guid: cba157246bcaf0410a4c76f1b94d8ffa, type: 2}
+  pain50: {fileID: 11400000, guid: 2deea13cad85c133db17c70437b1ebf8, type: 2}
+  pain75: {fileID: 11400000, guid: 210a71d4730efdc829da04f0a089c304, type: 2}
+  pain100: {fileID: 11400000, guid: 494f90a74b1f15d11adedbe49edd3ae3, type: 2}
+  playerDeath:
+  - {fileID: 11400000, guid: cda6385a56f4d4da592f4dd500074ab6, type: 2}
+  - {fileID: 11400000, guid: fd7f62a3b47f37c3c961a6d4f26c1b59, type: 2}
+  - {fileID: 11400000, guid: 03e39e12492a826a08ef1a60c7273830, type: 2}
   lgFireStart: {fileID: 11400000, guid: 874e1462807e2974698a710fed829d4b, type: 2}
   lgFireLoop: {fileID: 11400000, guid: 3e1adf2f48facbbc4ac76258c605a4ef, type: 2}
   lgHum: {fileID: 11400000, guid: 2fdd23688d1902bcf9af2728900a4f79, type: 2}

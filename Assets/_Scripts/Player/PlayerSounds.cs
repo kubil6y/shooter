@@ -29,6 +29,8 @@ public class PlayerSounds : MonoBehaviour {
 		m_player.health.OnPickupHealth += Player_OnPickupHealth;
 		m_player.health.OnPickupArmor += Player_OnPickupArmor;
 		m_player.skills.OnUltimateOutOfCooldown += Player_OnUltimateOutOfCooldown;
+		m_player.health.OnDamageTaken += Player_OnDamageTaken;
+		m_player.health.OnDeath += Player_OnDeath;
 	}
 
     private void Player_OnDashStarted(object sender, EventArgs e) {
@@ -43,16 +45,37 @@ public class PlayerSounds : MonoBehaviour {
 		AudioManager.instance.PlayTakeSoul(transform.position);
 	}
 
-    private void Player_OnPickupHealth(object sender, EventArgs e) {
+	private void Player_OnPickupHealth(object sender, EventArgs e) {
 		AudioManager.instance.PlayHealthPickup(transform.position);
-    }
+	}
 
-    private void Player_OnPickupArmor(object sender, EventArgs e) {
+	private void Player_OnPickupArmor(object sender, EventArgs e) {
 		AudioManager.instance.PlayArmorPickup(transform.position);
-    }
+	}
 
-    private void Player_OnUltimateOutOfCooldown(object sender, EventArgs e) {
+	private void Player_OnUltimateOutOfCooldown(object sender, EventArgs e) {
 		AudioManager.instance.PlayUltimateOutOfCooldown(transform.position);
+	}
+
+    private void Player_OnDamageTaken(object sender, int playerHealth) {
+		if (playerHealth <= 0) {
+			return;
+		}
+		else if (playerHealth < 50) {
+			AudioManager.instance.PlayPain25(transform.position);
+		}
+		else if (playerHealth < 75) {
+			AudioManager.instance.PlayPain50(transform.position);
+		}
+		else if (playerHealth < 100) {
+			AudioManager.instance.PlayPain75(transform.position);
+		}
+		else {
+			AudioManager.instance.PlayPain100(transform.position);
+		}
     }
 
+	private void Player_OnDeath(object sender, EventArgs e) {
+		AudioManager.instance.PlayPlayerDeath(transform.position);
+	}
 }

@@ -6,6 +6,7 @@ public class Health : MonoBehaviour {
 	public event EventHandler OnPickupArmor;
 	public event EventHandler OnHealthChanged;
 	public event EventHandler OnArmorChanged;
+	public event EventHandler<int> OnDamageTaken;
 	public event EventHandler OnDeath;
 
 	[SerializeField] private int m_maxHealth;
@@ -74,6 +75,7 @@ public class Health : MonoBehaviour {
 
 		OnArmorChanged?.Invoke(this, EventArgs.Empty);
 		OnHealthChanged?.Invoke(this, EventArgs.Empty);
+		OnDamageTaken?.Invoke(this, m_currentHealth);
 
 		if (m_currentHealth == 0) {
 			Die();

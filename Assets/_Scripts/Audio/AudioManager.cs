@@ -213,4 +213,24 @@ public class AudioManager : Singleton<AudioManager> {
     public void PlayAnnouncerFight(Vector3 position) {
 		PlaySound(m_soundCollection.announcerFight, position);
     }
+
+    public void PlayPain25(Vector3 position) {
+		PlaySound(m_soundCollection.pain25, position);
+    }
+
+    public void PlayPain50(Vector3 position) {
+		PlaySound(m_soundCollection.pain50, position);
+    }
+
+    public void PlayPain75(Vector3 position) {
+		PlaySound(m_soundCollection.pain75, position);
+    }
+
+    public void PlayPain100(Vector3 position) {
+		PlaySound(m_soundCollection.pain100, position);
+    }
+
+    public void PlayPlayerDeath(Vector3 position) {
+		PlaySound(m_soundCollection.playerDeath, position);
+    }
 }

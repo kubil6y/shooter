@@ -7,6 +7,11 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO playerUltimate;
 	public SoundSO[] soulTakes;
 	public SoundSO[] playerSteps;
+	public SoundSO pain25;
+	public SoundSO pain50;
+	public SoundSO pain75;
+	public SoundSO pain100;
+	public SoundSO[] playerDeath;
 
 	[Header("Lightning Gun")]
 	public SoundSO lgFireStart;

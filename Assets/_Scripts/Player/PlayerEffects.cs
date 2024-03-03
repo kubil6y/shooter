@@ -123,6 +123,9 @@ public class PlayerEffects : MonoBehaviour {
     }
 
     private void Player_OnHit(object sender, Player.OnHitEventArgs e) {
+		if (!m_player.IsAlive()) {
+			return;
+		}
 		m_playerFlash.StartFlash(e.hitDuration);
     }
 }

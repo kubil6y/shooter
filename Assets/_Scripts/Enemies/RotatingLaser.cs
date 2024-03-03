@@ -5,6 +5,7 @@ public class RotatingLaser : MonoBehaviour {
 	[SerializeField] private int m_damage = 50;
 	[SerializeField] private float m_rotationSpeed = 100f;
 	[SerializeField] private float m_damageBetweenDuration = .33f;
+	[SerializeField] private bool m_rotateToRight = true;
 
 	private CapsuleCollider2D m_capsuleCollider;
 	private float m_lastDamagedTime;
@@ -18,7 +19,8 @@ public class RotatingLaser : MonoBehaviour {
 	}
 
 	private void HandleRotation() {
-		transform.Rotate(Vector3.forward, m_rotationSpeed * Time.deltaTime);
+		int direction = m_rotateToRight ? 1 : -1;
+		transform.Rotate(direction * Vector3.forward, m_rotationSpeed * Time.deltaTime);
 	}
 
 	private void OnTriggerStay2D(Collider2D other) {

@@ -20,6 +20,7 @@ public class BaseEnemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 	public Movement movement { get; private set; }
 	public Knockback knockback { get; private set; }
 	public Flash flash { get; private set; }
+	public EnemyFlipController flip { get; private set; }
 
 	private bool m_canFlip = true;
 
@@ -28,6 +29,7 @@ public class BaseEnemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
 		knockback = GetComponent<Knockback>();
 		health = GetComponent<Health>();
 		flash = GetComponent<Flash>();
+		flip = GetComponent<EnemyFlipController>();
 	}
 
 	protected virtual void Start() {

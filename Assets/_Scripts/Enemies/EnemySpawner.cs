@@ -4,8 +4,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
 	public event EventHandler OnEnemySpawned;
 
-	[SerializeField] private Enemy m_enemyPrefab;
-	[SerializeField] private int m_maxEnemyCount = 10;
+	[SerializeField] private BaseEnemy m_enemyPrefab;
+	[SerializeField] private int m_maxEnemyCount = 8;
 	[SerializeField] private float m_spawnInterval = 1.5f;
 	[SerializeField] private Transform[] m_spawnPoints;
 
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour {
 
 	private void Update() {
 		m_spawnTimer -= Time.deltaTime;
-		if (m_spawnTimer < 0f && m_canSpawn) {
+		if (m_spawnTimer < 0f && m_canSpawn && m_enemyCount < m_maxEnemyCount) {
 			m_spawnTimer = m_spawnInterval;
 			SpawnEnemy();
 		}
@@ -30,14 +30,15 @@ public class EnemySpawner : MonoBehaviour {
 		if (m_enemyCount >= m_maxEnemyCount) {
 			return;
 		}
-		Enemy enemy = Instantiate(m_enemyPrefab, transform);
-		Vector2 spawnPosition = GetSpawnPoint();
+		BaseEnemy enemy = Instantiate(m_enemyPrefab, transform);
+		Vector2 spawnPosition = GetRandomSpawnPoint();
 		enemy.transform.position = spawnPosition;
+		m_enemyCount++;
 
 		OnEnemySpawned?.Invoke(this, EventArgs.Empty);
 	}
 
-	private Vector2 GetSpawnPoint() {
+	private Vector2 GetRandomSpawnPoint() {
 		if (m_spawnPoints.Length == 0) {
 			return Vector2.zero;
 		}

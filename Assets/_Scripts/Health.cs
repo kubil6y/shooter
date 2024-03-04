@@ -32,6 +32,14 @@ public class Health : MonoBehaviour {
 		return m_currentHealth > 0;
 	}
 
+	public float GetHealthNormalized() {
+		return (float)m_currentHealth / m_maxHealth;
+	}
+
+	public float GetStartingHealthNormalized() {
+		return (float)m_currentHealth / m_startingHealth;
+	}
+
 	public int GetCurrentHealth() {
 		return m_currentHealth;
 	}

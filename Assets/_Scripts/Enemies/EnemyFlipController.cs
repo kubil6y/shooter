@@ -1,6 +1,9 @@
+using System;
 using UnityEngine;
 
 public class EnemyFlipController : MonoBehaviour {
+	public event EventHandler OnFlipped;
+
 	[SerializeField] private bool m_isFacingRight = true;
 
 	private BaseEnemy m_baseEnemy;
@@ -32,10 +35,13 @@ public class EnemyFlipController : MonoBehaviour {
 			FlipVisual();
 		}
 	}
+
 	private void FlipVisual() {
 		var localScale = transform.localScale;
 		localScale.x *= -1;
 		transform.localScale = localScale;
 		m_isFacingRight = !m_isFacingRight;
+
+		OnFlipped?.Invoke(this, EventArgs.Empty);
 	}
 }

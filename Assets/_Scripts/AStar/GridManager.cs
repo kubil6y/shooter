@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 //Grid manager class handles all the grid properties
 public class GridManager : Singleton<GridManager> {
-    public int numOfRows;
     public int numOfColumns;
+    public int numOfRows;
     public float gridCellSize;
     public float obstacleEpsilon = 0.2f;
     public bool showGrid = true;
     public bool showObstacleBlocks = true;
+    public LayerMask obstacleLayerMask;
 
     public Node[,] nodes { get; set; }
 
@@ -39,8 +40,7 @@ public class GridManager : Singleton<GridManager> {
                 Vector3 cellPos = GetGridCellCenter(i, j);
                 Node node = new(cellPos);
 
-
-                var collisions = Physics.OverlapSphere(cellPos, gridCellSize / 2 - obstacleEpsilon, 1 << LayerMask.NameToLayer("Obstacles"));
+                var collisions = Physics2D.OverlapCircleAll(cellPos, gridCellSize / 2 - obstacleEpsilon, obstacleLayerMask);
                 if (collisions.Length != 0) {
                     node.MarkAsObstacle();
                 }
@@ -55,7 +55,7 @@ public class GridManager : Singleton<GridManager> {
     public Vector3 GetGridCellCenter(int col, int row) {
         Vector3 cellPosition = GetGridCellPosition(col, row);
         cellPosition.x += gridCellSize / 2.0f;
-        cellPosition.z += gridCellSize / 2.0f;
+        cellPosition.y += gridCellSize / 2.0f;
 
         return cellPosition;
     }
@@ -65,9 +65,9 @@ public class GridManager : Singleton<GridManager> {
     /// </summary>
     public Vector3 GetGridCellPosition(int col, int row) {
         float xPosInGrid = col * gridCellSize;
-        float zPosInGrid = row * gridCellSize;
+        float yPosInGrid = row * gridCellSize;
 
-        return Origin + new Vector3(xPosInGrid, 0.0f, zPosInGrid);
+        return Origin + new Vector3(xPosInGrid, yPosInGrid, 0f);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class GridManager : Singleton<GridManager> {
         }
 
         int col = (int)Mathf.Floor((pos.x - Origin.x) / gridCellSize);
-        int row = (int)Mathf.Floor((pos.z - Origin.z) / gridCellSize);
+        int row = (int)Mathf.Floor((pos.y - Origin.y) / gridCellSize);
 
         return (col, row);
     }
@@ -91,7 +91,7 @@ public class GridManager : Singleton<GridManager> {
         float width = numOfColumns * gridCellSize;
         float height = numOfRows * gridCellSize;
 
-        return (pos.x >= Origin.x && pos.x <= Origin.x + width && pos.x <= Origin.z + height && pos.z >= Origin.z);
+        return pos.x >= Origin.x && pos.x <= Origin.x + width && pos.y <= Origin.y + height && pos.y >= Origin.y;
     }
 
     public bool IsTraversable(int col, int row) {
@@ -167,7 +167,7 @@ public class GridManager : Singleton<GridManager> {
 
         // Draw the horizontal grid lines
         for (int i = 0; i < numOfRows + 1; i++) {
-            Vector3 startPos = Origin + i * gridCellSize * new Vector3(0.0f, 0.0f, 1.0f);
+            Vector3 startPos = Origin + i * gridCellSize * new Vector3(0.0f, 1.0f, 0.0f);
             Vector3 endPos = startPos + width * new Vector3(1.0f, 0.0f, 0.0f);
             Debug.DrawLine(startPos, endPos, color);
         }
@@ -175,7 +175,7 @@ public class GridManager : Singleton<GridManager> {
         // Draw the vertial grid lines
         for (int i = 0; i < numOfColumns + 1; i++) {
             Vector3 startPos = Origin + i * gridCellSize * new Vector3(1.0f, 0.0f, 0.0f);
-            Vector3 endPos = startPos + height * new Vector3(0.0f, 0.0f, 1.0f);
+            Vector3 endPos = startPos + height * new Vector3(0.0f, 1.0f, 0.0f);
             Debug.DrawLine(startPos, endPos, color);
         }
     }

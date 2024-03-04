@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class AStar {
-
     /// <summary>
     /// Calculate the final path in the path finding
     /// </summary>
@@ -27,7 +26,6 @@ public class AStar {
     /// Find the path between start node and goal node using AStar Algorithm
     /// </summary>
     public List<Node> FindPath(Node start, Node goal) {
-
         //Start Finding the path
         NodePriorityQueue openList = new NodePriorityQueue();
         openList.Enqueue(start);
@@ -64,10 +62,9 @@ public class AStar {
                     if (!closedList.Contains(neighbourNode)) {
                         openList.Enqueue(neighbourNode);
                     }
-                    
+
                 }
             }
-
             closedList.Add(node);
         }
 

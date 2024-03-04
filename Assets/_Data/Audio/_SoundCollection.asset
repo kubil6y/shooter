@@ -73,3 +73,8 @@ MonoBehaviour:
   announcerTwo: {fileID: 11400000, guid: bdf80da57986b5b99b833ffceb1227a6, type: 2}
   announcerOne: {fileID: 11400000, guid: 9e804ece050291bc78a362831efde922, type: 2}
   announcerFight: {fileID: 11400000, guid: 381316ebec7e65d719311906d23eb5ff, type: 2}
+  demonAttacked:
+  - {fileID: 11400000, guid: 39bbf547fb60624599421773530c7bfe, type: 2}
+  - {fileID: 11400000, guid: 668925e4aff09f4d8bcf44ece5ca2154, type: 2}
+  - {fileID: 11400000, guid: eebdf6e9b7773ba26b1fe4e2dcd9787c, type: 2}
+  - {fileID: 11400000, guid: b65495272e9207fbe90a580ef79e34a7, type: 2}

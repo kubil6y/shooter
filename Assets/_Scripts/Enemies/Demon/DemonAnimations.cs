@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DemonAnimations : MonoBehaviour {
 	public event EventHandler OnAttacked;
+	public event EventHandler OnAttackEnded;
 
 	private Demon m_demon;
 	private Animator m_animator;
@@ -17,6 +18,10 @@ public class DemonAnimations : MonoBehaviour {
 
 	public void AnimAttackTrigger() {
 		OnAttacked?.Invoke(this, EventArgs.Empty);
+	}
+
+	public void AnimAttackEndedTrigger() {
+		OnAttackEnded?.Invoke(this, EventArgs.Empty);
 	}
 
 	#region Animation Setters

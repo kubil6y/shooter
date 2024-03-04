@@ -70,7 +70,7 @@ public class AStar {
 
         //If finished looping and cannot find the goal then return null
         if (node.position != goal.position) {
-            Debug.LogError("Goal Not Found");
+            Debug.LogWarning("Goal Not Found");
             return null;
         }
 

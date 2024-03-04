@@ -27,7 +27,7 @@ public class PlayerStateMachine {
 	}
 
 	public void ConnectToPlayerChannel() {
-		foreach(var state in m_states) {
+		foreach (var state in m_states) {
 			state.Value.ConnectToPlayerChannel();
 		}
 	}

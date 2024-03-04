@@ -5,7 +5,6 @@ using System;
 
 public class TestCode : MonoBehaviour {
 	public float moveSpeed = 10f;
-	public Vector3 targetPath;
 	public int currentIndex;
 
 	private Transform startPos, endPos;
@@ -18,8 +17,6 @@ public class TestCode : MonoBehaviour {
 
 	private float elapsedTime = 0.0f;
 	public float intervalTime = 1.0f; //Interval time between path finding
-
-
 
 	// Use this for initialization
 	void Start() {

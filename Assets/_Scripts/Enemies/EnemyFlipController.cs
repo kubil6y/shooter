@@ -1,15 +1,12 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Movement))]
 public class EnemyFlipController : MonoBehaviour {
 	[SerializeField] private bool m_isFacingRight = true;
 
 	private BaseEnemy m_baseEnemy;
-	private Movement m_movement;
 
 	private void Awake() {
 		m_baseEnemy = GetComponent<BaseEnemy>();
-		m_movement = GetComponent<Movement>();
 	}
 
 	private void LateUpdate() {
@@ -24,10 +21,14 @@ public class EnemyFlipController : MonoBehaviour {
 		if (!m_baseEnemy.CanFlip()) {
 			return;
 		}
+		if (!Player.instance.transform) {
+			return;
+		}
+		bool playerOnRight = Player.instance.transform.position.x > m_baseEnemy.transform.position.x;
 
-		if (m_movement.GetVelocity().x > 0f && !IsFacingRight()) {
+		if (playerOnRight && !IsFacingRight()) {
 			FlipVisual();
-		} else if (m_movement.GetVelocity().x < 0f && IsFacingRight()) {
+		} else if (!playerOnRight && IsFacingRight()) {
 			FlipVisual();
 		}
 	}

@@ -48,4 +48,7 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO announcerTwo;
 	public SoundSO announcerOne;
 	public SoundSO announcerFight;
+
+	[Header("Enemies")]
+	public SoundSO[] demonAttacked;
 }

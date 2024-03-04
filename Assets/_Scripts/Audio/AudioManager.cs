@@ -233,4 +233,8 @@ public class AudioManager : Singleton<AudioManager> {
     public void PlayPlayerDeath(Vector3 position) {
 		PlaySound(m_soundCollection.playerDeath, position);
     }
+
+    public void PlayDemonAttacked(Vector3 position) {
+		PlaySound(m_soundCollection.demonAttacked, position);
+    }
 }

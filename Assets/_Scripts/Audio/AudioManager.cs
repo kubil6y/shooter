@@ -241,4 +241,8 @@ public class AudioManager : Singleton<AudioManager> {
     public void PlayEnemySpawned(Vector2 spawnPosition) {
 		PlaySound(m_soundCollection.enemySpawn, spawnPosition);
     }
+
+    public void PlayGameOver(Vector2 position) {
+		PlaySound(m_soundCollection.gameOver, position);
+    }
 }

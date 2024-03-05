@@ -93,6 +93,14 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 		return true;
 	}
 
+	public int GetKillAmount() {
+		return m_killAmount;
+	}
+
+	public int GetSoulAmount() {
+		return m_soulAmount;
+	}
+
 	// TODO Consider this death/revive state
 	public void ResetSoulAmount() {
 		m_soulAmount = 0;
@@ -353,5 +361,4 @@ public class Player : Singleton<Player>, ICanPickup, ICanTeleport, IDamageable, 
 	private void GameManager_OnGameUnpaused(object sender, EventArgs e) {
 		EnablePlayer();
 	}
-
 }

@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager> {
 
 	public event EventHandler OnGamePaused;
 	public event EventHandler OnGameUnpaused;
+	public event EventHandler OnGameOver;
 
 	public event EventHandler<State> OnStateChanged; // TODO is this really necessary
 
@@ -32,9 +33,11 @@ public class GameManager : Singleton<GameManager> {
 		SetCountdownInFullSeconds(m_countdownTimer);
 		SetState(State.Countdown);
 		OnCountdownStarted?.Invoke(this, EventArgs.Empty);
+
+		Player.instance.animations.OnAnimDeathFinished += Player_OnAnimDeathFinished;
 	}
 
-	private void Update() {
+    private void Update() {
 		switch (m_state) {
 		case State.Countdown:
 			m_countdownTimer -= Time.deltaTime;
@@ -68,6 +71,12 @@ public class GameManager : Singleton<GameManager> {
 			break;
 		}
 	}
+
+    public void Restart() {
+		if (m_state != State.GameOver) {
+			return;
+		}
+    }
 
 	public float GetPlayTimer() {
 		return m_playTimer;
@@ -121,4 +130,8 @@ public class GameManager : Singleton<GameManager> {
 			OnGameUnpaused?.Invoke(this, EventArgs.Empty);
 		}
 	}
+
+    private void Player_OnAnimDeathFinished(object sender, EventArgs e) {
+		OnGameOver?.Invoke(this, EventArgs.Empty);
+    }
 }

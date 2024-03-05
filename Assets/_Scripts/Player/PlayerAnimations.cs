@@ -6,6 +6,7 @@ public class PlayerAnimations : MonoBehaviour {
 	public event EventHandler OnAnimDashEndFinished;
 	public event EventHandler OnAnimUltimateFire;
 	public event EventHandler OnAnimUltimateEnded;
+	public event EventHandler OnAnimDeathFinished;
 
 	private Player m_player;
 	private Animator m_animator;
@@ -20,6 +21,10 @@ public class PlayerAnimations : MonoBehaviour {
 	private void Awake() {
 		m_animator = GetComponent<Animator>();
 		m_player = GetComponentInParent<Player>();
+	}
+
+	public void AnimDeathFinished() {
+		OnAnimDeathFinished?.Invoke(this, EventArgs.Empty);
 	}
 
 	public void AnimUltimateFireTrigger() {

@@ -17,9 +17,10 @@ public class EnemySpawner : MonoBehaviour {
 	private void Start() {
 		Enemy.OnAnyDeath += Enemy_OnAnyDeath;
 		GameManager.instance.OnPlayingStarted += GameManager_OnPlayingStarted;
+		GameManager.instance.OnGameOver += GameManager_OnGameOver;
 	}
 
-	private void Update() {
+    private void Update() {
 		m_spawnTimer -= Time.deltaTime;
 		if (m_spawnTimer < 0f && m_canSpawn && m_enemyCount < m_maxEnemyCount) {
 			m_spawnTimer = m_spawnInterval;
@@ -60,4 +61,8 @@ public class EnemySpawner : MonoBehaviour {
 	private void GameManager_OnPlayingStarted(object sender, EventArgs e) {
 		m_canSpawn = true;
 	}
+
+    private void GameManager_OnGameOver(object sender, EventArgs e) {
+		m_canSpawn = false;
+    }
 }

@@ -5,9 +5,10 @@ public class GameManagerSounds : MonoBehaviour {
 	private void OnEnable() {
 		GameManager.instance.OnCountdownStarted += GameManager_OnCountdownStarted;
 		GameManager.instance.OnCountdownChanged += GameManager_OnCountdownChanged;
+		GameManager.instance.OnGameOver += GameManager_OnGameOver;
 	}
 
-	private void OnDisable() {
+    private void OnDisable() {
 		GameManager.instance.OnCountdownStarted -= GameManager_OnCountdownStarted;
 		GameManager.instance.OnCountdownChanged -= GameManager_OnCountdownChanged;
 	}
@@ -35,4 +36,7 @@ public class GameManagerSounds : MonoBehaviour {
 		}
 	}
 
+    private void GameManager_OnGameOver(object sender, EventArgs e) {
+		AudioManager.instance.PlayGameOver(transform.position);
+    }
 }

@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 396431765143869245}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.36, y: -1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackDamage: 20
   m_collisionDamage: 10
-  m_moveSpeed: 6
+  m_moveSpeed: 7
   m_attackDistance: 3
   m_attackInverval: 3
   m_attackRefTf: {fileID: 4228982187255154032}

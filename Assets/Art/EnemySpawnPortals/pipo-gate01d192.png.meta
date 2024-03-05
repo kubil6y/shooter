@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: 67415ec6bdfcfadcc9de519ba9a8b3e0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7273716507066944919
+    second: pipo-gate01d192_0
+  - first:
+      213: 4424305431606032378
+    second: pipo-gate01d192_1
+  - first:
+      213: 3170471354801087818
+    second: pipo-gate01d192_2
+  - first:
+      213: 3494726738988284055
+    second: pipo-gate01d192_3
+  - first:
+      213: 8952415267755680309
+    second: pipo-gate01d192_4
+  - first:
+      213: 8988623232933079897
+    second: pipo-gate01d192_5
+  - first:
+      213: 1954343897308525706
+    second: pipo-gate01d192_6
+  - first:
+      213: -6372308791211396632
+    second: pipo-gate01d192_7
+  - first:
+      213: 4905950170212231010
+    second: pipo-gate01d192_8
+  - first:
+      213: -7557716116823013803
+    second: pipo-gate01d192_9
+  - first:
+      213: 2264400530793726805
+    second: pipo-gate01d192_10
+  - first:
+      213: -7011224620943280183
+    second: pipo-gate01d192_11
+  - first:
+      213: 2643059564853379800
+    second: pipo-gate01d192_12
+  - first:
+      213: -7482382884153595973
+    second: pipo-gate01d192_13
+  - first:
+      213: 7955585068670344151
+    second: pipo-gate01d192_14
+  - first:
+      213: -6247767612064787037
+    second: pipo-gate01d192_15
+  - first:
+      213: 1123104395930185534
+    second: pipo-gate01d192_16
+  - first:
+      213: -1524197550163848037
+    second: pipo-gate01d192_17
+  - first:
+      213: -6917045510178049965
+    second: pipo-gate01d192_18
+  - first:
+      213: -8989526838504944615
+    second: pipo-gate01d192_19
+  - first:
+      213: 2532624568033235276
+    second: pipo-gate01d192_20
+  - first:
+      213: 6933952671180680451
+    second: pipo-gate01d192_21
+  - first:
+      213: -8315232246673924384
+    second: pipo-gate01d192_22
+  - first:
+      213: -3401213668735928815
+    second: pipo-gate01d192_23
+  - first:
+      213: -5006857199909319917
+    second: pipo-gate01d192_24
+  - first:
+      213: -6698514432502379626
+    second: pipo-gate01d192_25
+  - first:
+      213: -2713725217827884752
+    second: pipo-gate01d192_26
+  - first:
+      213: -6927013041706562916
+    second: pipo-gate01d192_27
+  - first:
+      213: 8847484250519654723
+    second: pipo-gate01d192_28
+  - first:
+      213: -7472238742703669227
+    second: pipo-gate01d192_29
+  - first:
+      213: 6717934548338993617
+    second: pipo-gate01d192_30
+  - first:
+      213: -5125931886005647756
+    second: pipo-gate01d192_31
+  - first:
+      213: 4565424774698458041
+    second: pipo-gate01d192_32
+  - first:
+      213: -3371987730820063338
+    second: pipo-gate01d192_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pipo-gate01d192_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79dce9810ae61f460800000000000000
+      internalID: 7273716507066944919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af775bc595a466d30800000000000000
+      internalID: 4424305431606032378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a45687936e6cffb20800000000000000
+      internalID: 3170471354801087818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 798b4780473cf7030800000000000000
+      internalID: 3494726738988284055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5326c5c014e5d3c70800000000000000
+      internalID: 8952415267755680309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95bacc2e4310ebc70800000000000000
+      internalID: 8988623232933079897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a84f6088b693f1b10800000000000000
+      internalID: 1954343897308525706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1feb49ae20197a0800000000000000
+      internalID: -6372308791211396632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_8
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267644ddfaf651440800000000000000
+      internalID: 4905950170212231010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_9
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5560587fb399d1790800000000000000
+      internalID: -7557716116823013803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5538a231944cc6f10800000000000000
+      internalID: 2264400530793726805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c7f334ba5023be90800000000000000
+      internalID: -7011224620943280183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d2c843bba80ea420800000000000000
+      internalID: 2643059564853379800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_13
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb7ef84096c392890800000000000000
+      internalID: -7482382884153595973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-gate01d192_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7db5f7e287ae76e60800000000000000
+      internalID: 7955585068670344151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 503bb78c7af1458ad9d36b826c4191eb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      pipo-gate01d192_0: 7273716507066944919
+      pipo-gate01d192_1: 4424305431606032378
+      pipo-gate01d192_10: 2264400530793726805
+      pipo-gate01d192_11: -7011224620943280183
+      pipo-gate01d192_12: 2643059564853379800
+      pipo-gate01d192_13: -7482382884153595973
+      pipo-gate01d192_14: 7955585068670344151
+      pipo-gate01d192_2: 3170471354801087818
+      pipo-gate01d192_3: 3494726738988284055
+      pipo-gate01d192_4: 8952415267755680309
+      pipo-gate01d192_5: 8988623232933079897
+      pipo-gate01d192_6: 1954343897308525706
+      pipo-gate01d192_7: -6372308791211396632
+      pipo-gate01d192_8: 4905950170212231010
+      pipo-gate01d192_9: -7557716116823013803
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

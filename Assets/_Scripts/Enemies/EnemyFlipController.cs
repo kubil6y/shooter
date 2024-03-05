@@ -16,7 +16,7 @@ public class EnemyFlipController : MonoBehaviour {
 		HandleFlipping();
 	}
 
-	public bool IsFacingRight() {
+	private bool IsFacingRight() {
 		return m_isFacingRight;
 	}
 
@@ -27,11 +27,12 @@ public class EnemyFlipController : MonoBehaviour {
 		if (!Player.instance.transform) {
 			return;
 		}
-		bool playerOnRight = Player.instance.transform.position.x > m_baseEnemy.transform.position.x;
+		bool playerOnRight = Player.instance.transform.position.x > transform.position.x;
+		bool playerOnLeft = Player.instance.transform.position.x < transform.position.x;
 
 		if (playerOnRight && !IsFacingRight()) {
 			FlipVisual();
-		} else if (!playerOnRight && IsFacingRight()) {
+		} else if (playerOnLeft && IsFacingRight()) {
 			FlipVisual();
 		}
 	}

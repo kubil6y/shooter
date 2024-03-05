@@ -8,12 +8,12 @@ public class EnemyHealthUI : MonoBehaviour {
 	[SerializeField] private Image m_healthImage;
 	private Coroutine m_updateRoutine;
 
-	private void Start() {
+	private void OnEnable() {
 		m_healthImage.fillAmount = 1f; m_enemy.health.OnHealthChanged += Health_OnHealthChanged;
 		m_enemy.flip.OnFlipped += Enemy_OnFlipped;
 	}
 
-	private void OnDestroy() {
+	private void OnDisable() {
 		m_enemy.health.OnHealthChanged -= Health_OnHealthChanged;
 	}
 
@@ -36,6 +36,7 @@ public class EnemyHealthUI : MonoBehaviour {
 	}
 
 	private void Enemy_OnFlipped(object sender, EventArgs e) {
+		Debug.Log(gameObject.name + ":Enemy_OnFlipped");
 		FlipVisual();
 	}
 

@@ -6,11 +6,9 @@ public class DemonPlayerDeadState : DemonState {
 
 	public override void Enter() {
 		base.Enter();
-		demon.animations.SetChaseAnim(true);
 	}
 
 	public override void Exit() {
 		base.Exit();
-		demon.animations.SetChaseAnim(false);
 	}
 }

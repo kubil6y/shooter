@@ -54468,10 +54468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f8acf78320d9b3f986447ff3f9bf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 200
-  m_maxArmor: 100
+  m_maxHealth: 150
+  m_maxArmor: 50
   m_startingHealth: 100
-  m_startingArmor: 20
+  m_startingArmor: 0
 --- !u!114 &1381968437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63111,7 +63111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemyPrefab: {fileID: 8611804371472033945, guid: bc76fc63dd64df623abc8ef28abefb64, type: 3}
   m_spawnPortal: {fileID: 7217028343469716552, guid: 2060d998b59cb7572a885cf15a89cbd5, type: 3}
-  m_maxEnemyCount: 5
+  m_maxEnemyCount: 7
   m_spawnInterval: 3.1
   m_spawnPoints:
   - {fileID: 1214968755}

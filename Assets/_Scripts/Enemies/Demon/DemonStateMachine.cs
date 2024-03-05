@@ -10,7 +10,6 @@ public class DemonStateMachine {
 		playerDeadState = new DemonPlayerDeadState(this, demon);
 		chaseState.ConnectToEvents();
 		attackState.ConnectToEvents();
-		attackState.ConnectToEvents();
 		ChangeState(chaseState);
 	}
 

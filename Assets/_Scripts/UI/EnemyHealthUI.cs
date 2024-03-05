@@ -36,7 +36,6 @@ public class EnemyHealthUI : MonoBehaviour {
 	}
 
 	private void Enemy_OnFlipped(object sender, EventArgs e) {
-		Debug.Log(gameObject.name + ":Enemy_OnFlipped");
 		FlipVisual();
 	}
 

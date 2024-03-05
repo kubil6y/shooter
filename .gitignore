@@ -1,7 +1,8 @@
 AllIn1SpriteShader/
+AllIn1*
 CourseAssets/
-AllIn1SpriteShader*
 CourseAssets*
+TopdownAssets/
 
 _Build
 # This .gitignore file should be placed at the root of your Unity project directory

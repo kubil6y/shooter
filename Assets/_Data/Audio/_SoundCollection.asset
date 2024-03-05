@@ -67,6 +67,13 @@ MonoBehaviour:
   armorPickup: {fileID: 11400000, guid: d678d5f7fb10701dd8051e55a585d802, type: 2}
   pickupSpawned: {fileID: 11400000, guid: a56127a45b4dee2be86bebe46b37dbd5, type: 2}
   ultimateOutOfCooldown: {fileID: 11400000, guid: 65946930f59c2fb208029eb44b2bec9b, type: 2}
+  enemySpawn:
+  - {fileID: 11400000, guid: 268c04e6f6ad5fcbd953484cc99da6d6, type: 2}
+  - {fileID: 11400000, guid: c51c7df8de1ff5bab9655a40b3fa9b3f, type: 2}
+  - {fileID: 11400000, guid: 142d2beb953ccf71792094bd9a25476f, type: 2}
+  - {fileID: 11400000, guid: ff0845df61f3c7421ba3c54f3385b41e, type: 2}
+  - {fileID: 11400000, guid: 09cc785b80874209dbb8676753d29d79, type: 2}
+  - {fileID: 11400000, guid: bbb91ca892f277d36a6367849fce1466, type: 2}
   pause: {fileID: 11400000, guid: 39d15bc7318e1c94b8638b9721299df0, type: 2}
   announcerStartLevel: {fileID: 11400000, guid: 1f74a04af21e7df279a9b9c99ef58207, type: 2}
   announcerThree: {fileID: 11400000, guid: 9bdda07b891b9c0258cca0fa39d85622, type: 2}

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
-	public event EventHandler OnEnemySpawned;
+	public event EventHandler<Vector2> OnEnemySpawned;
 
 	[SerializeField] private Demon m_enemyPrefab;
 	[SerializeField] private EnemySpawnPortal m_spawnPortal;
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour {
 		});
 
 		m_enemyCount++;
-		OnEnemySpawned?.Invoke(this, EventArgs.Empty);
+		OnEnemySpawned?.Invoke(this, spawnPosition);
 	}
 
 	private Vector2 GetRandomSpawnPoint() {

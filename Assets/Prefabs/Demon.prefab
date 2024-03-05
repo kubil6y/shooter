@@ -122,9 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f68de05f534796786c968cd530a8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_attackDamage: 20
+  m_attackDamage: 25
   m_collisionDamage: 10
-  m_moveSpeed: 7
+  m_moveSpeed: 8
   m_attackDistance: 3
   m_attackInverval: 3
   m_attackRefTf: {fileID: 4228982187255154032}

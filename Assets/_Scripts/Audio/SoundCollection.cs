@@ -40,6 +40,7 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO armorPickup;
 	public SoundSO pickupSpawned;
 	public SoundSO ultimateOutOfCooldown;
+	public SoundSO[] enemySpawn;
 
 	[Header("Announcer")]
 	public SoundSO pause;

@@ -55482,7 +55482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ultimatePrefab: {fileID: -3895012849606366371, guid: f700a29a3d53d08bb9cedc5bc44d5169, type: 3}
   m_ultimateLaserDamage: 100
-  m_ultimateCooldown: 2
+  m_ultimateCooldown: 8
   m_playerSurroundingRadius: 2
   m_ultimateRange: 20
   m_ultimateSpawnTf: {fileID: 1039025652}
@@ -62504,11 +62504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4099428749792833277, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4099428749792833277, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 4099428749792833277, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62675,6 +62675,10 @@ PrefabInstance:
     - target: {fileID: 6679292308779359886, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
       propertyPath: m_Name
       value: RotatingLaser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679292308779359886, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62909,7 +62913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8980392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -64117,6 +64121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RotatingLaser (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6679292308779359886, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -65007,11 +65015,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4099428749792833277, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25
+      value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 4099428749792833277, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4099428749792833277, guid: 89548864034b9be2ca1970ac8d369ffa, type: 3}
       propertyPath: m_LocalPosition.z

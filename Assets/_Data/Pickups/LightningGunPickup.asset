@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupName: LightningGun Pickup
   icon: {fileID: 21300000, guid: 9858b26bcf09f1471a92641f3fa90e14, type: 3}
+  spawnInterval: 30
+  initialSpawnDelay: 0
   weaponDataSO: {fileID: 11400000, guid: 19a09435270d94bf9bed2ab75056c9a5, type: 2}

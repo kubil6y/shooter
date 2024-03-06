@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupName: Lightning Gun Ammo
   icon: {fileID: 21300000, guid: ce8512fa3a7a5474da3d0f626a57b806, type: 3}
-  spawnInterval: 10
+  spawnInterval: 15
   initialSpawnDelay: 0
   weaponType: 3
   ammoAmount: 25

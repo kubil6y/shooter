@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupName: Armor Pickup
   icon: {fileID: 1301047821, guid: 90ef1638774e4003687864a78bd3b580, type: 3}
-  spawnInterval: 15
+  spawnInterval: 30
   initialSpawnDelay: 0
   armorAmount: 5

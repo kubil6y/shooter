@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupName: Rail Gun Pickup
   icon: {fileID: 21300000, guid: 757ae9c93db7d4cbea87b572b6536e4e, type: 3}
+  spawnInterval: 30
+  initialSpawnDelay: 0
   weaponDataSO: {fileID: 11400000, guid: 05078d8baf68e2e73b7131f13578e3dc, type: 2}

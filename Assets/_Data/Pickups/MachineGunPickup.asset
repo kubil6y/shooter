@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupName: Machine Gun Pickup
   icon: {fileID: 21300000, guid: ed8c5b5acb2d1b784bf01e5411298c4f, type: 3}
+  spawnInterval: 30
+  initialSpawnDelay: 0
   weaponDataSO: {fileID: 11400000, guid: fceb0b4cd49c3b6418c0a1332b3768b8, type: 2}

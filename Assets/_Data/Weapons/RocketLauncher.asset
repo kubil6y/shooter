@@ -28,5 +28,5 @@ MonoBehaviour:
   projectileGoThroughCount: 1
   spreadAngle: 0
   ammoUsage: 1
-  startingAmmo: 10
-  maxAmmo: 25
+  startingAmmo: 5
+  maxAmmo: 15

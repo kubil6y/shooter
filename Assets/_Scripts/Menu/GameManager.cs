@@ -37,7 +37,7 @@ public class GameManager : Singleton<GameManager> {
 		Player.instance.animations.OnAnimDeathFinished += Player_OnAnimDeathFinished;
 	}
 
-    private void Update() {
+	private void Update() {
 		switch (m_state) {
 		case State.Countdown:
 			m_countdownTimer -= Time.deltaTime;
@@ -72,11 +72,11 @@ public class GameManager : Singleton<GameManager> {
 		}
 	}
 
-    public void Restart() {
+	public void Restart() {
 		if (m_state != State.GameOver) {
 			return;
 		}
-    }
+	}
 
 	public float GetPlayTimer() {
 		return m_playTimer;
@@ -131,7 +131,7 @@ public class GameManager : Singleton<GameManager> {
 		}
 	}
 
-    private void Player_OnAnimDeathFinished(object sender, EventArgs e) {
+	private void Player_OnAnimDeathFinished(object sender, EventArgs e) {
 		OnGameOver?.Invoke(this, EventArgs.Empty);
-    }
+	}
 }

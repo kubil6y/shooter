@@ -121,11 +121,10 @@ public class GameManager : Singleton<GameManager> {
 
 	public void Unpause() {
 		if (IsPaused() && CanBePaused()) {
-			return;
+			SetState(State.Playing);
+			TogglePause();
+			OnGameUnpaused?.Invoke(this, EventArgs.Empty);
 		}
-		SetState(State.Playing);
-		TogglePause();
-		OnGameUnpaused?.Invoke(this, EventArgs.Empty);
 	}
 
 	private void TogglePause() {

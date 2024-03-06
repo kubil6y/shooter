@@ -7,6 +7,7 @@ public class GamePlayTimerUI : MonoBehaviour {
 
 	private void Start() {
 		GameManager.instance.OnPlayingStarted += GameManager_OnPlayingStarted;
+		GameManager.instance.OnGameOver += GameManager_OnGameOver;
 		Hide();
 	}
 
@@ -33,5 +34,9 @@ public class GamePlayTimerUI : MonoBehaviour {
 
     private void GameManager_OnPlayingStarted(object sender, EventArgs e) {
 		Show();
+    }
+
+    private void GameManager_OnGameOver(object sender, EventArgs e) {
+        Hide();
     }
 }

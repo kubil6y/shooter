@@ -10,6 +10,7 @@ public class MusicManager : MonoBehaviour {
 
 	private void Start() {
 		GameManager.instance.OnPlayingStarted += GameManager_OnPlayingStarted;
+		GameManager.instance.OnGameOver += GameManager_OnGameOver;
 		GameManager.instance.OnGamePaused += GameManager_OnGamePaused;
 		GameManager.instance.OnGameUnpaused += GameManager_OnGameUnpaused;
 
@@ -26,5 +27,9 @@ public class MusicManager : MonoBehaviour {
 
     private void GameManager_OnGameUnpaused(object sender, EventArgs e) {
 		m_audioSource.UnPause();
+    }
+
+    private void GameManager_OnGameOver(object sender, EventArgs e) {
+		m_audioSource.Stop();
     }
 }

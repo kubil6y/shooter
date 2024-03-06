@@ -38,7 +38,7 @@ public class ProjectileWeapon : Weapon, IHasObjectPool {
 			}
 		}
 		else if (shootInput && !HasEnoughAmmo() && m_timer < 0f) {
-			m_timer = .5f;
+			m_timer = .25f;
 			shootInput = false;
 			OnOutOfAmmo?.Invoke(this, EventArgs.Empty);
 		}

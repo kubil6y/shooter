@@ -119,6 +119,15 @@ public class GameManager : Singleton<GameManager> {
 		m_canBePaused = canBePaused;
 	}
 
+	public void Unpause() {
+		if (IsPaused() && CanBePaused()) {
+			return;
+		}
+		SetState(State.Playing);
+		TogglePause();
+		OnGameUnpaused?.Invoke(this, EventArgs.Empty);
+	}
+
 	private void TogglePause() {
 		m_gamePaused = !m_gamePaused;
 		if (m_gamePaused) {

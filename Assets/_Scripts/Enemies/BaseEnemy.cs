@@ -5,6 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Knockback))]
 [RequireComponent(typeof(Health))]
 public class BaseEnemy : MonoBehaviour, IHittable, IDamageable, IKnockable {
+	public static void ResetStaticData() {
+		OnAnyDeath = null;
+	}
+
 	public event EventHandler<OnHitEventArgs> OnHit;
 	public class OnHitEventArgs : EventArgs {
 		public float hitDuration;

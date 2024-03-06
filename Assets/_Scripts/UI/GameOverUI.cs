@@ -1,7 +1,6 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour {
@@ -19,7 +18,8 @@ public class GameOverUI : MonoBehaviour {
 
 		m_restartButton.onClick.AddListener(() => {
 			// TODO fix this
-			SceneManager.LoadScene("GameScene");
+			// SceneManager.LoadScene("GameScene");
+			Loader.Load(Loader.Scene.GameScene);
 		});
 
 		Hide();

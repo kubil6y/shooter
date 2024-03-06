@@ -7,7 +7,6 @@ public static class Loader {
         LoadingScene
     }
 
-
     private static Scene targetScene;
 
     public static void Load(Scene targetScene) {

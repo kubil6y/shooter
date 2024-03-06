@@ -42,9 +42,10 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO ultimateOutOfCooldown;
 	public SoundSO[] enemySpawn;
 	public SoundSO gameOver;
+	public SoundSO paused;
+	public SoundSO unpaused;
 
 	[Header("Announcer")]
-	public SoundSO pause;
 	public SoundSO announcerStartLevel;
 	public SoundSO announcerThree;
 	public SoundSO announcerTwo;

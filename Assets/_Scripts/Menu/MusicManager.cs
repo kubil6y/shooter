@@ -12,6 +12,8 @@ public class MusicManager : MonoBehaviour {
 		GameManager.instance.OnPlayingStarted += GameManager_OnPlayingStarted;
 		GameManager.instance.OnGamePaused += GameManager_OnGamePaused;
 		GameManager.instance.OnGameUnpaused += GameManager_OnGameUnpaused;
+
+		m_audioSource.Stop();
 	}
 
     private void GameManager_OnPlayingStarted(object sender, EventArgs e) {

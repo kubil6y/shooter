@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using DG.Tweening;
 
+// NOTE: timer should start with game manager playing state but it does not. so i added +10 for quad initial spawn timer.
 public class PickupSpawner : MonoBehaviour {
 	public event EventHandler OnPickupSpawned;
 

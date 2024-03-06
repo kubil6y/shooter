@@ -245,4 +245,12 @@ public class AudioManager : Singleton<AudioManager> {
     public void PlayGameOver(Vector2 position) {
 		PlaySound(m_soundCollection.gameOver, position);
     }
+
+    public void PlayGameUnpaused(Vector3 position) {
+		PlaySound(m_soundCollection.unpaused, position);
+    }
+
+    public void PlayGamePaused(Vector3 position) {
+		PlaySound(m_soundCollection.paused, position);
+    }
 }

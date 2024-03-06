@@ -7,17 +7,24 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField] private Demon m_enemyPrefab;
 	[SerializeField] private EnemySpawnPortal m_spawnPortal;
 	[SerializeField] private int m_maxEnemyCount = 8;
-	[SerializeField] private float m_spawnInterval = 1.5f;
+	[SerializeField] private float m_spawnIntervalDuration = 3.1f;
 	[SerializeField] private Transform[] m_spawnPoints;
 
 	private bool m_canSpawn;
 	private float m_spawnTimer;
 	private int m_enemyCount;
+	private float m_spawnInterval;
+
+	private void Awake() {
+		m_spawnInterval = m_spawnIntervalDuration;
+	}
 
 	private void Start() {
 		Enemy.OnAnyDeath += Enemy_OnAnyDeath;
 		GameManager.instance.OnPlayingStarted += GameManager_OnPlayingStarted;
 		GameManager.instance.OnGameOver += GameManager_OnGameOver;
+		Player.instance.OnQuadStarted += Player_OnQuadStarted;
+		Player.instance.OnQuadEnded += Player_OnQuadEnded;
 	}
 
     private void Update() {
@@ -65,4 +72,13 @@ public class EnemySpawner : MonoBehaviour {
     private void GameManager_OnGameOver(object sender, EventArgs e) {
 		m_canSpawn = false;
     }
+
+    private void Player_OnQuadStarted(object sender, Player.OnQuadStartedEventArgs e) {
+		m_spawnInterval = m_spawnIntervalDuration / 3f;
+    }
+
+    private void Player_OnQuadEnded(object sender, EventArgs e) {
+		m_spawnInterval = m_spawnIntervalDuration;
+    }
+
 }

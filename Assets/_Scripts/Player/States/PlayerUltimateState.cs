@@ -16,6 +16,7 @@ public class PlayerUltimateState : PlayerState {
         player.Invoke_OnUltimated();
         player.animations.SetUltimateAnim(true);
 
+        player.SetCanGetHit(false);
         player.SetIsPushable(false);
         player.SetCanFlip(false);
         player.SetCanUseSkill(false);
@@ -27,6 +28,7 @@ public class PlayerUltimateState : PlayerState {
         base.Exit();
         player.animations.SetUltimateAnim(false);
 
+        player.SetCanGetHit(true);
         player.SetIsPushable(true);
         player.SetCanFlip(true);
         player.SetCanUseSkill(true);

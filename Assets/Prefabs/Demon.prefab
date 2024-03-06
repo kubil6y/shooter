@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackDamage: 25
   m_collisionDamage: 10
-  m_moveSpeed: 8
+  m_moveSpeed: 7
   m_attackDistance: 3
   m_attackInverval: 3
   m_attackRefTf: {fileID: 4228982187255154032}
@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_soulPrefab: {fileID: 1098266474323565434, guid: f78905c10ac685622ab12dec8b227cd5, type: 3}
+  m_soulAmount: 1
+  m_soulOffsetDistance: 1
 --- !u!114 &1699547408924633412
 MonoBehaviour:
   m_ObjectHideFlags: 0

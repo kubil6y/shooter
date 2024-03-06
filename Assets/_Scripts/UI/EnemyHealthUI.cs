@@ -11,6 +11,7 @@ public class EnemyHealthUI : MonoBehaviour {
 	private void OnEnable() {
 		m_healthImage.fillAmount = 1f; m_enemy.health.OnHealthChanged += Health_OnHealthChanged;
 		m_enemy.flip.OnFlipped += Enemy_OnFlipped;
+		GameManager.instance.OnGameOver += GameManager_OnGameOver;
 	}
 
 	private void OnDisable() {
@@ -39,11 +40,23 @@ public class EnemyHealthUI : MonoBehaviour {
 		FlipVisual();
 	}
 
+	private void Show() {
+		gameObject.SetActive(true);
+	}
+
+	private void Hide() {
+		gameObject.SetActive(false);
+	}
+
 	private void Health_OnHealthChanged(object sender, EventArgs e) {
 		if (m_updateRoutine != null) {
 			StopCoroutine(m_updateRoutine);
 		}
 		m_updateRoutine = StartCoroutine(UpdateHealthAmountRoutine());
+	}
+
+	private void GameManager_OnGameOver(object sender, EventArgs e) {
+		Hide();
 	}
 
 }

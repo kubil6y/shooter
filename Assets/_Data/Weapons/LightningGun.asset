@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponType: 3
   weaponPrefab: {fileID: 4323232883095786947, guid: ac78b25614ddd24f29bc139137df5ea6, type: 3}
   unlimitedAmmo: 0
-  damagePerTick: 10
+  damagePerTick: 12
   rof: 100
   range: 8
   startingAmmo: 75

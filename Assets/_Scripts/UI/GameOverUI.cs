@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameOverUI : MonoBehaviour {
 	[SerializeField] private TextMeshProUGUI m_enemyKilledCountText;
 	[SerializeField] private TextMeshProUGUI m_soulsCountText;
+	[SerializeField] private TextMeshProUGUI m_survivedTimeText;
 	[SerializeField] private Button m_restartButton;
 	[SerializeField] private Button m_quitButton;
 
@@ -36,6 +37,10 @@ public class GameOverUI : MonoBehaviour {
 	private void GameManager_OnGameOver(object sender, EventArgs e) {
 		m_soulsCountText.text = Player.instance.GetSoulAmount().ToString();
 		m_enemyKilledCountText.text = Player.instance.GetKillAmount().ToString();
+		float t = GameManager.instance.GetPlayTimer();
+		string minutes = ((int)t / 60).ToString("00");
+		string seconds = (t % 60).ToString("00");
+		m_survivedTimeText.text = minutes + ":" + seconds;
 		Show();
 	}
 }

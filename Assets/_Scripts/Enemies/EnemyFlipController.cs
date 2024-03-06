@@ -16,7 +16,7 @@ public class EnemyFlipController : MonoBehaviour {
 		HandleFlipping();
 	}
 
-	private bool IsFacingRight() {
+	public bool IsFacingRight() {
 		return m_isFacingRight;
 	}
 

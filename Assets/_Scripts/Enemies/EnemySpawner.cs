@@ -74,7 +74,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     private void Player_OnQuadStarted(object sender, Player.OnQuadStartedEventArgs e) {
-		m_spawnInterval = m_spawnIntervalDuration / 3f;
+		m_spawnInterval = .88f;
     }
 
     private void Player_OnQuadEnded(object sender, EventArgs e) {

@@ -15,12 +15,6 @@ public class SoulDropper : MonoBehaviour {
 		m_health.OnDeath += Health_OnDeath;
 	}
 
-	private void Update() {
-		if (Input.GetKeyDown(KeyCode.T)) {
-			SpawnPrefab();
-		}
-	}
-
 	private void SpawnPrefab() {
 		if (m_soulAmount <= 0) {
 			Debug.LogError($"Soul amount {m_soulAmount} is stupid. You are stupid.");

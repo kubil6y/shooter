@@ -1408,6 +1408,7 @@ GameObject:
   - component: {fileID: 229460267}
   - component: {fileID: 229460266}
   - component: {fileID: 229460265}
+  - component: {fileID: 229460268}
   m_Layer: 0
   m_Name: QuitButton
   m_TagString: Untagged
@@ -1517,6 +1518,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229460263}
   m_CullTransparentMesh: 1
+--- !u!114 &229460268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229460263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9099d8557991f5585bd2268a2dcd724e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &239101667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12453,6 +12466,7 @@ GameObject:
   - component: {fileID: 445329216}
   - component: {fileID: 445329215}
   - component: {fileID: 445329214}
+  - component: {fileID: 445329217}
   m_Layer: 0
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -12562,6 +12576,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445329212}
   m_CullTransparentMesh: 1
+--- !u!114 &445329217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445329212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9099d8557991f5585bd2268a2dcd724e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &454359547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6916212932723093296, guid: 05ba6756ec4a25f66be6e98287c57aad, type: 3}
@@ -19136,6 +19162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 659524656}
+  - component: {fileID: 659524657}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -19164,6 +19191,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 78.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &659524657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659524655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9099d8557991f5585bd2268a2dcd724e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &659883318
 GameObject:
   m_ObjectHideFlags: 0
@@ -53267,6 +53306,7 @@ GameObject:
   - component: {fileID: 1072563997}
   - component: {fileID: 1072563996}
   - component: {fileID: 1072563995}
+  - component: {fileID: 1072563998}
   m_Layer: 0
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -53376,6 +53416,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072563993}
   m_CullTransparentMesh: 1
+--- !u!114 &1072563998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072563993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9099d8557991f5585bd2268a2dcd724e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1077320539
 GameObject:
   m_ObjectHideFlags: 0
@@ -53388,6 +53440,7 @@ GameObject:
   - component: {fileID: 1077320543}
   - component: {fileID: 1077320542}
   - component: {fileID: 1077320541}
+  - component: {fileID: 1077320544}
   m_Layer: 0
   m_Name: RestartButton
   m_TagString: Untagged
@@ -53497,6 +53550,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077320539}
   m_CullTransparentMesh: 1
+--- !u!114 &1077320544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077320539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9099d8557991f5585bd2268a2dcd724e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1081695119
 GameObject:
   m_ObjectHideFlags: 0
@@ -64130,7 +64195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d10ddaa3a82bd87969029220c5e5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_audioClipRefsSO: {fileID: 11400000, guid: 24e83f135dfae4256b245cb1d3089456, type: 2}
   m_sfxMixerGroup: {fileID: 2465389694967476449, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   m_musicMixerGroup: {fileID: -5913883680485133902, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   m_soundCollection: {fileID: 11400000, guid: 59b0d1bdf246de0a3a852ff139e54d60, type: 2}

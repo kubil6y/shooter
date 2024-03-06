@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 public class AudioManager : Singleton<AudioManager> {
-	[SerializeField] private AudioClipRefsSO m_audioClipRefsSO;
-
 	[SerializeField] private AudioMixerGroup m_sfxMixerGroup;
 	[SerializeField] private AudioMixerGroup m_musicMixerGroup;
 
@@ -252,5 +250,13 @@ public class AudioManager : Singleton<AudioManager> {
 
     public void PlayGamePaused(Vector3 position) {
 		PlaySound(m_soundCollection.paused, position);
+    }
+
+    public void PlayButtonClick(Vector3 position) {
+		PlaySound(m_soundCollection.buttonClick, position);
+    }
+
+    public void PlayButtonHover(Vector3 position) {
+		PlaySound(m_soundCollection.buttonHover, position);
     }
 }

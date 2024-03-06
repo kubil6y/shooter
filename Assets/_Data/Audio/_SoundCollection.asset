@@ -77,6 +77,8 @@ MonoBehaviour:
   gameOver: {fileID: 11400000, guid: abbed37fa41346630971e27736e19c66, type: 2}
   paused: {fileID: 11400000, guid: 33074f10ceda13bf8bf8825e8c2fdeda, type: 2}
   unpaused: {fileID: 11400000, guid: 62860036cf8b3d484856a3ca27f76220, type: 2}
+  buttonClick: {fileID: 11400000, guid: a412d714d2025c540aab8e0ee12c453a, type: 2}
+  buttonHover: {fileID: 11400000, guid: b633648d7b79489f184a9973147acb65, type: 2}
   announcerStartLevel: {fileID: 11400000, guid: 1f74a04af21e7df279a9b9c99ef58207, type: 2}
   announcerThree: {fileID: 11400000, guid: 9bdda07b891b9c0258cca0fa39d85622, type: 2}
   announcerTwo: {fileID: 11400000, guid: bdf80da57986b5b99b833ffceb1227a6, type: 2}

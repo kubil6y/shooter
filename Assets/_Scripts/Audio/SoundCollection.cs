@@ -44,6 +44,8 @@ public class SoundCollection : ScriptableObject {
 	public SoundSO gameOver;
 	public SoundSO paused;
 	public SoundSO unpaused;
+	public SoundSO buttonClick;
+	public SoundSO buttonHover;
 
 	[Header("Announcer")]
 	public SoundSO announcerStartLevel;

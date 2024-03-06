@@ -52873,6 +52873,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6916212932723093296, guid: 05ba6756ec4a25f66be6e98287c57aad, type: 3}
   m_PrefabInstance: {fileID: 963107476}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &971030654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 971030655}
+  - component: {fileID: 971030656}
+  m_Layer: 0
+  m_Name: Souldropper_test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &971030655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971030654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.190001, y: 4.5395317, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &971030656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971030654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb1891d8811e4c54a5603e2955de6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_soulPrefab: {fileID: 1098266474323565434, guid: f78905c10ac685622ab12dec8b227cd5, type: 3}
+  m_soulAmount: 5
+  m_soulOffsetDistance: 0.5
 --- !u!4 &971877044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 93122015391920136, guid: 51d3c7498c0e779a28ff6ea6df11db8b, type: 3}
@@ -55835,7 +55882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ba82d84bd72a533a41cbac4055e155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_countdownDuration: 10
+  m_countdownDuration: 0
 --- !u!4 &1373678606
 Transform:
   m_ObjectHideFlags: 0
@@ -65030,7 +65077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2059357379
 Transform:
   m_ObjectHideFlags: 0
@@ -65980,3 +66027,4 @@ SceneRoots:
   - {fileID: 250533593}
   - {fileID: 628109296}
   - {fileID: 940356502}
+  - {fileID: 971030655}

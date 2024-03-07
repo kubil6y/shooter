@@ -1,7 +1,7 @@
 # Topdown Shooter - DEMO
 
 - 	[Play on itch.io!](https://kubil6y.itch.io/topdown-shooter-demo)
--   [Gameplay in engine](https://www.youtube.com/watch?v=k8BzNgMHqMk)
+-   [Gameplay on Youtube](https://www.youtube.com/watch?v=R40NSIeJosk)
 
 This is an arena shooter inspired hobby project. Slay demons and evil wizards!
 

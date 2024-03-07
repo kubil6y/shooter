@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Knockback))]
 public class Movement : MonoBehaviour {
 	private Rigidbody2D m_rb;
 	private Vector2 m_velocity;

@@ -13122,67 +13122,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532831940}
   m_CullTransparentMesh: 1
---- !u!1001 &541169988
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 486504604156095949, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_Name
-      value: EvilWizard
-      objectReference: {fileID: 0}
-    - target: {fileID: 486504604156095949, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 18.924637
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.3641906
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4734864092730294406, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
 --- !u!1001 &544697384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53058,6 +52997,58 @@ Transform:
   - {fileID: 1368990137}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &942860040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 942860042}
+  - component: {fileID: 942860041}
+  m_Layer: 0
+  m_Name: EvilWizardSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &942860041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942860040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf5aa4abae2edba485ad09f4c62290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_evilWizard: {fileID: 8128304241704700399, guid: 9c37a9e1b5ba39cf79c836d480d6e992, type: 3}
+  m_spawnPortal: {fileID: 7217028343469716552, guid: 2060d998b59cb7572a885cf15a89cbd5, type: 3}
+  m_spawnPoints:
+  - {fileID: 1912949454}
+  - {fileID: 1551218416}
+  m_spawnInterval: 30
+--- !u!4 &942860042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942860040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1912949454}
+  - {fileID: 1551218416}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &963107476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56234,7 +56225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ba82d84bd72a533a41cbac4055e155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_countdownDuration: 5
+  m_countdownDuration: 10
 --- !u!4 &1373678606
 Transform:
   m_ObjectHideFlags: 0
@@ -63165,6 +63156,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544939421}
   m_CullTransparentMesh: 1
+--- !u!1 &1551218415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1551218416}
+  m_Layer: 0
+  m_Name: SpawnRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1551218416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551218415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14, y: -6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 942860042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1552087019
 GameObject:
   m_ObjectHideFlags: 0
@@ -64631,6 +64653,37 @@ MonoBehaviour:
   m_sfxMixerGroup: {fileID: 2465389694967476449, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   m_musicMixerGroup: {fileID: -5913883680485133902, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   m_soundCollection: {fileID: 11400000, guid: 59b0d1bdf246de0a3a852ff139e54d60, type: 2}
+--- !u!1 &1912949453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1912949454}
+  m_Layer: 0
+  m_Name: SpawnLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1912949454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912949453}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 942860042}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1951189260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6012340828958397747, guid: 9b2d9d6fa6638058b96a2eb20eb5f7a9, type: 3}
@@ -66409,8 +66462,8 @@ SceneRoots:
   - {fileID: 425214489}
   - {fileID: 294777323}
   - {fileID: 2059357379}
+  - {fileID: 942860042}
   - {fileID: 1954509330}
   - {fileID: 250533593}
   - {fileID: 628109296}
   - {fileID: 940356502}
-  - {fileID: 541169988}

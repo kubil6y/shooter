@@ -2,30 +2,33 @@ using System;
 using UnityEngine;
 
 public class EvilWizard : BaseEnemy {
+	public static event EventHandler OnAnyEvilWizardDeath; // TODO remove
+
 	[SerializeField] private int m_crystalAmount = 12;
 	[SerializeField] private float m_attackInterval = 10f;
 	[SerializeField] private Transform m_attackRefTf;
 
-	private EvilWizardAnimations m_animations;
+	public EvilWizardAnimations animations;
 
 	private float m_attackTimer;
 
 	protected override void Awake() {
 		base.Awake();
-		m_animations = GetComponentInChildren<EvilWizardAnimations>();
+		animations = GetComponentInChildren<EvilWizardAnimations>();
 		m_attackTimer = m_attackInterval / 2f;
 	}
 
 	protected override void Start() {
 		base.Start();
-		m_animations.OnAttacked += EvilWizard_OnAttacked;
+		animations.OnAttacked += EvilWizard_OnAttacked;
+		health.OnDeath += EvilWizard_OnAnyEvilWizardDeath;
 	}
 
 	private void Update() {
 		m_attackTimer -= Time.deltaTime;
 		if (m_attackTimer < 0f) {
 			m_attackTimer = m_attackInterval;
-			m_animations.TriggerAttackAnimation();
+			animations.TriggerAttackAnimation();
 		}
 	}
 
@@ -41,5 +44,9 @@ public class EvilWizard : BaseEnemy {
 
 	private void EvilWizard_OnAttacked(object sender, EventArgs e) {
 		Attack();
+	}
+
+	private void EvilWizard_OnAnyEvilWizardDeath(object sender, EventArgs e) {
+		OnAnyEvilWizardDeath?.Invoke(this, EventArgs.Empty);
 	}
 }

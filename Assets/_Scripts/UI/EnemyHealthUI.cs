@@ -9,13 +9,16 @@ public class EnemyHealthUI : MonoBehaviour {
 	private Coroutine m_updateRoutine;
 
 	private void OnEnable() {
-		m_healthImage.fillAmount = 1f; m_enemy.health.OnHealthChanged += Health_OnHealthChanged;
+		m_healthImage.fillAmount = 1f;
+		m_enemy.health.OnHealthChanged += Health_OnHealthChanged;
 		m_enemy.flip.OnFlipped += Enemy_OnFlipped;
 		GameManager.instance.OnGameOver += GameManager_OnGameOver;
 	}
 
 	private void OnDisable() {
 		m_enemy.health.OnHealthChanged -= Health_OnHealthChanged;
+		m_enemy.flip.OnFlipped -= Enemy_OnFlipped;
+		GameManager.instance.OnGameOver -= GameManager_OnGameOver;
 	}
 
 	private IEnumerator UpdateHealthAmountRoutine() {

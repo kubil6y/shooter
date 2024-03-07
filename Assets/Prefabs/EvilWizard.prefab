@@ -118,7 +118,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486504604156095949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e48d194c6ffec0a85845dc6b1738b5e3, type: 3}
   m_Name: 
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486504604156095949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e7fe7655eae32a5eb9fc555a8c52817, type: 3}
   m_Name: 
@@ -147,9 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f8acf78320d9b3f986447ff3f9bf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 500
+  m_maxHealth: 250
   m_maxArmor: 0
-  m_startingHealth: 500
+  m_startingHealth: 250
   m_startingArmor: 0
 --- !u!114 &257297080314088237
 MonoBehaviour:
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_crystalAmount: 16
-  m_attackInterval: 6
+  m_attackInterval: 2
   m_attackRefTf: {fileID: 2277090462677944432}
 --- !u!114 &9066065621875997837
 MonoBehaviour:

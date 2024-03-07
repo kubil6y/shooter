@@ -56,4 +56,5 @@ public class SoundCollection : ScriptableObject {
 
 	[Header("Enemies")]
 	public SoundSO[] demonAttacked;
+	public SoundSO[] evilWizardAttack;
 }

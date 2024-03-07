@@ -259,4 +259,8 @@ public class AudioManager : Singleton<AudioManager> {
     public void PlayButtonHover(Vector3 position) {
 		PlaySound(m_soundCollection.buttonHover, position);
     }
+
+    public void PlayEvilWizardAttack(Vector3 position) {
+		PlaySound(m_soundCollection.evilWizardAttack, position);
+    }
 }

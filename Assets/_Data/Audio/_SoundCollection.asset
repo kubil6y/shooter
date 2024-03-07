@@ -89,3 +89,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 668925e4aff09f4d8bcf44ece5ca2154, type: 2}
   - {fileID: 11400000, guid: eebdf6e9b7773ba26b1fe4e2dcd9787c, type: 2}
   - {fileID: 11400000, guid: b65495272e9207fbe90a580ef79e34a7, type: 2}
+  evilWizardAttack:
+  - {fileID: 11400000, guid: 1000e428a298920afb686b58089789ed, type: 2}
+  - {fileID: 11400000, guid: b8c2b926e6a0f43b7b30e554fc20911e, type: 2}

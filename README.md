@@ -3,6 +3,8 @@
 - 	[Play on itch.io!](https://kubil6y.itch.io/topdown-shooter-demo)
 -   [Gameplay in engine](https://www.youtube.com/watch?v=k8BzNgMHqMk)
 
+This is an arena shooter inspired hobby project. Slay demons and evil wizards!
+
 Some techniques that i've used in the game.
 
 1. [State Machine](https://en.wikipedia.org/wiki/Finite-state_machine)

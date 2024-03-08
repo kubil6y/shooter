@@ -12,17 +12,18 @@ Some techniques that i've used in the game.
 3. [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern)
 4. [AStar Pathfinding](https://en.wikipedia.org/wiki/A*_search_algorithm)
 
-| Keybinding | Description          |
-| ---------- | -------------------- |
-| WASD       | Movement             |
-| Space      | Dash                 |
-| 1          | Pistol               |
-| 2          | Shotgun              |
-| 3          | Machine Gun          |
-| 4          | Rail Gun             |
-| Q          | Chainsaw             |
-| R          | Rocket Launcher      |
-| E          | Lightning Gun        |
-| F          | Ultimate (Invisible) |
-| ESC        | Pause                |
+| Keybinding | Description           |
+| ---------- | --------------------- |
+| WASD       | Movement              |
+| Space      | Dash                  |
+| 1          | Pistol                |
+| 2          | Shotgun               |
+| 3          | Machine Gun           |
+| 4          | Rail Gun              |
+| Q          | Chainsaw              |
+| R          | Rocket Launcher       |
+| E          | Lightning Gun         |
+| F          | Ultimate (Invincible) |
+| ESC        | Pause                 |
+
 

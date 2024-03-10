@@ -1,4 +1,4 @@
-# Topdown Shooter - DEMO
+# Quake 2D Topdown Shooter - DEMO 
 
 - 	[Play on itch.io!](https://kubil6y.itch.io/topdown-shooter-demo)
 -   [Gameplay on Youtube](https://www.youtube.com/watch?v=R40NSIeJosk)
